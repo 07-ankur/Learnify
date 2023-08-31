@@ -7,6 +7,9 @@ import { ThemeProvider } from '@emotion/react';
 import {newTheme} from '../utils/theme/index';
 import styled from "styled-components";
 import SignUp_btn from '../components/Buttons/SignUp_btn';
+import anim1 from '../assets/lottie-animations/signup.json';
+import rocket from '../assets/lottie-animations/rocket.json'
+import Lottie from 'lottie-react';
 
 const TextFieldstyled = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -35,9 +38,9 @@ const Signup_pg = () => {
   return (
     <ThemeProvider theme={newTheme}>
     <Box>
-    <Container sx={{height:'35rem',width:'70rem',backgroundColor:'white', border:'6px solid green',mt:5, borderRadius:'20px'}}>
+    <Container sx={{height:'35rem',width:'80rem',backgroundColor:'white', border:'5px solid green',mt:5, borderRadius:'20px'}}>
         <Box sx={{display:'flex', flexDirection:'row'}}>
-        <Box sx={{width:'65%'}}>
+        <Box sx={{width:'75%'}}>
         <img src={Logo_drk} style={{width:'20%'}}></img>
         <Typography variant='h2' sx={{letterSpacing:'0.01em',mt:1, color:'#006600'}}>Create Your New Account</Typography>
         <Typography variant='h4' sx={{letterSpacing:'0.01em',mb:3, color:'#4d5980'}}>Level up your Learning with Learnify!! </Typography>
@@ -71,11 +74,12 @@ const Signup_pg = () => {
         <SignUp_btn label={"Sign Up"} />
         <Typography variant='h6' sx={{letterSpacing:'0.01em',mb:3, color:'#4d5980',mt:3,mr:1}}>Or already have an account? </Typography>
         <a href="https://www.w3schools.com">Login</a>
+        <Lottie style={{width:'30%',marginTop:-100}} animationData={rocket} loop autoplay/>
         </Box>
         </Box>
-        {/* <Box sx={{width:'40%'}}>
-            
-        </Box> */}
+        <Box sx={{width:'50%'}}>
+        <Lottie style={{marginTop:20}} animationData={anim1} loop autoplay/>
+        </Box>
         </Box>
     </Container>
     </Box>
