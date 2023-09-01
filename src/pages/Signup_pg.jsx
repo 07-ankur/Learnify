@@ -10,6 +10,7 @@ import SignUp_btn from '../components/Buttons/SignUp_btn';
 import anim1 from '../assets/lottie-animations/signup.json';
 import rocket from '../assets/lottie-animations/rocket.json'
 import Lottie from 'lottie-react';
+import { useNavigate } from 'react-router-dom';
 
 const TextFieldstyled = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -38,19 +39,19 @@ const Signup_pg = () => {
   return (
     <ThemeProvider theme={newTheme}>
     <Box>
-    <Container sx={{height:'35rem',width:'80rem',backgroundColor:'white', border:'5px solid green',mt:5, borderRadius:'20px'}}>
+    <Container sx={{height:'35rem',width:'80rem',backgroundColor:'white', border:'5px solid #3ea886',mt:5, borderRadius:'20px'}}>
         <Box sx={{display:'flex', flexDirection:'row'}}>
         <Box sx={{width:'75%'}}>
         <img src={Logo_drk} style={{width:'20%'}}></img>
-        <Typography variant='h2' sx={{letterSpacing:'0.01em',mt:1, color:'#006600'}}>Create Your New Account</Typography>
+        <Typography variant='h2' sx={{letterSpacing:'0.01em',mt:1, color:'#3ea886'}}>Create Your New Account</Typography>
         <Typography variant='h4' sx={{letterSpacing:'0.01em',mb:3, color:'#4d5980'}}>Level up your Learning with Learnify!! </Typography>
         <Box>
         <TextFieldstyled sx={{m:1}} id="outlined-basic" label="First Name" variant="outlined" />
         <TextFieldstyled sx={{m:1}} id="outlined-basic" label="Last Name" variant="outlined" /></Box>
         <Box>
-        <TextFieldstyled sx={{m:1, width:'30ch'}} id="outlined-basic" label="Email Address" variant="outlined" /></Box>
+        <TextFieldstyled sx={{m:1, width:'30ch'}} id="outlined-basic" label="Email Address" variant="outlined"/></Box>
         <Box>
-        <FormControl sx={{ m: 1, width: '25ch', mb:2 }} variant="outlined">
+        <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
           <OutlinedInputstyled
             id="outlined-adornment-password"
@@ -72,8 +73,8 @@ const Signup_pg = () => {
         </Box>
         <Box sx={{display:'flex', flexDirection:'row', alignItems:'center'}}>
         <SignUp_btn label={"Sign Up"} />
-        <Typography variant='h6' sx={{letterSpacing:'0.01em',mb:3, color:'#4d5980',mt:3,mr:1}}>Or already have an account? </Typography>
-        <a href="https://www.w3schools.com">Login</a>
+        <Typography variant='h6' sx={{letterSpacing:'0.01em',mb:3, color:'#4d5980',mt:4,mr:1}}>Or already have an account? </Typography>
+        <Typography variant='h5'  sx={{letterSpacing:'0.01em',mb:3, color:'purple',mt:4,mr:1, textDecoration:'underline', cursor:'pointer'}}> Login </Typography>
         <Lottie style={{width:'30%',marginTop:-100}} animationData={rocket} loop autoplay/>
         </Box>
         </Box>

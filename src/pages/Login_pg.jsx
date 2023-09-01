@@ -38,11 +38,11 @@ const Login_pg = () => {
   return (
     <ThemeProvider theme={newTheme}>
     <Box>
-    <Container sx={{height:'35rem',width:'80rem',backgroundColor:'white', border:'6px solid green',mt:5, borderRadius:'20px'}}>
+    <Container sx={{height:'35rem',width:'80rem',backgroundColor:'white', border:'6px solid #3ea886',mt:5, borderRadius:'20px'}}>
         <Box sx={{display:'flex', flexDirection:'row'}}>
         <Box sx={{width:'75%'}}>
         <img src={Logo_drk} style={{width:'20%'}}></img>
-        <Typography variant='h2' sx={{letterSpacing:'0.01em',mt:1, color:'#006600'}}>Login To Your Account</Typography>
+        <Typography variant='h2' sx={{letterSpacing:'0.01em',mt:1, color:'#3ea886'}}>Login To Your Account</Typography>
         <Typography variant='h4' sx={{letterSpacing:'0.01em',mb:3, color:'#4d5980'}}>Level up your Learning with Learnify!! </Typography>
         <Box>
         <TextFieldstyled sx={{m:1, width:'30ch'}} id="outlined-basic" label="Email Address" variant="outlined" /></Box>
@@ -71,7 +71,7 @@ const Login_pg = () => {
         <SignUp_btn label={"Login"} />
         <Typography variant='h6' sx={{letterSpacing:'0.01em',mb:3, color:'#4d5980',mt:3,mr:1}}>Or don't have an account? </Typography>
         <a href="https://www.w3schools.com">Signup</a>
-        <Lottie style={{width:'30%',marginTop:-100}} animationData={rocket} loop autoplay/>
+        <Lottie style={{width:'30%',marginTop:-100,marginLeft:30}} animationData={rocket} loop autoplay/>
         </Box>
         </Box>
         <Box sx={{width:'50%'}}>
