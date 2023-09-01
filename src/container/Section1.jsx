@@ -3,6 +3,7 @@ import React from 'react'
 import {section1Content } from '../utils/content';
 import Email_Inpt from '../components/Inputs/Email_Inpt';
 import SendIcon from '@mui/icons-material/Send';
+import { useNavigate } from 'react-router-dom';
 
 const {
     MainBG,
@@ -14,6 +15,9 @@ const {
   }=section1Content;
 
 const Section1 = () => {
+
+  const navigate = useNavigate();
+
   return (
     <Box>
         {/* <MainBackground/> */}
@@ -35,7 +39,7 @@ const Section1 = () => {
                 <Typography variant='h3' sx={{mb:1,color:'#f0f8ffbc',letterSpacing:'0.05em'}}>{subtitle3}</Typography>
                 <Stack direction={{xs:'column',md:'row'}} alignItems='center'>
                   <Email_Inpt/>
-                  <Button sx={{color:'whitesmoke',borderColor:'white',fontSize:'large',px:1.8,py:0.8,bottom:3}} variant="outlined">Get Started &nbsp;<SendIcon fontSize='small'/></Button>
+                  <Button onClick={()=>{navigate('/signup')}} sx={{color:'whitesmoke',borderColor:'white',fontSize:'large',px:1.8,py:0.8,bottom:3}} variant="outlined">Get Started &nbsp;<SendIcon fontSize='small'/></Button>
                 </Stack>
             </Stack>
         </Box>

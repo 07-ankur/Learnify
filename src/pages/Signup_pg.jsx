@@ -32,6 +32,8 @@ const { Logo_drk } = signupContent;
 
 const Signup_pg = () => {
 
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -47,7 +49,7 @@ const Signup_pg = () => {
         <Typography variant='h4' sx={{letterSpacing:'0.01em',mb:3, color:'#4d5980'}}>Level up your Learning with Learnify!! </Typography>
         <Box>
         <TextFieldstyled sx={{m:1}} id="outlined-basic" label="First Name" variant="outlined" />
-        <TextFieldstyled sx={{m:1}} id="outlined-basic" label="Last Name" variant="outlined" /></Box>
+        <TextFieldstyled sx={{m:1}} id="outlined-basic" label="Last Name" variant="outlined"/></Box>
         <Box>
         <TextFieldstyled sx={{m:1, width:'30ch'}} id="outlined-basic" label="Email Address" variant="outlined"/></Box>
         <Box>
@@ -74,7 +76,7 @@ const Signup_pg = () => {
         <Box sx={{display:'flex', flexDirection:'row', alignItems:'center'}}>
         <SignUp_btn label={"Sign Up"} />
         <Typography variant='h6' sx={{letterSpacing:'0.01em',mb:3, color:'#4d5980',mt:4,mr:1}}>Or already have an account? </Typography>
-        <Typography variant='h5'  sx={{letterSpacing:'0.01em',mb:3, color:'purple',mt:4,mr:1, textDecoration:'underline', cursor:'pointer'}}> Login </Typography>
+        <Typography variant='h5' onClick={()=>navigate('/login')}  sx={{letterSpacing:'0.01em',mb:3, color:'purple',mt:4,mr:1, textDecoration:'underline', cursor:'pointer'}}> Login </Typography>
         <Lottie style={{width:'30%',marginTop:-100}} animationData={rocket} loop autoplay/>
         </Box>
         </Box>

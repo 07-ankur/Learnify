@@ -7,14 +7,14 @@ import { keyframes } from '@mui/system';
 
 const { SOCIALS } = section8Content;
 
-const translate = keyframes`
-  from{
-    transform: translateY(0%);
-  }
-  to{
-    transform: translateY(-60%)
-  }
-`
+// const translate = keyframes`
+//   from{
+//     transform: translateY(0%);
+//   }
+//   to{
+//     transform: translateY(-60%)
+//   }
+// `
 
 const Section8 = () => {
   const scrollPosition = useScrollPosition();
@@ -24,7 +24,8 @@ const Section8 = () => {
       <Box sx={{mb:-12}}>
       <Title
         variant={{ xs: "h3", md: "h2" }}
-        sx={{ textAlign: "center", mb: { xs: 5 }, animation: scrollPosition>2000 ? `${translate} 1s ease forwards` : false, }}
+        // sx={{ textAlign: "center", mb: { xs: 5 }, animation: scrollPosition>2000 ? `${translate} 1s ease forwards` : false, }}
+        sx={{ textAlign: "center", mb: { xs: 5 }}}
       >
         Join Us
       </Title>

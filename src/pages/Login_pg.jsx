@@ -10,6 +10,7 @@ import SignUp_btn from '../components/Buttons/SignUp_btn';
 import anim1 from '../assets/lottie-animations/signup.json';
 import rocket from '../assets/lottie-animations/rocket.json'
 import Lottie from 'lottie-react';
+import { useNavigate } from 'react-router-dom';
 
 const TextFieldstyled = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -30,6 +31,8 @@ const OutlinedInputstyled = styled(OutlinedInput)`
 const { Logo_drk } = signupContent;
 
 const Login_pg = () => {
+
+  const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -69,8 +72,8 @@ const Login_pg = () => {
         </Box>
         <Box sx={{display:'flex', flexDirection:'row', alignItems:'center'}}>
         <SignUp_btn label={"Login"} />
-        <Typography variant='h6' sx={{letterSpacing:'0.01em',mb:3, color:'#4d5980',mt:3,mr:1}}>Or don't have an account? </Typography>
-        <a href="https://www.w3schools.com">Signup</a>
+        <Typography variant='h6' sx={{letterSpacing:'0.01em',mb:3, color:'#4d5980',mt:4,mr:1}}>Or don't have an account? </Typography>
+        <Typography variant='h5' onClick={()=>navigate('/signup')}  sx={{letterSpacing:'0.01em',mb:3, color:'purple',mt:4,mr:1, textDecoration:'underline', cursor:'pointer'}}> Signup </Typography>
         <Lottie style={{width:'30%',marginTop:-100,marginLeft:30}} animationData={rocket} loop autoplay/>
         </Box>
         </Box>

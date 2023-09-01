@@ -18,7 +18,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Main_btn from "./Buttons/Main_btn";
 import ServiceCard from "./Cards/ServiceCard";
 import {Popover} from "@mui/material";
-
+import { useNavigate } from "react-router-dom";
 
 const { Logo } = navbarContent;
 
@@ -39,6 +39,17 @@ const LinkButton = ({ children, ...props }) => (
 );
 
 const Navbar = () => {
+
+  const navigate = useNavigate();
+
+  const navigateToSignup = () => {
+    navigate('/signup')
+  }
+
+  const navigateToLogin = () => {
+    navigate('/login')
+  }
+
   const scrollPosition = useScrollPosition();
 
   const theme = useTheme();
@@ -156,8 +167,8 @@ const Navbar = () => {
               </LinkButton>
 
               {/* <LaunchButton sx={{ borderRadius: 3 }} /> */}
-              <Main_btn label={"Log In"} />
-              <Main_btn label={"Sign Up"} />
+              <Main_btn label={"Log In"} functionHandler={navigateToLogin} />
+              <Main_btn label={"Sign Up"} functionHandler={navigateToSignup} />
             </Stack>
           )}
         </Stack>
