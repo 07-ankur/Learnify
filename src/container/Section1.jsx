@@ -22,7 +22,7 @@ const Section1 = () => {
     <Box>
         {/* <MainBackground/> */}
         <Box sx={{position:'absolute',zIndex:-10,bottom:'0.1%'}}>
-            <img src={MainBG} style={{width:'100%'}}></img>
+            <img src={MainBG} style={{width:'100%', opacity:0.7}}></img>
         </Box>
         {/* <Background elements/> */}
         <Box sx={{position:'absolute', zIndex:-1, top:0, left:0,right:0}}>

@@ -6,6 +6,8 @@ import Home_pg from './pages/Home_pg'
 import Tutorials_pg from './pages/Tutorials_pg'
 import Signup_pg from './pages/Signup_pg'
 import Login_pg from './pages/Login_pg'
+import { useContext } from 'react'
+
 
 const App = () => {
   return (

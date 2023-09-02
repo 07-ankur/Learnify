@@ -24,7 +24,6 @@ const Section5 = () => {
         <Grid item xs={12} md={6}>
           <Stack spacing={2} sx={{ maxWidth: 580 }}>
             <Title variant={{ xs: "h2", md: "h1" }}>{top.title}</Title>
-
             <Typography variant="body1" color="text.secondary" sx={{ pb: 2 }}>
               {top.subtitle}
             </Typography>
@@ -81,7 +80,6 @@ const Section5 = () => {
         <Grid item xs={1} md={6}>
           <Stack spacing={2} sx={{ maxWidth: 680 }}>
             <Title variant={{ xs: "h3", md: "h2" }}>{bottom.title}</Title>
-
             <Tabs
               value={tabValue}
               onChange={(e, v) => setTabValue(v)}

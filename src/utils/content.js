@@ -125,13 +125,13 @@ export const section5Content = {
         image: Datasci_icon,
         title:'Lead data-driven decisions with Data Science',
         subtitle:
-          "Data science application is an in-demand skill in many industries worldwide — including finance, transportation, education, manufacturing, human resources, and banking. Explore data science courses with Python, statistics, machine learning, and more to grow your knowledge. Get data science training if you’re into research, statistics,",
+          "Data science application is an in-demand skill in many industries worldwide — including finance, transportation, education, manufacturing, human resources, and banking. Explore data science courses with Python, statistics, machine learning, and more to grow your knowledge. Get data science training if you’re into research, statistics.",
       },
       {
         name: "Python",
         image: Python_icon,
         title:'Expand your career opportunities with Python',
-        subtitle: "Learn how to code using this incredibly useful language. Its simple syntax and readability makes Python perfect for Flask, Django, data science, and machine learning. You’ll learn how to build everything from games to sites to apps. Choose from a range of courses that will appeal to",
+        subtitle: "Learn how to code using this incredibly useful language. Its simple syntax and readability makes Python perfect for Flask, Django, data science, and machine learning. You’ll learn how to build everything from games to sites to apps.",
       },
       {
         name: "Photohop",
