@@ -19,24 +19,9 @@ import Main_btn from "./Buttons/Main_btn";
 import ServiceCard from "./Cards/ServiceCard";
 import {Popover} from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import LinkButton from "./Buttons/Link_btn";
 
 const { Logo } = navbarContent;
-
-const LinkButton = ({ children, ...props }) => (
-  <Stack
-    direction="row"
-    alignItems="center"
-    spacing={0.2}
-    sx={{
-      cursor: "pointer",
-      color: "text.secondary",
-      "&:hover": { color: "text.primary" },
-    }}
-    {...props}
-  >
-    {children}
-  </Stack>
-);
 
 const Navbar = () => {
 
