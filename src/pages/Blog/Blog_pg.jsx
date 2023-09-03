@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import { Box } from "@mui/system";
-import MainBG from "../../assets/images/Blog_bg.jpg"
 import Section1 from "../../container/Blog/Section1";
 import Section2 from "../../container/Blog/Section2";
 import Footer from "../../components/Footer";
