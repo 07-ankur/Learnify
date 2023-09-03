@@ -327,3 +327,110 @@ export const navbarContent = {
 export const signupContent = {
   Logo_drk,
 };
+
+export const Blogs = {
+  ITEMS:[
+    {
+      key:1,
+      tag:'Technology',
+      title:"The Evolution of Artificial Intelligence: From Theory to Reality",
+      description:"Exploring AI's Impact on Industries and Daily Life. Dive into the fascinating world of AI, discover its real-world applications, and understand how it's shaping various industries."
+    },
+    {
+      key:2,
+      tag:'Technology',
+      title:"The Rise of Virtual Reality in Education: Bridging the Gap",
+      description:"How VR is Revolutionizing Learning Experiences. Explore how virtual reality is enhancing education by providing immersive and interactive learning environments."
+    },
+    {
+      key:3,
+      tag:'Technology',
+      title:"Embracing Automation: The Future of Work and Human-AI Collaboration",
+      description:"Preparing for the Changing Landscape of Employment. Learn about the coexistence of automation and human labor and how to adapt to the evolving job market."
+    },
+    {
+      key:4,
+      tag:'Technology',
+      title:"Cybersecurity in the Digital Age: Protecting Your Online Identity",
+      description:"Essential Tips to Stay Safe in the Digital Realm. Explore the importance of cybersecurity and learn practical steps to safeguard your online presence and sensitive data."
+    },
+    {
+      key:5,
+      tag:'Education Tips',
+      title:"Online Learning Hacks: Making the Most of Your Digital Classroom",
+      description:"Tips for Staying Engaged and Productive. Find practical advice on how to excel in online learning, from time management to active participation."
+    },
+    {
+      key:6,
+      tag:'Education Tips',
+      title:"The Power of Peer Learning: How Study Groups Improve Academic Success",
+      description:"Collaborative Learning Strategies for Students. Discover the benefits of study groups and effective techniques for collaborative learning."
+    },
+    {
+      key:7,
+      tag:'Education Tips',
+      title:"Overcoming Procrastination: The Student's Guide to Productivity",
+      description:"Breaking the Cycle of Delayed Work. Learn strategies to combat procrastination and boost your productivity as a student."
+    },
+    {
+      key:8,
+      tag:'Education Tips',
+      title:"Effective Note-Taking Strategies for Student Success",
+      description:"Maximizing Retention and Understanding. Discover proven techniques for taking notes that lead to better retention and comprehension of course material."
+    },
+    {
+      key:9,
+      tag:'Career Development',
+      title:"Crafting a Winning Resume: Tips for Landing Your Dream Job",
+      description:"Creating an Impressive Resume That Stands Out. Learn how to create a resume that showcases your skills and experiences effectively, increasing your chances of landing your desired job."
+    },
+    {
+      key:10,
+      tag:'Career Development',
+      title:"Navigating Career Transitions: Pivoting Towards a New Path",
+      description:"Strategies for Smooth Career Shifts and Reinventions. Discover how to successfully transition between careers and reinvent yourself professionally."
+    },
+    {
+      key:11,
+      tag:'Career Development',
+      title:"Leadership Skills for the Modern Workplace: Thriving as a 21st-Century Professional",
+      description:"Essential Qualities and Strategies for Career Advancement. Explore the leadership skills necessary to excel in today's dynamic workplace and advance in your career."
+    },
+    {
+      key:12,
+      tag:'Industry Insights',
+      title:"Tech Trends 2023: Emerging Technologies That Will Shape Tomorrow",
+      description:"A Glimpse into the Future of Technology and Business. Explore the emerging technologies poised to disrupt various industries in the coming year."
+    },
+    {
+      key:13,
+      tag:'Industry Insights',
+      title:"Cybersecurity Trends 2023: Navigating the Evolving Threat Landscape",
+      description:"Insights into Emerging Cybersecurity Challenges and Solutions. Stay informed about the ever-changing cybersecurity landscape and discover strategies to protect your digital assets in the coming year."
+    },
+    {
+      key:14,
+      tag:'Industry Insights',
+      title:"Tech Startups to Watch: Innovations Shaping Tomorrow's Tech Landscape",
+      description:"Highlighting Groundbreaking Startup Companies and Their Technologies. Stay ahead of the curve by exploring emerging tech startups and the disruptive innovations they bring to the industry."
+    },
+    {
+      key:15,
+      tag:'How-to-guides',
+      title:"The Ultimate Guide to Effective Online Learning",
+      description:"Step-by-Step Strategies for Online Academic Success. Access a comprehensive guide with step-by-step strategies to excel in online learning."
+    },
+    {
+      key:16,
+      tag:'How-to-guides',
+      title:"How to Build a Professional LinkedIn Profile That Stands Out",
+      description:"Optimizing Your LinkedIn Presence for Career Success. Learn how to create a compelling LinkedIn profile that attracts job opportunities and professional connections."
+    },
+    {
+      key:17,
+      tag:'How-to-guides',
+      title:"Mastering Time Management: A Step-by-Step Guide for Students",
+      description:"Efficient Techniques to Balance Study, Work, and Life. Get practical advice on managing your time effectively, whether you're a student, a professional, or a lifelong learner."
+    },
+  ]
+}

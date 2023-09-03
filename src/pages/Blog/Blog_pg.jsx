@@ -4,6 +4,7 @@ import { Box } from "@mui/system";
 import MainBG from "../../assets/images/Blog_bg.jpg"
 import Section1 from "../../container/Blog/Section1";
 import Section2 from "../../container/Blog/Section2";
+import Footer from "../../components/Footer";
 
 const Blog_pg = () => {
   return (
@@ -11,6 +12,7 @@ const Blog_pg = () => {
       <Navbar color={'white'} sp={-1}/>
       <Section1/>
       <Section2/>
+      <Footer/>
     </Box>
   );
 };
