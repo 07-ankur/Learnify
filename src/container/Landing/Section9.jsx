@@ -1,8 +1,8 @@
 import { Box, Container, Grid } from "@mui/material";
 import React from "react";
 import {Typography} from "@mui/material";
-import Title from "../components/Title";
-import { Section9Content } from "../utils/content";
+import Title from "../../components/Title";
+import { Section9Content } from "../../utils/content";
 
 const { title,subtitle, ITEMS } = Section9Content;
 

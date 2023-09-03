@@ -1,10 +1,10 @@
 import { Container, Grid, Stack, Tab, Tabs, Typography } from "@mui/material";
 import React, { useState } from "react";
-import OutlinedButton from "../components/Buttons/OutlinedButton";
-import Title from "../components/Title";
-import { section5Content } from "../utils/content";
-import Quiz_anim from './../assets/lottie-animations/quiz.json';
-import Analysis_anim from './../assets/lottie-animations/analysis2.json';
+import OutlinedButton from "../../components/Buttons/OutlinedButton";
+import Title from "../../components/Title";
+import { section5Content } from "../../utils/content";
+import Quiz_anim from '../../assets/lottie-animations/quiz.json';
+import Analysis_anim from '../../assets/lottie-animations/analysis2.json';
 import Lottie from 'lottie-react';
 
 const { top,middle, bottom } = section5Content;

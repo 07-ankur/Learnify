@@ -1,7 +1,7 @@
 import { Box,Container, Typography,Stack,Button } from '@mui/material'
 import React from 'react'
-import {section1Content } from '../utils/content';
-import Email_Inpt from '../components/Inputs/Email_Inpt';
+import {section1Content } from '../../utils/content';
+import Email_Inpt from '../../components/Inputs/Email_Inpt';
 import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from 'react-router-dom';
 

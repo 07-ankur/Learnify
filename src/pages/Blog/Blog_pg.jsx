@@ -2,14 +2,15 @@ import React from "react";
 import Navbar from "../../components/Navbar";
 import { Box } from "@mui/system";
 import MainBG from "../../assets/images/Blog_bg.jpg"
+import Section1 from "../../container/Blog/Section1";
+import Section2 from "../../container/Blog/Section2";
 
 const Blog_pg = () => {
   return (
     <Box>
-      <Box sx={{position:'absolute',zIndex:-10}}>
-      <img src={MainBG} style={{width:'100%', opacity:0.8}}></img>
-      </Box>
-      <Navbar />
+      <Navbar color={'white'} sp={-1}/>
+      <Section1/>
+      <Section2/>
     </Box>
   );
 };

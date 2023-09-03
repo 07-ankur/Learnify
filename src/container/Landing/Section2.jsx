@@ -1,8 +1,8 @@
 import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import React from "react";
 import CountUp from "react-countup";
-import Title from "../components/Title";
-import { section2Content } from "../utils/content";
+import Title from "../../components/Title";
+import { section2Content } from "../../utils/content";
 import VisibilitySensor from 'react-visibility-sensor';
 
 const { items } = section2Content;

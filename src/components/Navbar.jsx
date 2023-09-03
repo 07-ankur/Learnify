@@ -23,7 +23,9 @@ import LinkButton from "./Buttons/Link_btn";
 
 const { Logo } = navbarContent;
 
-const Navbar = () => {
+const Navbar = (props) => {
+
+  const sp = props.sp || 0;
 
   const navigate = useNavigate();
 
@@ -63,7 +65,7 @@ const Navbar = () => {
       sx={{
         py: 1,
         height: 82,
-        bgcolor: scrollPosition > 0 ? "rgba(7,7,16,.7)" : "transparent",
+        bgcolor: scrollPosition > sp ? "rgba(7,7,16,.7)" : "transparent",
         backdropFilter: scrollPosition > 10 && "blur(60px)",
       }}
     >
@@ -133,7 +135,7 @@ const Navbar = () => {
               </LinkButton>
 
               <LinkButton spacing={0.5}>
-                <Typography variant="body1">Blog</Typography>
+                <Typography variant="body1" color={props.color} onClick={()=>{navigate('/blog')}}>Blog</Typography>
                 <CallMadeIcon sx={{ fontSize: 12 }} />
               </LinkButton>
             </Stack>
