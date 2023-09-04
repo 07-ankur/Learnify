@@ -17,7 +17,8 @@ const Section1 = () => {
             <Typography variant='h3' sx={{mb:2.5,color:'#f0f8ffbc'}}>"Explore Insights, Tips, and Updates seamlessly"</Typography>
             <Box sx={{display:'flex',flexDirection:'row'}}>
             <Typography variant='h5' sx={{mb:1,color:'#B6976A',letterSpacing:'0.05em'}}>Learn & Grow:- </Typography>
-            <Typography variant='h5' sx={{mb:1,color:'#B6976A',letterSpacing:'0.05em',cursor:'pointer', textDecoration:'underline'}}>Browse our courses </Typography>
+            <Typography variant='h5' sx={{mb:1,color:'#B6976A',letterSpacing:'0.05em',cursor:'pointer', textDecoration:'underline', '&:hover' : {
+            color: "#fff"},}}>Browse our courses </Typography>
             <CallMadeIcon sx={{ fontSize: 12 }} />
             </Box>
             <Divider sx={{width:'75%',mt:2}} variant='middle'/>

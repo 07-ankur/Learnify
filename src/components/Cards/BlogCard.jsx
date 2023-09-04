@@ -1,13 +1,16 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Hidden, Stack, Typography } from "@mui/material";
 import React from "react";
-import OutlinedButton from "../Buttons/OutlinedButton";
 import Title from "../Title";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import { useNavigate } from 'react-router-dom'
 
-const BlogCard = ({ title, description,image,date,author }) => {
+const BlogCard = ({ title, description,image,date,author}) => {
+
+  const navigate = useNavigate(); 
+
   return (
-    <Box sx={{
+    <Box onClick={()=>{navigate(`/blog/${title}`)}} sx={{
       height: "22em",
       width:"20em",
       my:4,
@@ -16,9 +19,13 @@ const BlogCard = ({ title, description,image,date,author }) => {
       px:3,
       position: "relative",
       borderRadius: "30px",
-      border:"2px solid #f0f8ffbc",
+      border:"3px solid #B6976A",
+      '&:hover' : {
+        border: "4px solid #f0f8ffbc"
+      },
       cursor:'pointer',
-      bgcolor:'black'
+      bgcolor:'#1a1a1a',
+      overflow:'hidden'
     }}>
       <Stack sx={{display:'flex', alignItems:'center'}}>
         <img
@@ -26,17 +33,20 @@ const BlogCard = ({ title, description,image,date,author }) => {
           alt="No Image"
           style={{width:'19em',height:"10em",borderRadius:'25px'}}
         />
-        <Title sx={{color:'#B6976A',mb:2,mt:2}} variant={{ xs: "h6", sm: "h5" }}>{title}</Title>
-        <Typography variant="body2" color="#fff">
+        <Title sx={{color:'#B6976A',mb:1,mt:2}} variant={{ xs: "h6", sm: "h5" }}>{title}</Title>
+        <Typography sx={{maxHeight:'4.5em', overflow:'hidden'}} variant="body2" color="#fff">
           {description}
         </Typography>
+        <Typography variant="body2" sx={{color:'#B6976A'}}>
+          Read More .....
+        </Typography>
       </Stack>
-      <Box sx={{display:'flex',flexDirection:'row',justifyContent:'space-between',px:3}}>
+      <Box sx={{display:'flex',flexDirection:'row',justifyContent:'space-between',px:2}}>
         <Box sx={{display:'flex',flexDirection:'row', alignItems:'flex-start',mt:2}}>
-          <CalendarMonthIcon style={{color:'#B6976A'}}/> <Typography sx={{mt:0.5,mx:0.5,bottom:0}} variant="body2" color="#fff">{date}</Typography>
+          <CalendarMonthIcon style={{color:'#B6976A'}}/> <Typography sx={{mt:1,mx:0.5,bottom:0}} variant="body2" color="#fff">{date}</Typography>
         </Box>
         <Box sx={{display:'flex',flexDirection:'row', alignItems:'flex-start',mt:2}}>
-          <PermIdentityIcon style={{color:'#B6976A'}}/> <Typography sx={{mt:0.5,mx:0.5}} variant="body2" color="#fff">{author}</Typography>
+          <PermIdentityIcon style={{color:'#B6976A'}}/> <Typography sx={{mt:1,mx:0.5}} variant="body2" color="#fff">{author}</Typography>
         </Box>
       </Box>
     </Box>

@@ -8,6 +8,9 @@ import Signup_pg from "./pages/Authentication/Signup_pg";
 import Login_pg from "./pages/Authentication/Login_pg";
 import { useContext } from "react";
 import Blog_pg from "./pages/Blog/Blog_pg";
+import { Blogs } from "./utils/content";
+
+const {ITEMS} = Blogs;
 
 const App = () => {
   return (
@@ -20,6 +23,9 @@ const App = () => {
         <Route path="/login" element={<Login_pg />} />
         <Route path="/blog" element={<Blog_pg />} />
         <Route path="*" element={<Landing_pg />} />
+        {ITEMS.map((item)=>(
+            <Route key={item.key} path={`/blog/${item.title}`} element={<Blog_pg/>}/>
+          ))}
       </Routes>
     </div>
   );

@@ -356,7 +356,7 @@ export const Blogs = {
       title:"The Evolution of Artificial Intelligence: From Theory to Reality",
       description:"Exploring AI's Impact on Industries and Daily Life. Dive into the fascinating world of AI, discover its real-world applications, and understand how it's shaping various industries.",
       image: image1,
-      date: 'Nov 2, 2023',
+      date: 'Oct 2, 2023',
       author: 'Rishav Sharma'
     },
     {
@@ -365,7 +365,7 @@ export const Blogs = {
       title:"The Rise of Virtual Reality in Education: Bridging the Gap",
       description:"How VR is Revolutionizing Learning Experiences. Explore how virtual reality is enhancing education by providing immersive and interactive learning environments.",
       image: image2,
-      date: 'Nov 2, 2023',
+      date: 'Nov 9, 2023',
       author: 'Abhishek Kapoor'
     },
     {
@@ -381,7 +381,7 @@ export const Blogs = {
       key:4,
       tag:'Technology',
       title:"Cybersecurity in the Digital Age: Protecting Your Online Identity",
-      description:"Essential Tips to Stay Safe in the Digital Realm. Explore the importance of cybersecurity and learn practical steps to safeguard your online presence and sensitive data.",
+      description:"Essential Tips to Stay Safe in the Digital Realm. Explore the importance of cybersecurity and learn practical steps to safeguard your online presence and sensitive data.  ",
       image: image4,
       date: 'Sep 2, 2023',
       author: 'Aarti Sharma',
