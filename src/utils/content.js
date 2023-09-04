@@ -74,6 +74,26 @@ import Logo from "../assets/images/Learnify_logo.png";
 //Signup
 import Logo_drk from '../assets/images/Learnify_drk.png'
 
+// Blog
+
+import image1 from '../assets/images/AI_blog.jpg'
+import image2 from '../assets/images/VR_blog.jpeg'
+import image3 from '../assets/images/Automation_blog.jpeg'
+import image4 from '../assets/images/Cybersec_blog.jpeg'
+import image5 from '../assets/images/Online_blog.jpg'
+import image6 from '../assets/images/Peer_blog.jpeg'
+import image7 from '../assets/images/Procastination_blog.webp'
+import image8 from '../assets/images/Note_blog.jpeg'
+import image9 from '../assets/images/resume_blog.jpeg'
+import image10 from '../assets/images/Navigating_blog.jpeg'
+import image11 from '../assets/images/Leadership_blog.jpeg'
+import image12 from '../assets/images/Tech_blog.jpeg'
+import image13 from '../assets/images/Cyber_blog.jpeg'
+import image14 from '../assets/images/Startup_blog.png'
+import image15 from '../assets/images/Elearn_blog.jpeg'
+import image16 from '../assets/images/Linkedin_blog.jpeg'
+import image17 from '../assets/images/Time_blog.webp'
+
 export const section1Content = {
   MainBG,
   TreesImage,
@@ -334,103 +354,154 @@ export const Blogs = {
       key:1,
       tag:'Technology',
       title:"The Evolution of Artificial Intelligence: From Theory to Reality",
-      description:"Exploring AI's Impact on Industries and Daily Life. Dive into the fascinating world of AI, discover its real-world applications, and understand how it's shaping various industries."
+      description:"Exploring AI's Impact on Industries and Daily Life. Dive into the fascinating world of AI, discover its real-world applications, and understand how it's shaping various industries.",
+      image: image1,
+      date: 'Nov 2, 2023',
+      author: 'Rishav Sharma'
     },
     {
       key:2,
       tag:'Technology',
       title:"The Rise of Virtual Reality in Education: Bridging the Gap",
-      description:"How VR is Revolutionizing Learning Experiences. Explore how virtual reality is enhancing education by providing immersive and interactive learning environments."
+      description:"How VR is Revolutionizing Learning Experiences. Explore how virtual reality is enhancing education by providing immersive and interactive learning environments.",
+      image: image2,
+      date: 'Nov 2, 2023',
+      author: 'Abhishek Kapoor'
     },
     {
       key:3,
       tag:'Technology',
       title:"Embracing Automation: The Future of Work and Human-AI Collaboration",
-      description:"Preparing for the Changing Landscape of Employment. Learn about the coexistence of automation and human labor and how to adapt to the evolving job market."
+      description:"Preparing for the Changing Landscape of Employment. Learn about the coexistence of automation and human labor and how to adapt to the evolving job market.",
+      image: image3,
+      date: 'Feb 22, 2023',
+      author: 'Rajesh Kumar'
     },
     {
       key:4,
       tag:'Technology',
       title:"Cybersecurity in the Digital Age: Protecting Your Online Identity",
-      description:"Essential Tips to Stay Safe in the Digital Realm. Explore the importance of cybersecurity and learn practical steps to safeguard your online presence and sensitive data."
+      description:"Essential Tips to Stay Safe in the Digital Realm. Explore the importance of cybersecurity and learn practical steps to safeguard your online presence and sensitive data.",
+      image: image4,
+      date: 'Sep 2, 2023',
+      author: 'Aarti Sharma',
     },
     {
       key:5,
       tag:'Education Tips',
       title:"Online Learning Hacks: Making the Most of Your Digital Classroom",
-      description:"Tips for Staying Engaged and Productive. Find practical advice on how to excel in online learning, from time management to active participation."
+      description:"Tips for Staying Engaged and Productive. Find practical advice on how to excel in online learning, from time management to active participation.",
+      image: image5,
+      date: 'Aug 16, 2023',
+      author: 'Shruti Shah'
     },
     {
       key:6,
       tag:'Education Tips',
       title:"The Power of Peer Learning: How Study Groups Improve Academic Success",
-      description:"Collaborative Learning Strategies for Students. Discover the benefits of study groups and effective techniques for collaborative learning."
+      description:"Collaborative Learning Strategies for Students. Discover the benefits of study groups and effective techniques for collaborative learning.",
+      image: image6,
+      date: 'Nov 21, 2023',
+      author: 'Neeta Choudhary'
     },
     {
       key:7,
       tag:'Education Tips',
       title:"Overcoming Procrastination: The Student's Guide to Productivity",
-      description:"Breaking the Cycle of Delayed Work. Learn strategies to combat procrastination and boost your productivity as a student."
+      description:"Breaking the Cycle of Delayed Work. Learn strategies to combat procrastination and boost your productivity as a student.",
+      image: image7,
+      date: 'Mar 21, 2023',
+      author: 'Harish Iyer'
     },
     {
       key:8,
       tag:'Education Tips',
       title:"Effective Note-Taking Strategies for Student Success",
-      description:"Maximizing Retention and Understanding. Discover proven techniques for taking notes that lead to better retention and comprehension of course material."
+      description:"Maximizing Retention and Understanding. Discover proven techniques for taking notes that lead to better retention and comprehension of course material.",
+      image: image8,
+      date: 'Jan 24, 2023',
+      author: 'Meenal Thakur'
     },
     {
       key:9,
       tag:'Career Development',
       title:"Crafting a Winning Resume: Tips for Landing Your Dream Job",
-      description:"Creating an Impressive Resume That Stands Out. Learn how to create a resume that showcases your skills and experiences effectively, increasing your chances of landing your desired job."
+      description:"Creating an Impressive Resume That Stands Out. Learn how to create a resume that showcases your skills and experiences effectively, increasing your chances of landing your desired job.",
+      image: image9,
+      date: 'Nov 2, 2023',
+      author: 'Rishi Sinha'
     },
     {
       key:10,
       tag:'Career Development',
       title:"Navigating Career Transitions: Pivoting Towards a New Path",
-      description:"Strategies for Smooth Career Shifts and Reinventions. Discover how to successfully transition between careers and reinvent yourself professionally."
+      description:"Strategies for Smooth Career Shifts and Reinventions. Discover how to successfully transition between careers and reinvent yourself professionally.",
+      image: image10,
+      date: 'Jun 3, 2023',
+      author: 'Pradeep Mishra'
     },
     {
       key:11,
       tag:'Career Development',
       title:"Leadership Skills for the Modern Workplace: Thriving as a 21st-Century Professional",
-      description:"Essential Qualities and Strategies for Career Advancement. Explore the leadership skills necessary to excel in today's dynamic workplace and advance in your career."
+      description:"Essential Qualities and Strategies for Career Advancement. Explore the leadership skills necessary to excel in today's dynamic workplace and advance in your career.",
+      image: image11,
+      date: 'Nov 2, 2023',
+      author: 'Rishav Sharma'
     },
     {
       key:12,
       tag:'Industry Insights',
       title:"Tech Trends 2023: Emerging Technologies That Will Shape Tomorrow",
-      description:"A Glimpse into the Future of Technology and Business. Explore the emerging technologies poised to disrupt various industries in the coming year."
+      description:"A Glimpse into the Future of Technology and Business. Explore the emerging technologies poised to disrupt various industries in the coming year.",
+      image: image12,
+      date: 'Jul 4, 2023',
+      author: 'Shilpa Singh'
     },
     {
       key:13,
       tag:'Industry Insights',
       title:"Cybersecurity Trends 2023: Navigating the Evolving Threat Landscape",
-      description:"Insights into Emerging Cybersecurity Challenges and Solutions. Stay informed about the ever-changing cybersecurity landscape and discover strategies to protect your digital assets in the coming year."
+      description:"Insights into Emerging Cybersecurity Challenges and Solutions. Stay informed about the ever-changing cybersecurity landscape and discover strategies to protect your digital assets in the coming year.",
+      image: image13,
+      date: 'Dec 18, 2023',
+      author: 'Mohan Rajput'
     },
     {
       key:14,
       tag:'Industry Insights',
       title:"Tech Startups to Watch: Innovations Shaping Tomorrow's Tech Landscape",
-      description:"Highlighting Groundbreaking Startup Companies and Their Technologies. Stay ahead of the curve by exploring emerging tech startups and the disruptive innovations they bring to the industry."
+      description:"Highlighting Groundbreaking Startup Companies and Their Technologies. Stay ahead of the curve by exploring emerging tech startups and the disruptive innovations they bring to the industry.",
+      image: image14,
+      date: 'Nov 2, 2023',
+      author: 'Manoj Joshi'
     },
     {
       key:15,
       tag:'How-to-guides',
       title:"The Ultimate Guide to Effective Online Learning",
-      description:"Step-by-Step Strategies for Online Academic Success. Access a comprehensive guide with step-by-step strategies to excel in online learning."
+      description:"Step-by-Step Strategies for Online Academic Success. Access a comprehensive guide with step-by-step strategies to excel in online learning.",
+      image: image15,
+      date: 'Jun 29, 2023',
+      author: 'Rishav Sharma'
     },
     {
       key:16,
       tag:'How-to-guides',
       title:"How to Build a Professional LinkedIn Profile That Stands Out",
-      description:"Optimizing Your LinkedIn Presence for Career Success. Learn how to create a compelling LinkedIn profile that attracts job opportunities and professional connections."
+      description:"Optimizing Your LinkedIn Presence for Career Success. Learn how to create a compelling LinkedIn profile that attracts job opportunities and professional connections.",
+      image: image16,
+      date: 'Apr 28, 2023',
+      author: 'Kavita Singhania'
     },
     {
       key:17,
       tag:'How-to-guides',
       title:"Mastering Time Management: A Step-by-Step Guide for Students",
-      description:"Efficient Techniques to Balance Study, Work, and Life. Get practical advice on managing your time effectively, whether you're a student, a professional, or a lifelong learner."
+      description:"Efficient Techniques to Balance Study, Work, and Life. Get practical advice on managing your time effectively, whether you're a student, a professional, or a lifelong learner.",
+      image: image17,
+      date: 'Nov 2, 2023',
+      author: 'Rishav Sharma'
     },
   ]
 }
