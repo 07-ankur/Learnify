@@ -5,7 +5,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import { useNavigate } from 'react-router-dom'
 
-const BlogCard = ({ title, description,image,date,author}) => {
+const BlogCard = ({key, title, description, image, date, author}) => {
 
   const navigate = useNavigate(); 
 

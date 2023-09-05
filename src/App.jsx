@@ -6,13 +6,14 @@ import Home_pg from "./pages/Home/Home_pg";
 import Tutorials_pg from "./pages/Tutorials/Tutorials_pg";
 import Signup_pg from "./pages/Authentication/Signup_pg";
 import Login_pg from "./pages/Authentication/Login_pg";
-import { useContext } from "react";
 import Blog_pg from "./pages/Blog/Blog_pg";
 import { Blogs } from "./utils/content";
+import Blogsarea_pg from "./pages/Blog/Blogsarea_pg";
 
 const {ITEMS} = Blogs;
 
 const App = () => {
+
   return (
     <div>
       <Routes>
@@ -24,7 +25,10 @@ const App = () => {
         <Route path="/blog" element={<Blog_pg />} />
         <Route path="*" element={<Landing_pg />} />
         {ITEMS.map((item)=>(
-            <Route key={item.key} path={`/blog/${item.title}`} element={<Blog_pg/>}/>
+          <Route 
+            key={item.key} 
+            path={`/blog/${item.title}`} 
+            element={<Blogsarea_pg/>}/>
           ))}
       </Routes>
     </div>

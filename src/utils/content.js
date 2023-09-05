@@ -357,7 +357,41 @@ export const Blogs = {
       description:"Exploring AI's Impact on Industries and Daily Life. Dive into the fascinating world of AI, discover its real-world applications, and understand how it's shaping various industries.",
       image: image1,
       date: 'Oct 2, 2023',
-      author: 'Rishav Sharma'
+      author: 'Rishav Sharma',
+      content:[
+        { key:1,
+          subtitle:`Introduction`,
+          para:`Artificial Intelligence (AI) is no longer confined to the realms of science fiction; it's a reality that permeates our daily lives. From voice-activated personal assistants like Siri to recommendation algorithms on streaming platforms, AI has transformed the way we live, work, and interact with technology. But how did we get here, and what does the future hold for AI? In this blog, we'll embark on a journey through the evolution of artificial intelligence, from its theoretical origins to its present-day applications and beyond.`
+        },
+        { key:2,
+          subtitle:`The Birth of AI: Theoretical Foundations`,
+          para:`AI's story begins with the dream of creating machines that can mimic human intelligence. The term "Artificial Intelligence" was coined by John McCarthy in 1956 during the Dartmouth Workshop. This marked the official birth of AI as a field of study. Early pioneers like Alan Turing laid the theoretical groundwork with his Turing Test, proposing that a machine could be considered intelligent if it could hold a conversation indistinguishable from that of a human.`
+        },
+        { key:3,
+          subtitle:`AI's Early Struggles: The AI Winter`,
+          para:`The early years of AI research were marked by high expectations and ambitious goals. However, these hopes were followed by a period known as the "AI winter" in the late 1960s and '70s. Progress was slower than expected, and many believed that AI had overpromised and underdelivered. Funding dwindled, and AI research entered a period of stagnation.`
+        },
+        { key:4,
+          subtitle:`Renaissance of AI: Machine Learning and Neural Networks`,
+          para:`The revival of AI came with the resurgence of machine learning in the 21st century. Advances in computational power, data availability, and breakthroughs in neural network architectures reignited interest in AI. Deep learning, a subset of machine learning that emulates the human brain's neural networks, played a pivotal role in this resurgence. Suddenly, AI started to deliver tangible results.`
+        },
+        { key:5,
+          subtitle:`AI in Our Everyday Lives`,
+          para:`Fast forward to today, and AI has become an integral part of our daily routines. Natural language processing powers chatbots and virtual assistants, image recognition enhances security systems, and recommendation algorithms personalize our online experiences. AI has permeated industries like healthcare, finance, and transportation, revolutionizing the way we diagnose diseases, trade stocks, and even commute with self-driving cars.`
+        },
+        { key:6,
+          subtitle:`The Challenges Ahead`,
+          para:`As AI continues to evolve, so do the ethical and societal challenges it poses. Concerns about data privacy, job displacement, and algorithmic bias demand careful consideration. Striking a balance between innovation and responsible use of AI technology is a pressing issue for policymakers, businesses, and society as a whole.`
+        },
+        { key:7,
+          subtitle:`The Future of AI: Beyond Imagination`,
+          para:`The journey of AI is far from over. Researchers are working on AI applications that were once considered the stuff of science fiction. Quantum computing promises to take AI to new heights, while AI's potential impact on fields like climate science, drug discovery, and space exploration is limitless. The future of AI holds both incredible opportunities and important ethical considerations.`
+        },
+        { key:8,
+          subtitle:`Conclusion`,
+          para:`From its theoretical origins to its current state of pervasive influence, AI has undergone a remarkable evolution. As we navigate this transformative era, it's crucial to reflect on the responsible development and use of AI. The journey from theory to reality has been long and challenging, but the destination holds the promise of a smarter, more interconnected, and innovative world where artificial intelligence plays a pivotal role in shaping our future. Embracing this future with awareness and responsibility is the key to ensuring that AI continues to benefit humanity in remarkable ways.`
+        },
+      ]
     },
     {
       key:2,
@@ -366,7 +400,49 @@ export const Blogs = {
       description:"How VR is Revolutionizing Learning Experiences. Explore how virtual reality is enhancing education by providing immersive and interactive learning environments.",
       image: image2,
       date: 'Nov 9, 2023',
-      author: 'Abhishek Kapoor'
+      author: 'Abhishek Kapoor',
+      content:[
+        {
+          key:1,
+          subtitle:`Introduction`,
+          para:`Virtual Reality (VR) technology has rapidly evolved from its gaming origins to become a transformative force in the field of education. The immersive experiences it offers have the power to revolutionize the way we teach and learn. In this blog, we'll explore the ascent of Virtual Reality in education, how it's bridging the gap between traditional and digital learning, and the exciting possibilities it presents for students and educators alike.`,
+        },
+        {
+          key:2,
+          subtitle:`The Birth of Educational VR`,
+          para:`Virtual Reality in education is not a new concept. Early experiments with educational VR date back to the 1960s when pioneering researchers explored the potential of immersive environments for learning. However, it's only in recent years that the technology has become accessible and affordable enough to make a significant impact in classrooms.`,
+        },
+        {
+          key:3,
+          subtitle:`Breaking Down Classroom Walls`,
+          para:`One of the most compelling aspects of VR in education is its ability to transcend physical limitations. With VR headsets, students can embark on virtual field trips to historical sites, explore distant planets, or dive into the depths of the ocean—all from the comfort of their classrooms. This level of immersion enhances engagement and retention, making learning a memorable experience.`,
+        },
+        {
+          key:4,
+          subtitle:`Interactive Learning Environments`,
+          para:`VR goes beyond passive observation; it fosters interactivity. Students can manipulate objects, conduct virtual experiments, and collaborate with peers in simulated environments. For example, medical students can practice surgical procedures, and physics students can conduct experiments in a virtual laboratory. This hands-on learning approach is invaluable for skill acquisition and deeper comprehension.`,
+        },
+        {
+          key:5 ,
+          subtitle:``,
+          para:``,
+        },
+        {
+          key:1,
+          subtitle:``,
+          para:``,
+        },
+        {
+          key:1,
+          subtitle:``,
+          para:``,
+        },
+        {
+          key:1,
+          subtitle:``,
+          para:``,
+        },
+      ]
     },
     {
       key:3,

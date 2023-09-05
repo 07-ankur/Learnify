@@ -52,5 +52,4 @@ const themeTypography = {
   
 };
 
-
 export default themeTypography;

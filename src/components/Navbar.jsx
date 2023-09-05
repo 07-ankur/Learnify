@@ -20,6 +20,7 @@ import ServiceCard from "./Cards/ServiceCard";
 import {Popover} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import LinkButton from "./Buttons/Link_btn";
+import ContentCard from "./Cards/ContentsCard";
 
 const { Logo } = navbarContent;
 
@@ -96,7 +97,7 @@ const Navbar = (props) => {
               flexWrap="wrap"
             >
               <LinkButton
-                aria-owns={open ? "mouse-over-popover" : undefined}
+                aria-owns={open ? "Contents" : undefined}
                 aria-haspopup="true"
                 onMouseEnter={handlePopoverOpen}
                 onMouseLeave={handlePopoverClose}
@@ -105,7 +106,7 @@ const Navbar = (props) => {
                 <KeyboardArrowDownIcon fontSize="medium" />
               </LinkButton>
               <Popover
-                id="mouse-over-popover"
+                id="Contents"
                 sx={{
                   pointerEvents: "none",
                 }}
@@ -122,18 +123,66 @@ const Navbar = (props) => {
                 onClose={handlePopoverClose}
                 disableRestoreFocus
               >
-                <ServiceCard onMouseEnter={handlePopoverOpen} title={'title'} subtitle={'subtitle'}/>
+                <ContentCard onMouseEnter={handlePopoverOpen} title={'title'} subtitle={'subtitle'}/>
               </Popover>
-              <LinkButton>
+              <LinkButton 
+                aria-owns={open ? "Contents" : undefined}
+                aria-haspopup="true"
+                onMouseEnter={handlePopoverOpen}
+                onMouseLeave={handlePopoverClose}
+              >
                 <Typography variant="body1">Services</Typography>
                 <KeyboardArrowDownIcon fontSize="medium" />
               </LinkButton>
-
-              <LinkButton>
+              <Popover
+                id="Services"
+                sx={{
+                  pointerEvents: "none",
+                }}
+                open={open}
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                onClose={handlePopoverClose}
+                disableRestoreFocus
+              >
+                <ContentCard onMouseEnter={handlePopoverOpen} title={'title'} subtitle={'subtitle'}/>
+              </Popover>
+              <LinkButton 
+                aria-owns={open ? "About" : undefined}
+                aria-haspopup="true"
+                onMouseEnter={handlePopoverOpen}
+                onMouseLeave={handlePopoverClose}
+              >
                 <Typography variant="body1">About</Typography>
                 <KeyboardArrowDownIcon fontSize="medium" />
               </LinkButton>
-
+              <Popover
+                id="Services"
+                sx={{
+                  pointerEvents: "none",
+                }}
+                open={open}
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                onClose={handlePopoverClose}
+                disableRestoreFocus
+              >
+                <ContentCard onMouseEnter={handlePopoverOpen} title={'title'} subtitle={'subtitle'}/>
+              </Popover>
               <LinkButton spacing={0.5}>
                 <Typography variant="body1" color={props.color} onClick={()=>{navigate('/blog')}}>Blog</Typography>
                 <CallMadeIcon sx={{ fontSize: 12 }} />

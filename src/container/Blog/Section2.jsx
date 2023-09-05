@@ -7,7 +7,6 @@ import { Blogs } from '../../utils/content'
 const {ITEMS}  = Blogs
 
 const Section2 = () => {
-
   return (
     <Box sx={{background: "#37273C",mt:-2,mb:10}}>
       <Grid container alignItems="center">
