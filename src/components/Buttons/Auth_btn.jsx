@@ -1,7 +1,7 @@
 import React from 'react'
-import './SignUp_btn.css'
+import './Auth_btn.css'
 
-export default function SignUp_btn({label,functionHandler}) {
+export default function Auth_btn({label,functionHandler}) {
   return (
     <button onClick={functionHandler} className="button-36">
       {label}

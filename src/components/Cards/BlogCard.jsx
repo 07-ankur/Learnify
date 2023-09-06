@@ -14,7 +14,7 @@ const BlogCard = ({title, description, image, date, author}) => {
       height: "22em",
       width:"20em",
       my:4,
-      mx:10,
+      mx:12,
       py:1,
       px:3,
       position: "relative",

@@ -16,7 +16,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { ThemeProvider } from "@emotion/react";
 import { newTheme } from "../../utils/theme/index";
 import styled from "styled-components";
-import SignUp_btn from "../../components/Buttons/SignUp_btn";
+import Auth_btn from "../../components/Buttons/Auth_btn";
 import anim1 from "../../assets/lottie-animations/signup.json";
 import rocket from "../../assets/lottie-animations/rocket.json";
 import Lottie from "lottie-react";
@@ -127,7 +127,7 @@ const Signup_pg = () => {
                   alignItems: "center",
                 }}
               >
-                <SignUp_btn label={"Sign Up"} />
+                <Auth_btn label={"Sign Up"} />
                 <Typography
                   variant="h6"
                   sx={{
