@@ -84,7 +84,7 @@ const Navbar = (props) => {
           flexWrap="wrap"
         >
           {/* Logo */}
-          <img src={Logo} style={{ height: "60px", objectFit: "contain" }} />
+          <img onClick={()=>{navigate('/')}} src={Logo} style={{ height: "60px", objectFit: "contain", cursor:'pointer' }} />
 
           {/* Links */}
           {!isMobile && (

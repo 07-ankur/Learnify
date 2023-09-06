@@ -1,5 +1,5 @@
 import { Box,Container, Typography,Stack,Button } from '@mui/material'
-import React from 'react'
+import React,{useState} from 'react'
 import {section1Content } from '../../utils/content';
 import Email_Inpt from '../../components/Inputs/Email_Inpt';
 import SendIcon from '@mui/icons-material/Send';
@@ -15,6 +15,8 @@ const {
   }=section1Content;
 
 const Section1 = () => {
+
+  const [email, setEmail] = useState('');
 
   const navigate = useNavigate();
 
@@ -38,8 +40,8 @@ const Section1 = () => {
                 letterSpacing:'0.05em'}}>{subtitle2}</Typography>
               <Typography variant='h3' sx={{mb:1,color:'#f0f8ffbc',letterSpacing:'0.05em'}}>{subtitle3}</Typography>
               <Stack direction={{xs:'column',md:'row'}} alignItems='center'>
-              <Email_Inpt/>
-              <Button onClick={()=>{navigate('/signup')}} sx={{color:'whitesmoke',borderColor:'white',fontSize:'large',px:1.8,py:0.8,bottom:3}} variant="outlined">Get Started &nbsp;<SendIcon fontSize='small'/></Button>
+              <Email_Inpt setEmail={setEmail}/>
+              <Button onClick={() => {navigate('/signup', { state: { email }} )}} sx={{color:'whitesmoke',borderColor:'white',fontSize:'large',px:1.8,py:0.8,bottom:3}} variant="outlined">Get Started &nbsp;<SendIcon fontSize='small'/></Button>
               </Stack>
             </Stack>
         </Box>

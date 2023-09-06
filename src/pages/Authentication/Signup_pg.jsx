@@ -21,6 +21,7 @@ import anim1 from "../../assets/lottie-animations/signup.json";
 import rocket from "../../assets/lottie-animations/rocket.json";
 import Lottie from "lottie-react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const TextFieldstyled = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -41,6 +42,9 @@ const OutlinedInputstyled = styled(OutlinedInput)`
 const { Logo_drk } = signupContent;
 
 const Signup_pg = () => {
+
+  const location = useLocation();
+  const { email } = location.state || {};
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = React.useState(false);
@@ -94,6 +98,7 @@ const Signup_pg = () => {
                   sx={{ m: 1, width: "30ch" }}
                   id="outlined-basic"
                   label="Email Address"
+                  value={email}
                   variant="outlined"
                 />
               </Box>
