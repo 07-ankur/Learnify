@@ -27,8 +27,7 @@ const App = () => {
         {ITEMS.map((item)=>(
           <Route 
             key={item.key} 
-            path={`/blog/${item.title}`} 
-            element={<Blogsarea_pg/>}/>
+            path={`/blog/${item.title.replace(/ /g, '-')}`} element={<Blogsarea_pg/>}/>
           ))}
       </Routes>
     </div>

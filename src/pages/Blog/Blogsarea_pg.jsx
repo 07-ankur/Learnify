@@ -12,10 +12,22 @@ import { Blogs } from '../../utils/content';
 import BlogContent from './BlogContent';
 import { useNavigate } from 'react-router-dom';
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
+import { useLocation } from 'react-router-dom';
 
 const {ITEMS} = Blogs;
 
 const Blogsarea_pg = () => {
+
+  const location = useLocation();
+
+  let id;
+
+  for (let i = 0; i < ITEMS.length; i++) {
+    if (location.pathname === `/blog/${ITEMS[i].title.replace(/ /g, '-')}`) {
+      id = ITEMS[i].key-1;
+      break; // Exit the loop once a match is found
+    }
+  }
 
   const navigate = useNavigate();
 
@@ -30,25 +42,25 @@ const Blogsarea_pg = () => {
     </OutlinedButton>
     <Container maxWidth="md">
       <Box sx={{mt:8}} display='flex' flexDirection='row'>
-      <Typography variant='h5'>{ITEMS[0].tag} | </Typography>
-      <Typography variant='h5'>| {ITEMS[0].date}</Typography>
+      <Typography variant='h5'>{ITEMS[id].tag} | </Typography>
+      <Typography variant='h5'>| {ITEMS[id].date}</Typography>
       </Box>
       <Divider sx={{width:'95%',mt:2}} variant='middle'/>
-      <Title sx={{color:'#B6976A',  mb:2,mt:4}} variant={{ xs: "h4", sm: "h2" }}>{ITEMS[0].title}</Title>
+      <Title sx={{color:'#B6976A',  mb:2,mt:4}} variant={{ xs: "h4", sm: "h2" }}>{ITEMS[id].title}</Title>
       <Box sx={{mb:7,mx:3}} display='flex' flexDirection='row'>
       <PermIdentityIcon style={{fontSize:'1.5em',color:'#B6976A'}}/>
-      <Typography sx={{ml:1,mt:1}} variant='h6'>{ITEMS[0].author}</Typography>
+      <Typography sx={{ml:1,mt:1}} variant='h6'>{ITEMS[id].author}</Typography>
       </Box>
       <Box display='flex' justifyContent='center'>
         <img
-          src={ITEMS[0].image}
+          src={ITEMS[id].image}
           alt="No Image"
           style={{width:'40em',height:"20em",borderRadius:'25px'}}
         />
       </Box>
       <Divider sx={{width:'95%',mt:2}} variant='middle'/>
       {
-        ITEMS[0].content.map((item)=>(
+        ITEMS[id].content.map((item)=>(
           <BlogContent key={item.key} subtitle={item.subtitle} para={item.para}/>
         ))
       }

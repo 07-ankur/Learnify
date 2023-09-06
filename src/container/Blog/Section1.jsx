@@ -11,7 +11,7 @@ const Section1 = () => {
     <Box sx={{position:'absolute',zIndex:-10, top:'-55%'}}>
       <img src={MainBG} style={{width:'100%', opacity:0.8}}></img>
     </Box>
-    <Box sx={{mt:35,mb:4}}>
+    <Box sx={{mt:35}}>
         <Box sx={{display:'flex', flexDirection:'column',alignItems:'center'}}>
             <Typography variant='h1' sx={{letterSpacing:'0.05em',color:'#B6976A'}}>Welcome To Learnify Blog!!</Typography>
             <Typography variant='h3' sx={{mb:2.5,color:'#f0f8ffbc'}}>"Explore Insights, Tips, and Updates seamlessly"</Typography>

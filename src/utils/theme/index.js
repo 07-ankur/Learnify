@@ -35,3 +35,19 @@ export const newTheme = createTheme({
   typography,
 });
 
+export const blogTheme = createTheme({
+  palette: {
+    mode: "dark",
+    primary: {
+      main: "#B6976A",
+    },
+    background: {
+      default: "#37273C",
+    },
+    text: {
+      secondary: "#889294",
+    },
+  },
+  typography,
+});
+

@@ -5,16 +5,16 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import { useNavigate } from 'react-router-dom'
 
-const BlogCard = ({key, title, description, image, date, author}) => {
+const BlogCard = ({title, description, image, date, author}) => {
 
   const navigate = useNavigate(); 
 
   return (
-    <Box onClick={()=>{navigate(`/blog/${title}`)}} sx={{
+    <Box onClick={()=>{navigate(`/blog/${title.replace(/ /g, '-')}`)}} sx={{
       height: "22em",
       width:"20em",
       my:4,
-      mx:4,
+      mx:10,
       py:1,
       px:3,
       position: "relative",
