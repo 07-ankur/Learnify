@@ -7,8 +7,6 @@ import Section2 from "../../container/Landing/Section2";
 import Section5 from "../../container/Landing/Section5";
 import Section6 from "../../container/Landing/Section6";
 import Section7 from "../../container/Landing/Section7";
-import Section8 from "../../container/Landing/Section8";
-import Section9 from "../../container/Landing/Section9";
 import Footer from "../../components/Footer";
 
 const Landing_pg = () => {
@@ -19,11 +17,11 @@ const Landing_pg = () => {
       {/* <Sections/> */}
       <Section1 />
       <Section2 />
+      <Section3 />
+      <Section4 />
       <Section5 />
       <Section6 />
       <Section7 />
-      <Section8 />
-      <Section9 />
       {/* <Footer/> */}
       <Footer />
     </div>

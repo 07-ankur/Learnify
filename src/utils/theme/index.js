@@ -18,8 +18,7 @@ export const theme = createTheme({
   typography,
 });
 
-
-export const newTheme = createTheme({
+export const authTheme = createTheme({
   palette: {
     mode: "light",
     primary: {

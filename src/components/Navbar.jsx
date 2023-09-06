@@ -7,7 +7,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import React, { Children } from "react";
+import React from "react";
 import useScrollPosition from "../hooks/useScrollPosition";
 import { navbarContent } from "../utils/content";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -16,7 +16,6 @@ import LanguageIcon from "@mui/icons-material/Language";
 // import LaunchButton from "../Buttons/LaunchButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Main_btn from "./Buttons/Main_btn";
-import ServiceCard from "./Cards/ServiceCard";
 import {Popover} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import LinkButton from "./Buttons/Link_btn";
