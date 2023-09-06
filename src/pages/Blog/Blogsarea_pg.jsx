@@ -1,4 +1,5 @@
 import { Box, Container } from '@mui/system';
+import {Grid} from '@mui/material';
 import Title from '../../components/Title';
 import React from 'react'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
@@ -13,6 +14,7 @@ import BlogContent from './BlogContent';
 import { useNavigate } from 'react-router-dom';
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import { useLocation } from 'react-router-dom';
+import BlogCard from '../../components/Cards/BlogCard';
 
 const {ITEMS} = Blogs;
 
@@ -28,6 +30,22 @@ const Blogsarea_pg = () => {
       break; // Exit the loop once a match is found
     }
   }
+
+  let recommendations = [];
+
+  for (let i = 0; i < ITEMS.length; i++) {
+    if(ITEMS[id].tag === ITEMS[i].tag)
+    recommendations.push(ITEMS[i])
+  }
+
+  // Remove ITEMS[id] from recommendations
+  const filteredRecommendations = recommendations.filter(item => item !== ITEMS[id]);
+
+// Shuffle the filtered recommendations array
+  const shuffledRecommendations = [...filteredRecommendations].sort(() => Math.random() - 0.5);
+
+// Select only the first 2 elements from the shuffled array
+  const finalRecommendations = shuffledRecommendations.slice(0, 2);
 
   const navigate = useNavigate();
 
@@ -72,7 +90,17 @@ const Blogsarea_pg = () => {
           <a target='blank' style={{color:'white'}} href='https://twitter.com/'><TwitterIcon sx={{mx:3,my:1}}/></a>
         </Box>
       </Box>
+      <Typography variant='h4' align='center' sx={{letterSpacing:'0.05em', color:'#B6976A', my:3}}>Recommended Posts You may like</Typography>
     </Container>
+    <Box sx={{mb:6}}>
+      <Grid container alignItems="center">
+        {finalRecommendations.map((item)=>(
+          <Grid item xs={12} md={6} key={item.title}>
+            <BlogCard {...item} />
+          </Grid>
+        ))}
+      </Grid>
+      </Box>
     <Footer/>
     </>
   )
