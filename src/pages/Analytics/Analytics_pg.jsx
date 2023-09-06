@@ -1,14 +1,13 @@
 import React from 'react'
 import Navbar from '../../components/Navbar'
 import { Box } from '@mui/system'
+import Section1 from './Section1'
 
 const Analytics_pg = () => {
   return (
     <>
     <Navbar/>
-    <Box>
-      Analytics
-    </Box>
+    <Section1/>
     </>
   )
 }
