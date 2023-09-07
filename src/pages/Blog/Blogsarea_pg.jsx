@@ -58,7 +58,7 @@ const Blogsarea_pg = () => {
     <OutlinedButton arrowRev onClick={handleGoBack} sx={{mt:3,mx:3}} fit>
       Back
     </OutlinedButton>
-    <Container maxWidth="md">
+    <Container maxWidth="md" sx={{borderBottom:'2px solid #B6976A'}}>
       <Box sx={{mt:8}} display='flex' flexDirection='row'>
       <Typography variant='h5'>{ITEMS[id].tag} | </Typography>
       <Typography variant='h5'>| {ITEMS[id].date}</Typography>
@@ -83,20 +83,22 @@ const Blogsarea_pg = () => {
         ))
       }
       <Box display='flex' flexDirection='column' alignItems='center'>
-        <Typography sx={{mt:4}} variant='body1'>Share this post</Typography>
-        <Box sx={{mt:2,mb:5}} display='flex' flexDirection='row' alignItems='center'>
+        <Typography sx={{mt:4, color:'#B6976A'}} variant='body1'>Share this post</Typography>
+        <Box  sx={{mt:2,mb:5, borderBottom:'2px solid #B6976A'}} display='flex' flexDirection='row' alignItems='center'>
           <a target='blank' style={{color:'white'}} href='https://www.facebook.com'><FacebookIcon sx={{mx:3,my:1}}/></a>
           <a target='blank' style={{color:'white'}} href='https://www.linkedin.com'><LinkedInIcon sx={{mx:3,my:1}}/></a>
           <a target='blank' style={{color:'white'}} href='https://twitter.com/'><TwitterIcon sx={{mx:3,my:1}}/></a>
         </Box>
       </Box>
-      <Typography variant='h4' align='center' sx={{letterSpacing:'0.05em', color:'#B6976A', my:3}}>Recommended Posts You may like</Typography>
+      <Typography variant='h3' align='center' sx={{letterSpacing:'0.05em', color:'#B6976A', my:3}}>Recommended Posts You may like</Typography>
     </Container>
-    <Box sx={{mb:6}}>
+    <Box sx={{ borderBottom: '2px solid #B6976A'}}>
       <Grid container alignItems="center">
         {finalRecommendations.map((item)=>(
           <Grid item xs={12} md={6} key={item.title}>
+            <Box sx={{ml:15}}>
             <BlogCard {...item} />
+            </Box>
           </Grid>
         ))}
       </Grid>

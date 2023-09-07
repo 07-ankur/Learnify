@@ -63,9 +63,9 @@ const Section2 = () => {
   };
 
   return (
-    <>
-    <Typography variant='h3' align='center' sx={{bgcolor:'#37273C',letterSpacing:'0.05em',my:2}}>"Discover Our Latest Blog Posts"</Typography>
-     <Box sx={{ background: '#37273C', mt: -2, p: 2, display: 'flex', flexDirection: 'column' }}>
+    <Box>
+    <Typography variant='h3' align='center' sx={{letterSpacing:'0.05em',my:2}}>"Discover Our Latest Blog Posts"</Typography>
+     <Box sx={{ mt: -2, p: 2, display: 'flex', flexDirection: 'column' }}>
       <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', mb: 2 }}>
         <FormControl fullWidth variant="outlined" sx={{ mr: 2 }}>
           <InputLabel id="category-label">Filter by Category</InputLabel>
@@ -115,17 +115,17 @@ const Section2 = () => {
         </Button>
       </Box>
     </Box>
-    <Box sx={{background: "#37273C",mt:-2}}>
+    <Box sx={{mt:-2}}>
       <Grid container alignItems="center">
         {filteredItems.slice(0, visibleItems).map((item)=>(
-          <Grid item xs={12} md={6} key={item.title}>
+          <Grid item xs={12} md={4} key={item.title}>
             <BlogCard {...item} />
           </Grid>
         ))}
       </Grid>
       {visibleItems < filteredItems.length && (
         <Box sx={{ display: 'flex', justifyContent: 'center'}}>
-        <Divider sx={{width:'75%',mt:2}} variant='middle'>
+        <Divider sx={{width:'75%',my:2}} variant='middle'>
         <Button
           variant="outlined"
           onClick={handleShowMore}
@@ -136,7 +136,7 @@ const Section2 = () => {
       </Box>
       )}
     </Box>
-    </>
+    </Box>
   )
 }
 

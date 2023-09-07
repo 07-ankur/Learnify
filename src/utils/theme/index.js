@@ -3,7 +3,7 @@ import typography from "./typography";
 
 export const theme = createTheme({
   palette: {
-    mode: "dark",
+    mode:'dark',
     primary: {
       main: "#2f8af5",
     },
@@ -20,7 +20,7 @@ export const theme = createTheme({
 
 export const authTheme = createTheme({
   palette: {
-    mode: "light",
+    mode: "light", 
     primary: {
       main: "#2f8af5",
     },
@@ -41,10 +41,27 @@ export const blogTheme = createTheme({
       main: "#B6976A",
     },
     background: {
-      default: "#37273C",
+      default: "#47324e",
     },
     text: {
+      primary: "#ffffff",
       secondary: "#889294",
+    },
+  },
+  typography,
+});
+
+export const analyticTheme = createTheme({
+  palette: {
+    mode:'dark',
+    primary: {
+      main: "#8899A6",
+    },
+    background: {
+      default: "#15202B",
+    },
+    text: {
+      secondary: "#8899A6",
     },
   },
   typography,

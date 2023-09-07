@@ -11,12 +11,12 @@ const BlogCard = ({title, description, image, date, author}) => {
 
   return (
     <Box onClick={()=>{navigate(`/blog/${title.replace(/ /g, '-')}`)}} sx={{
-      height: "22em",
-      width:"20em",
+      height: "20em",
+      width:"18em",
       my:4,
-      mx:12,
+      ml:2,
       py:1,
-      px:3,
+      px:2,
       position: "relative",
       borderRadius: "30px",
       border:"3px solid #B6976A",
@@ -31,17 +31,17 @@ const BlogCard = ({title, description, image, date, author}) => {
         <img
           src={image}
           alt="No Image"
-          style={{width:'19em',height:"10em",borderRadius:'25px'}}
+          style={{width:'19em',height:"8em",borderRadius:'25px'}}
         />
         <Title sx={{color:'#B6976A',mb:1,mt:2}} variant={{ xs: "h6", sm: "h5" }}>{title}</Title>
-        <Typography sx={{maxHeight:'4.5em', overflow:'hidden'}} variant="body2" color="#fff">
+        <Typography sx={{maxHeight:'5.5em', overflow:'hidden'}} variant="body2" color="#fff">
           {description}
         </Typography>
-        <Typography variant="body2" sx={{color:'#B6976A'}}>
+        <Typography variant="body2" sx={{my:0.5,color:'#B6976A'}}>
           Read More .....
         </Typography>
       </Stack>
-      <Box sx={{display:'flex',flexDirection:'row',justifyContent:'space-between',px:2}}>
+      <Box sx={{position:'absolute',width:'90%',display:'flex',flexDirection:'row',justifyContent:'space-between',px:2, mt:1, bottom:10}}>
         <Box sx={{display:'flex',flexDirection:'row', alignItems:'flex-start',mt:2}}>
           <CalendarMonthIcon style={{color:'#B6976A'}}/> <Typography sx={{mt:1,mx:0.5,bottom:0}} variant="body2" color="#fff">{date}</Typography>
         </Box>

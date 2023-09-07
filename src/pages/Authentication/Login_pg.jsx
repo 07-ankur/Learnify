@@ -9,6 +9,7 @@ import {
   InputLabel,
   OutlinedInput,
   InputAdornment,
+  CssBaseline,
 } from "@mui/material";
 import { signupContent } from "../../utils/content";
 import Visibility from "@mui/icons-material/Visibility";
@@ -49,6 +50,7 @@ const Login_pg = () => {
 
   return (
     <ThemeProvider theme={authTheme}>
+      <CssBaseline/>
       <Box>
         <Container
           sx={{

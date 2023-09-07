@@ -6,10 +6,12 @@ import Section2 from "../../container/Blog/Section2";
 import Section3 from "../../container/Blog/Section3";
 import Footer from "../../components/Footer";
 import { blogTheme } from "../../utils/theme";
+import { CssBaseline } from "@mui/material";
 
 const Blog_pg = () => {
   return (
     <ThemeProvider theme={blogTheme}>
+      <CssBaseline/>
     <Box>
       <Navbar color={'white'} sp={-1}/>
       <Section1/>

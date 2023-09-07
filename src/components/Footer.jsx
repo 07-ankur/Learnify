@@ -47,7 +47,7 @@ const LinkSection = ({ title, links }) => (
 
 const Footer = () => {
   return (
-    <Box>
+    <Box sx={{bgcolor:'black'}}>
       <Divider sx={{ mb: 10 }} />
 
       <Container>
