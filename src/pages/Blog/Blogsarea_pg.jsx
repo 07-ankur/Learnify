@@ -10,7 +10,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import {Divider} from '@mui/material';
 import { Blogs } from '../../utils/content';
-import BlogContent from './BlogContent';
+import BlogContent from '../../container/Blog/BlogContent';
 import { useNavigate } from 'react-router-dom';
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import { useLocation } from 'react-router-dom';

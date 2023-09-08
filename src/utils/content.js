@@ -116,7 +116,7 @@ export const section2Content = {
 };
 
 
-export const section5Content = {
+export const section3Content = {
   top: {
     title: "Boost Your Growth with Analytics",
     subtitle:
@@ -124,10 +124,16 @@ export const section5Content = {
     image: Analytics,
   },
 
-  middle: {
+  middle1: {
     title: "Quiz Mastery : Test Your Knowledge!",
     subtitle:
       "Challenge Yourself with Engaging Quizzes and Expand Your Knowledge Base",
+    image: Quiz_icon,
+  },
+  middle2: {
+    title: "Mapper : Your GPS for success!",
+    subtitle:
+      "Effortless Planning: Say goodbye to the stress of planning your academic journey. Our roadmaps are designed to make planning effortless, leaving you more time to study and succeed.",
     image: Quiz_icon,
   },
   bottom: {

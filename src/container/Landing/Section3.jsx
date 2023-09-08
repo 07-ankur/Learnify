@@ -2,12 +2,13 @@ import { Container, Grid, Stack, Tab, Tabs, Typography } from "@mui/material";
 import React, { useState } from "react";
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import Title from "../../components/Title";
-import { section5Content } from "../../utils/content";
+import { section3Content } from "../../utils/content";
 import Quiz_anim from '../../assets/lottie-animations/quiz.json';
 import Analysis_anim from '../../assets/lottie-animations/analysis2.json';
+import Roadmap_anim from '../../assets/lottie-animations/Roadmap_anim.json';
 import Lottie from 'lottie-react';
 
-const { top,middle, bottom } = section5Content;
+const { top,middle1,middle2, bottom } = section3Content;
 
 const Section3 = () => {
   const [tabValue, setTabValue] = useState(0);
@@ -41,10 +42,10 @@ const Section3 = () => {
         {/* Left */}
         <Grid item xs={12} md={6}>
           <Stack spacing={2} sx={{ maxWidth: 580 }}>
-            <Title variant={{ xs: "h2", md: "h1" }}>{middle.title}</Title>
+            <Title variant={{ xs: "h2", md: "h1" }}>{middle1.title}</Title>
 
             <Typography variant="body1" color="text.secondary" sx={{ pb: 2 }}>
-              {middle.subtitle}
+              {middle1.subtitle}
             </Typography>
 
             <OutlinedButton arrow fit>
@@ -57,6 +58,29 @@ const Section3 = () => {
         <Grid item xs={12} md={6}>
           <Lottie animationData={Quiz_anim} loop autoplay/>
         </Grid>
+      </Grid>
+
+      {/* TOP */}
+      <Grid container spacing={10} flexWrap="wrap-reverse" alignItems="center">
+        {/* Left */}
+      <Grid item xs={12} md={6}>
+        <Lottie animationData={Roadmap_anim} loop autoplay/>
+        </Grid>
+        {/* Right */}
+        <Grid item xs={12} md={6}>
+          <Stack spacing={2} sx={{ maxWidth: 580 }}>
+            <Title variant={{ xs: "h2", md: "h1" }}>{middle2.title}</Title>
+            <Typography variant="body1" color="text.secondary" sx={{ pb: 2 }}>
+              {middle2.subtitle}
+            </Typography>
+            <OutlinedButton arrow fit>
+              Explore Now
+            </OutlinedButton>
+          </Stack>
+        </Grid>
+
+        {/* Right */}
+        
       </Grid>
 
       {/* BOTTOM */}

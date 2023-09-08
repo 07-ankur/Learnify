@@ -61,6 +61,7 @@ export const analyticTheme = createTheme({
       default: "#15202B",
     },
     text: {
+      primary:"#b6c0c8",
       secondary: "#8899A6",
     },
   },

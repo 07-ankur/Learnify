@@ -10,6 +10,7 @@ import Blog_pg from "./pages/Blog/Blog_pg";
 import { Blogs } from "./utils/content";
 import Blogsarea_pg from "./pages/Blog/Blogsarea_pg";
 import Analytics_pg from "./pages/Analytics/Analytics_pg";
+import Analytics_dashboard_pg from "./pages/Analytics/Analytics_dashboard_pg";
 
 const {ITEMS} = Blogs;
 
@@ -31,6 +32,7 @@ const App = () => {
             path={`/blog/${item.title.replace(/ /g, '-')}`} element={<Blogsarea_pg/>}/>
           ))}
         <Route path="/analytics" element={<Analytics_pg/>}/>
+        <Route path="/analytics-dashboard" element={<Analytics_dashboard_pg/>}/>
       </Routes>
     </div>
   );
