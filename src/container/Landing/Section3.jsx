@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import Title from "../../components/Title";
 import { section3Content } from "../../utils/content";
-import Quiz_anim from '../../assets/lottie-animations/quiz.json';
-import Analysis_anim from '../../assets/lottie-animations/analysis2.json';
-import Roadmap_anim from '../../assets/lottie-animations/Roadmap_anim.json';
+import Quiz_anim from '../../assets/animations/quiz.json';
+import Analysis_anim from '../../assets/animations/analysis2.json';
+import Roadmap_anim from '../../assets/animations/Roadmap_anim.json';
 import Lottie from 'lottie-react';
 
 const { top,middle1,middle2, bottom } = section3Content;

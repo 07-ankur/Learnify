@@ -1,17 +1,27 @@
 import { Box } from '@mui/system';
 import React from 'react';
-import {ThemeProvider} from '@mui/system';
-import { analyticTheme } from '../../utils/theme';
-import { CssBaseline } from '@mui/material';
 import {Typography} from '@mui/material';
 import Auth_btn from '../../components/Buttons/Auth_btn';
 import CallMadeIcon from "@mui/icons-material/CallMade";
 import Scorechart from './Scorechart';
+import { useNavigate } from 'react-router-dom';
+import { Analysis_Progress } from '../../utils/content';
+
+const {ITEMS} = Analysis_Progress;
+
+const totalPoints = ITEMS.reduce((accumulator, item) => accumulator + item.points, 0);
+const totalStars = ITEMS.reduce((accumulator, item) => accumulator + item.stars, 0);
 
 const Section1 = () => {
+
+  const navigate = useNavigate();
+
+  const navigateTo = () => {
+    navigate('/analytics-dashboard')
+  }
+
   return (
-    <ThemeProvider theme={analyticTheme}>
-      <CssBaseline/>
+    <>
       <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',width:'100%',height:'25em'}}>
         <Box sx={{
           width: '96%',
@@ -26,7 +36,7 @@ const Section1 = () => {
             <Typography variant='h3' sx={{letterSpacing:'0.05em', color:'skyblue'}}>
               Hi,
             </Typography>
-            <Typography variant='h3' sx={{letterSpacing:'0.05em',color:'skyblue',ml:1,textShadow: '0px 1px cyan'}}>
+            <Typography variant='h3' sx={{letterSpacing:'0.05em',color:'skyblue',ml:1,textShadow: '1px 2px black'}}>
               Ankur !! 
             </Typography>
           </Box>
@@ -50,11 +60,11 @@ const Section1 = () => {
             </Typography>
           </Box>
           <Box sx={{display:'flex', flexDirection:'row'}}>
-            <Auth_btn label={"Let's Analyse"} />
+            <Auth_btn label={"Let's Analyse"} functionHandler={navigateTo} />
           <Box sx={{mx:3,mt:4, display:'flex', flexDirection:'row'}}>
           <Typography variant='h5' sx={{color:'white',letterSpacing:'0.05em', cursor:'pointer', textDecoration:'underline', '&:hover' : {
-          color: "cyan"},}}>
-            Browse our courses 
+          color: "skyblue"},}}>
+            Browse our courses
           </Typography>
           <CallMadeIcon sx={{ fontSize: 14, color:'#33ffff' }} />
           </Box>
@@ -64,14 +74,14 @@ const Section1 = () => {
       <Box sx={{
         position:'absolute',
         top:-100,
-        right:80,
+        right:70,
         zIndex:100,
         borderRadius: '25px',
         height: '23em',
         mt: 28,
         p: 4,
         backgroundColor: '#192734',
-        boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)', 
+        boxShadow: '0 0 10px cyan', 
         width: '30%',
         }}>
         <Box display='flex' alignItems='center' justifyContent='center' flexDirection='column'>
@@ -82,16 +92,16 @@ const Section1 = () => {
         🔥 Your Score 🔥
         </Typography>
         <Typography align='center' variant='h2' sx={{color:'cyan',my:0.5,}}>
-          590
+          {totalPoints}
         </Typography>
         <Box sx={{mt:-4}}>
           <Scorechart/>
         </Box>
         <Box sx={{mt:-6,p:2,backgroundColor: '#192734',
-        boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)', borderRight:'4px solid cyan',borderLeft:'4px solid cyan', borderRadius:'25px',width:'75%', height:'20%'}}>
-          <Box sx={{display:'flex', flexDirection:'row'}}>
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)', borderRight:'6px solid cyan',borderLeft:'6px solid cyan', borderRadius:'25px',width:'80%', height:'20%'}}>
+          <Box sx={{display:'flex', flexDirection:'row',justifyContent:'center'}}>
             <Typography variant='h5' sx={{mr:1.5, color:'cyan'}}>
-              1
+              {totalStars}
             </Typography>
             <Typography variant='h5' sx={{color:'skyblue'}}>
               stars🌟 collected 
@@ -100,7 +110,7 @@ const Section1 = () => {
         </Box>  
         </Box>
       </Box>
-    </ThemeProvider>
+    </>
   )
 }
 

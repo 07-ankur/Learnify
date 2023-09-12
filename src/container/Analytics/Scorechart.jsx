@@ -1,18 +1,14 @@
 import React, { useCallback, useState } from 'react';
 import { PieChart, Pie, Cell, Sector } from 'recharts';
+import { Analysis_Progress } from '../../utils/content';
 
-const data = [
-  { name: 'React JS', value: 70 },
-  { name: 'HTML', value: 90 },
-  { name: 'SQL', value: 20 },
-  { name: 'Node JS', value: 50 },
-  { name: 'Mongo DB', value: 60 },
-  { name: 'CSS', value: 80 },
-  { name: 'Python', value: 60 },
-  { name: 'Express JS', value: 60 },
-  { name: 'C++', value: 40 },
-  { name: 'Javascript', value: 60 },
-];
+const {ITEMS} = Analysis_Progress;
+
+const data = ITEMS.map((item) => ({
+  name: item.title,
+  value: item.points,
+}));
+
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#ffff00', '#dc143c', '#e74be7','#ff6699','#006666','#99ccff'];
 
 const renderActiveShape = (props) => {

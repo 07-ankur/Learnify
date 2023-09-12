@@ -18,8 +18,8 @@ import { ThemeProvider } from "@emotion/react";
 import { authTheme } from "../../utils/theme/index";
 import styled from "styled-components";
 import Auth_btn from "../../components/Buttons/Auth_btn";
-import anim1 from "../../assets/lottie-animations/signup.json";
-import rocket from "../../assets/lottie-animations/rocket.json";
+import anim1 from "../../assets/animations/signup.json";
+import rocket from "../../assets/animations/rocket.json";
 import Lottie from "lottie-react";
 import { useNavigate } from "react-router-dom";
 
