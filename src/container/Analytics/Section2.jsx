@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import { Box, Container } from '@mui/system';
-import React from 'react'
+import React, { useState } from 'react'
 import Title from '../../components/Title';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import Lottie from 'lottie-react';
@@ -8,6 +8,9 @@ import Stars_anim from '../../assets/animations/Stars_anim.json'
 import Points_anim from '../../assets/animations/points_anim.json'
 
 const Section2 = () => {
+
+  const [isHovered, setIshovered] = useState(false);
+
   return (
     <Box sx={{mt:15}}>
       <Container>
@@ -19,7 +22,7 @@ const Section2 = () => {
       <Lottie 
         style={{width:'20%'}}
         animationData={Points_anim}
-        loop={false}
+        loop={!isHovered}
         autoplay
         />
       </Box>

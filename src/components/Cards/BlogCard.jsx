@@ -19,10 +19,10 @@ const BlogCard = ({title, description, image, date, author}) => {
       px:2,
       position: "relative",
       borderRadius: "30px",
-      border:"3px solid #B6976A",
+      border:"3px solid #f0f8ffbc",
       transition: "transform 0.3s ease-in-out",
       '&:hover' : {
-        border: "4px solid #f0f8ffbc",
+        border: "4px solid #B6976A",
         transform: "scale(1.05)"
       },
       cursor:'pointer',

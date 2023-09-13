@@ -29,7 +29,7 @@ const AnalysisCard = ({title,points,completion,stars,img,width}) => {
         mt:4,
         mb: 8,
         mx: 4,
-        p: 4,
+        p: 3,
         pb:10,
         cursor: "pointer",
         backgroundColor: "#192734",

@@ -911,6 +911,51 @@ export const Blogs = {
   ],
 }
 
+export const Topics = {
+  ITEMS:[
+    {
+      key:1,
+      title:'HTML',
+    },
+    {
+      key:2,
+      title:'CSS',
+    },
+    {
+      key:3,
+      title:'React JS',
+    },
+    {
+      key:4,
+      title:'Node JS',
+    },
+    {
+      key:5,
+      title:'Mongo DB',
+    },
+    {
+      key:6,
+      title:'Express JS',
+    },
+    {
+      key:7,
+      title:'SQL',
+    },
+    {
+      key:8,
+      title:'Python',
+    },
+    {
+      key:9,
+      title:'C++',
+    },
+    {
+      key:10,
+      title:'JavaScript',
+    }
+  ]
+}
+
 export const Analysis_Progress = {
   ITEMS:[
     {
