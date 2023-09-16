@@ -8,11 +8,14 @@ import Signup_pg from "./pages/Authentication/Signup_pg";
 import Login_pg from "./pages/Authentication/Login_pg";
 import Blog_pg from "./pages/Blog/Blog_pg";
 import { Blogs } from "./utils/content";
+import { Analysis_Progress } from './utils/content';
 import Blogsarea_pg from "./pages/Blog/Blogsarea_pg";
 import Analytics_pg from "./pages/Analytics/Analytics_pg";
 import Analytics_dashboard_pg from "./pages/Analytics/Analytics_dashboard_pg";
+import Topic_dashboard from "./pages/Analytics/Topic_dashboard";
 
 const {ITEMS} = Blogs;
+const {TOPICS} = Analysis_Progress; 
 
 const App = () => {
 
@@ -33,6 +36,11 @@ const App = () => {
           ))}
         <Route path="/analytics" element={<Analytics_pg/>}/>
         <Route path="/analytics-dashboard" element={<Analytics_dashboard_pg/>}/>
+        {TOPICS.map((topic)=>(
+          <Route 
+            key={topic.key} 
+            path={`/analytics-dashboard/${topic.title.replace(/ /g, '-')}`} element={<Topic_dashboard/>}/>
+          ))}
       </Routes>
     </div>
   );

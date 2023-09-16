@@ -2,9 +2,9 @@ import React, { useCallback, useState } from 'react';
 import { PieChart, Pie, Cell, Sector } from 'recharts';
 import { Analysis_Progress } from '../../utils/content';
 
-const {ITEMS} = Analysis_Progress;
+const {TOPICS} = Analysis_Progress;
 
-const data = ITEMS.map((item) => ({
+const data = TOPICS.map((item) => ({
   name: item.title,
   value: item.points,
 }));

@@ -7,10 +7,10 @@ import Scorechart from './Scorechart';
 import { useNavigate } from 'react-router-dom';
 import { Analysis_Progress } from '../../utils/content';
 
-const {ITEMS} = Analysis_Progress;
+const {TOPICS} = Analysis_Progress;
 
-const totalPoints = ITEMS.reduce((accumulator, item) => accumulator + item.points, 0);
-const totalStars = ITEMS.reduce((accumulator, item) => accumulator + item.stars, 0);
+const totalPoints = TOPICS.reduce((accumulator, item) => accumulator + item.points, 0);
+const totalStars = TOPICS.reduce((accumulator, item) => accumulator + item.stars, 0);
 
 const Section1 = () => {
 

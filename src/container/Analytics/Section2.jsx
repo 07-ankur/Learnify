@@ -9,7 +9,15 @@ import Points_anim from '../../assets/animations/points_anim.json'
 
 const Section2 = () => {
 
-  const [isHovered, setIshovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  }
 
   return (
     <Box sx={{mt:15}}>
@@ -20,9 +28,11 @@ const Section2 = () => {
         Learnify Points
       </Title>
       <Lottie 
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         style={{width:'20%'}}
         animationData={Points_anim}
-        loop={!isHovered}
+        loop={isHovered}
         autoplay
         />
       </Box>

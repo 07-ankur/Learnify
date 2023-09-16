@@ -957,7 +957,7 @@ export const Topics = {
 }
 
 export const Analysis_Progress = {
-  ITEMS:[
+  TOPICS:[
     {
       key:1,
       title:'React JS',

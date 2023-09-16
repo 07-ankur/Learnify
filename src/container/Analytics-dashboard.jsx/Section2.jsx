@@ -86,7 +86,7 @@ const Section2 = () => {
           </Box>
         </AccordionSummary>
         <AccordionDetails>
-          <FormGroup row={2}>
+          <FormGroup row>
             {ITEMS.map((item) => (
               <Box sx={{mx:3, width:'20%',fontSize:'3.5em'}}>
               <FormControlLabel

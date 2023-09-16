@@ -1,13 +1,27 @@
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
-import React from "react";
+import React,{useState} from "react";
 import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
 import { styled } from '@mui/material/styles';
 import Lottie from "lottie-react";
+import { useNavigate } from "react-router-dom";
 
 const AnalysisCard = ({title,points,completion,stars,img,width}) => {
+
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  }
+
+  const navigate = useNavigate(); 
+
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
     borderRadius: 5,
@@ -22,6 +36,7 @@ const AnalysisCard = ({title,points,completion,stars,img,width}) => {
 
   return (
     <Box
+      onClick={()=>{navigate(`/analytics-dashboard/${title.replace(/ /g, '-')}`)}}
       sx={{
         width: "16em",
         borderRadius: "25px",
@@ -43,7 +58,7 @@ const AnalysisCard = ({title,points,completion,stars,img,width}) => {
     >
       <Typography variant="h4" sx={{ color: "skyblue", mt: 2, position:'relative', top:-25 }}>
           Analyze
-        </Typography>
+      </Typography>
       <Box
         sx={{
           display: "flex",
@@ -54,9 +69,11 @@ const AnalysisCard = ({title,points,completion,stars,img,width}) => {
         }}
       >
         <Lottie
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
           style={{ width: width, marginTop: -30 }}
           animationData={img}
-          loop={false}
+          loop={isHovered}
         />
       </Box>
       <Box sx={{display:'flex', flexDirection:'row'}}>
