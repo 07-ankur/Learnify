@@ -10,6 +10,7 @@ import {Divider} from '@mui/material';
 import Skillchart from '../Analytics/Skillchart';
 
 const Section1 = () => {
+
   return (
     <Box sx={{mt:15,display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'center', textAlign:'center'}}>
       <Typography variant='h2' sx={{color:'skyblue'}}><QueryStatsIcon/> Progress Overview <QueryStatsIcon/></Typography>

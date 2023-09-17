@@ -9,7 +9,10 @@ import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
 import { styled } from '@mui/material/styles';
+import { useLocation } from 'react-router-dom';
+import { Analysis_Progress } from '../../../utils/content';
 
+const {TOPICS} = Analysis_Progress;
 
 const Section1 = () => {
 
@@ -30,6 +33,35 @@ const Section1 = () => {
       backgroundColor: "yellow",
     },
   }));
+
+  const location = useLocation();
+
+  let id;
+
+  for (let i = 0; i < TOPICS.length; i++) {
+    if (location.pathname === `/analytics-dashboard/${TOPICS[i].title.replace(/ /g, '-')}`) {
+      id = TOPICS[i].key-1;
+      break; // Exit the loop once a match is found
+    }
+  }
+
+  let skill;
+
+  if (TOPICS[id].points<=40){
+    skill = 'Beginner'
+  }
+
+  else if (TOPICS[id].points<=70){
+    skill = 'Intermediate'
+  }
+
+  else if (TOPICS[id].points<=90){
+    skill = 'Expert'
+  }
+
+  else if (TOPICS[id].points<=100){
+    skill = 'Master'
+  }
 
   return (
     <Box>
@@ -74,7 +106,7 @@ const Section1 = () => {
               >
                 <Lottie
                   style={{ width: "80%" }}
-                  animationData={React_anim}
+                  animationData={TOPICS[id].img}
                   loop={false}
                 />
                 <Box
@@ -102,10 +134,10 @@ const Section1 = () => {
                       variant="h5"
                       sx={{ mt: 0.5, mr: 1.5, color: "cyan" }}
                     >
-                      0 🌟
+                      {TOPICS[id].stars} 🌟
                     </Typography>
                     <Typography variant="h5" sx={{ mt: 0.5, color: "cyan" }}>
-                      70 Points
+                      {TOPICS[id].points} Points
                     </Typography>
                   </Box>
                 </Box>
@@ -121,7 +153,7 @@ const Section1 = () => {
               >
                 <Box sx={{ mx: 3, my: 1 }}>
                   <Typography sx={{ color: "#04A5D0" }} variant="h1">
-                    React JS
+                    {TOPICS[id].title}
                   </Typography>
                 </Box>
                 <Box sx={{ my: 1, display: "flex", flexDirection: "column" }}>
@@ -130,7 +162,7 @@ const Section1 = () => {
                       Skill level :
                     </Typography>
                     <Typography variant="h3" sx={{ color: "white", my: 1 }}>
-                      Intermediate
+                      {skill}
                     </Typography>
                   </Box>
                   <Box sx={{ display: "flex", flexDirection: "row" }}>
@@ -138,7 +170,7 @@ const Section1 = () => {
                       Time Required :
                     </Typography>
                     <Typography variant="h3" sx={{ color: "white", my: 1 }}>
-                      11 Hours
+                      {TOPICS[id].timeRequired}
                     </Typography>
                   </Box>
                   <Box sx={{ display: "flex", flexDirection: "row" }}>
