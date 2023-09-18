@@ -7,11 +7,11 @@ import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import { React, useState } from "react";
 import Lottie from "lottie-react";
-import Choose_anim from "../../../assets/animations/Choose_anim.json";
-import OutlinedButton from "../../../components/Buttons/OutlinedButton";
+import Choose_anim from "../../assets/animations/Choose_anim.json";
+import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import LinearProgress, {
-    linearProgressClasses,
-  } from "@mui/material/LinearProgress";
+  linearProgressClasses,
+} from "@mui/material/LinearProgress";
 import {
   List,
   ListItem,
@@ -21,7 +21,7 @@ import {
 } from "@mui/material";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import TaskIcon from "@mui/icons-material/Task";
-import { Analysis_Progress } from "../../../utils/content";
+import { Analysis_Progress } from "../../utils/content";
 
 const { TOPICS } = Analysis_Progress;
 
@@ -95,7 +95,7 @@ const Section3 = () => {
           alignItems: "center",
         }}
       >
-        <Typography variant="h2" sx={{ color: "#04A5D0" }}>
+        <Typography variant="h2" sx={{ color: "cyan" }}>
           Track Your Progress
         </Typography>
         <Lottie
@@ -105,60 +105,72 @@ const Section3 = () => {
         />
       </Box>
       {TOPICS[0].topics.map((item) => {
-
-        const count = item.subtitle.map((subtitle) => subtitle.completion ? 1 : 0).reduce((acc, val) => acc + val, 0);
+        const count = item.subtitle
+          .map((subtitle) => (subtitle.completion ? 1 : 0))
+          .reduce((acc, val) => acc + val, 0);
 
         const length = item.subtitle.length;
-        
+
         return (
-        <Accordion
-          expanded={expanded === `panel${item.key}`}
-          onChange={handleChange(`panel${item.key}`)}
-        >
-          <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-            <Box
-              sx={{
-                width: "100%",
-                display: "flex",
-                flexDirection: "row",
-                height: "3em",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
+          <Accordion
+            expanded={expanded === `panel${item.key}`}
+            onChange={handleChange(`panel${item.key}`)}
+          >
+            <AccordionSummary
+              aria-controls="panel1d-content"
+              id="panel1d-header"
             >
-              {" "}
-              <Box sx={{ width: "50%" }}>
-                <Typography variant="h4" sx={{ color: "skyblue" }}>
-                  {item.key} . {item.title}
-                </Typography>
+              <Box
+                sx={{
+                  width: "100%",
+                  display: "flex",
+                  flexDirection: "row",
+                  height: "3em",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                {" "}
+                <Box sx={{ width: "50%" }}>
+                  <Typography variant="h4" sx={{ color: "skyblue" }}>
+                    {item.key} . {item.title}
+                  </Typography>
+                </Box>
+                <Box sx={{ display: "flex", flexDirection: "column" }}>
+                  <Typography variant="h5" sx={{ color: "skyblue" }}>
+                    {count} of {length} Lessons completed
+                  </Typography>
+                  <BorderLinearProgress
+                    variant="determinate"
+                    value={(count / length) * 100}
+                  />
+                </Box>
+                <OutlinedButton arrow sx={{ mx: 5 }} fit>
+                  Tutorials
+                </OutlinedButton>
               </Box>
-              <Box sx={{display:'flex', flexDirection:'column'}}>
-                <Typography variant="h5" sx={{ color: "skyblue" }}>
-                  {count} of {length} Lessons completed
-                </Typography>
-                <BorderLinearProgress variant="determinate" value={count/length*100} />
-              </Box>
-              <OutlinedButton arrow sx={{ mx: 5 }} fit>
-                Tutorials
-              </OutlinedButton>
-            </Box>
-          </AccordionSummary>
-          <AccordionDetails>
-            <List>
-              {item.subtitle.map((x) => (
-                <ListItem disablePadding>
-                  <ListItemButton sx={{ cursor: "auto" }}>
-                    <ListItemIcon>
-                      {x.completion ? <TaskIcon sx={{ color: "#00ffbf" }} />:   <InsertDriveFileIcon sx={{ color: "grey" }} />}
-                    </ListItemIcon>
-                    <ListItemText primary={x.label} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </List>
-          </AccordionDetails>
-        </Accordion>
-      )})}
+            </AccordionSummary>
+            <AccordionDetails>
+              <List>
+                {item.subtitle.map((x) => (
+                  <ListItem disablePadding>
+                    <ListItemButton sx={{ cursor: "auto" }}>
+                      <ListItemIcon>
+                        {x.completion ? (
+                          <TaskIcon sx={{ color: "#00ffbf" }} />
+                        ) : (
+                          <InsertDriveFileIcon sx={{ color: "grey" }} />
+                        )}
+                      </ListItemIcon>
+                      <ListItemText primary={x.label} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
+            </AccordionDetails>
+          </Accordion>
+        );
+      })}
     </Container>
   );
 };

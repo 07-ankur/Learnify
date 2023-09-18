@@ -1,22 +1,21 @@
-import React from 'react'
-import OutlinedButton from "../../../components/Buttons/OutlinedButton";
+import React from "react";
+import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import { useNavigate } from "react-router-dom";
 import { Box, Container } from "@mui/system";
-import { Typography } from '@mui/material';
-import React_anim from "../../../assets/animations/react_anim.json";
+import { Typography } from "@mui/material";
+import React_anim from "../../assets/animations/react_anim.json";
 import Lottie from "lottie-react";
 import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
-import { styled } from '@mui/material/styles';
-import { useLocation } from 'react-router-dom';
-import { Analysis_Progress } from '../../../utils/content';
+import { styled } from "@mui/material/styles";
+import { useLocation } from "react-router-dom";
+import { Analysis_Progress } from "../../utils/content";
 
-const {TOPICS} = Analysis_Progress;
+const { TOPICS } = Analysis_Progress;
 
 const Section1 = () => {
-
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleGoBack = () => {
     navigate(-1);
@@ -39,35 +38,32 @@ const Section1 = () => {
   let id;
 
   for (let i = 0; i < TOPICS.length; i++) {
-    if (location.pathname === `/analytics-dashboard/${TOPICS[i].title.replace(/ /g, '-')}`) {
-      id = TOPICS[i].key-1;
+    if (
+      location.pathname ===
+      `/analytics-dashboard/${TOPICS[i].title.replace(/ /g, "-")}`
+    ) {
+      id = TOPICS[i].key - 1;
       break; // Exit the loop once a match is found
     }
   }
 
   let skill;
 
-  if (TOPICS[id].points<=40){
-    skill = 'Beginner'
-  }
-
-  else if (TOPICS[id].points<=70){
-    skill = 'Intermediate'
-  }
-
-  else if (TOPICS[id].points<=90){
-    skill = 'Expert'
-  }
-
-  else if (TOPICS[id].points<=100){
-    skill = 'Master'
+  if (TOPICS[id].points <= 40) {
+    skill = "Beginner";
+  } else if (TOPICS[id].points <= 70) {
+    skill = "Intermediate";
+  } else if (TOPICS[id].points <= 90) {
+    skill = "Expert";
+  } else if (TOPICS[id].points <= 100) {
+    skill = "Master";
   }
 
   return (
     <Box>
-    <OutlinedButton arrowRev onClick={handleGoBack} sx={{ mt: 3, mx: 3 }} fit>
+      <OutlinedButton arrowRev onClick={handleGoBack} sx={{ mt: 3, mx: 3 }} fit>
         Back to Dashboard
-    </OutlinedButton>
+      </OutlinedButton>
       <Box
         sx={{
           mt: 5,
@@ -177,7 +173,7 @@ const Section1 = () => {
                     <OutlinedButton
                       arrow
                       onClick={handleGoBack}
-                      sx={{ mt: 3, mx: 3, color:'skyblue' }}
+                      sx={{ mt: 3, mx: 3, color: "skyblue" }}
                       fit
                     >
                       Start Tutorials
@@ -185,7 +181,7 @@ const Section1 = () => {
                     <OutlinedButton
                       arrow
                       onClick={handleGoBack}
-                      sx={{ mt: 3, mx: 3, color:'skyblue' }}
+                      sx={{ mt: 3, mx: 3, color: "skyblue" }}
                       fit
                     >
                       Practice
@@ -193,7 +189,7 @@ const Section1 = () => {
                     <OutlinedButton
                       arrow
                       onClick={handleGoBack}
-                      sx={{ mt: 3, mx: 3, color:'skyblue' }}
+                      sx={{ mt: 3, mx: 3, color: "skyblue" }}
                       fit
                     >
                       Take Quiz
@@ -211,8 +207,8 @@ const Section1 = () => {
           </Box>
         </Container>
       </Box>
-      </Box>
-  )
-}
+    </Box>
+  );
+};
 
-export default Section1
+export default Section1;

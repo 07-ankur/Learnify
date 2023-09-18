@@ -13,9 +13,13 @@ import Blogsarea_pg from "./pages/Blog/Blogsarea_pg";
 import Analytics_pg from "./pages/Analytics/Analytics_pg";
 import Analytics_dashboard_pg from "./pages/Analytics/Analytics_dashboard_pg";
 import Topic_dashboard from "./pages/Analytics/Topic_dashboard";
+import Mapper_pg from "./pages/Mapper/Mapper_pg";
+import { Topics } from "./utils/content";
+import Roadmap_pg from "./pages/Mapper/Roadmap_pg";
 
 const {ITEMS} = Blogs;
 const {TOPICS} = Analysis_Progress; 
+const {SKILLS} = Topics;
 
 const App = () => {
 
@@ -29,6 +33,7 @@ const App = () => {
         <Route path="/signup" element={<Signup_pg />} />
         <Route path="/login" element={<Login_pg />} />
         <Route path="/blog" element={<Blog_pg />} />
+        <Route path="/mapper" element={<Mapper_pg />} />
         {ITEMS.map((item)=>(
           <Route 
             key={item.key} 
@@ -40,6 +45,11 @@ const App = () => {
           <Route 
             key={topic.key} 
             path={`/analytics-dashboard/${topic.title.replace(/ /g, '-')}`} element={<Topic_dashboard/>}/>
+          ))}
+        {SKILLS.map((skill)=>(
+          <Route 
+            key={skill.key} 
+            path={`/mapper/${skill.title.replace(/ /g, '-')}`} element={<Roadmap_pg/>}/>
           ))}
       </Routes>
     </div>

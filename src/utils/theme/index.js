@@ -68,3 +68,20 @@ export const analyticTheme = createTheme({
   typography,
 });
 
+export const mapperTheme = createTheme({
+  palette: {
+    mode:'dark',
+    primary: {
+      main: "#8899A6",
+    },
+    background: {
+      default: "#0F172A",
+    },
+    text: {
+      primary:"#b6c0c8",
+      secondary: "#8899A6",
+    },
+  },
+  typography,
+});
+
