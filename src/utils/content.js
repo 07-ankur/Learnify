@@ -99,6 +99,13 @@ import css_anim from "../assets/animations/css_anim.json";
 import Mongo_anim from "../assets/animations/mongodb_anim.json";
 import js_anim from "../assets/animations/js_anim.json";
 
+// QuizMastery
+
+import Hook_logo from '../assets/images/Hook_logo.png';
+import Component_logo from '../assets/images/Component_logo.png';
+import Router_logo from '../assets/images/Router_logo.png';
+import React_logo from '../assets/images/React_logo.png';
+
 export const section1Content = {
   MainBG,
   TreesImage,
@@ -1272,3 +1279,411 @@ export const Analysis_Progress = {
     },
   ],
 };
+
+export const Quiz_tabs={
+  TABS: [
+    {
+      name: "Practice Concepts",
+    },
+    {
+      name: "Mock Tests",
+    }
+  ]}
+
+  export const Test_cards ={
+    items:[
+        {   key:1,
+            title:'Mock Test 1',
+            subtitle:'15 Questions   ||   45 mins   ||   30marks'
+        },
+        {   key:2,
+            title:'Mock Test 2',
+            subtitle:'15 Questions   ||   45 mins   ||   30marks'
+        },
+        {   key:3,
+            title:'Mock Test 3',
+            subtitle:'15 Questions   ||   45 mins   ||   30marks'
+        },
+        {   key:4,
+            title:'Mock Test 4',
+            subtitle:'15 Questions || 45 mins || 30marks'
+        }
+    ]
+}
+  export const Practice_cards ={
+    items2:[
+        {   key:1,
+            title:'React Hooks',
+            // subtitle:'15 Questions   ||   45 mins   ||   30marks',
+            image:Hook_logo
+        },
+        {   key:2,
+            title:'React Components',
+            subtitle:'15 Questions   ||   45 mins   ||   30marks',
+            image:Component_logo
+
+        },
+        {   key:3,
+            title:'React Router',
+            subtitle:'15 Questions   ||   45 mins   ||   30marks',
+            image:Router_logo
+
+        },
+        {   key:4,
+            title:'React Rendering',
+            subtitle:'15 Questions || 45 mins || 30marks',
+            image:React_logo
+
+        }
+    ]
+}
+
+export const Exam_cards = {
+    Questions:[
+        {
+            key:1,
+            title:'1. Which of the following statements is correct? ',
+            options:[
+                {
+                    opt:false,
+                    title:'A. Hooks can only be called inside React function components.'
+                },
+                {
+                    opt:false,
+                    title:'B. Hooks can only be called at the top level of a component.'
+                },
+                {
+                    opt:false,
+                    title:'C. Hooks cannot be conditional'
+                },
+                {
+                    opt:true,
+                    title:'D. All of these'
+                }
+            ],
+            correct:4
+        },
+        {
+            key:2,
+            title:'2. Hooks were added to the React in version  ',
+            options:[
+                {
+                    opt:false,
+                    title:'A. 16.6'
+                },
+                {
+                    opt:true,
+                    title:'B. 16.8'
+                },
+                {
+                    opt:false,
+                    title:'C. 16.8.6'
+                },
+                {
+                    opt:false,
+                    title:'D. 18.1'
+                }
+            ],
+            correct:2
+        },
+        {
+            key:3,
+            title:'3. Which of the following hook is used to manage the state globally',
+            options:[
+                {
+                    opt:false,
+                    title:'A. UseState'
+                },
+                {
+                    opt:false,
+                    title:'B. UseEffect'
+                },
+                {
+                    opt:true,
+                    title:'C. UseContext'
+                },
+                {
+                    opt:false,
+                    title:'D. UseRef'
+                }
+            ],
+            correct:3
+        },
+        {
+            key:4,
+            title:'4. UseState accepts an initial state and returns two values: the current state and ',
+            options:[
+                {
+                    opt:true,
+                    title:'A. A function that updates the state.'
+                },
+                {
+                    opt:false,
+                    title:'B. The next state'
+                },
+                {
+                    opt:false,
+                    title:'C. A function that deletes the state'
+                },
+                {
+                    opt:false,
+                    title:'D. None of these'
+                }
+            ],
+            correct:1
+        },
+        {
+            key:5,
+            title:'5. The two arguments of the useEffect hook are  ',
+            options:[
+                {
+                    opt:true,
+                    title:'A. useEffect(<function>, <dependency>)'
+                },
+                {
+                    opt:false,
+                    title:'B. useEffect(<dependency>, <function>)'
+                },
+                {
+                    opt:false,
+                    title:'C. useEffect(<function>, <state>)'
+                },
+                {
+                    opt:false,
+                    title:'D. None of these'
+                }
+            ],
+            correct:1
+        },
+        {
+            key:6,
+            title:'6. Which of the following statements is not true about the react hooks',
+            options:[
+                {
+                    opt:false,
+                    title:'A. React hooks will not work in class components.'
+                },
+                {
+                    opt:false,
+                    title:'B. Hooks are reusable functions'
+                },
+                {
+                    opt:true,
+                    title:'C. One hook cannot call the other hook'
+                },
+                {
+                    opt:false,
+                    title:'D. Hooks can not be called from regular JavaScript functions. '
+                }
+            ],
+            correct:3
+        },
+        {
+            key:7,
+            title:'7. Which of the following hook is used to access the DOM directly ',
+            options:[
+                {
+                    opt:false,
+                    title:'A. UseState'
+                },
+                {
+                    opt:false,
+                    title:'B. UseReducer'
+                },
+                {
+                    opt:true,
+                    title:'C. UseRef'
+                },
+                {
+                    opt:false,
+                    title:'D. UseContext'
+                }
+            ],
+            correct:3
+        },
+        {
+            key:8,
+            title:'1. UseState accepts an initial state and returns two values: the current state and ',
+            options:[
+                {
+                    opt:true,
+                    title:'A. A function that updates the state.'
+                },
+                {
+                    opt:false,
+                    title:'B. The next state'
+                },
+                {
+                    opt:false,
+                    title:'C. A function that deletes the state'
+                },
+                {
+                    opt:false,
+                    title:'D. None of these'
+                }
+            ],
+            correct:1
+        },
+        {
+            key:9,
+            title:'8. Which of the following statements is true about the custom hooks ',
+            options:[
+                {
+                    opt:false,
+                    title:'A. Creating a custom hook is the same as creating a JavaScript function'
+                },
+                {
+                    opt:false,
+                    title:'B. It can use other hooks inside it'
+                },
+                {
+                    opt:false,
+                    title:'C. It starts with “use”'
+                },
+                {
+                    opt:true,
+                    title:'D. All of these'
+                }
+            ],
+            correct:4
+        },
+        {
+            key:10,
+            title:'10. Which lifecycle methods of class component is replaced by useEffect in functional component ? ',
+            options:[
+                {
+                    opt:false,
+                    title:'A. componentDidMount()'
+                },
+                {
+                    opt:false,
+                    title:'B. componentDidUpdate()'
+                },
+                {
+                    opt:false,
+                    title:'C. componentWillUnmount()'
+                },
+                {
+                    opt:true,
+                    title:'D. All of these'
+                }
+            ],
+            correct:4
+        },
+        {
+            key:11,
+            title:'1. UseState accepts an initial state and returns two values: the current state and ',
+            options:[
+                {
+                    opt:true,
+                    title:'A. A function that updates the state.'
+                },
+                {
+                    opt:false,
+                    title:'B. The next state'
+                },
+                {
+                    opt:false,
+                    title:'C. A function that deletes the state'
+                },
+                {
+                    opt:false,
+                    title:'D. None of these'
+                }
+            ],
+            correct:1
+        },
+        {
+            key:12,
+            title:'12. Which of the following hook is used to avoid re-renders ',
+            options:[
+                {
+                    opt:false,
+                    title:'A. UseReducer'
+                },
+                {
+                    opt:true,
+                    title:'B. UseRef'
+                },
+                {
+                    opt:false,
+                    title:'C. UseMemo'
+                },
+                {
+                    opt:false,
+                    title:'D. None of these'
+                }
+            ],
+            correct:2
+        },
+        {
+            key:13,
+            title:'13. If you find yourself keeping track of multiple pieces of state that rely on complex logic, which may be useful? ',
+            options:[
+                {
+                    opt:false,
+                    title:'A. UseRef'
+                },
+                {
+                    opt:false,
+                    title:'B. UseState'
+                },
+                {
+                    opt:false,
+                    title:'C. UseEffect'
+                },
+                {
+                    opt:true,
+                    title:'D. UseReducer'
+                }
+            ],
+            correct:4
+        },
+        {
+            key:14,
+            title:'14. Which of the following React hooks helps in performance optimization ?',
+            options:[
+                {
+                    opt:false,
+                    title:'A. UseEffect'
+                },
+                {
+                    opt:true,
+                    title:'B. UseMemo'
+                },
+                {
+                    opt:false,
+                    title:'C. UseRef'
+                },
+                {
+                    opt:false,
+                    title:'D. UseDebugValue'
+                }
+            ],
+            correct:2
+        },
+        {
+            key:15,
+            title:'15. Hooks can only be used inside ',
+            options:[
+                {
+                    opt:false,
+                    title:'A. class component'
+                },
+                {
+                    opt:true,
+                    title:'B. functional component'
+                },
+                {
+                    opt:false,
+                    title:'C. Either A or B'
+                },
+                {
+                    opt:false,
+                    title:'D. Both A and B'
+                }
+            ],
+            correct:2
+        }
+    ]
+}

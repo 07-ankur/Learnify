@@ -29,7 +29,7 @@ const Home = () => {
   return (
     <Box
       sx={{
-        height: "200vh",
+        height: "180vh",
         backgroundImage:
           "linear-gradient(to right,#0E1628 , #0F1729, #0F1729,#0E1628,#0F1729,#0F1729,#0E1628)",
       }}
@@ -37,25 +37,31 @@ const Home = () => {
       <Container
         maxWidth="lg"
         sx={{
-          height: "40%",
+          height: "35%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "flex-end",
         }}
-      >
-        <Typography sx={{ fontSize: "5em", color: "skyblue" }}>
-          <LocationOnIcon sx={{ fontSize: "0.6em" }} /> Mapper{" "}
-          <LocationOnIcon sx={{ fontSize: "0.6em" }} />
-        </Typography>
-        <Typography variant="h4" sx={{ mb: 2 }}>
-          Your GPS for success
+      > 
+        <Box sx={{display:'flex', flexDirection:'row', justifyContent:'center'}}>
+        <Lottie
+          animationData={Gps_anim}
+          loop
+          style={{width:'15%'}}
+        />
+        <Typography sx={{ fontSize: "5em", color: "skyblue", mt:2.5 }}>
+         Mapper{" "}
         </Typography>
         <Lottie
           animationData={Gps_anim}
           loop
           style={{width:'15%'}}
         />
+        </Box>
+        <Typography variant="h4" sx={{ mb: 2 }}>
+          Your GPS for success
+        </Typography>
         <Typography
           variant="h5"
           sx={{ textAlign: "center", color: "lightgrey" }}
@@ -67,13 +73,13 @@ const Home = () => {
         </Typography>
       </Container>
       <Container maxWidth="lg" sx={{ mt: 5 }}>
-        <Divider sx={{ width: "100%", my: 2 }} variant="middle">
+        <Divider sx={{ width: "100%", my: 8 }} variant="middle">
           <Box
             sx={{
-              border: "2px solid white",
+              border: "2px solid skyblue",
               borderRadius: "1em",
               p: 2,
-              textAlign: "center",
+              textAlign: "center"
             }}
           >
             Skill Based Roadmaps
@@ -81,7 +87,7 @@ const Home = () => {
         </Divider>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           {SKILLS.map((ITEM) => (
-            <Grid onClick={()=>{navigate(`/mapper/${ITEM.title.replace(/ /g, '-')}`)}} key={ITEM.key} item xs={6} sx={{ my: 2 }}>
+            <Grid onClick={()=>{navigate(`/mapper/${ITEM.title.replace(/ /g, '-')}`)}} key={ITEM.key} item xs={6} sx={{ my: 1 }}>
               <Item>{ITEM.title}</Item>
             </Grid>
           ))}

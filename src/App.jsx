@@ -16,6 +16,7 @@ import Topic_dashboard from "./pages/Analytics/Topic_dashboard";
 import Mapper_pg from "./pages/Mapper/Mapper_pg";
 import { Topics } from "./utils/content";
 import Roadmap_pg from "./pages/Mapper/Roadmap_pg";
+import QuizHome from "./pages/Quizmastery/Home";
 
 const {ITEMS} = Blogs;
 const {TOPICS} = Analysis_Progress; 
@@ -32,8 +33,8 @@ const App = () => {
         <Route path="/tutorials" element={<Tutorials_pg />} />
         <Route path="/signup" element={<Signup_pg />} />
         <Route path="/login" element={<Login_pg />} />
-        <Route path="/blog" element={<Blog_pg />} />
         <Route path="/mapper" element={<Mapper_pg />} />
+        <Route path="/blog" element={<Blog_pg />} />
         {ITEMS.map((item)=>(
           <Route 
             key={item.key} 
@@ -51,6 +52,12 @@ const App = () => {
             key={skill.key} 
             path={`/mapper/${skill.title.replace(/ /g, '-')}`} element={<Roadmap_pg/>}/>
           ))}
+        {SKILLS.map((skill)=>(
+          <Route 
+            key={skill.key} 
+            path={`/quizMastery/${skill.title.replace(/ /g, '-')}`} element={<QuizHome/>}/>
+          ))}
+        
       </Routes>
     </div>
   );

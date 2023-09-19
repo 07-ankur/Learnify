@@ -7,7 +7,7 @@ import PsychologyIcon from '@mui/icons-material/Psychology';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import {Divider} from '@mui/material';
-import Skillchart from '../Analytics/Skillchart';
+import Skillchart from './Skillchart';
 
 const Section1 = () => {
 

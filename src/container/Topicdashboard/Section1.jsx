@@ -3,7 +3,6 @@ import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import { useNavigate } from "react-router-dom";
 import { Box, Container } from "@mui/system";
 import { Typography } from "@mui/material";
-import React_anim from "../../assets/animations/react_anim.json";
 import Lottie from "lottie-react";
 import LinearProgress, {
   linearProgressClasses,

@@ -95,11 +95,11 @@ const Section3 = () => {
           alignItems: "center",
         }}
       >
-        <Typography variant="h2" sx={{ color: "cyan" }}>
+        <Typography variant="h2" sx={{ color: "skyblue" }}>
           Track Your Progress
         </Typography>
         <Lottie
-          style={{ width: "20%", marginTop: 0 }}
+          style={{ width: "15%", marginTop: 0 }}
           animationData={Choose_anim}
           loop
         />
