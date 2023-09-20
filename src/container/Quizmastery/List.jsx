@@ -1,47 +1,78 @@
-import React from 'react'
-import HomeIcon from '@mui/icons-material/Home';
-import DescriptionIcon from '@mui/icons-material/Description';
-import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
-import QuizIcon from '@mui/icons-material/Quiz';
-import {List,ListItem,ListItemButton,ListItemIcon,ListItemText} from '@mui/material'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
+import {
+  Divider,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import { QuizDrawerList } from "../../utils/content";
+
+const { List1, List2 } = QuizDrawerList;
 
 const Listing = () => {
+
+  const navigate = useNavigate();
+
   return (
     <List>
-            <ListItem key={'Home'} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <HomeIcon/>
-                </ListItemIcon>
-                <ListItemText primary={'Home'} />
-              </ListItemButton>
-            </ListItem>
-            <ListItem key={'Syllabus'} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                <DescriptionIcon/>
-                </ListItemIcon>
-                <ListItemText primary={'Syllabus'} />
-              </ListItemButton>
-            </ListItem>
-            <ListItem key={'Tutorials'} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <DeveloperBoardIcon/>
-                </ListItemIcon>
-                <ListItemText primary={'Tutorials'} />
-              </ListItemButton>
-            </ListItem>
-            <ListItem key={'My Tests'} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <QuizIcon/>
-                </ListItemIcon>
-                <ListItemText primary={'My Tests'} />
-              </ListItemButton>
-            </ListItem>
+      {List1.map((item) => {
+        const Icon = item.icon;
+        return (
+          <ListItem
+            onClick={()=>{navigate(item.navigate)}}
+            key={item.title}
+            disablePadding
+            sx={{
+              "&:hover": {
+                color: "#10D59B", 
+                "& .MuiSvgIcon-root": {
+                  fill: "#10D59B",
+                },
+              },
+            }}
+          >
+            <ListItemButton>
+              <ListItemIcon>
+                <Icon />
+              </ListItemIcon>
+              <ListItemText primary={item.title} />
+            </ListItemButton>
+          </ListItem>
+        );
+      })}
+      <Divider sx={{ my: 2 }} />
+      {List2.map((item) => {
+        const Icon = item.icon;
+        return (
+          <ListItem
+            onClick={()=>{navigate(item.navigate)}}
+            key={item.title}
+            disablePadding
+            sx={{
+              "&:hover": {
+                color: "#10D59B", // Change text color on hover
+                "& .MuiSvgIcon-root": {
+                  fill: "#10D59B", // Change icon color on hover
+                },
+              },
+            }}
+          >
+            <ListItemButton>
+              <ListItemIcon>
+                <Icon />
+              </ListItemIcon>
+              <ListItemText primary={item.title} />
+            </ListItemButton>
+          </ListItem>
+        );
+      })}
     </List>
-  )
-}
+  );
+};
 
-export default Listing
+export default Listing;
+

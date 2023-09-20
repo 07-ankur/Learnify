@@ -15,13 +15,15 @@ import MuiAppBar from "@mui/material/AppBar";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import Listing from "../../container/Quizmastery/LIst";
-import Listing2 from "../../container/Quizmastery/List2";
+import Listing from "../../container/Quizmastery/List";
 import BasicTabs from "../../container/Quizmastery/BasicTabs";
 import quizTheme from "../../utils/theme";
 import { navbarContent } from "../../utils/content";
+import { Topics } from "../../utils/content";
+import { useLocation } from "react-router-dom";
 
 const {Logo} = navbarContent;
+const { SKILLS } = Topics;
 
 const drawerWidth = 260;
 
@@ -71,7 +73,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-export default function QuizHome() {
+export default function QuizDashboard() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
 
@@ -82,6 +84,20 @@ export default function QuizHome() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const location = useLocation();
+
+  let id;
+
+  for (let i = 0; i < SKILLS.length; i++) {
+    if (
+      location.pathname ===
+      `/quizMastery/${SKILLS[i].title.replace(/ /g, "-")}`
+    ) {
+      id = SKILLS[i].key - 1;
+      break; // Exit the loop once a match is found
+    }
+  }
 
   return (
     <ThemeProvider theme={quizTheme}>
@@ -103,8 +119,17 @@ export default function QuizHome() {
               variant="body1"
               noWrap
               component="div"
+              color='lightgray'
             >
-              Quiz Mastery {"--> React Js"}
+              Quiz Mastery  
+            </Typography>
+            <Typography
+              sx={{ ml: "2vh", color:'#10D59B' }}
+              variant="body1"
+              noWrap
+              component="div"
+            >
+              {` --->  ${SKILLS[id].title}`}
             </Typography>
           </Toolbar>
         </AppBar>
@@ -143,8 +168,6 @@ export default function QuizHome() {
           </DrawerHeader>
           <Divider sx={{border:'0.5px solid white'}}/>
           <Listing />
-          <Divider />
-          <Listing2 />
         </Drawer>
         <Main open={open}>
           <DrawerHeader />

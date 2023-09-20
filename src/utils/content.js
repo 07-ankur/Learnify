@@ -106,6 +106,15 @@ import Component_logo from '../assets/images/Component_logo.png';
 import Router_logo from '../assets/images/Router_logo.png';
 import React_logo from '../assets/images/React_logo.png';
 
+// QuizDrawerList
+
+import HomeIcon from "@mui/icons-material/Home";
+import DescriptionIcon from "@mui/icons-material/Description";
+import DeveloperBoardIcon from "@mui/icons-material/DeveloperBoard";
+import ChatIcon from '@mui/icons-material/Chat';
+import ReportIcon from '@mui/icons-material/Report';
+import QuizIcon from "@mui/icons-material/Quiz";
+
 export const section1Content = {
   MainBG,
   TreesImage,
@@ -1279,6 +1288,50 @@ export const Analysis_Progress = {
     },
   ],
 };
+
+export const QuizDrawerList = {
+  List1: [
+    {
+      key:1,
+      title:'Home',
+      icon:HomeIcon,
+      navigate:'/quizMastery/'
+    },
+    {
+      key:2,
+      title:'Roadmap',
+      icon:DeveloperBoardIcon,
+      navigate:'/mapper'
+    },
+    {
+      key:3,
+      title:'Tutorials',
+      icon:DescriptionIcon,
+      navigate:`/tutorials/`
+    },
+    {
+      key:4,
+      title:'My Tests',
+      icon: QuizIcon,
+      navigate:'/user/My-Tests'
+    }
+  ],
+
+  List2: [
+    {
+      key:1,
+      title:'Feedback',
+      icon:ChatIcon,
+      navigate:'/quizMastery/feedback'
+    },
+    {
+      key:2,
+      title:'Error Report',
+      icon:ReportIcon,
+      navigate:'/quizMastery/error-report'
+    }
+  ]
+}
 
 export const Quiz_tabs={
   TABS: [

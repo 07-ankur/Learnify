@@ -16,7 +16,7 @@ import Topic_dashboard from "./pages/Analytics/Topic_dashboard";
 import Mapper_pg from "./pages/Mapper/Mapper_pg";
 import { Topics } from "./utils/content";
 import Roadmap_pg from "./pages/Mapper/Roadmap_pg";
-import QuizHome from "./pages/Quizmastery/Home";
+import QuizHome from "./pages/Quizmastery/Dashboard";
 
 const {ITEMS} = Blogs;
 const {TOPICS} = Analysis_Progress; 

@@ -2,7 +2,6 @@ import { Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import React from "react";
 import { Divider } from "@mui/material";
 import { styled } from "@mui/material/styles";
