@@ -9,6 +9,10 @@ import {
   FormControlLabel,
   Radio,
   RadioGroup,
+  Select,
+  FormHelperText,
+  MenuItem,
+  InputLabel,
 } from "@mui/material";
 import { ThemeProvider } from "@mui/system";
 import { feedbackTheme } from "../../utils/theme";
@@ -16,11 +20,8 @@ import { CssBaseline } from "@mui/material";
 import OutlinedButton from "../Buttons/OutlinedButton";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
-import { feedbackEmojis } from "../../utils/content";
 import Lottie from "lottie-react";
 import Sent_anim from "../../assets/animations/Sent_anim2.json";
-
-const { Emojis } = feedbackEmojis;
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -31,23 +32,23 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-const FeedbackModal = ({ open, onClose }) => {
+const ErrorReportModal = ({ open, onClose }) => {
   const [value, setValue] = useState("Yes");
-  const [selectedEmojiIndex, setSelectedEmojiIndex] = useState(-1);
   const [submit, setSubmit] = useState(false);
+  const [errorType, seterrorType] = useState('');
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
 
-  const handleEmojiClick = (index) => {
-    setSelectedEmojiIndex(index);
+  const handleTypeChange = (event) => {
+    seterrorType(event.target.value);
   };
 
   const handleSubmit = () => {
     setSubmit(true);
   };
-  
+
   return (
     <ThemeProvider theme={feedbackTheme}>
       <CssBaseline />
@@ -64,8 +65,8 @@ const FeedbackModal = ({ open, onClose }) => {
             p: 3,
             height: "auto",
             minHeight: "70vh",
+            minWidth: "90vh",
             flexDirection: "column",
-            // border: "4px solid black",
             borderRadius: "15px",
           }}
         >
@@ -83,11 +84,15 @@ const FeedbackModal = ({ open, onClose }) => {
           {submit ? (
             <>
               <Typography variant="h3">
-                Your Feedback is important for us
+                We are sorry for the incovinience caused to you 😔
               </Typography>
-              <Lottie loop={false} animationData={Sent_anim} style={{ width: "50%" }} />
+              <Lottie
+                loop={false}
+                animationData={Sent_anim}
+                style={{ width: "50%" }}
+              />
               <Typography variant="h4">
-                Thanks for sharing !!
+                But hey! Relax, We are on it...
                 <MarkEmailReadIcon
                   sx={{ color: "green", fontSize: "1.5em", mx: 2 }}
                 />
@@ -95,7 +100,7 @@ const FeedbackModal = ({ open, onClose }) => {
             </>
           ) : (
             <>
-              <Typography variant="h2">Share Your Feedback</Typography>
+              <Typography variant="h2">Report Error to Us</Typography>
               <Typography variant="h5" sx={{ my: 1, color: "#595959" }}>
                 How is your experience with quizMastery??
               </Typography>
@@ -107,28 +112,28 @@ const FeedbackModal = ({ open, onClose }) => {
                   margin: "0 0 32px",
                 }}
               >
-                {Emojis.map((item) => (
-                  <Box
-                    key={item.key}
-                    sx={{
-                      position: "relative",
-                      fontSize: "2em",
-                      mx: 3,
-                      mt: 0.5,
-                      zIndex: 100,
-                      verticalAlign: "middle",
-                      cursor: "pointer",
-                      opacity: selectedEmojiIndex === item.key ? 1 : 0.35,
-                      "&:hover": { opacity: 1 },
-                    }}
-                    onClick={() => handleEmojiClick(item.key)}
+                <FormControl sx={{ m: 1, minWidth: 220 }} error>
+                  <InputLabel id="demo-simple-select-error-label">
+                    Error type
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-error-label"
+                    id="demo-simple-select-error"
+                    value={errorType}
+                    label="Error Type"
+                    onChange={handleTypeChange}
+                    renderValue={(value) => `⚠️ ${value}`}
                   >
-                    {item.icon}
-                  </Box>
-                ))}
+                    <MenuItem value="">
+                    </MenuItem>
+                    <MenuItem value={'Portal'}>Portal</MenuItem>
+                    <MenuItem value={'Questions'}>Questions</MenuItem>
+                    <MenuItem value={'Solutions'}>Solutions</MenuItem>
+                  </Select>
+                </FormControl>
               </Box>
               <Typography variant="h4" sx={{ mb: 1, color: "black" }}>
-                Do you have any thoughts you would like to share with us??
+                Describe the error here 
               </Typography>
               <textarea
                 style={{
@@ -141,7 +146,7 @@ const FeedbackModal = ({ open, onClose }) => {
               />
               <Box>
                 <Typography variant="h5" sx={{ my: 1, color: "#595959" }}>
-                  May we follow you up on your feedback?
+                  May we follow you up for more info?
                 </Typography>
                 <FormControl>
                   <RadioGroup
@@ -181,4 +186,4 @@ const FeedbackModal = ({ open, onClose }) => {
   );
 };
 
-export default FeedbackModal;
+export default ErrorReportModal;

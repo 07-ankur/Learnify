@@ -17,7 +17,6 @@ import Mapper_pg from "./pages/Mapper/Mapper_pg";
 import { Topics } from "./utils/content";
 import Roadmap_pg from "./pages/Mapper/Roadmap_pg";
 import QuizHome from "./pages/Quizmastery/Dashboard";
-import Feedback_pg from "./pages/Quizmastery/Feedback_pg";
 
 const {ITEMS} = Blogs;
 const {TOPICS} = Analysis_Progress; 
@@ -58,7 +57,6 @@ const App = () => {
             key={skill.key} 
             path={`/quizMastery/${skill.title.replace(/ /g, '-')}`} element={<QuizHome/>}/>
           ))}
-        <Route path="/quizMastery/feedback" element={<Feedback_pg/>}/>
       </Routes>
     </div>
   );

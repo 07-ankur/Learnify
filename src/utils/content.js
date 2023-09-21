@@ -1307,7 +1307,7 @@ export const QuizDrawerList = {
       key:3,
       title:'Tutorials',
       icon:DescriptionIcon,
-      navigate:`/tutorials/`
+      navigate:`/tutorials`
     },
     {
       key:4,
