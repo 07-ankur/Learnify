@@ -17,7 +17,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Listing from "../../container/Quizmastery/List";
 import BasicTabs from "../../container/Quizmastery/BasicTabs";
-import quizTheme from "../../utils/theme";
+import {quizTheme} from "../../utils/theme";
 import { navbarContent } from "../../utils/content";
 import { Topics } from "../../utils/content";
 import { useLocation } from "react-router-dom";
@@ -25,7 +25,7 @@ import { useLocation } from "react-router-dom";
 const {Logo} = navbarContent;
 const { SKILLS } = Topics;
 
-const drawerWidth = 260;
+const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({

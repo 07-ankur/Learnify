@@ -85,7 +85,7 @@ export const mapperTheme = createTheme({
   typography,
 });
 
-const quizTheme = createTheme({
+export const quizTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
@@ -101,5 +101,22 @@ const quizTheme = createTheme({
   typography,
 });
 
-export default quizTheme;
+;
+
+ export const feedbackTheme = createTheme({
+  palette: {
+    mode: "light",
+    primary: {
+      main: "#10d5a7",
+    },
+    background: {
+      default: "#dae2f1",
+    },
+    text: {
+      secondary: "rgba(255, 255, 255, 0.6)",
+    },
+  },
+  typography,
+});
+
 

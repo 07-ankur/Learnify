@@ -1333,6 +1333,36 @@ export const QuizDrawerList = {
   ]
 }
 
+export const feedbackEmojis = {
+  Emojis:[
+    { 
+      key:1,
+      icon:'😥',
+      rating:1
+    },
+    { 
+      key:2,
+      icon:'😔',
+      rating:2
+    },
+    { 
+      key:3,
+      icon:'😐',
+      rating:3
+    },
+    { 
+      key:4,
+      icon:'😀',
+      rating:4
+    },
+    { 
+      key:5,
+      icon:'😇',
+      rating:5
+    },
+  ]
+}
+
 export const Quiz_tabs={
   TABS: [
     {
