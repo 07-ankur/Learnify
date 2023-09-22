@@ -1,13 +1,8 @@
-// Section1
+// Section1_landing
 import ShootingStarImage from "../assets/images/section1/main-bg-0-0.png";
 import MainBG from "../assets/images/section1/Learnify_bgimg.jpg";
-import TreesImage from "../assets/images/section1/main-bg-1_1.webp";
-import CliffImage from "../assets/images/section1/main-bg-2_1.webp";
-import HorseImage from "../assets/images/section1/main-bg-3.png";
 
-// Section3
-
-// Section4
+// Section4_landing
 import Analytics from "../assets/images/section4/news-image.webp";
 import Quiz_icon from "../assets/images/section4/Quiz_icon.png";
 import Webdev_icon from "../assets/images/section4/Webdev_icon.png";
@@ -22,17 +17,17 @@ import slider_img2 from "../assets/images/section5/slider_img2.png";
 import slider_img3 from "../assets/images/section5/slider_img3.png";
 
 // Section6
+import DiscordImage from "../assets/images/section10/discord.webp";
+import RedditImage from "../assets/images/section10/reddit.webp";
+import TelegramImage from "../assets/images/section10/telegram.webp";
+import TwitterImage from "../assets/images/section10/twitter.webp";
+
+// Section7
 
 import Sec7Image3 from "../assets/images/section6/Learn_anything.png";
 import Sec7Image4 from "../assets/images/section6/Certificate_icon.png";
 import Sec7Image5 from "../assets/images/section6/Flexible_learning.png";
 import Sec7Image6 from "../assets/images/section6/Save_money.png";
-
-// Section8
-import DiscordImage from "../assets/images/section10/discord.webp";
-import RedditImage from "../assets/images/section10/reddit.webp";
-import TelegramImage from "../assets/images/section10/telegram.webp";
-import TwitterImage from "../assets/images/section10/twitter.webp";
 
 // Section9
 import Near from "../assets/images/section11/near.svg";
@@ -70,23 +65,23 @@ import Logo_drk from "../assets/images/Learnify_drk.png";
 
 // Blog
 
-import image1 from "../assets/images/AI_blog.jpg";
-import image2 from "../assets/images/VR_blog.jpeg";
-import image3 from "../assets/images/Automation_blog.jpeg";
-import image4 from "../assets/images/Cybersec_blog.jpeg";
-import image5 from "../assets/images/Online_blog.jpg";
-import image6 from "../assets/images/Peer_blog.jpeg";
-import image7 from "../assets/images/Procastination_blog.webp";
-import image8 from "../assets/images/Note_blog.jpeg";
-import image9 from "../assets/images/resume_blog.jpeg";
-import image10 from "../assets/images/Navigating_blog.jpeg";
-import image11 from "../assets/images/Leadership_blog.jpeg";
-import image12 from "../assets/images/Tech_blog.jpeg";
-import image13 from "../assets/images/Cyber_blog.jpeg";
-import image14 from "../assets/images/Startup_blog.png";
-import image15 from "../assets/images/Elearn_blog.jpeg";
-import image16 from "../assets/images/Linkedin_blog.jpeg";
-import image17 from "../assets/images/Time_blog.webp";
+import image1 from "../assets/images/blogs/AI_blog.jpg";
+import image2 from "../assets/images/blogs/VR_blog.jpeg";
+import image3 from "../assets/images/blogs/Automation_blog.jpeg";
+import image4 from "../assets/images/blogs/Cybersec_blog.jpeg";
+import image5 from "../assets/images/blogs/Online_blog.jpg";
+import image6 from "../assets/images/blogs/Peer_blog.jpeg";
+import image7 from "../assets/images/blogs/Procastination_blog.webp";
+import image8 from "../assets/images/blogs/Note_blog.jpeg";
+import image9 from "../assets/images/blogs/resume_blog.jpeg";
+import image10 from "../assets/images/blogs/Navigating_blog.jpeg";
+import image11 from "../assets/images/blogs/Leadership_blog.jpeg";
+import image12 from "../assets/images/blogs/Tech_blog.jpeg";
+import image13 from "../assets/images/blogs/Cyber_blog.jpeg";
+import image14 from "../assets/images/blogs/Startup_blog.png";
+import image15 from "../assets/images/blogs/Elearn_blog.jpeg";
+import image16 from "../assets/images/blogs/Linkedin_blog.jpeg";
+import image17 from "../assets/images/blogs/Time_blog.webp";
 
 // Analysis_Card
 
@@ -101,25 +96,22 @@ import js_anim from "../assets/animations/js_anim.json";
 
 // QuizMastery
 
-import Hook_logo from '../assets/images/Hook_logo.png';
-import Component_logo from '../assets/images/Component_logo.png';
-import Router_logo from '../assets/images/Router_logo.png';
-import React_logo from '../assets/images/React_logo.png';
+import Hook_logo from "../assets/images/React_quiz/Hook_logo.png";
+import Component_logo from "../assets/images/React_quiz/Component_logo.png";
+import Router_logo from "../assets/images/React_quiz/Router_logo.png";
+import React_logo from "../assets/images/React_quiz/React_logo.png";
 
 // QuizDrawerList
 
 import HomeIcon from "@mui/icons-material/Home";
 import DescriptionIcon from "@mui/icons-material/Description";
 import DeveloperBoardIcon from "@mui/icons-material/DeveloperBoard";
-import ChatIcon from '@mui/icons-material/Chat';
-import ReportIcon from '@mui/icons-material/Report';
+import ChatIcon from "@mui/icons-material/Chat";
+import ReportIcon from "@mui/icons-material/Report";
 import QuizIcon from "@mui/icons-material/Quiz";
 
 export const section1Content = {
   MainBG,
-  TreesImage,
-  CliffImage,
-  HorseImage,
   ShootingStarImage,
   title: "Fuel Your Skills !!",
   subtitle1: "Knowledge Unbound, Success Unleashed...",
@@ -198,13 +190,7 @@ export const section3Content = {
   },
 };
 
-export const section6Content = {
-  slider_img1,
-  slider_img2,
-  slider_img3,
-};
-
-export const Section7Content = {
+export const Section4Content = {
   title: "Invest in your professional goals with Learnify Plus",
   subtitle1:
     "Get unlimited access to all courses, Projects, Specializations, and Professional Certificates on ",
@@ -242,7 +228,13 @@ export const Section7Content = {
   ],
 };
 
-export const section8Content = {
+export const section5Content = {
+  slider_img1,
+  slider_img2,
+  slider_img3,
+};
+
+export const section6Content = {
   SOCIALS: [
     { name: "Telegram", image: TelegramImage },
     { name: "Discord", image: DiscordImage },
@@ -251,7 +243,7 @@ export const section8Content = {
   ],
 };
 
-export const Section9Content = {
+export const Section7Content = {
   title: "Trusted by over 300 great teams",
   subtitle:
     "Leading companies use the same courses to help employees keep their skills fresh.",
@@ -959,11 +951,11 @@ export const Analysis_Progress = {
       key: 1,
       title: "React JS",
       points: 70,
-      tutorials_pts:40,
-      quiz_pts:10,
-      practice_pts:20,
+      tutorials_pts: 40,
+      quiz_pts: 10,
+      practice_pts: 20,
       completion: 80,
-      timeRequired: '11 Hours',
+      timeRequired: "11 Hours",
       stars: 0,
       img: React_anim,
       width: "80%",
@@ -1084,7 +1076,7 @@ export const Analysis_Progress = {
               key: 2,
               label: "Events",
               completion: true,
-            }
+            },
           ],
         },
         {
@@ -1100,7 +1092,7 @@ export const Analysis_Progress = {
               key: 2,
               label: "Forms",
               completion: true,
-            }
+            },
           ],
         },
         {
@@ -1116,7 +1108,7 @@ export const Analysis_Progress = {
               key: 2,
               label: "Sass Styling",
               completion: false,
-            }
+            },
           ],
         },
         {
@@ -1176,10 +1168,10 @@ export const Analysis_Progress = {
       key: 2,
       title: "Node JS",
       points: 50,
-      tutorials_pts:35,
-      quiz_pts:0,
-      practice_pts:15,
-      timeRequired: '11 Hours',
+      tutorials_pts: 35,
+      quiz_pts: 0,
+      practice_pts: 15,
+      timeRequired: "11 Hours",
       completion: 70,
       stars: 0,
       img: Node_anim,
@@ -1189,7 +1181,7 @@ export const Analysis_Progress = {
       key: 3,
       title: "SQL",
       points: 20,
-      timeRequired: '11 Hours',
+      timeRequired: "11 Hours",
       completion: 40,
       stars: 0,
       img: React_anim,
@@ -1199,10 +1191,10 @@ export const Analysis_Progress = {
       key: 4,
       title: "Mongo DB",
       points: 60,
-      tutorials_pts:25,
-      quiz_pts:10,
-      practice_pts:25,
-      timeRequired: '11 Hours',
+      tutorials_pts: 25,
+      quiz_pts: 10,
+      practice_pts: 25,
+      timeRequired: "11 Hours",
       completion: 50,
       stars: 0,
       img: Mongo_anim,
@@ -1212,10 +1204,10 @@ export const Analysis_Progress = {
       key: 5,
       title: "HTML",
       points: 90,
-      tutorials_pts:50,
-      quiz_pts:15,
-      practice_pts:25,
-      timeRequired: '11 Hours',
+      tutorials_pts: 50,
+      quiz_pts: 15,
+      practice_pts: 25,
+      timeRequired: "11 Hours",
       completion: 100,
       stars: 1,
       img: html_anim,
@@ -1225,10 +1217,10 @@ export const Analysis_Progress = {
       key: 6,
       title: "CSS",
       points: 80,
-      tutorials_pts:45,
-      quiz_pts:20,
-      practice_pts:15,
-      timeRequired: '11 Hours',
+      tutorials_pts: 45,
+      quiz_pts: 20,
+      practice_pts: 15,
+      timeRequired: "11 Hours",
       completion: 90,
       stars: 0,
       img: css_anim,
@@ -1238,10 +1230,10 @@ export const Analysis_Progress = {
       key: 7,
       title: "Python",
       points: 60,
-      tutorials_pts:35,
-      quiz_pts:10,
-      practice_pts:15,
-      timeRequired: '11 Hours',
+      tutorials_pts: 35,
+      quiz_pts: 10,
+      practice_pts: 15,
+      timeRequired: "11 Hours",
       completion: 70,
       stars: 0,
       img: Python_anim,
@@ -1251,10 +1243,10 @@ export const Analysis_Progress = {
       key: 8,
       title: "Express JS",
       points: 60,
-      tutorials_pts:35,
-      quiz_pts:10,
-      practice_pts:15,
-      timeRequired: '11 Hours',
+      tutorials_pts: 35,
+      quiz_pts: 10,
+      practice_pts: 15,
+      timeRequired: "11 Hours",
       completion: 70,
       stars: 0,
       img: Express_anim,
@@ -1264,10 +1256,10 @@ export const Analysis_Progress = {
       key: 9,
       title: "C++",
       points: 40,
-      tutorials_pts:30,
-      quiz_pts:0,
-      practice_pts:10,
-      timeRequired: '11 Hours',
+      tutorials_pts: 30,
+      quiz_pts: 0,
+      practice_pts: 10,
+      timeRequired: "11 Hours",
       completion: 60,
       stars: 0,
       img: Node_anim,
@@ -1277,10 +1269,10 @@ export const Analysis_Progress = {
       key: 10,
       title: "Javascript",
       points: 60,
-      tutorials_pts:35,
-      quiz_pts:10,
-      practice_pts:15,
-      timeRequired: '11 Hours',
+      tutorials_pts: 35,
+      quiz_pts: 10,
+      practice_pts: 15,
+      timeRequired: "11 Hours",
       completion: 70,
       stars: 0,
       img: js_anim,
@@ -1292,481 +1284,500 @@ export const Analysis_Progress = {
 export const QuizDrawerList = {
   List1: [
     {
-      key:1,
-      title:'Home',
-      icon:HomeIcon,
-      navigate:'/quizMastery/'
+      key: 1,
+      title: "Home",
+      icon: HomeIcon,
+      navigate: "/quizMastery/",
     },
     {
-      key:2,
-      title:'Roadmap',
-      icon:DeveloperBoardIcon,
-      navigate:'/mapper'
+      key: 2,
+      title: "Roadmap",
+      icon: DeveloperBoardIcon,
+      navigate: "/mapper",
     },
     {
-      key:3,
-      title:'Tutorials',
-      icon:DescriptionIcon,
-      navigate:`/tutorials`
+      key: 3,
+      title: "Tutorials",
+      icon: DescriptionIcon,
+      navigate: `/tutorials`,
     },
     {
-      key:4,
-      title:'My Tests',
+      key: 4,
+      title: "My Tests",
       icon: QuizIcon,
-      navigate:'/user/My-Tests'
-    }
+      navigate: "/user/My-Tests",
+    },
   ],
 
   List2: [
     {
-      key:1,
-      title:'Feedback',
-      icon:ChatIcon,
-      navigate:'/quizMastery/feedback'
+      key: 1,
+      title: "Feedback",
+      icon: ChatIcon,
+      navigate: "/quizMastery/feedback",
     },
     {
-      key:2,
-      title:'Error Report',
-      icon:ReportIcon,
-      navigate:'/quizMastery/error-report'
-    }
-  ]
-}
+      key: 2,
+      title: "Error Report",
+      icon: ReportIcon,
+      navigate: "/quizMastery/error-report",
+    },
+  ],
+};
 
 export const feedbackEmojis = {
-  Emojis:[
-    { 
-      key:1,
-      icon:'😥',
-      rating:1
+  Emojis: [
+    {
+      key: 1,
+      icon: "😥",
+      rating: 1,
     },
-    { 
-      key:2,
-      icon:'😔',
-      rating:2
+    {
+      key: 2,
+      icon: "😔",
+      rating: 2,
     },
-    { 
-      key:3,
-      icon:'😐',
-      rating:3
+    {
+      key: 3,
+      icon: "😐",
+      rating: 3,
     },
-    { 
-      key:4,
-      icon:'😀',
-      rating:4
+    {
+      key: 4,
+      icon: "😀",
+      rating: 4,
     },
-    { 
-      key:5,
-      icon:'😇',
-      rating:5
+    {
+      key: 5,
+      icon: "😇",
+      rating: 5,
     },
-  ]
-}
+  ],
+};
 
-export const Quiz_tabs={
+export const Quiz_tabs = {
   TABS: [
     {
       name: "Practice Concepts",
     },
     {
       name: "Mock Tests",
-    }
-  ]}
+    },
+  ],
+};
 
-  export const Test_cards ={
-    items:[
-        {   key:1,
-            title:'Mock Test 1',
-            subtitle:'15 Questions   ||   45 mins   ||   30marks'
-        },
-        {   key:2,
-            title:'Mock Test 2',
-            subtitle:'15 Questions   ||   45 mins   ||   30marks'
-        },
-        {   key:3,
-            title:'Mock Test 3',
-            subtitle:'15 Questions   ||   45 mins   ||   30marks'
-        },
-        {   key:4,
-            title:'Mock Test 4',
-            subtitle:'15 Questions || 45 mins || 30marks'
-        }
-    ]
-}
-  export const Practice_cards ={
-    items2:[
-        {   key:1,
-            title:'React Hooks',
-            // subtitle:'15 Questions   ||   45 mins   ||   30marks',
-            image:Hook_logo
-        },
-        {   key:2,
-            title:'React Components',
-            subtitle:'15 Questions   ||   45 mins   ||   30marks',
-            image:Component_logo
-
-        },
-        {   key:3,
-            title:'React Router',
-            subtitle:'15 Questions   ||   45 mins   ||   30marks',
-            image:Router_logo
-
-        },
-        {   key:4,
-            title:'React Rendering',
-            subtitle:'15 Questions || 45 mins || 30marks',
-            image:React_logo
-
-        }
-    ]
-}
+export const Test_cards = {
+  items: [
+    {
+      key: 1,
+      title: "Mock Test 1",
+      subtitle: "15 Questions   ||   45 mins   ||   30marks",
+    },
+    {
+      key: 2,
+      title: "Mock Test 2",
+      subtitle: "15 Questions   ||   45 mins   ||   30marks",
+    },
+    {
+      key: 3,
+      title: "Mock Test 3",
+      subtitle: "15 Questions   ||   45 mins   ||   30marks",
+    },
+    {
+      key: 4,
+      title: "Mock Test 4",
+      subtitle: "15 Questions || 45 mins || 30marks",
+    },
+  ],
+};
+export const Practice_cards = {
+  items2: [
+    {
+      key: 1,
+      title: "React Hooks",
+      // subtitle:'15 Questions   ||   45 mins   ||   30marks',
+      image: Hook_logo,
+    },
+    {
+      key: 2,
+      title: "React Components",
+      subtitle: "15 Questions   ||   45 mins   ||   30marks",
+      image: Component_logo,
+    },
+    {
+      key: 3,
+      title: "React Router",
+      subtitle: "15 Questions   ||   45 mins   ||   30marks",
+      image: Router_logo,
+    },
+    {
+      key: 4,
+      title: "React Rendering",
+      subtitle: "15 Questions || 45 mins || 30marks",
+      image: React_logo,
+    },
+  ],
+};
 
 export const Exam_cards = {
-    Questions:[
+  Questions: [
+    {
+      key: 1,
+      title: "1. Which of the following statements is correct? ",
+      options: [
         {
-            key:1,
-            title:'1. Which of the following statements is correct? ',
-            options:[
-                {
-                    opt:false,
-                    title:'A. Hooks can only be called inside React function components.'
-                },
-                {
-                    opt:false,
-                    title:'B. Hooks can only be called at the top level of a component.'
-                },
-                {
-                    opt:false,
-                    title:'C. Hooks cannot be conditional'
-                },
-                {
-                    opt:true,
-                    title:'D. All of these'
-                }
-            ],
-            correct:4
+          opt: false,
+          title:
+            "A. Hooks can only be called inside React function components.",
         },
         {
-            key:2,
-            title:'2. Hooks were added to the React in version  ',
-            options:[
-                {
-                    opt:false,
-                    title:'A. 16.6'
-                },
-                {
-                    opt:true,
-                    title:'B. 16.8'
-                },
-                {
-                    opt:false,
-                    title:'C. 16.8.6'
-                },
-                {
-                    opt:false,
-                    title:'D. 18.1'
-                }
-            ],
-            correct:2
+          opt: false,
+          title: "B. Hooks can only be called at the top level of a component.",
         },
         {
-            key:3,
-            title:'3. Which of the following hook is used to manage the state globally',
-            options:[
-                {
-                    opt:false,
-                    title:'A. UseState'
-                },
-                {
-                    opt:false,
-                    title:'B. UseEffect'
-                },
-                {
-                    opt:true,
-                    title:'C. UseContext'
-                },
-                {
-                    opt:false,
-                    title:'D. UseRef'
-                }
-            ],
-            correct:3
+          opt: false,
+          title: "C. Hooks cannot be conditional",
         },
         {
-            key:4,
-            title:'4. UseState accepts an initial state and returns two values: the current state and ',
-            options:[
-                {
-                    opt:true,
-                    title:'A. A function that updates the state.'
-                },
-                {
-                    opt:false,
-                    title:'B. The next state'
-                },
-                {
-                    opt:false,
-                    title:'C. A function that deletes the state'
-                },
-                {
-                    opt:false,
-                    title:'D. None of these'
-                }
-            ],
-            correct:1
+          opt: true,
+          title: "D. All of these",
+        },
+      ],
+      correct: 4,
+    },
+    {
+      key: 2,
+      title: "2. Hooks were added to the React in version  ",
+      options: [
+        {
+          opt: false,
+          title: "A. 16.6",
         },
         {
-            key:5,
-            title:'5. The two arguments of the useEffect hook are  ',
-            options:[
-                {
-                    opt:true,
-                    title:'A. useEffect(<function>, <dependency>)'
-                },
-                {
-                    opt:false,
-                    title:'B. useEffect(<dependency>, <function>)'
-                },
-                {
-                    opt:false,
-                    title:'C. useEffect(<function>, <state>)'
-                },
-                {
-                    opt:false,
-                    title:'D. None of these'
-                }
-            ],
-            correct:1
+          opt: true,
+          title: "B. 16.8",
         },
         {
-            key:6,
-            title:'6. Which of the following statements is not true about the react hooks',
-            options:[
-                {
-                    opt:false,
-                    title:'A. React hooks will not work in class components.'
-                },
-                {
-                    opt:false,
-                    title:'B. Hooks are reusable functions'
-                },
-                {
-                    opt:true,
-                    title:'C. One hook cannot call the other hook'
-                },
-                {
-                    opt:false,
-                    title:'D. Hooks can not be called from regular JavaScript functions. '
-                }
-            ],
-            correct:3
+          opt: false,
+          title: "C. 16.8.6",
         },
         {
-            key:7,
-            title:'7. Which of the following hook is used to access the DOM directly ',
-            options:[
-                {
-                    opt:false,
-                    title:'A. UseState'
-                },
-                {
-                    opt:false,
-                    title:'B. UseReducer'
-                },
-                {
-                    opt:true,
-                    title:'C. UseRef'
-                },
-                {
-                    opt:false,
-                    title:'D. UseContext'
-                }
-            ],
-            correct:3
+          opt: false,
+          title: "D. 18.1",
+        },
+      ],
+      correct: 2,
+    },
+    {
+      key: 3,
+      title:
+        "3. Which of the following hook is used to manage the state globally",
+      options: [
+        {
+          opt: false,
+          title: "A. UseState",
         },
         {
-            key:8,
-            title:'1. UseState accepts an initial state and returns two values: the current state and ',
-            options:[
-                {
-                    opt:true,
-                    title:'A. A function that updates the state.'
-                },
-                {
-                    opt:false,
-                    title:'B. The next state'
-                },
-                {
-                    opt:false,
-                    title:'C. A function that deletes the state'
-                },
-                {
-                    opt:false,
-                    title:'D. None of these'
-                }
-            ],
-            correct:1
+          opt: false,
+          title: "B. UseEffect",
         },
         {
-            key:9,
-            title:'8. Which of the following statements is true about the custom hooks ',
-            options:[
-                {
-                    opt:false,
-                    title:'A. Creating a custom hook is the same as creating a JavaScript function'
-                },
-                {
-                    opt:false,
-                    title:'B. It can use other hooks inside it'
-                },
-                {
-                    opt:false,
-                    title:'C. It starts with “use”'
-                },
-                {
-                    opt:true,
-                    title:'D. All of these'
-                }
-            ],
-            correct:4
+          opt: true,
+          title: "C. UseContext",
         },
         {
-            key:10,
-            title:'10. Which lifecycle methods of class component is replaced by useEffect in functional component ? ',
-            options:[
-                {
-                    opt:false,
-                    title:'A. componentDidMount()'
-                },
-                {
-                    opt:false,
-                    title:'B. componentDidUpdate()'
-                },
-                {
-                    opt:false,
-                    title:'C. componentWillUnmount()'
-                },
-                {
-                    opt:true,
-                    title:'D. All of these'
-                }
-            ],
-            correct:4
+          opt: false,
+          title: "D. UseRef",
+        },
+      ],
+      correct: 3,
+    },
+    {
+      key: 4,
+      title:
+        "4. UseState accepts an initial state and returns two values: the current state and ",
+      options: [
+        {
+          opt: true,
+          title: "A. A function that updates the state.",
         },
         {
-            key:11,
-            title:'1. UseState accepts an initial state and returns two values: the current state and ',
-            options:[
-                {
-                    opt:true,
-                    title:'A. A function that updates the state.'
-                },
-                {
-                    opt:false,
-                    title:'B. The next state'
-                },
-                {
-                    opt:false,
-                    title:'C. A function that deletes the state'
-                },
-                {
-                    opt:false,
-                    title:'D. None of these'
-                }
-            ],
-            correct:1
+          opt: false,
+          title: "B. The next state",
         },
         {
-            key:12,
-            title:'12. Which of the following hook is used to avoid re-renders ',
-            options:[
-                {
-                    opt:false,
-                    title:'A. UseReducer'
-                },
-                {
-                    opt:true,
-                    title:'B. UseRef'
-                },
-                {
-                    opt:false,
-                    title:'C. UseMemo'
-                },
-                {
-                    opt:false,
-                    title:'D. None of these'
-                }
-            ],
-            correct:2
+          opt: false,
+          title: "C. A function that deletes the state",
         },
         {
-            key:13,
-            title:'13. If you find yourself keeping track of multiple pieces of state that rely on complex logic, which may be useful? ',
-            options:[
-                {
-                    opt:false,
-                    title:'A. UseRef'
-                },
-                {
-                    opt:false,
-                    title:'B. UseState'
-                },
-                {
-                    opt:false,
-                    title:'C. UseEffect'
-                },
-                {
-                    opt:true,
-                    title:'D. UseReducer'
-                }
-            ],
-            correct:4
+          opt: false,
+          title: "D. None of these",
+        },
+      ],
+      correct: 1,
+    },
+    {
+      key: 5,
+      title: "5. The two arguments of the useEffect hook are  ",
+      options: [
+        {
+          opt: true,
+          title: "A. useEffect(<function>, <dependency>)",
         },
         {
-            key:14,
-            title:'14. Which of the following React hooks helps in performance optimization ?',
-            options:[
-                {
-                    opt:false,
-                    title:'A. UseEffect'
-                },
-                {
-                    opt:true,
-                    title:'B. UseMemo'
-                },
-                {
-                    opt:false,
-                    title:'C. UseRef'
-                },
-                {
-                    opt:false,
-                    title:'D. UseDebugValue'
-                }
-            ],
-            correct:2
+          opt: false,
+          title: "B. useEffect(<dependency>, <function>)",
         },
         {
-            key:15,
-            title:'15. Hooks can only be used inside ',
-            options:[
-                {
-                    opt:false,
-                    title:'A. class component'
-                },
-                {
-                    opt:true,
-                    title:'B. functional component'
-                },
-                {
-                    opt:false,
-                    title:'C. Either A or B'
-                },
-                {
-                    opt:false,
-                    title:'D. Both A and B'
-                }
-            ],
-            correct:2
-        }
-    ]
-}
+          opt: false,
+          title: "C. useEffect(<function>, <state>)",
+        },
+        {
+          opt: false,
+          title: "D. None of these",
+        },
+      ],
+      correct: 1,
+    },
+    {
+      key: 6,
+      title:
+        "6. Which of the following statements is not true about the react hooks",
+      options: [
+        {
+          opt: false,
+          title: "A. React hooks will not work in class components.",
+        },
+        {
+          opt: false,
+          title: "B. Hooks are reusable functions",
+        },
+        {
+          opt: true,
+          title: "C. One hook cannot call the other hook",
+        },
+        {
+          opt: false,
+          title:
+            "D. Hooks can not be called from regular JavaScript functions. ",
+        },
+      ],
+      correct: 3,
+    },
+    {
+      key: 7,
+      title:
+        "7. Which of the following hook is used to access the DOM directly ",
+      options: [
+        {
+          opt: false,
+          title: "A. UseState",
+        },
+        {
+          opt: false,
+          title: "B. UseReducer",
+        },
+        {
+          opt: true,
+          title: "C. UseRef",
+        },
+        {
+          opt: false,
+          title: "D. UseContext",
+        },
+      ],
+      correct: 3,
+    },
+    {
+      key: 8,
+      title:
+        "1. UseState accepts an initial state and returns two values: the current state and ",
+      options: [
+        {
+          opt: true,
+          title: "A. A function that updates the state.",
+        },
+        {
+          opt: false,
+          title: "B. The next state",
+        },
+        {
+          opt: false,
+          title: "C. A function that deletes the state",
+        },
+        {
+          opt: false,
+          title: "D. None of these",
+        },
+      ],
+      correct: 1,
+    },
+    {
+      key: 9,
+      title:
+        "8. Which of the following statements is true about the custom hooks ",
+      options: [
+        {
+          opt: false,
+          title:
+            "A. Creating a custom hook is the same as creating a JavaScript function",
+        },
+        {
+          opt: false,
+          title: "B. It can use other hooks inside it",
+        },
+        {
+          opt: false,
+          title: "C. It starts with “use”",
+        },
+        {
+          opt: true,
+          title: "D. All of these",
+        },
+      ],
+      correct: 4,
+    },
+    {
+      key: 10,
+      title:
+        "10. Which lifecycle methods of class component is replaced by useEffect in functional component ? ",
+      options: [
+        {
+          opt: false,
+          title: "A. componentDidMount()",
+        },
+        {
+          opt: false,
+          title: "B. componentDidUpdate()",
+        },
+        {
+          opt: false,
+          title: "C. componentWillUnmount()",
+        },
+        {
+          opt: true,
+          title: "D. All of these",
+        },
+      ],
+      correct: 4,
+    },
+    {
+      key: 11,
+      title:
+        "1. UseState accepts an initial state and returns two values: the current state and ",
+      options: [
+        {
+          opt: true,
+          title: "A. A function that updates the state.",
+        },
+        {
+          opt: false,
+          title: "B. The next state",
+        },
+        {
+          opt: false,
+          title: "C. A function that deletes the state",
+        },
+        {
+          opt: false,
+          title: "D. None of these",
+        },
+      ],
+      correct: 1,
+    },
+    {
+      key: 12,
+      title: "12. Which of the following hook is used to avoid re-renders ",
+      options: [
+        {
+          opt: false,
+          title: "A. UseReducer",
+        },
+        {
+          opt: true,
+          title: "B. UseRef",
+        },
+        {
+          opt: false,
+          title: "C. UseMemo",
+        },
+        {
+          opt: false,
+          title: "D. None of these",
+        },
+      ],
+      correct: 2,
+    },
+    {
+      key: 13,
+      title:
+        "13. If you find yourself keeping track of multiple pieces of state that rely on complex logic, which may be useful? ",
+      options: [
+        {
+          opt: false,
+          title: "A. UseRef",
+        },
+        {
+          opt: false,
+          title: "B. UseState",
+        },
+        {
+          opt: false,
+          title: "C. UseEffect",
+        },
+        {
+          opt: true,
+          title: "D. UseReducer",
+        },
+      ],
+      correct: 4,
+    },
+    {
+      key: 14,
+      title:
+        "14. Which of the following React hooks helps in performance optimization ?",
+      options: [
+        {
+          opt: false,
+          title: "A. UseEffect",
+        },
+        {
+          opt: true,
+          title: "B. UseMemo",
+        },
+        {
+          opt: false,
+          title: "C. UseRef",
+        },
+        {
+          opt: false,
+          title: "D. UseDebugValue",
+        },
+      ],
+      correct: 2,
+    },
+    {
+      key: 15,
+      title: "15. Hooks can only be used inside ",
+      options: [
+        {
+          opt: false,
+          title: "A. class component",
+        },
+        {
+          opt: true,
+          title: "B. functional component",
+        },
+        {
+          opt: false,
+          title: "C. Either A or B",
+        },
+        {
+          opt: false,
+          title: "D. Both A and B",
+        },
+      ],
+      correct: 2,
+    },
+  ],
+};

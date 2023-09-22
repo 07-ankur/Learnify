@@ -1,4 +1,4 @@
-import { Box,Container, Typography,Stack,Button } from '@mui/material'
+import { Box, Typography,Stack,Button } from '@mui/material'
 import React,{useState} from 'react'
 import {section1Content } from '../../utils/content';
 import Email_Inpt from '../../components/Inputs/Email_Inpt';
@@ -12,7 +12,7 @@ const {
     subtitle1,
     subtitle2,
     subtitle3,
-  }=section1Content;
+  } = section1Content;
 
 const Section1 = () => {
 

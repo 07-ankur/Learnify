@@ -47,7 +47,7 @@ const FeedbackModal = ({ open, onClose }) => {
   const handleSubmit = () => {
     setSubmit(true);
   };
-  
+
   return (
     <ThemeProvider theme={feedbackTheme}>
       <CssBaseline />
@@ -65,7 +65,7 @@ const FeedbackModal = ({ open, onClose }) => {
             height: "auto",
             minHeight: "70vh",
             flexDirection: "column",
-            // border: "4px solid black",
+            // border: "3px solid #2f8af5",
             borderRadius: "15px",
           }}
         >
@@ -95,9 +95,9 @@ const FeedbackModal = ({ open, onClose }) => {
             </>
           ) : (
             <>
-              <Typography variant="h2">Share Your Feedback</Typography>
-              <Typography variant="h5" sx={{ my: 1, color: "#595959" }}>
-                How is your experience with quizMastery??
+              <Typography variant="h3" sx={{color:'#0099ff'}}>Share Your Feedback</Typography>
+              <Typography variant="h5" sx={{ my: 1 }}>
+                How is your experience with Quiz Mastery??
               </Typography>
               <Box
                 sx={{

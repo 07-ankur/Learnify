@@ -1,11 +1,11 @@
 import { Container, Grid, Stack, Typography,Box } from "@mui/material";
 import React from "react";
 import Title from "../../components/Title";
-import { section8Content } from "../../utils/content";
+import { section6Content } from "../../utils/content";
 import useScrollPosition from "../../hooks/useScrollPosition";
 import { keyframes } from '@mui/system';
 
-const { SOCIALS } = section8Content;
+const { SOCIALS } = section6Content;
 
 // const translate = keyframes`
 //   from{

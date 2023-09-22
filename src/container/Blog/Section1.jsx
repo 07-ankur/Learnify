@@ -1,5 +1,5 @@
 import React from 'react'
-import MainBG from "../../assets/images/Blog_bg.jpg"
+import MainBG from "../../assets/images/Blogs/Blog_bg.jpg"
 import { Box } from '@mui/system'
 import { Typography } from '@mui/material'
 import CallMadeIcon from "@mui/icons-material/CallMade";

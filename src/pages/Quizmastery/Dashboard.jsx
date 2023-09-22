@@ -119,7 +119,7 @@ export default function QuizDashboard() {
               variant="body1"
               noWrap
               component="div"
-              color='lightgray'
+              color='white'
             >
               Quiz Mastery  
             </Typography>

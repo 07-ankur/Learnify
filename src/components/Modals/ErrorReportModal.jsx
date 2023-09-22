@@ -68,6 +68,7 @@ const ErrorReportModal = ({ open, onClose }) => {
             minWidth: "90vh",
             flexDirection: "column",
             borderRadius: "15px",
+            // border:'3px solid crimson'
           }}
         >
           <IconButton
@@ -100,7 +101,7 @@ const ErrorReportModal = ({ open, onClose }) => {
             </>
           ) : (
             <>
-              <Typography variant="h2">Report Error to Us</Typography>
+              <Typography variant="h3" sx={{color:'#d32f2f'}}>Report Error to Us</Typography>
               <Typography variant="h5" sx={{ my: 1, color: "#595959" }}>
                 How is your experience with quizMastery??
               </Typography>
