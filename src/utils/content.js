@@ -64,7 +64,6 @@ import Logo from "../assets/images/Learnify_logo.png";
 import Logo_drk from "../assets/images/Learnify_drk.png";
 
 // Blog
-
 import image1 from "../assets/images/blogs/AI_blog.jpg";
 import image2 from "../assets/images/blogs/VR_blog.jpeg";
 import image3 from "../assets/images/blogs/Automation_blog.jpeg";
@@ -84,7 +83,6 @@ import image16 from "../assets/images/blogs/Linkedin_blog.jpeg";
 import image17 from "../assets/images/blogs/Time_blog.webp";
 
 // Analysis_Card
-
 import React_anim from "../assets/animations/react_anim.json";
 import Node_anim from "../assets/animations/node_anim.json";
 import Python_anim from "../assets/animations/python_anim.json";
@@ -95,20 +93,30 @@ import Mongo_anim from "../assets/animations/mongodb_anim.json";
 import js_anim from "../assets/animations/js_anim.json";
 
 // QuizMastery
-
 import Hook_logo from "../assets/images/React_quiz/Hook_logo.png";
 import Component_logo from "../assets/images/React_quiz/Component_logo.png";
 import Router_logo from "../assets/images/React_quiz/Router_logo.png";
 import React_logo from "../assets/images/React_quiz/React_logo.png";
 
 // QuizDrawerList
-
 import HomeIcon from "@mui/icons-material/Home";
 import DescriptionIcon from "@mui/icons-material/Description";
 import DeveloperBoardIcon from "@mui/icons-material/DeveloperBoard";
 import ChatIcon from "@mui/icons-material/Chat";
 import ReportIcon from "@mui/icons-material/Report";
 import QuizIcon from "@mui/icons-material/Quiz";
+
+//Topics
+import ReactLogo from "../assets/images/Topics/React_logo.png"
+import NodeLogo from "../assets/images/Topics/Node_logo.png"
+import SQLLogo from "../assets/images/Topics/Sql_logo.png"
+import PythonLogo from "../assets/images/Topics/Python_logo.png"
+import CppLogo from "../assets/images/Topics/C++_logo.png"
+import MongoLogo from "../assets/images/Topics/Mongo_logo.png"
+import HtmlLogo from "../assets/images/Topics/Html_logo.png"
+import CssLogo from "../assets/images/Topics/Css_logo.png"
+import JsLogo from "../assets/images/Topics/Js_logo.png"
+import ExpressLogo from "../assets/images/Topics/Express_logo.png"
 
 export const section1Content = {
   MainBG,
@@ -121,9 +129,9 @@ export const section1Content = {
 
 export const section2Content = {
   items: [
-    { counter: 80, after: " K+", subtitle: "Topics Covered" },
-    { counter: 245, after: " K+", subtitle: "Tutorials" },
-    { counter: 121, after: " K+", subtitle: "Students" },
+    { counter: 40, after: " K+", subtitle: "Topics Covered" },
+    { counter: 145, after: " K+", subtitle: "Tutorials" },
+    { counter: 21, after: " K+", subtitle: "Students" },
     { counter: 100, after: " +", subtitle: "Educators" },
   ],
 };
@@ -905,42 +913,52 @@ export const Topics = {
     {
       key: 1,
       title: "HTML",
+      logo:HtmlLogo
     },
     {
       key: 2,
       title: "CSS",
+      logo:CssLogo
     },
     {
       key: 3,
       title: "React JS",
+      logo:ReactLogo
     },
     {
       key: 4,
       title: "Node JS",
+      logo:NodeLogo
     },
     {
       key: 5,
       title: "Mongo DB",
+      logo:MongoLogo
     },
     {
       key: 6,
       title: "Express JS",
+      logo:ExpressLogo
     },
     {
       key: 7,
       title: "SQL",
+      logo:SQLLogo
     },
     {
       key: 8,
       title: "Python",
+      logo:PythonLogo
     },
     {
       key: 9,
       title: "C++",
+      logo:CppLogo
     },
     {
       key: 10,
       title: "JavaScript",
+      logo:JsLogo
     },
   ],
 };
