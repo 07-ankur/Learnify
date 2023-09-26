@@ -1323,7 +1323,7 @@ export const QuizDrawerList = {
       key: 4,
       title: "My Tests",
       icon: QuizIcon,
-      navigate: "/user/My-Tests",
+      navigate: "/quizMastery/user/My-Tests",
     },
   ],
 

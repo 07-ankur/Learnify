@@ -18,6 +18,8 @@ import { Topics } from "./utils/content";
 import Roadmap_pg from "./pages/Mapper/Roadmap_pg";
 import QuizDashboard_pg from "./pages/Quizmastery/Dashboard";
 import QuizHome_pg from "./pages/Quizmastery/Home_pg";
+import Mytests from "./pages/Quizmastery/Mytests";
+import Practice_pg from "./pages/Quizmastery/Practice_pg";
 
 const {ITEMS} = Blogs;
 const {TOPICS} = Analysis_Progress; 
@@ -54,6 +56,8 @@ const App = () => {
             path={`/mapper/${skill.title.replace(/ /g, '-')}`} element={<Roadmap_pg/>}/>
           ))}      
         <Route path="/quizMastery" element={<QuizHome_pg/>}/>
+        <Route path="/quizMastery/user/My-tests" element={<Mytests/>}/>
+        <Route path="/quizMastery/practice/React-Js/React-Hooks" element={<Practice_pg/>}/>
         {SKILLS.map((skill)=>(
           <Route 
             key={skill.key} 
