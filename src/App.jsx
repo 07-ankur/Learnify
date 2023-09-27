@@ -54,10 +54,10 @@ const App = () => {
           <Route 
             key={skill.key} 
             path={`/mapper/${skill.title.replace(/ /g, '-')}`} element={<Roadmap_pg/>}/>
-          ))}      
+          ))}       
         <Route path="/quizMastery" element={<QuizHome_pg/>}/>
         <Route path="/quizMastery/user/My-tests" element={<Mytests/>}/>
-        <Route path="/quizMastery/practice/React-Js/React-Hooks" element={<Practice_pg/>}/>
+        <Route path="/quizMastery/React-Js/practice/React-Hooks" element={<Practice_pg/>}/>
         {SKILLS.map((skill)=>(
           <Route 
             key={skill.key} 

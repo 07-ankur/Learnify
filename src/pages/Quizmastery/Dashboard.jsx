@@ -17,12 +17,12 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Listing from "../../container/Quizmastery/List";
 import BasicTabs from "../../container/Quizmastery/BasicTabs";
-import {quizTheme} from "../../utils/theme";
+import { quizTheme } from "../../utils/theme";
 import { navbarContent } from "../../utils/content";
 import { Topics } from "../../utils/content";
 import { useLocation } from "react-router-dom";
 
-const {Logo} = navbarContent;
+const { Logo } = navbarContent;
 const { SKILLS } = Topics;
 
 const drawerWidth = 240;
@@ -91,8 +91,7 @@ export default function QuizDashboard() {
 
   for (let i = 0; i < SKILLS.length; i++) {
     if (
-      location.pathname ===
-      `/quizMastery/${SKILLS[i].title.replace(/ /g, "-")}`
+      location.pathname === `/quizMastery/${SKILLS[i].title.replace(/ /g, "-")}`
     ) {
       id = SKILLS[i].key - 1;
       break; // Exit the loop once a match is found
@@ -103,7 +102,11 @@ export default function QuizDashboard() {
     <ThemeProvider theme={quizTheme}>
       <CssBaseline />
       <Box sx={{ display: "flex" }}>
-        <AppBar sx={{backgroundColor:'#15202B'}} position="fixed" open={open}>
+        <AppBar
+          sx={{ backgroundColor: "#15202B" }}
+          position="fixed"
+          open={open}
+        >
           <Toolbar>
             <IconButton
               color="inherit"
@@ -119,12 +122,12 @@ export default function QuizDashboard() {
               variant="body1"
               noWrap
               component="div"
-              color='white'
+              color="white"
             >
-              Quiz Mastery  
+              Quiz Mastery
             </Typography>
             <Typography
-              sx={{ ml: "2vh", color:'#10D59B' }}
+              sx={{ ml: "2vh", color: "#10D59B" }}
               variant="body1"
               noWrap
               component="div"
@@ -140,8 +143,8 @@ export default function QuizDashboard() {
             "& .MuiDrawer-paper": {
               width: drawerWidth,
               boxSizing: "border-box",
-              backgroundColor:'#15202B',
-              borderRight:'2px solid white'
+              backgroundColor: "#15202B",
+              borderRight: "2px solid white",
             },
           }}
           variant="persistent"
@@ -166,7 +169,7 @@ export default function QuizDashboard() {
               )}
             </IconButton>
           </DrawerHeader>
-          <Divider sx={{border:'0.5px solid white'}}/>
+          <Divider sx={{ border: "0.5px solid white" }} />
           <Listing />
         </Drawer>
         <Main open={open}>
