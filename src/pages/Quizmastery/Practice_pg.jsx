@@ -86,7 +86,7 @@ export default function Practice_pg() {
             <Box sx={{display:'flex', alignItems:'center'}}>
               <Typography
                 sx={{ ml: "5vh" }}
-                variant="h5"
+                variant="h4"
                 noWrap
                 component="div"
                 color="white"
@@ -95,7 +95,7 @@ export default function Practice_pg() {
               </Typography>
               <Typography
                 sx={{ ml: "2vh", color: "white" }}
-                variant="h5"
+                variant="h4"
                 noWrap
                 component="div"
               >
@@ -103,14 +103,14 @@ export default function Practice_pg() {
               </Typography>
               <Typography
                 sx={{ ml: "2vh", color: "#10D59B" }}
-                variant="h5"
+                variant="h4"
                 noWrap
                 component="div"
               >
                 {` ---> React Hooks`}
               </Typography>
             </Box>
-            <AccountCircleIcon sx={{color:'#10D59B', fontSize:'2em'}}/>
+            <AccountCircleIcon sx={{ml:10, color:'#10D59B', fontSize:'2em'}}/>
           </Toolbar>
         </AppBar>
         <Main>

@@ -51,27 +51,28 @@ function a11yProps(index) {
 export default function QuestionTabs() {
   const [value, setValue] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [timers, setTimers] = useState([]); // Array to store timers
-  const [timeElapsed, setTimeElapsed] = useState(Array(Questions.length).fill(0)); // Array to store time elapsed for each tab
-  const activeTabRef = useRef(0); // Ref to keep track of the active tab index
+  // const [timers, setTimers] = useState([]); // Array to store timers
+  // const [timeElapsed, setTimeElapsed] = useState(Array(Questions.length).fill(0)); 
+  // // Array to store time elapsed for each tab
+  // const activeTabRef = useRef(0); // Ref to keep track of the active tab index
 
   const handleChange = (event, newValue) => {
     // Stop the previous timer when switching tabs
-    if (timers[activeTabRef.current]) {
-      clearInterval(timers[activeTabRef.current]);
-    }
+    // if (timers[activeTabRef.current]) {
+    //   clearInterval(timers[activeTabRef.current]);
+    // }
 
-    // Start a new timer for the current tab
-    activeTabRef.current = newValue;
-    const newTimers = [...timers];
-    newTimers[newValue] = setInterval(() => {
-      setTimeElapsed((prevTimeElapsed) => {
-        const newTimeElapsed = [...prevTimeElapsed];
-        newTimeElapsed[newValue]++;
-        return newTimeElapsed;
-      });
-    }, 1000);
-    setTimers(newTimers);
+    // // Start a new timer for the current tab
+    // activeTabRef.current = newValue;
+    // const newTimers = [...timers];
+    // newTimers[newValue] = setInterval(() => {
+    //   setTimeElapsed((prevTimeElapsed) => {
+    //     const newTimeElapsed = [...prevTimeElapsed];
+    //     newTimeElapsed[newValue]++;
+    //     return newTimeElapsed;
+    //   });
+    // }, 1000);
+    // setTimers(newTimers);
 
     // Update the active tab
     setValue(newValue);
@@ -87,48 +88,52 @@ export default function QuestionTabs() {
     setValue((prevValue) => Math.max(prevValue - 1, 0));
   };
 
-  const submitHandler = () => {
-    // Stop the timer for the current tab
-    if (timers[activeTabRef.current]) {
-      clearInterval(timers[activeTabRef.current]);
-    }
+  // const submitHandler = () => {
+  //   // Stop the timer for the current tab
+  //   if (timers[activeTabRef.current]) {
+  //     clearInterval(timers[activeTabRef.current]);
+  //   }
 
-    // Handle submission logic here
+  //   // Handle submission logic here
 
-    // Example: Increment the correctAnswer count
-    if (selectedAnswer) {
-      setCorrectAnswer((prevCorrectAnswer) => prevCorrectAnswer + 1);
+  //   // Example: Increment the correctAnswer count
+  //   if (selectedAnswer) {
+  //     setCorrectAnswer((prevCorrectAnswer) => prevCorrectAnswer + 1);
+  //   }
+  // };
+  
+    // useEffect(() => {
+    //   // Start the timer for the initial tab when the component mounts
+    //   if (timers[0] === null) {
+    //     const newTimers = [...timers];
+    //     newTimers[0] = setInterval(() => {
+    //       setTimeElapsed((prevTimeElapsed) => {
+    //         const newTimeElapsed = [...prevTimeElapsed];
+    //         newTimeElapsed[0]++;
+    //         return newTimeElapsed;
+    //       });
+    //     }, 1000);
+    //     setTimers(newTimers);
+    //   }
+  
+    //   return () => {
+    //     // Cleanup: Stop all timers when unmounting the component
+    //     timers.forEach((timer) => {
+    //       if (timer) {
+    //         clearInterval(timer);
+    //       }
+    //     });
+    //   };
+    // }, []);
+  
+
+    const valueHandler = (key) => {
+      setValue(key)
     }
-  };
-  
-    useEffect(() => {
-      // Start the timer for the initial tab when the component mounts
-      if (timers[0] === null) {
-        const newTimers = [...timers];
-        newTimers[0] = setInterval(() => {
-          setTimeElapsed((prevTimeElapsed) => {
-            const newTimeElapsed = [...prevTimeElapsed];
-            newTimeElapsed[0]++;
-            return newTimeElapsed;
-          });
-        }, 1000);
-        setTimers(newTimers);
-      }
-  
-      return () => {
-        // Cleanup: Stop all timers when unmounting the component
-        timers.forEach((timer) => {
-          if (timer) {
-            clearInterval(timer);
-          }
-        });
-      };
-    }, []);
-  
 
   return (
     <Box sx={{ display: "flex", flexDirection: "row" }}>
-      <Box sx={{ width: "75%" }}>
+      <Box sx={{ width: "75%"}}>
         <Box
           sx={{
             borderBottom: 1,
@@ -166,14 +171,19 @@ export default function QuestionTabs() {
               <OptionCard
                 title={itm.title}
                 onClick={() => setSelectedAnswer(itm.opt)}
-                key={itm.opt}
+                key={itm.title}
               />
             ))}
-            <Box sx={{display:'flex',mt:2, justifyContent:'center'}}>Time Elapsed: {timeElapsed[index]} seconds</Box>
+            {/* <Box sx={{display:'flex',mt:2, justifyContent:'center'}}>Time Elapsed: {timeElapsed[index]} seconds</Box> */}
           </CustomTabPanel>
         ))}
         <Box
           sx={{
+            width:'75%',
+            position:'absolute',
+            left:0,
+            right:0,
+            bottom:0,
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
@@ -192,12 +202,10 @@ export default function QuestionTabs() {
             sx={{
               width: "25%",
               fontSize: "0.8em",
-              color: "black",
-              "&:hover": { color: "white" },
+              color: "black"
             }}
-            onClick={submitHandler}
           >
-            Submit
+            Check Answer
           </ContainedButton>
           <OutlinedButton
             sx={{ width: "20%" }}
@@ -209,7 +217,7 @@ export default function QuestionTabs() {
           </OutlinedButton>
         </Box>
       </Box>
-      <StatusCard />
+      <StatusCard clickHandler={valueHandler}/>
     </Box>
   );
 }
