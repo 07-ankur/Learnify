@@ -2,19 +2,13 @@ import * as React from "react";
 import {
   Box,
   styled,
-  useTheme,
-  Drawer,
   CssBaseline,
   Toolbar,
   Typography,
-  Divider,
-  IconButton,
   ThemeProvider,
 } from "@mui/material";
 import MuiAppBar from "@mui/material/AppBar";
 import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Logo from "../../assets/images/Learnify_logo.png";
 import { quizTheme } from "../../utils/theme";
 import QuestionTabs from "../../container/Quizmastery/QuestionTabs";

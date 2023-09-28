@@ -1444,20 +1444,20 @@ export const Exam_cards = {
       title: "1. Which of the following statements is correct? ",
       options: [
         {
-          opt: false,
+          opt: 1,
           title:
             "A. Hooks can only be called inside React function components.",
         },
         {
-          opt: false,
+          opt: 2,
           title: "B. Hooks can only be called at the top level of a component.",
         },
         {
-          opt: false,
+          opt: 3,
           title: "C. Hooks cannot be conditional",
         },
         {
-          opt: true,
+          opt: 4,
           title: "D. All of these",
         },
       ],
@@ -1465,22 +1465,22 @@ export const Exam_cards = {
     },
     {
       key: 2,
-      title: "2. Hooks were added to the React in version  ",
+      title: "2. Hooks were added to the React in version",
       options: [
         {
-          opt: false,
+          opt: 1,
           title: "A. 16.6",
         },
         {
-          opt: true,
+          opt: 2,
           title: "B. 16.8",
         },
         {
-          opt: false,
+          opt: 3,
           title: "C. 16.8.6",
         },
         {
-          opt: false,
+          opt: 4,
           title: "D. 18.1",
         },
       ],
@@ -1492,19 +1492,19 @@ export const Exam_cards = {
         "3. Which of the following hook is used to manage the state globally",
       options: [
         {
-          opt: false,
+          opt: 1,
           title: "A. UseState",
         },
         {
-          opt: false,
+          opt: 2,
           title: "B. UseEffect",
         },
         {
-          opt: true,
+          opt: 3,
           title: "C. UseContext",
         },
         {
-          opt: false,
+          opt: 4,
           title: "D. UseRef",
         },
       ],
@@ -1516,19 +1516,19 @@ export const Exam_cards = {
         "4. UseState accepts an initial state and returns two values: the current state and ",
       options: [
         {
-          opt: true,
+          opt: 1,
           title: "A. A function that updates the state.",
         },
         {
-          opt: false,
+          opt: 2,
           title: "B. The next state",
         },
         {
-          opt: false,
+          opt: 3,
           title: "C. A function that deletes the state",
         },
         {
-          opt: false,
+          opt: 4,
           title: "D. None of these",
         },
       ],
@@ -1539,19 +1539,19 @@ export const Exam_cards = {
       title: "5. The two arguments of the useEffect hook are  ",
       options: [
         {
-          opt: true,
+          opt:1,
           title: "A. useEffect(<function>, <dependency>)",
         },
         {
-          opt: false,
+          opt: 2,
           title: "B. useEffect(<dependency>, <function>)",
         },
         {
-          opt: false,
+          opt: 3,
           title: "C. useEffect(<function>, <state>)",
         },
         {
-          opt: false,
+          opt: 4,
           title: "D. None of these",
         },
       ],
@@ -1563,19 +1563,19 @@ export const Exam_cards = {
         "6. Which of the following statements is not true about the react hooks",
       options: [
         {
-          opt: false,
+          opt: 1,
           title: "A. React hooks will not work in class components.",
         },
         {
-          opt: false,
+          opt: 2,
           title: "B. Hooks are reusable functions",
         },
         {
-          opt: true,
+          opt: 3,
           title: "C. One hook cannot call the other hook",
         },
         {
-          opt: false,
+          opt: 4,
           title:
             "D. Hooks can not be called from regular JavaScript functions. ",
         },
@@ -1588,19 +1588,19 @@ export const Exam_cards = {
         "7. Which of the following hook is used to access the DOM directly ",
       options: [
         {
-          opt: false,
+          opt: 1,
           title: "A. UseState",
         },
         {
-          opt: false,
+          opt: 2,
           title: "B. UseReducer",
         },
         {
-          opt: true,
+          opt: 3,
           title: "C. UseRef",
         },
         {
-          opt: false,
+          opt: 4,
           title: "D. UseContext",
         },
       ],
@@ -1612,19 +1612,19 @@ export const Exam_cards = {
         "1. UseState accepts an initial state and returns two values: the current state and ",
       options: [
         {
-          opt: true,
+          opt:1,
           title: "A. A function that updates the state.",
         },
         {
-          opt: false,
+          opt: 2,
           title: "B. The next state",
         },
         {
-          opt: false,
+          opt: 3,
           title: "C. A function that deletes the state",
         },
         {
-          opt: false,
+          opt: 4,
           title: "D. None of these",
         },
       ],
@@ -1636,20 +1636,20 @@ export const Exam_cards = {
         "8. Which of the following statements is true about the custom hooks ",
       options: [
         {
-          opt: false,
+          opt: 1,
           title:
             "A. Creating a custom hook is the same as creating a JavaScript function",
         },
         {
-          opt: false,
+          opt: 2,
           title: "B. It can use other hooks inside it",
         },
         {
-          opt: false,
+          opt: 3,
           title: "C. It starts with “use”",
         },
         {
-          opt: true,
+          opt: 4,
           title: "D. All of these",
         },
       ],
@@ -1661,19 +1661,19 @@ export const Exam_cards = {
         "10. Which lifecycle methods of class component is replaced by useEffect in functional component ? ",
       options: [
         {
-          opt: false,
+          opt: 1,
           title: "A. componentDidMount()",
         },
         {
-          opt: false,
+          opt: 2,
           title: "B. componentDidUpdate()",
         },
         {
-          opt: false,
+          opt: 3,
           title: "C. componentWillUnmount()",
         },
         {
-          opt: true,
+          opt: 4,
           title: "D. All of these",
         },
       ],
@@ -1685,19 +1685,19 @@ export const Exam_cards = {
         "1. UseState accepts an initial state and returns two values: the current state and ",
       options: [
         {
-          opt: true,
+          opt:1,
           title: "A. A function that updates the state.",
         },
         {
-          opt: false,
+          opt: 2,
           title: "B. The next state",
         },
         {
-          opt: false,
+          opt: 3,
           title: "C. A function that deletes the state",
         },
         {
-          opt: false,
+          opt: 4,
           title: "D. None of these",
         },
       ],
@@ -1708,19 +1708,19 @@ export const Exam_cards = {
       title: "12. Which of the following hook is used to avoid re-renders ",
       options: [
         {
-          opt: false,
+          opt: 1,
           title: "A. UseReducer",
         },
         {
-          opt: true,
+          opt: 2,
           title: "B. UseRef",
         },
         {
-          opt: false,
+          opt: 3,
           title: "C. UseMemo",
         },
         {
-          opt: false,
+          opt: 4,
           title: "D. None of these",
         },
       ],
@@ -1732,19 +1732,19 @@ export const Exam_cards = {
         "13. If you find yourself keeping track of multiple pieces of state that rely on complex logic, which may be useful? ",
       options: [
         {
-          opt: false,
+          opt: 1,
           title: "A. UseRef",
         },
         {
-          opt: false,
+          opt: 2,
           title: "B. UseState",
         },
         {
-          opt: false,
+          opt: 3,
           title: "C. UseEffect",
         },
         {
-          opt: true,
+          opt: 4,
           title: "D. UseReducer",
         },
       ],
@@ -1756,19 +1756,19 @@ export const Exam_cards = {
         "14. Which of the following React hooks helps in performance optimization ?",
       options: [
         {
-          opt: false,
+          opt: 1,
           title: "A. UseEffect",
         },
         {
-          opt: true,
+          opt: 2,
           title: "B. UseMemo",
         },
         {
-          opt: false,
+          opt: 3,
           title: "C. UseRef",
         },
         {
-          opt: false,
+          opt: 4,
           title: "D. UseDebugValue",
         },
       ],
@@ -1779,19 +1779,19 @@ export const Exam_cards = {
       title: "15. Hooks can only be used inside ",
       options: [
         {
-          opt: false,
+          opt: 1,
           title: "A. class component",
         },
         {
-          opt: true,
+          opt: 2,
           title: "B. functional component",
         },
         {
-          opt: false,
+          opt: 3,
           title: "C. Either A or B",
         },
         {
-          opt: false,
+          opt: 4,
           title: "D. Both A and B",
         },
       ],

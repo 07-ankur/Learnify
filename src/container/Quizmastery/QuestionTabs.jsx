@@ -6,8 +6,8 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Exam_cards } from "../../utils/content";
 import OptionCard from "../../components/Cards/OptionCard";
-import StatusCard from "../../components/Cards/StatusCard";
-import { useState, useEffect, useRef } from "react";
+import StatusTab from "./StatusTab";
+import { useState } from "react";
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import ContainedButton from "../../components/Buttons/Contained_btn";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -50,37 +50,59 @@ function a11yProps(index) {
 
 export default function QuestionTabs() {
   const [value, setValue] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  // const [timers, setTimers] = useState([]); // Array to store timers
-  // const [timeElapsed, setTimeElapsed] = useState(Array(Questions.length).fill(0)); 
-  // // Array to store time elapsed for each tab
-  // const activeTabRef = useRef(0); // Ref to keep track of the active tab index
 
   const handleChange = (event, newValue) => {
-    // Stop the previous timer when switching tabs
-    // if (timers[activeTabRef.current]) {
-    //   clearInterval(timers[activeTabRef.current]);
-    // }
-
-    // // Start a new timer for the current tab
-    // activeTabRef.current = newValue;
-    // const newTimers = [...timers];
-    // newTimers[newValue] = setInterval(() => {
-    //   setTimeElapsed((prevTimeElapsed) => {
-    //     const newTimeElapsed = [...prevTimeElapsed];
-    //     newTimeElapsed[newValue]++;
-    //     return newTimeElapsed;
-    //   });
-    // }, 1000);
-    // setTimers(newTimers);
-
-    // Update the active tab
     setValue(newValue);
   };
 
-  const [correctAnswer, setCorrectAnswer] = useState(0);
+  const [selectedOptions, setSelectedOptions] = useState(
+    Array(Questions.length).fill(null)
+  );
+  const [answersChecked, setAnswersChecked] = useState(
+    Array(Questions.length).fill(false)
+  );
 
-  const nextHandler = () => { 
+  const [correctAnswered, setCorrectAnswered] = useState(
+    Array(Questions.length).fill(null)
+  );
+  const [wrongAnswered, setWrongAnswered] = useState(
+    Array(Questions.length).fill(null)
+  );
+
+  const handleSelectOption = (questionIndex, option) => {
+    if (!answersChecked[questionIndex]) {
+      const newSelectedOptions = [...selectedOptions];
+      newSelectedOptions[questionIndex] = option;
+      setSelectedOptions(newSelectedOptions);
+    } else {
+      const newSelectedOptions = [...selectedOptions];
+      newSelectedOptions[questionIndex] = null;
+      setSelectedOptions(newSelectedOptions);
+    }
+  };
+
+  const submitAnswer = (questionIndex) => {
+    const newAnswersChecked = [...answersChecked];
+    newAnswersChecked[questionIndex] = true;
+    setAnswersChecked(newAnswersChecked);
+
+    const selectedOption = selectedOptions[questionIndex];
+    const correctOption = Questions[questionIndex].correct;
+
+    if (selectedOption === correctOption) {
+      // Answer is correct
+      const newCorrectAnswered = [...correctAnswered];
+      newCorrectAnswered[questionIndex] = selectedOptions[questionIndex];
+      setCorrectAnswered(newCorrectAnswered);
+    } else {
+      // Answer is wrong
+      const newWrongAnswered = [...wrongAnswered];
+      newWrongAnswered[questionIndex] = selectedOptions[questionIndex];
+      setWrongAnswered(newWrongAnswered);
+    }
+  };
+
+  const nextHandler = () => {
     setValue((prevValue) => Math.min(prevValue + 1, Questions.length - 1));
   };
 
@@ -88,52 +110,13 @@ export default function QuestionTabs() {
     setValue((prevValue) => Math.max(prevValue - 1, 0));
   };
 
-  // const submitHandler = () => {
-  //   // Stop the timer for the current tab
-  //   if (timers[activeTabRef.current]) {
-  //     clearInterval(timers[activeTabRef.current]);
-  //   }
-
-  //   // Handle submission logic here
-
-  //   // Example: Increment the correctAnswer count
-  //   if (selectedAnswer) {
-  //     setCorrectAnswer((prevCorrectAnswer) => prevCorrectAnswer + 1);
-  //   }
-  // };
-  
-    // useEffect(() => {
-    //   // Start the timer for the initial tab when the component mounts
-    //   if (timers[0] === null) {
-    //     const newTimers = [...timers];
-    //     newTimers[0] = setInterval(() => {
-    //       setTimeElapsed((prevTimeElapsed) => {
-    //         const newTimeElapsed = [...prevTimeElapsed];
-    //         newTimeElapsed[0]++;
-    //         return newTimeElapsed;
-    //       });
-    //     }, 1000);
-    //     setTimers(newTimers);
-    //   }
-  
-    //   return () => {
-    //     // Cleanup: Stop all timers when unmounting the component
-    //     timers.forEach((timer) => {
-    //       if (timer) {
-    //         clearInterval(timer);
-    //       }
-    //     });
-    //   };
-    // }, []);
-  
-
-    const valueHandler = (key) => {
-      setValue(key)
-    }
+  const valueHandler = (key) => {
+    setValue(key);
+  };
 
   return (
     <Box sx={{ display: "flex", flexDirection: "row" }}>
-      <Box sx={{ width: "75%"}}>
+      <Box sx={{ width: "75%" }}>
         <Box
           sx={{
             borderBottom: 1,
@@ -170,54 +153,62 @@ export default function QuestionTabs() {
             {item.options.map((itm) => (
               <OptionCard
                 title={itm.title}
-                onClick={() => setSelectedAnswer(itm.opt)}
+                opt={itm.opt}
+                questionIndex={index}
+                isAnswer={Questions[index].correct}
+                selectedOption={selectedOptions[index]}
+                correctOption={correctAnswered[index]}
+                wrongOption={wrongAnswered[index]}
+                checkedAnswer={answersChecked[index]}
+                onSelectOption={handleSelectOption}
                 key={itm.title}
               />
             ))}
-            {/* <Box sx={{display:'flex',mt:2, justifyContent:'center'}}>Time Elapsed: {timeElapsed[index]} seconds</Box> */}
+            <Box
+              sx={{
+                width: "75%",
+                position: "absolute",
+                left: 0,
+                right: 0,
+                bottom: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                p: 4,
+              }}
+            >
+              <OutlinedButton
+                sx={{ width: "20%" }}
+                onClick={prevHandler}
+                disabled={value === 0}
+              >
+                <ChevronLeftIcon />
+                Prev
+              </OutlinedButton>
+              <ContainedButton
+                sx={{
+                  width: "25%",
+                  fontSize: "0.8em",
+                  color: "black",
+                }}
+                onClick={() => submitAnswer(index)}
+                disabled={answersChecked[index]}
+              >
+                Check Answer
+              </ContainedButton>
+              <OutlinedButton
+                sx={{ width: "20%" }}
+                onClick={nextHandler}
+                disabled={value === Questions.length - 1}
+              >
+                Next
+                <ChevronRightIcon />
+              </OutlinedButton>
+            </Box>
           </CustomTabPanel>
         ))}
-        <Box
-          sx={{
-            width:'75%',
-            position:'absolute',
-            left:0,
-            right:0,
-            bottom:0,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            p: 4,
-          }}
-        >
-          <OutlinedButton
-            sx={{ width: "20%" }}
-            onClick={prevHandler}
-            disabled={value === 0}
-          >
-            <ChevronLeftIcon />
-            Prev
-          </OutlinedButton>
-          <ContainedButton
-            sx={{
-              width: "25%",
-              fontSize: "0.8em",
-              color: "black"
-            }}
-          >
-            Check Answer
-          </ContainedButton>
-          <OutlinedButton
-            sx={{ width: "20%" }}
-            onClick={nextHandler}
-            disabled={value === Questions.length - 1}
-          >
-            Next
-            <ChevronRightIcon />
-          </OutlinedButton>
-        </Box>
       </Box>
-      <StatusCard clickHandler={valueHandler}/>
+      <StatusTab clickHandler={valueHandler} />
     </Box>
   );
 }

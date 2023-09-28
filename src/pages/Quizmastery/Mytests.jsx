@@ -1,9 +1,59 @@
-import React from 'react'
+import * as React from "react";
+import {
+  Box,
+  styled,
+  CssBaseline,
+  Toolbar,
+  Typography,
+  ThemeProvider,
+} from "@mui/material";
+import MuiAppBar from "@mui/material/AppBar";
+import MenuIcon from "@mui/icons-material/Menu";
+import Logo from "../../assets/images/Learnify_logo.png";
+import { quizTheme } from "../../utils/theme";
+import QuestionTabs from "../../container/Quizmastery/QuestionTabs";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-const Mytests = () => {
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== "open",
+})(({ theme}) => ({
+  transition: theme.transitions.create(["margin", "width"], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+}));
+
+export default function Mytests() {
   return (
-    <div>Mytests</div>
-  )
+    <ThemeProvider theme={quizTheme}>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <AppBar position="fixed" sx={{ backgroundColor: "#15202B" }}>
+          <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+            <img
+              src={Logo}
+              alt="Logo"
+              style={{
+                height: "40px",
+                marginTop: "10px",
+                marginBottom: "15px",
+              }}
+            />
+            <Box sx={{display:'flex', alignItems:'center'}}>
+              <Typography
+                sx={{ ml: "5vh" }}
+                variant="h4"
+                noWrap
+                component="div"
+                color="#10D59B"
+              >
+                Quiz Mastery
+              </Typography>
+            </Box>
+            <AccountCircleIcon sx={{ml:10, color:'#10D59B', fontSize:'2em'}}/>
+          </Toolbar>
+        </AppBar>
+        </Box>
+    </ThemeProvider>
+  );
 }
-
-export default Mytests

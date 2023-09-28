@@ -1,12 +1,12 @@
 import React from "react";
 import { Box, Divider, Typography, Grid } from "@mui/material";
-import Ques_btn from "../Buttons/Ques_btn";
+import Ques_btn from "../../components/Buttons/Ques_btn";
 import { Exam_cards } from "../../utils/content";
-import ContainedButton from "../Buttons/Contained_btn";
+import ContainedButton from "../../components/Buttons/Contained_btn";
 
 const { Questions } = Exam_cards;
 
-const StatusCard = (props) => {
+const StatusTab = (props) => {
 
   return (
     <Box
@@ -58,7 +58,7 @@ const StatusCard = (props) => {
         {Questions.map((item) => (
           <Grid sx={{ m: 1 }} item xs={12} md={2} key={item.key}>
             <Ques_btn
-              clickHandler={() => props.clickHandler(item.key-1)}
+              clickHandler={() => props.clickHandler(item.key - 1)}
               bgcolor="#6daef8"
               border="#2f8af5"
               color="black"
@@ -68,11 +68,9 @@ const StatusCard = (props) => {
         ))}
       </Grid>
       <Divider sx={{ my: 2, border: "2px solid #10D59B" }} />
-      <ContainedButton sx={{color:'black'}}>
-        End Practice
-      </ContainedButton>
+      <ContainedButton sx={{ color: "black" }}>End Practice</ContainedButton>
     </Box>
   );
 };
 
-export default StatusCard;
+export default StatusTab;
