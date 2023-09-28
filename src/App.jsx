@@ -20,6 +20,7 @@ import QuizDashboard_pg from "./pages/Quizmastery/Dashboard";
 import QuizHome_pg from "./pages/Quizmastery/Home_pg";
 import Mytests from "./pages/Quizmastery/Mytests";
 import Practice_pg from "./pages/Quizmastery/Practice_pg";
+import Test_pg from "./pages/Quizmastery/Test_pg";
 
 const {ITEMS} = Blogs;
 const {TOPICS} = Analysis_Progress; 
@@ -58,6 +59,7 @@ const App = () => {
         <Route path="/quizMastery" element={<QuizHome_pg/>}/>
         <Route path="/quizMastery/user/My-tests" element={<Mytests/>}/>
         <Route path="/quizMastery/React-JS/practice/React-Hooks" element={<Practice_pg/>}/>
+        <Route path="/quizMastery/React-JS/test/Mock-Test-1" element={<Test_pg/>}/>
         {SKILLS.map((skill)=>(
           <Route 
             key={skill.key} 
