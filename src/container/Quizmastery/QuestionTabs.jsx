@@ -51,9 +51,13 @@ function a11yProps(index) {
 export default function QuestionTabs() {
   const [value, setValue] = useState(0);
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (newValue) => {
     setValue(newValue);
   };
+
+  const [questionStatus, setQuestionStatus] = useState(
+      Array(Questions.length).fill(null)
+    );
 
   const [selectedOptions, setSelectedOptions] = useState(
     Array(Questions.length).fill(null)
@@ -94,11 +98,19 @@ export default function QuestionTabs() {
       const newCorrectAnswered = [...correctAnswered];
       newCorrectAnswered[questionIndex] = selectedOptions[questionIndex];
       setCorrectAnswered(newCorrectAnswered);
+
+      const newQuestionStatus = [...questionStatus];
+      newQuestionStatus[questionIndex] = true;
+      setQuestionStatus(newQuestionStatus)
     } else {
       // Answer is wrong
       const newWrongAnswered = [...wrongAnswered];
       newWrongAnswered[questionIndex] = selectedOptions[questionIndex];
       setWrongAnswered(newWrongAnswered);
+
+      const newQuestionStatus = [...questionStatus];
+      newQuestionStatus[questionIndex] = false;
+      setQuestionStatus(newQuestionStatus)
     }
   };
 
@@ -208,7 +220,7 @@ export default function QuestionTabs() {
           </CustomTabPanel>
         ))}
       </Box>
-      <StatusTab clickHandler={valueHandler} />
+      <StatusTab status={questionStatus} clickHandler={valueHandler} />
     </Box>
   );
 }
