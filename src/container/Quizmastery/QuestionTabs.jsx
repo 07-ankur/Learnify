@@ -52,6 +52,7 @@ export default function QuestionTabs() {
   const [value, setValue] = useState(0);
 
   const handleChange = (newValue) => {
+    console.log(newValue);
     setValue(newValue);
   };
 

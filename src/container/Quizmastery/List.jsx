@@ -124,6 +124,7 @@ const Listing = () => {
     <FeedbackModal open={true} onClose={handleCloseFeedbackModal}/>}
     {isErrorModalOpen &&
     <ErrorReportModal open={true} onClose={handleCloseErrorModal}/>}
+    
     </>
   );
 };

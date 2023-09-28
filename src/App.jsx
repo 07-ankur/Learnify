@@ -57,7 +57,7 @@ const App = () => {
           ))}       
         <Route path="/quizMastery" element={<QuizHome_pg/>}/>
         <Route path="/quizMastery/user/My-tests" element={<Mytests/>}/>
-        <Route path="/quizMastery/React-Js/practice/React-Hooks" element={<Practice_pg/>}/>
+        <Route path="/quizMastery/React-JS/practice/React-Hooks" element={<Practice_pg/>}/>
         {SKILLS.map((skill)=>(
           <Route 
             key={skill.key} 

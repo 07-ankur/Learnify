@@ -3,6 +3,7 @@ import { Box, Divider, Typography, Grid } from "@mui/material";
 import Ques_btn from "../../components/Buttons/Ques_btn";
 import { Exam_cards } from "../../utils/content";
 import ContainedButton from "../../components/Buttons/Contained_btn";
+import PracticeModal from "../../components/Modals/PracticeModal";
 
 const { Questions } = Exam_cards;
 
@@ -10,6 +11,17 @@ const StatusTab = (props) => {
   const [notAnsweredCount, setNotAnsweredCount] = useState(0);
   const [correctlyAnsweredCount, setCorrectlyAnsweredCount] = useState(0);
   const [wrongAnsweredCount, setWrongAnsweredCount] = useState(0);
+
+  const [isPracticeModalOpen, setIsPracticeModalOpen] = useState(false);
+
+  const practiceHandler = () => {
+    setIsPracticeModalOpen(true);
+  }
+
+  const handleClosePracticeModal = () => {
+    setIsPracticeModalOpen(false);
+  };
+
 
   useEffect(() => {
     const notAnswered = props.status.filter((option) => option === null).length;
@@ -26,6 +38,7 @@ const StatusTab = (props) => {
   }, [props.status]);
 
   return (
+    <>
     <Box
       sx={{
         height: "90vh",
@@ -90,7 +103,7 @@ const StatusTab = (props) => {
         {Questions.map((item) => (
           <Grid sx={{ m: 1 }} item xs={12} md={2} key={item.key}>
             <Ques_btn
-              clickHandler={() => props.clickHandler(item.key - 1)}
+              clickHandler={()=>props.clickHandler(item.key - 1)}
               bgcolor={
                 props.status[item.key-1] === false
                   ? "#ff9999"
@@ -112,8 +125,11 @@ const StatusTab = (props) => {
         ))}
       </Grid>
       <Divider sx={{ my: 2, border: "2px solid #10D59B" }} />
-      <ContainedButton sx={{ color: "black" }}>End Practice</ContainedButton>
+      <ContainedButton sx={{ color: "black" }} onClick={practiceHandler}>End Practice</ContainedButton>
     </Box>
+    {isPracticeModalOpen &&
+      <PracticeModal totalQuestions={Questions.length} questionsAnswered={Questions.length - notAnsweredCount} correctlyAnsweredCount={correctlyAnsweredCount} wrongAnsweredCount={wrongAnsweredCount} open={true} onClose={handleClosePracticeModal}/>}
+      </>
   );
 };
 

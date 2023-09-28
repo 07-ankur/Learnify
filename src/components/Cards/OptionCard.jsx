@@ -26,7 +26,12 @@ const OptionCard = (props) => {
   const isOptionWrong = opt === wrongOption;
 
   const handleClick = () => {
-    if (isOptionSelected) {
+    if (isOptionCorrect) {
+      onSelectOption(questionIndex, null);
+    }
+    if (isOptionWrong) {
+      onSelectOption(questionIndex, null);
+    } else if (isOptionSelected) {
       // If the clicked option is already selected, deselect it
       onSelectOption(questionIndex, null);
     } else {
@@ -63,7 +68,13 @@ const OptionCard = (props) => {
           : isOptionSelected
           ? "#6daef8"
           : "transparent",
-        color: isOptionSelected || isCorrectOption || isOptionCorrect || isOptionCorrect ? "black" : "inherit",
+        color:
+          isCorrectOption ||
+          isOptionSelected ||
+          isOptionCorrect ||
+          isOptionCorrect
+            ? "black"
+            : "inherit",
         "&:hover": {
           border: isCorrectOption
             ? "3px solid #00b300"
@@ -74,7 +85,9 @@ const OptionCard = (props) => {
             : isOptionSelected
             ? "3px solid #2f8af5"
             : "3px solid white",
-          backgroundColor: isOptionCorrect
+          backgroundColor: isCorrectOption
+            ? "#80ff80"
+            : isOptionCorrect
             ? "#80ff80"
             : isOptionWrong
             ? "#ff9999"
