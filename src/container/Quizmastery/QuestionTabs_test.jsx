@@ -4,12 +4,11 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Exam_cards } from "../../utils/content";   
-import OptionCard from "../../components/Cards/OptionCard";
+import { Exam_cards } from "../../utils/content";
+import OptionCard from "../../components/Cards/OptionCard_test";
 import StatusTab_test from "./StatusTab_test";
 import { useState } from "react";
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
-import ContainedButton from "../../components/Buttons/Contained_btn";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
@@ -56,15 +55,12 @@ export default function QuestionTabs_test() {
     setValue(newValue);
   };
 
-  const [questionStatus, setQuestionStatus] = useState(
-      Array(Questions.length).fill(null)
-    );
-
   const [selectedOptions, setSelectedOptions] = useState(
     Array(Questions.length).fill(null)
   );
-  const [answersChecked, setAnswersChecked] = useState(
-    Array(Questions.length).fill(false)
+
+  const [questionStatus, setQuestionStatus] = useState(
+    Array(Questions.length).fill(null)
   );
 
   const [correctAnswered, setCorrectAnswered] = useState(
@@ -74,22 +70,20 @@ export default function QuestionTabs_test() {
     Array(Questions.length).fill(null)
   );
 
+  const [answersChecked, setAnswersChecked] = useState(false);
+
+  const updateAnswersChecked = (newAnswersChecked) => {
+    setAnswersChecked(newAnswersChecked);
+    console.log(newAnswersChecked); // Log the updated value here
+  };
+  
+
   const handleSelectOption = (questionIndex, option) => {
-    if (!answersChecked[questionIndex]) {
+    {
       const newSelectedOptions = [...selectedOptions];
       newSelectedOptions[questionIndex] = option;
       setSelectedOptions(newSelectedOptions);
-    } else {
-      const newSelectedOptions = [...selectedOptions];
-      newSelectedOptions[questionIndex] = null;
-      setSelectedOptions(newSelectedOptions);
     }
-  };
-
-  const submitAnswer = (questionIndex) => {
-    const newAnswersChecked = [...answersChecked];
-    newAnswersChecked[questionIndex] = true;
-    setAnswersChecked(newAnswersChecked);
 
     const selectedOption = selectedOptions[questionIndex];
     const correctOption = Questions[questionIndex].correct;
@@ -102,7 +96,7 @@ export default function QuestionTabs_test() {
 
       const newQuestionStatus = [...questionStatus];
       newQuestionStatus[questionIndex] = true;
-      setQuestionStatus(newQuestionStatus)
+      setQuestionStatus(newQuestionStatus);
     } else {
       // Answer is wrong
       const newWrongAnswered = [...wrongAnswered];
@@ -111,7 +105,7 @@ export default function QuestionTabs_test() {
 
       const newQuestionStatus = [...questionStatus];
       newQuestionStatus[questionIndex] = false;
-      setQuestionStatus(newQuestionStatus)
+      setQuestionStatus(newQuestionStatus);
     }
   };
 
@@ -172,7 +166,7 @@ export default function QuestionTabs_test() {
                 selectedOption={selectedOptions[index]}
                 correctOption={correctAnswered[index]}
                 wrongOption={wrongAnswered[index]}
-                checkedAnswer={answersChecked[index]}
+                checkedAnswer={answersChecked}
                 onSelectOption={handleSelectOption}
                 key={itm.title}
               />
@@ -198,17 +192,6 @@ export default function QuestionTabs_test() {
                 <ChevronLeftIcon />
                 Prev
               </OutlinedButton>
-              <ContainedButton
-                sx={{
-                  width: "25%",
-                  fontSize: "0.8em",
-                  color: "black",
-                }}
-                onClick={() => submitAnswer(index)}
-                disabled={answersChecked[index]}
-              >
-                Check Answer
-              </ContainedButton>
               <OutlinedButton
                 sx={{ width: "20%" }}
                 onClick={nextHandler}
@@ -221,7 +204,12 @@ export default function QuestionTabs_test() {
           </CustomTabPanel>
         ))}
       </Box>
-      <StatusTab_test status={questionStatus} clickHandler={valueHandler} />
+      <StatusTab_test
+        select={selectedOptions}
+        status={questionStatus}
+        clickHandler={valueHandler}
+        onUpdateAnswersChecked={updateAnswersChecked} // Pass the function as a prop
+      />
     </Box>
   );
 }

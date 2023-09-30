@@ -22,7 +22,6 @@ const StatusTab = (props) => {
     setIsPracticeModalOpen(false);
   };
 
-
   useEffect(() => {
     const notAnswered = props.status.filter((option) => option === null).length;
     const correctlyAnswered = props.status.filter(

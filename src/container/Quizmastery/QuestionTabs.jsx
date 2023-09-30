@@ -63,6 +63,7 @@ export default function QuestionTabs() {
   const [selectedOptions, setSelectedOptions] = useState(
     Array(Questions.length).fill(null)
   );
+  
   const [answersChecked, setAnswersChecked] = useState(
     Array(Questions.length).fill(false)
   );

@@ -1,17 +1,17 @@
 import React from "react";
 import { Box } from "@mui/material";
 
-const OptionCard = (props) => {
+const OptionCard_test = (props) => {
   const {
-    title,
-    opt,
-    questionIndex,
-    selectedOption,
-    isAnswer,
-    onSelectOption,
-    correctOption,
+    title,          // Option Title
+    opt,            // Option Number 
+    questionIndex,  // Question Index
+    selectedOption, // Option selected by user
+    isAnswer,       // Correct Option for the question
+    onSelectOption, 
+    correctOption,  
     wrongOption,
-    checkedAnswer,
+    checkedAnswer,  // is Answer Checked
   } = props;
 
   const isAnswerChecked = checkedAnswer;
@@ -21,10 +21,11 @@ const OptionCard = (props) => {
   if (isAnswerChecked) {
     isCorrectOption = opt === isAnswer;
   }
-  const isOptionSelected = opt === selectedOption;
-  const isOptionCorrect = opt === correctOption;
-  const isOptionWrong = opt === wrongOption;
 
+  const isOptionSelected = opt === selectedOption; // The Option is selected or not
+  const isOptionCorrect = isAnswerChecked && opt === correctOption; // The Option is correct or not
+  const isOptionWrong = isAnswerChecked && opt === wrongOption; // The Option is wrong or not
+ 
   const handleClick = () => {
     if (isOptionCorrect) {
       onSelectOption(questionIndex, null);
@@ -39,7 +40,6 @@ const OptionCard = (props) => {
       onSelectOption(questionIndex, opt);
     }
   };
-
   return (
     <Box
       sx={{
@@ -104,4 +104,4 @@ const OptionCard = (props) => {
   );
 };
 
-export default OptionCard;
+export default OptionCard_test;

@@ -1,17 +1,17 @@
 import * as React from "react";
+import { ThemeProvider } from "@mui/system";
 import {
   Box,
   styled,
   CssBaseline,
   Toolbar,
   Typography,
-  ThemeProvider,
 } from "@mui/material";
 import MuiAppBar from "@mui/material/AppBar";
 import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "../../assets/images/Learnify_logo.png";
 import { quizTheme } from "../../utils/theme";
-import QuestionTabs from "../../container/Quizmastery/QuestionTabs";
+import QuestionTabs_test from "../../container/Quizmastery/QuestionTabs_test";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const drawerWidth = 0;
@@ -109,7 +109,7 @@ export default function Test_pg() {
         </AppBar>
         <Main>
           <DrawerHeader />
-          <QuestionTabs />
+          <QuestionTabs_test />
         </Main>
       </Box>
     </ThemeProvider>
