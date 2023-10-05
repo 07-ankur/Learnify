@@ -86,11 +86,11 @@ export default function QuestionTabs_test() {
       const selectedOption = selectedOptions[i];
       const correctAnswer = Questions[i].correct;
   
-      if (selectedOption === correctAnswer) {
+      if (selectedOption!= null && selectedOption === correctAnswer) {
         // Answer is correct
         newCorrectAnswered[i] = selectedOption;
         newQuestionStatus[i] = true;
-      } else {
+      } else if(selectedOption!= null && selectedOption != correctAnswer){
         // Answer is wrong
         newWrongAnswered[i] = selectedOption;
         newQuestionStatus[i] = false;

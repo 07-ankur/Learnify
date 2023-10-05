@@ -19,14 +19,24 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-const PracticeModal = ({ open, onClose, totalQuestions, questionsAnswered, correctlyAnsweredCount, wrongAnsweredCount }) => {
-
-
-    const navigate = useNavigate();
+const PracticeModal = ({
+  open,
+  onClose,
+  totalQuestions,
+  questionsAnswered,
+  correctlyAnsweredCount,
+  wrongAnsweredCount,
+}) => {
+  const navigate = useNavigate();
   
-
-  const Attempted = Math.round((questionsAnswered/totalQuestions)*100)
-  const Accuracy = Math.round(((questionsAnswered - wrongAnsweredCount) / questionsAnswered) * 100)
+  const Attempted =
+    questionsAnswered === 0
+      ? 0
+      : Math.round((questionsAnswered / totalQuestions) * 100);
+  const Accuracy =
+    questionsAnswered === 0
+      ? 0
+      : Math.round((questionsAnswered / totalQuestions) * 100);
 
   return (
     <ThemeProvider theme={feedbackTheme}>
@@ -40,7 +50,7 @@ const PracticeModal = ({ open, onClose, totalQuestions, questionsAnswered, corre
         <Container
           sx={{
             bgcolor: "whitesmoke",
-            border:'3px solid black',
+            border: "3px solid black",
             display: "flex",
             p: 3,
             height: "auto",
@@ -135,9 +145,7 @@ const PracticeModal = ({ open, onClose, totalQuestions, questionsAnswered, corre
               <Typography variant="h4" sx={{ color: "#10D59B" }}>
                 Accuracy
               </Typography>
-              <Typography variant="h4">
-                {Accuracy}%
-              </Typography>
+              <Typography variant="h4">{Accuracy}%</Typography>
             </Box>
             <Box
               sx={{
@@ -152,23 +160,27 @@ const PracticeModal = ({ open, onClose, totalQuestions, questionsAnswered, corre
                 Practice Score
               </Typography>
               <Typography variant="h4">
-                {(Accuracy+Attempted)/2}%
+                {(Accuracy + Attempted) / 2}%
               </Typography>
             </Box>
           </Box>
-          <OutlinedButton onClick={() => {
-              navigate('/quizMastery/React-JS')
-            }}>Go back to Dashboard</OutlinedButton>
+          <OutlinedButton
+            onClick={() => {
+              navigate("/quizMastery/React-JS");
+            }}
+          >
+            Go back to Dashboard
+          </OutlinedButton>
           {Attempted + Accuracy > 180 ? (
-            <Typography variant="h5" sx={{ color: "#10D59B", mt:2, mx:3 }}>
-              Excellent Performance!! Keep it going 
+            <Typography variant="h5" sx={{ color: "#10D59B", mt: 2, mx: 3 }}>
+              Excellent Performance!! Keep it going
             </Typography>
           ) : Attempted + Accuracy > 150 ? (
-            <Typography variant="h5" sx={{ color: "#10D59B", mt:2, mx:3 }}>
+            <Typography variant="h5" sx={{ color: "#10D59B", mt: 2, mx: 3 }}>
               Good Job!! Practice more to perform better
             </Typography>
           ) : (
-            <Typography variant="h5" sx={{ color: "#10D59B", mt:2, mx:3 }}>
+            <Typography variant="h5" sx={{ color: "#10D59B", mt: 2, mx: 3 }}>
               You need to review the concept once again to improve understanding
             </Typography>
           )}

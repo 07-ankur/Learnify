@@ -29,10 +29,14 @@ const TestModal = ({
 }) => {
   const navigate = useNavigate();
 
-  const Attempted = Math.round((questionsAnswered / totalQuestions) * 100);
-  const Accuracy = Math.round(
-    ((questionsAnswered - wrongAnsweredCount) / questionsAnswered) * 100
-  );
+  const Attempted =
+    questionsAnswered === 0
+      ? 0
+      : Math.round((questionsAnswered / totalQuestions) * 100);
+  const Accuracy =
+    questionsAnswered === 0
+      ? 0
+      : Math.round((questionsAnswered / totalQuestions) * 100);
 
   return (
     <ThemeProvider theme={feedbackTheme}>
@@ -162,9 +166,7 @@ const TestModal = ({
           </Box>
           <OutlinedButton
             sx={{ mb: 1 }}
-            onClick={() => {
-              navigate("/quizMastery/React-JS");
-            }}
+            onClick={onClose}
           >
             Go back to Quiz
           </OutlinedButton>

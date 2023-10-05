@@ -17,14 +17,14 @@ const StatusTab_test = (props) => {
   const [isPracticeModalOpen, setIsPracticeModalOpen] = useState(false);
 
   const submitHandler = () => {
-    const isConfirmed = window.confirm("Are you sure you want to submit the test?");
-    
+    const isConfirmed = window.confirm(
+      "Are you sure you want to submit the test?"
+    );
+
     if (isConfirmed) {
       setIsEvaluated(true);
       setIsPracticeModalOpen(true);
       props.onUpdateAnswersChecked(true);
-    
-      console.log(props.select);
     }
   };
 
