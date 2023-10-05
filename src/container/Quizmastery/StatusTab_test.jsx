@@ -3,7 +3,7 @@ import { Box, Divider, Typography, Grid } from "@mui/material";
 import Ques_btn from "../../components/Buttons/Ques_btn";
 import { Exam_cards } from "../../utils/content";
 import ContainedButton from "../../components/Buttons/Contained_btn";
-import PracticeModal from "../../components/Modals/PracticeModal";
+import TestModal from "../../components/Modals/TestModal";
 
 const { Questions } = Exam_cards;
 
@@ -13,14 +13,19 @@ const StatusTab_test = (props) => {
   const [isEvaluated, setIsEvaluated] = useState(false);
   const [correctlyAnsweredCount, setCorrectlyAnsweredCount] = useState(0);
   const [wrongAnsweredCount, setWrongAnsweredCount] = useState(0);
-                                                                          
+
   const [isPracticeModalOpen, setIsPracticeModalOpen] = useState(false);
 
   const submitHandler = () => {
-    setIsEvaluated(true);
-    setIsPracticeModalOpen(true);
-  
-    props.onUpdateAnswersChecked(true);
+    const isConfirmed = window.confirm("Are you sure you want to submit the test?");
+    
+    if (isConfirmed) {
+      setIsEvaluated(true);
+      setIsPracticeModalOpen(true);
+      props.onUpdateAnswersChecked(true);
+    
+      console.log(props.select);
+    }
   };
 
   const handleClosePracticeModal = () => {
@@ -28,7 +33,7 @@ const StatusTab_test = (props) => {
   };
 
   useEffect(() => {
-    const notAnswered = props.status.filter((option) => option === null).length;
+    // const notAnswered = props.select.filter((option) => option === null).length;
     const correctlyAnswered = props.status.filter(
       (answer) => answer === true
     ).length;
@@ -36,11 +41,17 @@ const StatusTab_test = (props) => {
       (answer) => answer === false
     ).length;
 
-    setNotAnsweredCount(notAnswered);
-    setAnsweredCount(Questions.length - notAnswered)
+    // setNotAnsweredCount(notAnswered);
+    // setAnsweredCount(Questions.length - notAnswered)
     setCorrectlyAnsweredCount(correctlyAnswered);
     setWrongAnsweredCount(wrongAnswered);
   }, [props.status]);
+
+  useEffect(() => {
+    const notAnswered = props.select.filter((option) => option === null).length;
+    setNotAnsweredCount(notAnswered);
+    setAnsweredCount(Questions.length - notAnswered);
+  }, [props.select]);
 
   return (
     <>
@@ -135,7 +146,11 @@ const StatusTab_test = (props) => {
             ))}
           </Grid>
           <Divider sx={{ my: 2, border: "2px solid #10D59B" }} />
-          <ContainedButton disabled sx={{ color: "black" }} onClick={submitHandler}>
+          <ContainedButton
+            disabled
+            sx={{ color: "black" }}
+            onClick={submitHandler}
+          >
             Submit Test
           </ContainedButton>
         </Box>
@@ -209,9 +224,11 @@ const StatusTab_test = (props) => {
       )}
 
       {isPracticeModalOpen && (
-        <PracticeModal
+        <TestModal
           totalQuestions={Questions.length}
           questionsAnswered={Questions.length - notAnsweredCount}
+          correctlyAnsweredCount={correctlyAnsweredCount}
+          wrongAnsweredCount={wrongAnsweredCount}
           open={true}
           onClose={handleClosePracticeModal}
         />

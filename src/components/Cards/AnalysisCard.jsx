@@ -57,7 +57,7 @@ const AnalysisCard = ({title,points,completion,stars,img,width}) => {
       }}
     >
       <Typography variant="h4" sx={{ color: "skyblue", mt: 2, position:'relative', top:-25 }}>
-          Analyze
+        Analyze
       </Typography>
       <Box
         sx={{

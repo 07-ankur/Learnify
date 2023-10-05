@@ -13,7 +13,7 @@ const Section1 = () => {
 
   return (
     <Box sx={{mt:15,display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'center', textAlign:'center'}}>
-      <Typography variant='h2' sx={{color:'skyblue'}}><QueryStatsIcon/> Progress Overview <QueryStatsIcon/></Typography>
+      <Typography variant='h2' sx={{color:'cyan'}}><QueryStatsIcon/> Progress Overview <QueryStatsIcon/></Typography>
       <Divider sx={{width:'75%',mt:1}} variant='middle'/>
       <Container
       sx={{
@@ -25,7 +25,7 @@ const Section1 = () => {
         mx: 4,
         p: 3,
         pb:2,
-        backgroundColor: "#22303C",
+        backgroundColor: "#transparent",
         boxShadow: "0 0 15px skyblue",
         display:'flex',
         alignItems:'center',
@@ -36,21 +36,21 @@ const Section1 = () => {
     <Box sx={{display:'flex', flexDirection:'column', alignItems:'center',mx:2,my:1}}>
       <Typography variant='h2' sx={{color:'cyan'}}>190</Typography>
       <Typography variant='h4' sx={{color:'skyblue'}}>Tutorials Completed</Typography>
-      <BookIcon sx={{mt:1, color:'skyblue', fontSize:'3em'}}/>
+      <BookIcon sx={{mt:1, color:'cyan', fontSize:'3em'}}/>
     </Box>
     <Box sx={{display:'flex', flexDirection:'column', alignItems:'center',mx:2,my:1}}>
       
       <Typography variant='h2' sx={{color:'cyan'}}>20</Typography>
       <Typography variant='h4' sx={{color:'skyblue'}}>Quizes Completed</Typography>
-      <QuizIcon sx={{mt:1, color:'skyblue', fontSize:'3em'}}/>
+      <QuizIcon sx={{mt:1, color:'cyan', fontSize:'3em'}}/>
     </Box>
     <Box sx={{display:'flex', flexDirection:'column', alignItems:'center',mx:2,my:1}}>
       <Typography variant='h2' sx={{color:'cyan'}}>60 %</Typography>
       <Typography variant='h4' sx={{color:'skyblue'}}>Learning covered</Typography>
-      <PsychologyIcon sx={{mt:1, color:'skyblue', fontSize:'3em'}}/>
+      <PsychologyIcon sx={{mt:1, color:'cyan', fontSize:'3em'}}/>
     </Box>
     </Container>
-    <Typography variant='h1' sx={{color:'skyblue'}}><BarChartIcon/> Skill Chart <BarChartIcon/></Typography>
+    <Typography variant='h1' sx={{color:'cyan'}}><BarChartIcon/> Skill Chart <BarChartIcon/></Typography>
     <Typography variant='h4' sx={{color:'skyblue'}}>Analyse Your Grip over various Topics</Typography>
     <Divider sx={{width:'75%',mt:1}} variant='middle'/>
     <Skillchart/>

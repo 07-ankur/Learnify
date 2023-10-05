@@ -1,14 +1,16 @@
 import * as React from "react";
+import { useEffect } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Exam_cards } from "../../utils/content";
-import OptionCard from "../../components/Cards/OptionCard_test";
+import OptionCard_test from "../../components/Cards/OptionCard_test";
 import StatusTab_test from "./StatusTab_test";
 import { useState } from "react";
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
+import ContainedButton from "../../components/Buttons/Contained_btn";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
@@ -55,60 +57,63 @@ export default function QuestionTabs_test() {
     setValue(newValue);
   };
 
-  const [selectedOptions, setSelectedOptions] = useState(
-    Array(Questions.length).fill(null)
-  );
-
   const [questionStatus, setQuestionStatus] = useState(
     Array(Questions.length).fill(null)
   );
 
+  const [selectedOptions, setSelectedOptions] = useState(
+    Array(Questions.length).fill(null)
+  );
+  
+  const [answersChecked, setAnswersChecked] = useState(false);
+  
   const [correctAnswered, setCorrectAnswered] = useState(
     Array(Questions.length).fill(null)
   );
+
   const [wrongAnswered, setWrongAnswered] = useState(
     Array(Questions.length).fill(null)
   );
 
-  const [answersChecked, setAnswersChecked] = useState(false);
-
   const updateAnswersChecked = (newAnswersChecked) => {
     setAnswersChecked(newAnswersChecked);
-    console.log(newAnswersChecked); // Log the updated value here
-  };
   
+    const newCorrectAnswered = Array(Questions.length).fill(null);
+    const newWrongAnswered = Array(Questions.length).fill(null);
+    const newQuestionStatus = Array(Questions.length).fill(null);
+  
+    for (let i = 0; i < Questions.length; i++) {
+      const selectedOption = selectedOptions[i];
+      const correctAnswer = Questions[i].correct;
+  
+      if (selectedOption === correctAnswer) {
+        // Answer is correct
+        newCorrectAnswered[i] = selectedOption;
+        newQuestionStatus[i] = true;
+      } else {
+        // Answer is wrong
+        newWrongAnswered[i] = selectedOption;
+        newQuestionStatus[i] = false;
+      }
+    }
+  
+    setCorrectAnswered(newCorrectAnswered);
+    setWrongAnswered(newWrongAnswered);
+    setQuestionStatus(newQuestionStatus);
+  };  
 
   const handleSelectOption = (questionIndex, option) => {
-    {
+    if (!answersChecked) {
       const newSelectedOptions = [...selectedOptions];
       newSelectedOptions[questionIndex] = option;
       setSelectedOptions(newSelectedOptions);
-    }
-
-    const selectedOption = selectedOptions[questionIndex];
-    const correctOption = Questions[questionIndex].correct;
-
-    if (selectedOption === correctOption) {
-      // Answer is correct
-      const newCorrectAnswered = [...correctAnswered];
-      newCorrectAnswered[questionIndex] = selectedOptions[questionIndex];
-      setCorrectAnswered(newCorrectAnswered);
-
-      const newQuestionStatus = [...questionStatus];
-      newQuestionStatus[questionIndex] = true;
-      setQuestionStatus(newQuestionStatus);
     } else {
-      // Answer is wrong
-      const newWrongAnswered = [...wrongAnswered];
-      newWrongAnswered[questionIndex] = selectedOptions[questionIndex];
-      setWrongAnswered(newWrongAnswered);
-
-      const newQuestionStatus = [...questionStatus];
-      newQuestionStatus[questionIndex] = false;
-      setQuestionStatus(newQuestionStatus);
+      const newSelectedOptions = [...selectedOptions];
+      newSelectedOptions[questionIndex] = null;
+      setSelectedOptions(newSelectedOptions);
     }
-  };
-
+  };  
+  
   const nextHandler = () => {
     setValue((prevValue) => Math.min(prevValue + 1, Questions.length - 1));
   };
@@ -158,7 +163,7 @@ export default function QuestionTabs_test() {
               {item.title}
             </Box>
             {item.options.map((itm) => (
-              <OptionCard
+              <OptionCard_test
                 title={itm.title}
                 opt={itm.opt}
                 questionIndex={index}
@@ -192,6 +197,17 @@ export default function QuestionTabs_test() {
                 <ChevronLeftIcon />
                 Prev
               </OutlinedButton>
+              {/* <ContainedButton
+                sx={{
+                  width: "25%",
+                  fontSize: "0.8em",
+                  color: "black",
+                }}
+                onClick={() => submitAnswer(index)}
+                disabled={answersChecked[index]}
+              >
+                Check Answer
+              </ContainedButton> */}
               <OutlinedButton
                 sx={{ width: "20%" }}
                 onClick={nextHandler}
@@ -205,10 +221,11 @@ export default function QuestionTabs_test() {
         ))}
       </Box>
       <StatusTab_test
+        answersChecked={answersChecked}
+        onUpdateAnswersChecked={updateAnswersChecked}
         select={selectedOptions}
         status={questionStatus}
         clickHandler={valueHandler}
-        onUpdateAnswersChecked={updateAnswersChecked} // Pass the function as a prop
       />
     </Box>
   );
