@@ -127,6 +127,7 @@ const Section2 = () => {
         <Box sx={{ display: 'flex', justifyContent: 'center'}}>
         <Divider sx={{width:'75%',my:2}} variant='middle'>
         <Button
+          sx={{color:'white'}}
           variant="outlined"
           onClick={handleShowMore}
         >

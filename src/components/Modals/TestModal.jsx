@@ -8,7 +8,6 @@ import { ThemeProvider } from "@mui/system";
 import { feedbackTheme } from "../../utils/theme";
 import { CssBaseline } from "@mui/material";
 import OutlinedButton from "../Buttons/OutlinedButton";
-import { Navigate } from "react-router-dom";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {

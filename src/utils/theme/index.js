@@ -58,7 +58,8 @@ export const analyticTheme = createTheme({
       main: "#8899A6",
     },
     background: {
-      default: "#15202B",
+      // default: "#15202B",
+      default: "#0F172A",
     },
     text: {
       primary:"#b6c0c8",
@@ -90,6 +91,22 @@ export const quizTheme = createTheme({
     mode: "dark",
     primary: {
       main: "#10d5a7",
+    },
+    background: {
+      default: "#0F172A",
+    },
+    text: {
+      secondary: "rgba(255, 255, 255, 0.6)",
+    },
+  },
+  typography,
+});
+
+export const tutorialTheme = createTheme({
+  palette: {
+    mode: "dark",
+    primary: {
+      main: "#FFF4A3",
     },
     background: {
       default: "#0F172A",
