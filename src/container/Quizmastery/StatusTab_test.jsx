@@ -4,6 +4,7 @@ import Ques_btn from "../../components/Buttons/Ques_btn";
 import { Exam_cards } from "../../utils/content";
 import ContainedButton from "../../components/Buttons/Contained_btn";
 import TestModal from "../../components/Modals/TestModal";
+import TimerIcon from '@mui/icons-material/Timer';
 
 const { Questions } = Exam_cards;
 
@@ -13,8 +14,10 @@ const StatusTab_test = (props) => {
   const [isEvaluated, setIsEvaluated] = useState(false);
   const [correctlyAnsweredCount, setCorrectlyAnsweredCount] = useState(0);
   const [wrongAnsweredCount, setWrongAnsweredCount] = useState(0);
-
   const [isPracticeModalOpen, setIsPracticeModalOpen] = useState(false);
+
+  // Timer state
+  const [timer, setTimer] = useState(900); // 15 minutes in seconds
 
   const submitHandler = () => {
     const isConfirmed = window.confirm(
@@ -52,6 +55,25 @@ const StatusTab_test = (props) => {
     setNotAnsweredCount(notAnswered);
     setAnsweredCount(Questions.length - notAnswered);
   }, [props.select]);
+
+  // Update timer every second
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (timer > 0) {
+        setTimer(timer - 1);
+      } else {
+        // Timer has completed, automatically submit the test
+        clearInterval(interval);
+        setIsEvaluated(true);
+        setIsPracticeModalOpen(true);
+        props.onUpdateAnswersChecked(true);
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(interval); // Clean up the interval on unmount
+    };
+  }, [timer]);
 
   return (
     <>
@@ -220,6 +242,13 @@ const StatusTab_test = (props) => {
           <ContainedButton sx={{ color: "black" }} onClick={submitHandler}>
             Submit Test
           </ContainedButton>
+          {/* Timer */}
+          <Box sx={{display:'flex', alignItems:'center', mt:2}}>
+          <TimerIcon sx={{mx:0.5, mt:1, color:'#10D59B', fontSize:'2rem'}}/>
+          <Typography variant="h6" sx={{ color: "white", mt: 2 }}>
+            Time Left: {Math.floor(timer / 60)}:{(timer % 60).toString().padStart(2, "0")}
+          </Typography>
+          </Box>
         </Box>
       )}
 
