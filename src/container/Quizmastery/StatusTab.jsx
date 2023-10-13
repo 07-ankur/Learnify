@@ -11,7 +11,7 @@ const StatusTab = (props) => {
   const [notAnsweredCount, setNotAnsweredCount] = useState(0);
   const [correctlyAnsweredCount, setCorrectlyAnsweredCount] = useState(0);
   const [wrongAnsweredCount, setWrongAnsweredCount] = useState(0);
-
+  const [isEvaluated, setIsEvaluated] = useState(false);
   const [isPracticeModalOpen, setIsPracticeModalOpen] = useState(false);
 
   const submitHandler = () => {
@@ -19,6 +19,7 @@ const StatusTab = (props) => {
       "Are you sure you want to end practice?"
     );
     if (isConfirmed) {
+      setIsEvaluated(true);
       setIsPracticeModalOpen(true);
     }
   };
@@ -131,7 +132,7 @@ const StatusTab = (props) => {
           ))}
         </Grid>
         <Divider sx={{ my: 2, border: "2px solid #10D59B" }} />
-        <ContainedButton sx={{ color: "black" }} onClick={submitHandler}>
+        <ContainedButton disabled={isEvaluated} sx={{ color: "black" }} onClick={submitHandler}>
           End Practice
         </ContainedButton>
       </Box>

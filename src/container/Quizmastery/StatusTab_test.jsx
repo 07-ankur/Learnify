@@ -4,7 +4,7 @@ import Ques_btn from "../../components/Buttons/Ques_btn";
 import { Exam_cards } from "../../utils/content";
 import ContainedButton from "../../components/Buttons/Contained_btn";
 import TestModal from "../../components/Modals/TestModal";
-import TimerIcon from '@mui/icons-material/Timer';
+import TimerIcon from "@mui/icons-material/Timer";
 
 const { Questions } = Exam_cards;
 
@@ -17,7 +17,9 @@ const StatusTab_test = (props) => {
   const [isPracticeModalOpen, setIsPracticeModalOpen] = useState(false);
 
   // Timer state
-  const [timer, setTimer] = useState(600); // minutes in seconds
+  const totalTime = 600;  // minutes in seconds
+  const [timer, setTimer] = useState(totalTime); 
+  const [timeTaken, setTimeTaken] = useState(0); 
 
   const submitHandler = () => {
     const isConfirmed = window.confirm(
@@ -28,6 +30,7 @@ const StatusTab_test = (props) => {
       setIsEvaluated(true);
       setIsPracticeModalOpen(true);
       props.onUpdateAnswersChecked(true);
+      setTimeTaken(totalTime - timer);
     }
   };
 
@@ -175,6 +178,19 @@ const StatusTab_test = (props) => {
           >
             Submit Test
           </ContainedButton>
+          {/* Timer */}
+          <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
+            <TimerIcon
+              sx={{ mx: 0.5, mt: 1, color: "#6daef8", fontSize: "2rem" }}
+            />
+            <Typography variant="h5" sx={{ color: "white", mt: 2 }}>
+              Time Taken =
+            </Typography>
+            <Typography variant="h5" sx={{ color: "white", mt: 2, ml: 1 }}>
+              {Math.floor(timeTaken / 60)} :{" "}
+              {(timeTaken % 60).toString().padStart(2, "0")}
+            </Typography>
+          </Box>
         </Box>
       ) : (
         <Box
@@ -243,14 +259,17 @@ const StatusTab_test = (props) => {
             Submit Test
           </ContainedButton>
           {/* Timer */}
-          <Box sx={{display:'flex', alignItems:'center', mt:2}}>
-          <TimerIcon sx={{mx:0.5, mt:1, color:'#6daef8', fontSize:'2rem'}}/>
-          <Typography variant="h5" sx={{ color: "white", mt: 2 }}>
-            Time Left =
-          </Typography>
-          <Typography variant="h5" sx={{ color: "white", mt: 2, ml:1 }}>
-           {Math.floor(timer / 60)} : {(timer % 60).toString().padStart(2, "0")} 
-          </Typography>
+          <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
+            <TimerIcon
+              sx={{ mx: 0.5, mt: 1, color: "#6daef8", fontSize: "2rem" }}
+            />
+            <Typography variant="h5" sx={{ color: "white", mt: 2 }}>
+              Time Left =
+            </Typography>
+            <Typography variant="h5" sx={{ color: "white", mt: 2, ml: 1 }}>
+              {Math.floor(timer / 60)} :{" "}
+              {(timer % 60).toString().padStart(2, "0")}
+            </Typography>
           </Box>
         </Box>
       )}
