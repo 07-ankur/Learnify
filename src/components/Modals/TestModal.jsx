@@ -49,7 +49,7 @@ const TestModal = ({
         <Container
           sx={{
             bgcolor: "whitesmoke",
-            border: "3px solid black",
+            border: "3px solid #10D59B",
             display: "flex",
             p: 3,
             height: "auto",
@@ -72,7 +72,7 @@ const TestModal = ({
             <CloseIcon />
           </IconButton>
           <Typography variant="h3" sx={{ color: "#10D59B" }}>
-            Quiz Summary
+            Performance Summary
           </Typography>
           <Divider sx={{ border: "2px solid black" }} />
           <Box sx={{ display: "flex", flexDirection: "column", my: 2 }}>
@@ -85,7 +85,7 @@ const TestModal = ({
                 justifyContent: "space-between",
               }}
             >
-              <Typography variant="h4" sx={{ color: "#6daef8" }}>
+              <Typography variant="h4" sx={{ color: "#2f8af5" }}>
                 Total Questions
               </Typography>
               <Typography variant="h4">{totalQuestions}</Typography>
@@ -141,10 +141,13 @@ const TestModal = ({
                 justifyContent: "space-between",
               }}
             >
-              <Typography variant="h4" sx={{ color: "#10D59B" }}>
+              <Typography variant="h4" sx={{ color: "#2f8af5" }}>
                 Accuracy
               </Typography>
               <Typography variant="h4">{Accuracy}%</Typography>
+            </Box>
+            <Box sx={{display:'flex', justifyContent:'center'}}> 
+            <Divider sx={{ border: "1px solid black", width:'90%',mb:1 }} />
             </Box>
             <Box
               sx={{
@@ -156,9 +159,9 @@ const TestModal = ({
               }}
             >
               <Typography variant="h4" sx={{ color: "#10D59B" }}>
-                Practice Score
+                Quiz Score
               </Typography>
-              <Typography variant="h4">
+              <Typography variant="h4" sx={{ color: "#10D59B" }}>
                 {(Accuracy + Attempted) / 2}%
               </Typography>
             </Box>
@@ -177,15 +180,15 @@ const TestModal = ({
             Go back to Dashboard
           </OutlinedButton>
           {Attempted + Accuracy > 180 ? (
-            <Typography variant="h5" sx={{ color: "#10D59B", mt: 2, mx: 3 }}>
+            <Typography variant="h5" sx={{ color: "#2f8af5", mt: 2, mx: 3 }}>
               Excellent Performance!! Keep it going
             </Typography>
           ) : Attempted + Accuracy > 150 ? (
-            <Typography variant="h5" sx={{ color: "#10D59B", mt: 2, mx: 3 }}>
+            <Typography variant="h5" sx={{ color: "#2f8af5", mt: 2, mx: 3 }}>
               Good Job!! Practice more to perform better
             </Typography>
           ) : (
-            <Typography variant="h5" sx={{ color: "#10D59B", mt: 2, mx: 3 }}>
+            <Typography variant="h5" sx={{ color: "#2f8af5", mt: 2, mx: 3 }}>
               You need to review the concept once again to improve understanding
             </Typography>
           )}

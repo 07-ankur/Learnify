@@ -17,7 +17,7 @@ const StatusTab_test = (props) => {
   const [isPracticeModalOpen, setIsPracticeModalOpen] = useState(false);
 
   // Timer state
-  const [timer, setTimer] = useState(900); // 15 minutes in seconds
+  const [timer, setTimer] = useState(600); // minutes in seconds
 
   const submitHandler = () => {
     const isConfirmed = window.confirm(
@@ -244,9 +244,12 @@ const StatusTab_test = (props) => {
           </ContainedButton>
           {/* Timer */}
           <Box sx={{display:'flex', alignItems:'center', mt:2}}>
-          <TimerIcon sx={{mx:0.5, mt:1, color:'#10D59B', fontSize:'2rem'}}/>
-          <Typography variant="h6" sx={{ color: "white", mt: 2 }}>
-            Time Left: {Math.floor(timer / 60)}:{(timer % 60).toString().padStart(2, "0")}
+          <TimerIcon sx={{mx:0.5, mt:1, color:'#6daef8', fontSize:'2rem'}}/>
+          <Typography variant="h5" sx={{ color: "white", mt: 2 }}>
+            Time Left =
+          </Typography>
+          <Typography variant="h5" sx={{ color: "white", mt: 2, ml:1 }}>
+           {Math.floor(timer / 60)} : {(timer % 60).toString().padStart(2, "0")} 
           </Typography>
           </Box>
         </Box>
