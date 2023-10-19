@@ -2,21 +2,21 @@ import {
   AppBar,
   Container,
   IconButton,
+  Menu,
+  MenuItem,
   Stack,
   Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import useScrollPosition from "../hooks/useScrollPosition";
 import { navbarContent } from "../utils/content";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import CallMadeIcon from "@mui/icons-material/CallMade";
 import LanguageIcon from "@mui/icons-material/Language";
-// import LaunchButton from "../Buttons/LaunchButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Main_btn from "./Buttons/Main_btn";
-import {Popover} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import LinkButton from "./Buttons/Link_btn";
 import ContentCard from "./Cards/ContentsCard";
@@ -24,40 +24,44 @@ import ContentCard from "./Cards/ContentsCard";
 const { Logo } = navbarContent;
 
 const Navbar = (props) => {
-
   const sp = props.sp || 0;
-
   const navigate = useNavigate();
-
   const navigateToSignup = () => {
-    navigate('/signup')
-  }
-
+    navigate("/signup");
+  };
   const navigateToLogin = () => {
-    navigate('/login')
-  }
-
+    navigate("/login");
+  };
   const scrollPosition = useScrollPosition();
-
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
+  const [contentAnchorEl, setContentAnchorEl] = useState(null);
+  const [serviceAnchorEl, setServiceAnchorEl] = useState(null);
+  const [aboutAnchorEl, setAboutAnchorEl] = useState(null);
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handlePopoverOpen = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleContentOpen = (event) => {
+    setContentAnchorEl(event.currentTarget);
   };
-  
-  const handlePopoverClose = () => {
-    setAnchorEl(null);
-  };
-  
-  const open = Boolean(anchorEl);
 
-  // const clickHandler = () => {
-  //   <ServiceCard title={"Navbar"} subtitle={"Navbar"} />;
-  //   console.log("click");
-  // };
+  const handleContentClose = () => {
+    setContentAnchorEl(null);
+  };
+
+  const handleServiceOpen = (event) => {
+    setServiceAnchorEl(event.currentTarget);
+  };
+
+  const handleServiceClose = () => {
+    setServiceAnchorEl(null);
+  };
+
+  const handleAboutOpen = (event) => {
+    setAboutAnchorEl(event.currentTarget);
+  };
+
+  const handleAboutClose = () => {
+    setAboutAnchorEl(null);
+  };
 
   return (
     <AppBar
@@ -83,7 +87,13 @@ const Navbar = (props) => {
           flexWrap="wrap"
         >
           {/* Logo */}
-          <img onClick={()=>{navigate('/')}} src={Logo} style={{ height: "60px", objectFit: "contain", cursor:'pointer' }} />
+          <img
+            onClick={() => {
+              navigate("/");
+            }}
+            src={Logo}
+            style={{ height: "60px", objectFit: "contain", cursor: "pointer" }}
+          />
 
           {/* Links */}
           {!isMobile && (
@@ -95,95 +105,100 @@ const Navbar = (props) => {
               sx={{ flex: 1 }}
               flexWrap="wrap"
             >
-              <LinkButton
-                aria-owns={open ? "Contents" : undefined}
-                aria-haspopup="true"
-                onMouseEnter={handlePopoverOpen}
-                onMouseLeave={handlePopoverClose}
+              <div
+                onMouseEnter={handleContentOpen}
+                style={{ position: "relative" }}
               >
-                <Typography variant="body1">Contents</Typography>
-                <KeyboardArrowDownIcon fontSize="medium" />
-              </LinkButton>
-              <Popover
-                id="Contents"
-                sx={{
-                  pointerEvents: "none",
-                }}
-                open={open}
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                onClose={handlePopoverClose}
-                disableRestoreFocus
+                <LinkButton>
+                  <Typography variant="body1">Contents</Typography>
+                  <KeyboardArrowDownIcon fontSize="medium" />
+                </LinkButton>
+                </div>
+                <div
+                  onMouseLeave={handleContentClose}
+                  style={{ position: "absolute", top: "100%" }}
+                >
+                  <Menu
+                    anchorEl={contentAnchorEl}
+                    open={Boolean(contentAnchorEl)}
+                    onClose={handleContentClose}
+                  >
+                    <MenuItem sx={{ mx: 2 }}>
+                      <Typography>React Js</Typography>
+                    </MenuItem>
+                    <MenuItem sx={{ mx: 2 }}>
+                      <Typography>Node Js</Typography>
+                    </MenuItem>
+                    {/* Add more MenuItem components for other links */}
+                  </Menu>
+                </div>
+
+              {/* Add more LinkButtons and Menus for other navigation items */}
+              <div
+                onMouseEnter={handleServiceOpen}
+                style={{ position: "relative" }}
               >
-                <ContentCard onMouseEnter={handlePopoverOpen} title={'title'} subtitle={'subtitle'}/>
-              </Popover>
-              <LinkButton 
-                aria-owns={open ? "Contents" : undefined}
-                aria-haspopup="true"
-                onMouseEnter={handlePopoverOpen}
-                onMouseLeave={handlePopoverClose}
+                <LinkButton>
+                  <Typography variant="body1">Services</Typography>
+                  <KeyboardArrowDownIcon fontSize="medium" />
+                </LinkButton>
+              </div>
+                <div
+                  onMouseLeave={handleServiceClose}
+                  style={{ position: "absolute", top: "100%" }}
+                >
+                  <Menu
+                    anchorEl={serviceAnchorEl}
+                    open={Boolean(serviceAnchorEl)}
+                    onClose={handleServiceClose}
+                  >
+                    <MenuItem>
+                      <Typography>Mapper</Typography>
+                    </MenuItem>
+                    <MenuItem>
+                      <Typography>Analytics</Typography>
+                    </MenuItem>
+                    <MenuItem>
+                      <Typography>QuizMastery</Typography>
+                    </MenuItem>
+                    {/* Add more MenuItem components for other links */}
+                  </Menu>
+                </div>
+              <div
+                onMouseEnter={handleAboutOpen}
+                style={{ position: "relative" }}
               >
-                <Typography variant="body1">Services</Typography>
-                <KeyboardArrowDownIcon fontSize="medium" />
-              </LinkButton>
-              <Popover
-                id="Services"
-                sx={{
-                  pointerEvents: "none",
-                }}
-                open={open}
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                onClose={handlePopoverClose}
-                disableRestoreFocus
-              >
-                <ContentCard onMouseEnter={handlePopoverOpen} title={'title'} subtitle={'subtitle'}/>
-              </Popover>
-              <LinkButton 
-                aria-owns={open ? "About" : undefined}
-                aria-haspopup="true"
-                onMouseEnter={handlePopoverOpen}
-                onMouseLeave={handlePopoverClose}
-              >
-                <Typography variant="body1">About</Typography>
-                <KeyboardArrowDownIcon fontSize="medium" />
-              </LinkButton>
-              <Popover
-                id="Services"
-                sx={{
-                  pointerEvents: "none",
-                }}
-                open={open}
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                onClose={handlePopoverClose}
-                disableRestoreFocus
-              >
-                <ContentCard onMouseEnter={handlePopoverOpen} title={'title'} subtitle={'subtitle'}/>
-              </Popover>
+                <LinkButton>
+                  <Typography variant="body1">About</Typography>
+                  <KeyboardArrowDownIcon fontSize="medium" />
+                </LinkButton>
+                </div>
+                <div
+                  onMouseLeave={handleAboutClose}
+                  style={{ position: "absolute", top: "100%" }}
+                >
+                  <Menu
+                    anchorEl={aboutAnchorEl}
+                    open={Boolean(aboutAnchorEl)}
+                    onClose={handleAboutClose}
+                  >
+                    <MenuItem>
+                      <Typography>About</Typography>
+                    </MenuItem>
+                    {/* Add more MenuItem components for other links */}
+                  </Menu>
+                </div>
+
               <LinkButton spacing={0.5}>
-                <Typography variant="body1" color={props.color} onClick={()=>{navigate('/blog')}}>Blog</Typography>
+                <Typography
+                  variant="body1"
+                  color={props.color}
+                  onClick={() => {
+                    navigate("/blog");
+                  }}
+                >
+                  Blog
+                </Typography>
                 <CallMadeIcon sx={{ fontSize: 12 }} />
               </LinkButton>
             </Stack>
@@ -200,8 +215,6 @@ const Navbar = (props) => {
                 <LanguageIcon fontSize="small" />
                 <Typography variant="body2">EN</Typography>
               </LinkButton>
-
-              {/* <LaunchButton sx={{ borderRadius: 3 }} /> */}
               <Main_btn label={"Log In"} functionHandler={navigateToLogin} />
               <Main_btn label={"Sign Up"} functionHandler={navigateToSignup} />
             </Stack>

@@ -16,7 +16,7 @@ const Section1 = () => {
             <Typography variant='h1' sx={{letterSpacing:'0.05em',color:'#B6976A'}}>Welcome To Learnify Blog!!</Typography>
             <Typography variant='h3' sx={{mb:2.5,color:'#f0f8ffbc'}}>"Explore Insights, Tips, and Updates seamlessly"</Typography>
             <Box sx={{display:'flex',flexDirection:'row'}}>
-            <Typography variant='h5' sx={{mb:1,color:'#B6976A',letterSpacing:'0.05em'}}>Learn & Grow:- </Typography>
+            <Typography variant='h5' sx={{mb:1,color:'#f0f8ffbc',letterSpacing:'0.05em'}}>Learn & Grow:- </Typography>
             <Typography variant='h5' sx={{mb:1,color:'#B6976A',letterSpacing:'0.05em',cursor:'pointer', textDecoration:'underline', '&:hover' : {
             color: "#fff"},}}>Browse our courses </Typography>
             <CallMadeIcon sx={{ fontSize: 12 }} />
