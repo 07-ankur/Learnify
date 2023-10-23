@@ -37,7 +37,7 @@ const Home_pg = () => {
     <ThemeProvider theme={quizTheme}>
       <CssBaseline />
       <Navbar />
-      <Box sx={{ mt: 20 }}>
+      <Box sx={{ mt: 15 }}>
         <Box>
           <Typography
             sx={{
@@ -82,7 +82,7 @@ const Home_pg = () => {
               display: "flex",
               flexDirection: "column",
               width: "30%",
-              mt: -10,
+              mt: -15,
             }}
           >
             <Typography
@@ -105,14 +105,14 @@ const Home_pg = () => {
           <Lottie
             animationData={Quiz3_anim}
             loop
-            style={{ width: "70vh", marginRight: 20 }}
+            style={{ width: "70vh", marginRight: 20, marginTop:-5 }}
           />
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
               width: "30%",
-              mt: -10,
+              mt: -15,
             }}
           >
             <Typography

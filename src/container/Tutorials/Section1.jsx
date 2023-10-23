@@ -19,10 +19,10 @@ const Section1 = () => {
           flexDirection: "row",
         }}
       >
-        <Box sx={{ width: "70%" }}>
+        <Box sx={{ width: "80%" }}>
           <Lottie animationData={Tutorials_anim} />
         </Box>
-        <Box sx={{ mx: 5 }}>
+        <Box sx={{ mx: 5, p:1 }}>
           <Typography variant="h1" sx={{ color: "#FFF4A3", my: 2 }}>
             Simply Easy Learning At Your Fingertips
           </Typography>
