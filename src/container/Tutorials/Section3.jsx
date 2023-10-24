@@ -15,7 +15,7 @@ const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.h3,
   padding: theme.spacing(2),
   textAlign: "center",
-  color: "skyblue",
+  color: "#FFF4A3",
   cursor: "pointer",
   ":hover": { backgroundColor: "skyblue", color: "#192734" },
 }));
@@ -28,11 +28,11 @@ const Section3 = () => {
       <Container maxWidth='lg'
         sx={{ display: "flex", alignItems: "center", flexDirection: "column", mx:5}}
       >
-        <Typography variant="h5" sx={{ mb:2 }}>
+        <Typography variant="h5" sx={{ mb:1 }}>
           Join our millions of learners to access our free Text Library.
           From programming languages to web development our masterfully crafted Tutorials will help you master any technology or concept from scratch.
         </Typography>
-        <Box sx={{ height: "auto", mt: 4 }}>
+        <Box sx={{ height: "auto", mt: 2 }}>
           <Grid
             sx={{ mb: 4 }}
             container

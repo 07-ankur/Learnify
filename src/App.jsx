@@ -21,6 +21,7 @@ import QuizHome_pg from "./pages/Quizmastery/Home_pg";
 import Mytests from "./pages/Quizmastery/Mytests";
 import Practice_pg from "./pages/Quizmastery/Practice_pg";
 import Test_pg from "./pages/Quizmastery/Test_pg";
+import TutorialContent from "./container/Tutorials/TutorialContent";
 
 const {ITEMS} = Blogs;
 const {TOPICS} = Analysis_Progress; 
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/" element={<Landing_pg />} />
         <Route path="/home" element={<Home_pg />} />
         <Route path="/tutorials" element={<Tutorials_pg />} />
+        <Route path="/tutorialsContent" element={<TutorialContent/>}/>
         <Route path="/signup" element={<Signup_pg />} />
         <Route path="/login" element={<Login_pg />} />
         <Route path="/mapper" element={<Mapper_pg />} />
