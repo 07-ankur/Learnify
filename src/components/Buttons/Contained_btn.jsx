@@ -1,8 +1,9 @@
 import { Button } from "@mui/material";
 import React from "react";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 
-const ContainedButton = ({ sx = {}, arrow, children, fit, ...props }) => {
+const ContainedButton = ({ sx = {}, arrow, arrowRev, children, fit, ...props }) => {
   return (
     <Button
       variant="contained"
@@ -15,8 +16,9 @@ const ContainedButton = ({ sx = {}, arrow, children, fit, ...props }) => {
       }}
       {...props}
     >
+      {arrowRev && <KeyboardArrowLeftIcon fontSize="small" />}
       {children}
-      {arrow && <KeyboardArrowRightIcon fontSize="medium" sx={{ ml: 0.5 }} />}
+      {arrow && <KeyboardArrowRightIcon fontSize="small" sx={{ ml: 0.5 }} />}
     </Button>
   );
 };
