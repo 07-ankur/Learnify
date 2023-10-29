@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Box } from "@mui/system";
 import { Divider } from "@mui/material";
 import { Typography } from "@mui/material";
+import TutorialTopic from "../TutorialTopic";
 import ContainedButton from "../../../components/Buttons/Contained_btn";
 import img1 from "../../../assets/images/Tutorials/React/Home_1.png";
 import OutlinedButton from "../../../components/Buttons/OutlinedButton";
@@ -55,12 +56,7 @@ const React_Home = () => {
           React allows us to create reusable UI components.
         </Typography>
         <Divider sx={{ my: 1 }} />
-        <Typography
-          variant="h4"
-          sx={{ mx: 5, color: "#37fb68", lineHeight: "250%" }}
-        >
-          Learning by Examples
-        </Typography>
+        <TutorialTopic topic={'Learning By Examples'}/>
         <Box
           sx={{
             ml: 5,
@@ -75,12 +71,7 @@ const React_Home = () => {
           </Typography>
         </Box>
         <Divider sx={{ my: 1 }} />
-        <Typography
-          variant="h4"
-          sx={{ mx: 5, color: "#37fb68", lineHeight: "250%" }}
-        >
-          Create React App
-        </Typography>
+        <TutorialTopic topic={"Create React App"}/>
         <Typography variant="h5" sx={{ mx: 5, mb: 2, lineHeight: "180%" }}>
           To learn and test React, you should set up a React Environment on your
           computer.
@@ -125,12 +116,7 @@ const React_Home = () => {
         </Typography>
       </Box>
       <Divider sx={{ my: 2 }} />
-      <Typography
-        variant="h4"
-        sx={{ mx: 5, color: "#37fb68", lineHeight: "250%" }}
-      >
-        Run the React Application
-      </Typography>
+      <TutorialTopic topic={"Run the React Application"}/>
       <Typography variant="h5" sx={{ mx: 5, mb: 2, lineHeight: "180%" }}>
         Run this command to move to the my-react-app directory:
       </Typography>
@@ -194,7 +180,7 @@ const React_Home = () => {
         }}
       > 
         {completion ? <ChecklistIcon sx={{ color: "#37fb68", mx: 1 }} /> : <AlignHorizontalLeftIcon sx={{ color: "yellow", mx: 1 }}/>}
-        <Typography variant="h4" sx={{ color: completion?"#37fb68":"#FFF4A3" }}>
+        <Typography variant="h5" sx={{ color: completion?"#37fb68":"#FFF4A3" }}>
           {completion?'Completed':'Not Completed'}
         </Typography>
         {completion ? <ChecklistRtlIcon sx={{ color: "#37fb68", mx: 1 }} /> : <AlignHorizontalRightIcon sx={{ color: "yellow", mx: 1 }}/>}
