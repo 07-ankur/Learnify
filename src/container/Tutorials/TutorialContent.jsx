@@ -1,8 +1,11 @@
 import React from 'react'
+import { Typography } from '@mui/material';
 
-const TutorialContent = () => {
+const TutorialContent = (props) => {
   return (
-    <div>TutorialContent</div>
+    <Typography variant="h5" sx={{ mx: 5, mb: 2, lineHeight: "180%" }}>
+      <div dangerouslySetInnerHTML={{__html: props.content}}/>
+    </Typography>
   )
 }
 

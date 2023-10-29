@@ -47,7 +47,7 @@ const TutorialPage = () => {
               Next
             </ContainedButton>
           </Box>
-          <Home/>
+          <Intro/>
         </Box>
       </Box>
     </ThemeProvider>

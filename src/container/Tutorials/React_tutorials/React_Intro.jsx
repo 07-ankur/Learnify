@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { Box } from "@mui/system";
 import { Divider } from "@mui/material";
-import { Typography } from "@mui/material";
-import ContainedButton from "../../../components/Buttons/Contained_btn";
-import OutlinedButton from "../../../components/Buttons/OutlinedButton";
-import ChecklistIcon from "@mui/icons-material/Checklist";
-import ChecklistRtlIcon from "@mui/icons-material/ChecklistRtl";
-import AlignHorizontalLeftIcon from "@mui/icons-material/AlignHorizontalLeft";
-import AlignHorizontalRightIcon from "@mui/icons-material/AlignHorizontalRight";
+import TutorialTopic from "../TutorialTopic";
+import TutorialContent from "../TutorialContent";
+import TutorialCode from "../TutorialCode";
+import TutorialBox from "../TutorialBox";
+import TutorialFooter from "../TutorialFooter";
 
 const React_Intro = () => {
   const [completion, setCompletion] = useState(false);
@@ -26,66 +24,30 @@ const React_Intro = () => {
     <Box>
       <Box sx={{ mt: 2 }}>
         <Divider sx={{ my: 1 }} />
-        <Typography
-          variant="h4"
-          sx={{ mx: 5, color: "#37fb68", lineHeight: "220%" }}
-        >
-          What is React?
-        </Typography>
-        <Typography variant="h5" sx={{ mx: 5, mb: 2, lineHeight: "180%" }}>
-          React, sometimes referred to as a frontend JavaScript framework, is a
-          JavaScript library created by Facebook.
+        <TutorialTopic topic={'What is React?'}/>
+        <TutorialContent
+          content={`React, sometimes referred to as a frontend JavaScript framework, is aJavaScript library created by Facebook.
           <br />
-          React is a tool for building UI components.
-        </Typography>
+          React is a tool for building UI components.`}
+        />
         <Divider sx={{ my: 1 }} />
-        <Typography
-          variant="h4"
-          sx={{ mx: 5, color: "#37fb68", lineHeight: "220%" }}
-        >
-          How does React Work?
-        </Typography>
-        <Box
-          sx={{ my: 2, mx: 4, p: 1, borderRadius: "1em", bgcolor: "#FFF4A3" }}
-        >
-          <Typography
-            variant="h5"
-            sx={{ mx: 4, mt: 2, mb: 2, lineHeight: "150%", color: "black" }}
-          >
-            React creates a VIRTUAL DOM in memory.
-          </Typography>
-        </Box>
-        <Typography variant="h5" sx={{ mx: 5, mb: 2, lineHeight: "180%" }}>
-          Instead of manipulating the browser's DOM directly, React creates a
-          virtual DOM in memory, where it does all the necessary manipulating,
-          before making the changes in the browser DOM.
-        </Typography>
-        <Box
-          sx={{ my: 2, mx: 4, p: 1, borderRadius: "1em", bgcolor: "#FFF4A3" }}
-        >
-          <Typography
-            variant="h5"
-            sx={{ mx: 4, mt: 2, mb: 2, lineHeight: "150%", color: "black" }}
-          >
-            React only changes what needs to be changed!
-          </Typography>
-        </Box>
-        <Typography variant="h5" sx={{ mx: 5, mb: 2, lineHeight: "180%" }}>
-          React finds out what changes have been made, and changes only what
-          needs to be changed.
-          <br />
-          You will learn the various aspects of how React does this in the rest
-          of this tutorial.
-        </Typography>
+        <TutorialTopic topic={"How does React Work?"} />
+        <TutorialBox Content={"React creates a VIRTUAL DOM in memory."} />
+        <TutorialContent
+          content={
+            "Instead of manipulating the browser's DOM directly, React creates a virtual DOM in memory, where it does all the necessary manipulating, before making the changes in the browser DOM."
+          }
+        />
+        <TutorialBox Content={"React only changes what needs to be changed!"} />
+        <TutorialContent
+          content={
+            "React finds out what changes have been made, and changes only what needs to be changed. <br /> You will learn the various aspects of how React does this in the rest of this tutorial."
+          }
+        />
         <Divider sx={{ my: 1 }} />
-        <Typography
-          variant="h4"
-          sx={{ mx: 5, color: "#37fb68", lineHeight: "220%" }}
-        >
-          REACT JS History
-        </Typography>
-        <Typography variant="h5" sx={{ mx: 5, mb: 2, lineHeight: "180%" }}>
-          Current version of React.JS is V18.0.0 (April 2022).
+        <TutorialTopic topic={"REACT JS History"} />
+        <TutorialContent
+          content={`Current version of React.JS is V18.0.0 (April 2022).
           <br />
           Initial Release to the Public (V0.3.0) was in July 2013.
           <br />
@@ -96,48 +58,14 @@ const React_Intro = () => {
           Current version of create-react-app is v5.0.1 (April 2022).
           <br />
           create-react-app includes built tools such as webpack, Babel, and
-          ESLint.
-        </Typography>
+          ESLint.`}
+        />
       </Box>
-      <Divider sx={{ my: 2 }} />
-      <Box
-        sx={{
-          display: "flex",
-          width: "85%",
-          alignItems: "center",
-          justifyContent: "center",
-          mb: 2,
-        }}
-      > 
-        {completion ? <ChecklistIcon sx={{ color: "#37fb68", mx: 1 }} /> : <AlignHorizontalLeftIcon sx={{ color: "yellow", mx: 1 }}/>}
-        <Typography variant="h5" sx={{ color: completion?"#37fb68":"#FFF4A3" }}>
-          {completion?'Completed':'Not Completed'}
-        </Typography>
-        {completion ? <ChecklistRtlIcon sx={{ color: "#37fb68", mx: 1 }} /> : <AlignHorizontalRightIcon sx={{ color: "yellow", mx: 1 }}/>}
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          width: "85%",
-          alignItems: "center",
-          justifyContent: "space-between",
-          mb: 4,
-        }}
-      >
-        <ContainedButton arrowRev sx={{ mb: 2, mx: 2, color: "black" }} fit>
-          Prev
-        </ContainedButton>
-        <OutlinedButton
-          sx={{ width: "30%", color: completion ? "yellow" : "#37fb68" }}
-          onClick={toggleCompletion}
-        >
-          {message}
-        </OutlinedButton>
-        <ContainedButton arrow sx={{ mb: 2, mx: 2, color: "black" }} fit>
-          Next
-        </ContainedButton>
-      </Box>
-      <Divider sx={{ my: 2 }} />
+      <TutorialFooter
+        message={message}
+        completion={completion}
+        toggleCompletion={toggleCompletion}
+      />
     </Box>
   );
 };
