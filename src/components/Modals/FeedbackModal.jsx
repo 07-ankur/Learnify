@@ -16,7 +16,7 @@ import { CssBaseline } from "@mui/material";
 import OutlinedButton from "../Buttons/OutlinedButton";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
-import { feedbackEmojis } from "../../utils/content";
+import { feedbackEmojis } from "../../utils/contents/QuizContent";
 import Lottie from "lottie-react";
 import Sent_anim from "../../assets/animations/Sent_anim2.json";
 

@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { PieChart, Pie, Cell, Sector } from 'recharts';
-import { Analysis_Progress } from '../../utils/content';
+import { Analysis_Progress } from '../../utils/contents/AnalyticsContent';
 
 const {TOPICS} = Analysis_Progress;
 

@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { Stack } from "@mui/system";
 import React from "react";
-import { footerContent } from "../utils/content";
+import { footerContent } from "../utils/contents/MainContent";
 import OutlinedButton from "./Buttons/OutlinedButton";
 import Title from "./Title";
 import Logo from '../assets/images/Learnify_logo.png';

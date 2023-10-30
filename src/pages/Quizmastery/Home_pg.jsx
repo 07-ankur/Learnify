@@ -16,7 +16,7 @@ import {
 import Lottie from "lottie-react";
 import Quiz3_anim from "../../assets/animations/Quiz3_anim.json";
 import Down_anim from "../../assets/animations/Down_anim.json";
-import { Topics } from "../../utils/content";
+import { Topics } from "../../utils/contents/MainContent";
 
 const { SKILLS } = Topics;
 

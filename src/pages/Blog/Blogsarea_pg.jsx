@@ -9,7 +9,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import {Divider} from '@mui/material';
-import { Blogs } from '../../utils/content';
+import { Blogs } from '../../utils/contents/BlogContent';
 import BlogContent from '../../container/Blog/BlogContent';
 import { useNavigate } from 'react-router-dom';
 import OutlinedButton from "../../components/Buttons/OutlinedButton";

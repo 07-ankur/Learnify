@@ -18,8 +18,8 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Listing from "../../container/Quizmastery/List";
 import BasicTabs from "../../container/Quizmastery/BasicTabs";
 import { quizTheme } from "../../utils/theme";
-import { navbarContent } from "../../utils/content";
-import { Topics } from "../../utils/content";
+import { navbarContent } from "../../utils/contents/MainContent";
+import { Topics } from "../../utils/contents/MainContent";
 import { useLocation } from "react-router-dom";
 
 const { Logo } = navbarContent;

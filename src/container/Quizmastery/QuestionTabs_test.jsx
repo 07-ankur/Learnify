@@ -1,16 +1,16 @@
 import * as React from "react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Exam_cards } from "../../utils/content";
+import { Exam_cards } from "../../utils/contents/QuizContent";
 import OptionCard_test from "../../components/Cards/OptionCard_test";
 import StatusTab_test from "./StatusTab_test";
 import { useState } from "react";
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
-import ContainedButton from "../../components/Buttons/Contained_btn";
+// import ContainedButton from "../../components/Buttons/Contained_btn";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 

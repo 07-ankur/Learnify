@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import BlogCard from '../../components/Cards/BlogCard'
-import { Blogs } from '../../utils/content'
+import { Blogs } from '../../utils/contents/BlogContent'
 import {Typography} from '@mui/material';
 import { Box, Grid, Select, MenuItem, FormControl, InputLabel, Button, Divider } from '@mui/material';
 

@@ -9,7 +9,7 @@ import LinearProgress, {
 } from "@mui/material/LinearProgress";
 import { styled } from "@mui/material/styles";
 import { useLocation } from "react-router-dom";
-import { Analysis_Progress } from "../../utils/content";
+import { Analysis_Progress } from "../../utils/contents/AnalyticsContent";
 
 const { TOPICS } = Analysis_Progress;
 

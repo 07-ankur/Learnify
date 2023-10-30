@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import useScrollPosition from "../hooks/useScrollPosition";
-import { navbarContent } from "../utils/content";
+import { navbarContent } from "../utils/contents/MainContent";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import CallMadeIcon from "@mui/icons-material/CallMade";
 import LanguageIcon from "@mui/icons-material/Language";

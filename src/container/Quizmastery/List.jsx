@@ -11,7 +11,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { QuizDrawerList } from "../../utils/content";
+import { QuizDrawerList } from "../../utils/contents/QuizContent";
 import FeedbackModal from "../../components/Modals/FeedbackModal";
 import ErrorReportModal from "../../components/Modals/ErrorReportModal";
 

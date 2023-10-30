@@ -5,7 +5,7 @@ import Paper from "@mui/material/Paper";
 import React from "react";
 import { Divider } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { Topics } from "../../utils/content";
+import { Topics } from "../../utils/contents/MainContent";
 import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import Gps_anim from "../../assets/animations/Gps_anim.json"

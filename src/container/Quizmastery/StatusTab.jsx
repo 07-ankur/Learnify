@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Box, Divider, Typography, Grid } from "@mui/material";
 import Ques_btn from "../../components/Buttons/Ques_btn";
-import { Exam_cards } from "../../utils/content";
+import { Exam_cards } from "../../utils/contents/QuizContent";
 import ContainedButton from "../../components/Buttons/Contained_btn";
 import PracticeModal from "../../components/Modals/PracticeModal";
 

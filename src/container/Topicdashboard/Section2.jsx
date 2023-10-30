@@ -5,7 +5,7 @@ import { Divider } from "@mui/material";
 import { PieChart, Pie, Cell } from "recharts";
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import { useLocation } from "react-router-dom";
-import { Analysis_Progress } from "../../utils/content";
+import { Analysis_Progress } from "../../utils/contents/AnalyticsContent";
 
 const { TOPICS } = Analysis_Progress;
 

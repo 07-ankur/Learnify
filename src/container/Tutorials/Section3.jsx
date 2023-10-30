@@ -6,7 +6,7 @@ import { tutorialTheme } from "../../utils/theme";
 import { Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-import { Topics } from "../../utils/content";
+import { Topics } from "../../utils/contents/MainContent";
 
 const { SKILLS } = Topics;
 

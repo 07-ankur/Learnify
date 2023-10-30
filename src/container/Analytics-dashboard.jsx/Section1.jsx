@@ -13,7 +13,7 @@ const Section1 = () => {
 
   return (
     <Box sx={{mt:15,display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'center', textAlign:'center'}}>
-      <Typography variant='h2' sx={{color:'cyan'}}><QueryStatsIcon/> Progress Overview <QueryStatsIcon/></Typography>
+      <Typography variant='h2' sx={{color:'skyblue'}}><QueryStatsIcon/> Progress Overview <QueryStatsIcon/></Typography>
       <Divider sx={{width:'75%',mt:1}} variant='middle'/>
       <Container
       sx={{
@@ -50,8 +50,8 @@ const Section1 = () => {
       <PsychologyIcon sx={{mt:1, color:'cyan', fontSize:'3em'}}/>
     </Box>
     </Container>
-    <Typography variant='h1' sx={{color:'cyan'}}><BarChartIcon/> Skill Chart <BarChartIcon/></Typography>
-    <Typography variant='h4' sx={{color:'skyblue'}}>Analyse Your Grip over various Topics</Typography>
+    <Typography variant='h1' sx={{color:'skyblue'}}><BarChartIcon/> Skill Chart <BarChartIcon/></Typography>
+    <Typography variant='h4' sx={{color:'cyan'}}>Analyse Your Grip over various Topics</Typography>
     <Divider sx={{width:'75%',mt:1}} variant='middle'/>
     <Skillchart/>
     </Box>

@@ -21,7 +21,7 @@ import {
 } from "@mui/material";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import TaskIcon from "@mui/icons-material/Task";
-import { Analysis_Progress } from "../../utils/content";
+import { Analysis_Progress } from "../../utils/contents/AnalyticsContent";
 
 const { TOPICS } = Analysis_Progress;
 

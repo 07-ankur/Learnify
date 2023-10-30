@@ -10,7 +10,7 @@ import {
   OutlinedInput,
   InputAdornment,
 } from "@mui/material";
-import { signupContent } from "../../utils/content";
+import { signupContent } from "../../utils/contents/MainContent";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { ThemeProvider } from "@emotion/react";

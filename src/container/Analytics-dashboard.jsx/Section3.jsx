@@ -4,7 +4,7 @@ import React from 'react';
 import AnalysisCard from '../../components/Cards/AnalysisCard';
 import { Typography } from '@mui/material';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
-import { Analysis_Progress } from '../../utils/content';
+import { Analysis_Progress } from '../../utils/contents/AnalyticsContent';
 
 const {TOPICS} = Analysis_Progress;
 

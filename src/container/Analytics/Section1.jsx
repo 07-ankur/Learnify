@@ -5,7 +5,7 @@ import Auth_btn from '../../components/Buttons/Auth_btn';
 import CallMadeIcon from "@mui/icons-material/CallMade";
 import Scorechart from './Scorechart';
 import { useNavigate } from 'react-router-dom';
-import { Analysis_Progress } from '../../utils/content';
+import { Analysis_Progress } from '../../utils/contents/AnalyticsContent';
 
 const {TOPICS} = Analysis_Progress;
 

@@ -7,7 +7,7 @@ import {
   CartesianGrid,
 } from "recharts";
 
-import { Analysis_Progress } from '../../utils/content';
+import { Analysis_Progress } from '../../utils/contents/AnalyticsContent';
 
 const {TOPICS} = Analysis_Progress;
 
@@ -22,9 +22,9 @@ const Skillchart = () => {
       }}
     >
       <CartesianGrid strokeDasharray="5 5" />
-      <XAxis dataKey="title" tick={{ fill: "skyblue" }}/>
-      <YAxis tick={{ fill: "skyblue" }}/>
-      <Bar dataKey="points" fill="#66ffff" />
+      <XAxis dataKey="title" tick={{ fill: "cyan" }}/>
+      <YAxis tick={{ fill: "cyan" }}/>
+      <Bar dataKey="points" fill="skyblue" />
     </BarChart>
     );
 }

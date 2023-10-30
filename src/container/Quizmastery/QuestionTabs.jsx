@@ -4,7 +4,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Exam_cards } from "../../utils/content";
+import { Exam_cards } from "../../utils/contents/QuizContent";
 import OptionCard from "../../components/Cards/OptionCard";
 import StatusTab from "./StatusTab";
 import { useState } from "react";

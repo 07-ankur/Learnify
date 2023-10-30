@@ -5,10 +5,10 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TestCard from "../../components/Cards/TestCard";
-import { Test_cards } from "../../utils/content";
+import { Test_cards } from "../../utils/contents/QuizContent";
 import { Grid } from "@mui/material";
 import PracticeCard from "../../components/Cards/PracticeCard";
-import { Practice_cards } from "../../utils/content";
+import { Practice_cards } from "../../utils/contents/QuizContent";
 
 const { items } = Test_cards;
 const { items2 } = Practice_cards;
