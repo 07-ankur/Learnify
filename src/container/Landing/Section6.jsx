@@ -1,7 +1,7 @@
 import { Container, Grid, Stack, Typography,Box } from "@mui/material";
 import React from "react";
 import Title from "../../components/Title";
-import { section6Content } from "../../utils/content";
+import { section6Content } from "../../utils/contents/LandingContent";
 import useScrollPosition from "../../hooks/useScrollPosition";
 import { keyframes } from '@mui/system';
 

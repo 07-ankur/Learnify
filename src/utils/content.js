@@ -23,7 +23,6 @@ import TelegramImage from "../assets/images/section10/telegram.webp";
 import TwitterImage from "../assets/images/section10/twitter.webp";
 
 // Section7
-
 import Sec7Image3 from "../assets/images/section6/Learn_anything.png";
 import Sec7Image4 from "../assets/images/section6/Certificate_icon.png";
 import Sec7Image5 from "../assets/images/section6/Flexible_learning.png";

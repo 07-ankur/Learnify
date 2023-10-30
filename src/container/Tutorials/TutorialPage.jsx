@@ -5,7 +5,8 @@ import { tutorialTheme } from "../../utils/theme";
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import ContainedButton from "../../components/Buttons/Contained_btn";
 import Home from "./React_tutorials/React_Home";
-import Intro from "./React_tutorials/React_Intro"
+import Intro from "./React_tutorials/React_Intro";
+import GetStarted from "./React_tutorials/React_GetStarted";
 
 const TutorialPage = () => {
   return (
@@ -47,7 +48,7 @@ const TutorialPage = () => {
               Next
             </ContainedButton>
           </Box>
-          <Intro/>
+          <GetStarted/>
         </Box>
       </Box>
     </ThemeProvider>

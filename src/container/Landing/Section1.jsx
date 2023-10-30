@@ -1,6 +1,6 @@
 import { Box, Typography,Stack,Button } from '@mui/material'
 import React,{useState} from 'react'
-import {section1Content } from '../../utils/content';
+import {section1Content } from '../../utils/contents/LandingContent';
 import Email_Inpt from '../../components/Inputs/Email_Inpt';
 import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from 'react-router-dom';

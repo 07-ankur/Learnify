@@ -2,7 +2,7 @@ import { Box, Container, Grid } from "@mui/material";
 import React from "react";
 import {Typography} from "@mui/material";
 import Title from "../../components/Title";
-import { Section7Content } from "../../utils/content";
+import { Section7Content } from "../../utils/contents/LandingContent";
 
 const { title,subtitle, ITEMS } = Section7Content;
 

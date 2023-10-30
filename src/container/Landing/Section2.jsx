@@ -2,7 +2,7 @@ import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import React from "react";
 import CountUp from "react-countup";
 import Title from "../../components/Title";
-import { section2Content } from "../../utils/content";
+import { section2Content } from "../../utils/contents/LandingContent";
 import VisibilitySensor from 'react-visibility-sensor';
 
 const { items } = section2Content;

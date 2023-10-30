@@ -47,7 +47,7 @@ const React_Home = () => {
         />
         <Divider sx={{ my: 1 }} />
         <TutorialTopic topic={"Learning By Examples"} />
-        <TutorialCode Code={reactCode} />
+        <TutorialCode code={reactCode} />
         <Divider sx={{ my: 1 }} />
         <TutorialTopic topic={"Create React App"} />
         <TutorialContent
@@ -59,7 +59,7 @@ const React_Home = () => {
           application. <br />
           Run this command to create a React application named my-react-app:`}
         />
-        <TutorialCode Code={createReactAppCode} />
+        <TutorialCode code={createReactAppCode} />
       </Box>
       <TutorialBox Content={uninstallCreateReactApp} />
       <Divider sx={{ my: 2 }} />
@@ -67,13 +67,13 @@ const React_Home = () => {
       <TutorialContent
         content={"Run this command to move to the my-react-app directory:"}
       />
-      <TutorialCode Code={cdCommand} />
+      <TutorialCode code={cdCommand} />
       <TutorialContent
         content={
           "Run this command to execute the React application my-react-app:"
         }
       />
-      <TutorialCode Code={npmStartCommand} />
+      <TutorialCode code={npmStartCommand} />
       <TutorialContent
         content={`A new browser window will pop up with your newly created React App! If not, open your browser and type localhost:3000 in the address bar.<br/><br/> The result:`}
       />

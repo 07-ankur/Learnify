@@ -2,7 +2,7 @@ import { Box, Container, Grid } from "@mui/material";
 import React from "react";
 import {Typography} from "@mui/material";
 import Title from "../../components/Title";
-import { Section4Content } from "../../utils/content";
+import { Section4Content } from "../../utils/contents/LandingContent";
 import ServiceCard from "../../components/Cards/ServiceCard";
 
 const { title,subtitle1,subtitle2,ITEMS } = Section4Content;

@@ -12,10 +12,11 @@ const TutorialCode = (props) => {
         p:0.5,
         bgcolor: "#192734",
         borderRadius: "1em",
+        overflowX: "auto",
       }}
     >
       <Typography variant="h5" sx={{ mx: 2, my: 1, lineHeight: "150%" }}>
-        <pre>{props.Code}</pre>
+        <pre>{props.code}</pre>
       </Typography>
     </Box>
   );

@@ -2,7 +2,7 @@ import { Container, Grid, Stack, Tab, Tabs, Typography } from "@mui/material";
 import React, { useState } from "react";
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import Title from "../../components/Title";
-import { section3Content } from "../../utils/content";
+import { section3Content } from "../../utils/contents/LandingContent";
 import Quiz_anim from '../../assets/animations/quiz.json';
 import Analysis_anim from '../../assets/animations/analysis2.json';
 import Roadmap_anim from '../../assets/animations/Roadmap_anim.json';
