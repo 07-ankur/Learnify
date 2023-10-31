@@ -15,7 +15,7 @@ import { QuizDrawerList } from "../../utils/contents/QuizContent";
 import FeedbackModal from "../../components/Modals/FeedbackModal";
 import ErrorReportModal from "../../components/Modals/ErrorReportModal";
 
-const { List1, List2 } = QuizDrawerList;
+const { List1 } = QuizDrawerList;
 
 const Listing = () => {
   const navigate = useNavigate();
