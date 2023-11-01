@@ -20,7 +20,7 @@ import BasicTabs from "../../container/Quizmastery/BasicTabs";
 import { quizTheme } from "../../utils/theme";
 import { navbarContent } from "../../utils/contents/MainContent";
 import { Topics } from "../../utils/contents/MainContent";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const { Logo } = navbarContent;
 const { SKILLS } = Topics;
@@ -85,6 +85,7 @@ export default function QuizDashboard() {
     setOpen(false);
   };
 
+  const navigate = useNavigate();
   const location = useLocation();
 
   let id;
@@ -118,11 +119,12 @@ export default function QuizDashboard() {
               <MenuIcon />
             </IconButton>
             <Typography
-              sx={{ ml: "5vh" }}
+              sx={{ ml: "5vh", cursor: "pointer" }}
               variant="body1"
               noWrap
               component="div"
               color="white"
+              onClick={() => navigate(`/quizMastery`)}
             >
               Quiz Mastery
             </Typography>

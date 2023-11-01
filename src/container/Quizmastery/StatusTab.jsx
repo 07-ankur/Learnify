@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Box, Divider, Typography, Grid } from "@mui/material";
 import Ques_btn from "../../components/Buttons/Ques_btn";
-import { Exam_cards } from "../../utils/contents/QuizContent";
+import { React_practice_qn } from "../../utils/contents/QuizContent";
 import ContainedButton from "../../components/Buttons/Contained_btn";
 import PracticeModal from "../../components/Modals/PracticeModal";
 
-const { Questions } = Exam_cards;
+const { ITEMS } = React_practice_qn;
 
 const StatusTab = (props) => {
   const [notAnsweredCount, setNotAnsweredCount] = useState(0);
@@ -107,7 +107,7 @@ const StatusTab = (props) => {
         </Box>
         <Divider sx={{ my: 2, border: "2px solid #10D59B" }} />
         <Grid container alignItems="center">
-          {Questions.map((item) => (
+          {ITEMS[0].Questions.map((item) => (
             <Grid sx={{ m: 1 }} item xs={12} md={2} key={item.key}>
               <Ques_btn
                 clickHandler={() => props.clickHandler(item.key - 1)}
@@ -138,8 +138,8 @@ const StatusTab = (props) => {
       </Box>
       {isPracticeModalOpen && (
         <PracticeModal
-          totalQuestions={Questions.length}
-          questionsAnswered={Questions.length - notAnsweredCount}
+          totalQuestions={ITEMS[0].Questions.length}
+          questionsAnswered={ITEMS[0].Questions.length - notAnsweredCount}
           correctlyAnsweredCount={correctlyAnsweredCount}
           wrongAnsweredCount={wrongAnsweredCount}
           open={true}

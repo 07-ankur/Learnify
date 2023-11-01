@@ -47,13 +47,13 @@ const PracticeCard = ({ title, image }) => {
             }}
           />
           <ContainedButton
-            sx={{ ml: 8, bottom: "5vh" }}
+            sx={{ ml: 8, bottom: "5vh", color:'black', "&:hover":{color:'white'} }}
             arrow
             fit
             onClick={()=>navigate(`/quizMastery/${skill}/practice/${title.replace(/ /g, "-")}`)}
           >
             Practice
-          </ContainedButton>
+          </ContainedButton>  
         </Box>
       </Stack>
     </Box>

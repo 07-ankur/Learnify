@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   Box,
   styled,
@@ -12,7 +13,7 @@ import MuiAppBar from "@mui/material/AppBar";
 import Logo from "../../assets/images/Learnify_logo.png";
 import { quizTheme } from "../../utils/theme";
 import QuestionTabs from "../../container/Quizmastery/QuestionTabs";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const drawerWidth = 0;
 
@@ -62,6 +63,14 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function Practice_pg() {
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const pathParts = location.pathname.split("/");
+  const skill = pathParts[2];
+  const topic = pathParts[4];
+
   return (
     <ThemeProvider theme={quizTheme}>
       <Box sx={{ display: "flex" }}>
@@ -77,23 +86,25 @@ export default function Practice_pg() {
                 marginBottom: "15px",
               }}
             />
-            <Box sx={{display:'flex', alignItems:'center'}}>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
               <Typography
-                sx={{ ml: "5vh" }}
+                sx={{ ml: "5vh", cursor: "pointer" }}
                 variant="h4"
                 noWrap
                 component="div"
                 color="white"
+                onClick={() => navigate(`/quizMastery`)}
               >
                 Quiz Mastery
               </Typography>
               <Typography
-                sx={{ ml: "2vh", color: "white" }}
+                sx={{ ml: "2vh", color: "white", cursor: "pointer" }}
                 variant="h4"
                 noWrap
                 component="div"
+                onClick={() => navigate(`/quizMastery/${skill}`)}
               >
-                {` ---> React Js`}
+                {` ---> ${skill}`}
               </Typography>
               <Typography
                 sx={{ ml: "2vh", color: "#10D59B" }}
@@ -101,10 +112,12 @@ export default function Practice_pg() {
                 noWrap
                 component="div"
               >
-                {` ---> React Hooks`}
+                {` ---> ${topic.replace(/-/g, " ")}`}
               </Typography>
             </Box>
-            <AccountCircleIcon sx={{ml:10, color:'#10D59B', fontSize:'2em'}}/>
+            <AccountCircleIcon
+              sx={{ ml: 10, color: "#10D59B", fontSize: "2em" }}
+            />
           </Toolbar>
         </AppBar>
         <Main>

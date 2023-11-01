@@ -4,7 +4,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Exam_cards } from "../../utils/contents/QuizContent";
+import { React_practice_qn } from "../../utils/contents/QuizContent";
 import OptionCard from "../../components/Cards/OptionCard";
 import StatusTab from "./StatusTab";
 import { useState } from "react";
@@ -13,7 +13,7 @@ import ContainedButton from "../../components/Buttons/Contained_btn";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-const { Questions } = Exam_cards;
+const { ITEMS } = React_practice_qn;
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -57,22 +57,22 @@ export default function QuestionTabs() {
   };
 
   const [questionStatus, setQuestionStatus] = useState(
-      Array(Questions.length).fill(null)
+      Array(ITEMS[0].Questions.length).fill(null)
     );
 
   const [selectedOptions, setSelectedOptions] = useState(
-    Array(Questions.length).fill(null)
+    Array(ITEMS[0].Questions.length).fill(null)
   );
   
   const [answersChecked, setAnswersChecked] = useState(
-    Array(Questions.length).fill(false)
+    Array(ITEMS[0].Questions.length).fill(false)
   );
 
   const [correctAnswered, setCorrectAnswered] = useState(
-    Array(Questions.length).fill(null)
+    Array(ITEMS[0].Questions.length).fill(null)
   );
   const [wrongAnswered, setWrongAnswered] = useState(
-    Array(Questions.length).fill(null)
+    Array(ITEMS[0].Questions.length).fill(null)
   );
 
   const handleSelectOption = (questionIndex, option) => {
@@ -93,7 +93,7 @@ export default function QuestionTabs() {
     setAnswersChecked(newAnswersChecked);
 
     const selectedOption = selectedOptions[questionIndex];
-    const correctOption = Questions[questionIndex].correct;
+    const correctOption = ITEMS[0].Questions[questionIndex].correct;
 
     if (selectedOption === correctOption) {
       // Answer is correct
@@ -117,7 +117,7 @@ export default function QuestionTabs() {
   };
 
   const nextHandler = () => {
-    setValue((prevValue) => Math.min(prevValue + 1, Questions.length - 1));
+    setValue((prevValue) => Math.min(prevValue + 1, ITEMS[0].Questions.length - 1));
   };
 
   const prevHandler = () => {
@@ -145,7 +145,7 @@ export default function QuestionTabs() {
             onChange={handleChange}
             aria-label="basic tabs example"
           >
-            {Questions.map((item, index) => (
+            {ITEMS[0].Questions.map((item, index) => (
               <Tab
                 key={index}
                 sx={{
@@ -159,7 +159,7 @@ export default function QuestionTabs() {
             ))}
           </Tabs>
         </Box>
-        {Questions.map((item, index) => (
+        {ITEMS[0].Questions.map((item, index) => (
           <CustomTabPanel value={value} index={index} key={index}>
             <Box sx={{ ml: 7, mb: 1, mt: -1, width: "85%" }} fontSize="1.15em">
               {item.title}
@@ -169,7 +169,7 @@ export default function QuestionTabs() {
                 title={itm.title}
                 opt={itm.opt}
                 questionIndex={index}
-                isAnswer={Questions[index].correct}
+                isAnswer={ITEMS[0].Questions[index].correct}
                 selectedOption={selectedOptions[index]}
                 correctOption={correctAnswered[index]}
                 wrongOption={wrongAnswered[index]}
@@ -213,7 +213,7 @@ export default function QuestionTabs() {
               <OutlinedButton
                 sx={{ width: "20%" }}
                 onClick={nextHandler}
-                disabled={value === Questions.length - 1}
+                disabled={value === ITEMS[0].Questions.length - 1}
               >
                 Next
                 <ChevronRightIcon />

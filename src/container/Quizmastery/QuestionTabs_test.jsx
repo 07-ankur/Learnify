@@ -5,7 +5,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Exam_cards } from "../../utils/contents/QuizContent";
+import { React_practice_qn } from "../../utils/contents/QuizContent";
 import OptionCard_test from "../../components/Cards/OptionCard_test";
 import StatusTab_test from "./StatusTab_test";
 import { useState } from "react";
@@ -14,7 +14,7 @@ import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-const { Questions } = Exam_cards;
+const { ITEMS } = React_practice_qn;
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -58,33 +58,33 @@ export default function QuestionTabs_test() {
   };
 
   const [questionStatus, setQuestionStatus] = useState(
-    Array(Questions.length).fill(null)
+    Array(ITEMS[0].Questions.length).fill(null)
   );
 
   const [selectedOptions, setSelectedOptions] = useState(
-    Array(Questions.length).fill(null)
+    Array(ITEMS[0].Questions.length).fill(null)
   );
   
   const [answersChecked, setAnswersChecked] = useState(false);
   
   const [correctAnswered, setCorrectAnswered] = useState(
-    Array(Questions.length).fill(null)
+    Array(ITEMS[0].Questions.length).fill(null)
   );
 
   const [wrongAnswered, setWrongAnswered] = useState(
-    Array(Questions.length).fill(null)
+    Array(ITEMS[0].Questions.length).fill(null)
   );
 
   const updateAnswersChecked = (newAnswersChecked) => {
     setAnswersChecked(newAnswersChecked);
   
-    const newCorrectAnswered = Array(Questions.length).fill(null);
-    const newWrongAnswered = Array(Questions.length).fill(null);
-    const newQuestionStatus = Array(Questions.length).fill(null);
+    const newCorrectAnswered = Array(ITEMS[0].Questions.length).fill(null);
+    const newWrongAnswered = Array(ITEMS[0].Questions.length).fill(null);
+    const newQuestionStatus = Array(ITEMS[0].Questions.length).fill(null);
   
-    for (let i = 0; i < Questions.length; i++) {
+    for (let i = 0; i < ITEMS[0].Questions.length; i++) {
       const selectedOption = selectedOptions[i];
-      const correctAnswer = Questions[i].correct;
+      const correctAnswer = ITEMS[0].Questions[i].correct;
   
       if (selectedOption!= null && selectedOption === correctAnswer) {
         // Answer is correct
@@ -115,7 +115,7 @@ export default function QuestionTabs_test() {
   };  
   
   const nextHandler = () => {
-    setValue((prevValue) => Math.min(prevValue + 1, Questions.length - 1));
+    setValue((prevValue) => Math.min(prevValue + 1, ITEMS[0].Questions.length - 1));
   };
 
   const prevHandler = () => {
@@ -143,7 +143,7 @@ export default function QuestionTabs_test() {
             onChange={handleChange}
             aria-label="basic tabs example"
           >
-            {Questions.map((item, index) => (
+            {ITEMS[0].Questions.map((item, index) => (
               <Tab
                 key={index}
                 sx={{
@@ -157,7 +157,7 @@ export default function QuestionTabs_test() {
             ))}
           </Tabs>
         </Box>
-        {Questions.map((item, index) => (
+        {ITEMS[0].Questions.map((item, index) => (
           <CustomTabPanel value={value} index={index} key={index}>
             <Box sx={{ ml: 7, mb: 1, mt: -1, width: "85%" }} fontSize="1.15em">
               {item.title}
@@ -167,7 +167,7 @@ export default function QuestionTabs_test() {
                 title={itm.title}
                 opt={itm.opt}
                 questionIndex={index}
-                isAnswer={Questions[index].correct}
+                isAnswer={ITEMS[0].Questions[index].correct}
                 selectedOption={selectedOptions[index]}
                 correctOption={correctAnswered[index]}
                 wrongOption={wrongAnswered[index]}
@@ -211,7 +211,7 @@ export default function QuestionTabs_test() {
               <OutlinedButton
                 sx={{ width: "20%" }}
                 onClick={nextHandler}
-                disabled={value === Questions.length - 1}
+                disabled={value === ITEMS[0].Questions.length - 1}
               >
                 Next
                 <ChevronRightIcon />
