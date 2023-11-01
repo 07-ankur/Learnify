@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { reactTopics } from "../../../utils/contents/TutorialContent";
 
 import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
@@ -8,6 +8,10 @@ const { Topics } = reactTopics;
 
 const Listing = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const pathParts = location.pathname.split("/");
+  let skill = pathParts[2];
 
   return (
     <>
@@ -17,7 +21,7 @@ const Listing = () => {
             <ListItem
               onClick={() => {
                 {
-                  navigate(`/tutorials/ReactJS/${item.title.replace(/ /g, "-")}`);
+                  navigate(`/tutorials/${skill}/${item.title.replace(/ /g, "-")}`);
                 }
               }}
               key={item.title}

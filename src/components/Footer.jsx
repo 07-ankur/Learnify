@@ -11,17 +11,10 @@ import React from "react";
 import { footerContent } from "../utils/contents/MainContent";
 import OutlinedButton from "./Buttons/OutlinedButton";
 import Title from "./Title";
-import Logo from '../assets/images/Learnify_logo.png';
+import Logo from "../assets/images/Learnify_logo.png";
 
-const {
-  subscribe,
-  protocols,
-  governance,
-  support,
-  developers,
-  copyright,
-  socials,
-} = footerContent;
+const { protocols, support, developers, subscribe, socials, copyright } =
+  footerContent;
 
 const LinkSection = ({ title, links }) => (
   <Stack spacing={2.5}>
@@ -47,7 +40,7 @@ const LinkSection = ({ title, links }) => (
 
 const Footer = () => {
   return (
-    <Box sx={{bgcolor:'black'}}>
+    <Box sx={{ bgcolor: "black" }}>
       <Divider sx={{ mb: 10 }} />
 
       <Container>
@@ -56,7 +49,7 @@ const Footer = () => {
           <Grid item xs={12} md={6} lg={7} xl={8}>
             <Grid container spacing={2}>
               {/* Top Courses */}
-              <Grid item xs={6} sm={3} md={6} lg={3} sx={{mr:6}}>
+              <Grid item xs={6} sm={3} md={6} lg={3} sx={{ mr: 6 }}>
                 <LinkSection {...protocols} />
               </Grid>
 
@@ -116,13 +109,21 @@ const Footer = () => {
           </Typography>
 
           <Box>
-          <img src={Logo} style={{ height: "60px", objectFit: "contain" }} />
+            <img src={Logo} style={{ height: "60px", objectFit: "contain" }} />
           </Box>
 
           <Typography variant="body2" color="text.secondary">
-            {copyright.right}
+            Made with ❤️ by
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://github.com/07-ankur"
+              style={{ textDecoration: "none", color:'white' }}
+            >
+              {" "}
+              07-ankur
+            </a>
           </Typography>
-
         </Stack>
       </Container>
     </Box>

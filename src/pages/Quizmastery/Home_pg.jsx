@@ -154,7 +154,7 @@ const Home_pg = () => {
             }}
           />
         </Box>
-        <Box sx={{ height: "auto", mt: 4, borderBottom: "2px solid #10D59B" }}>
+        <Box sx={{ height: "auto", mt: 4, mx:1, borderBottom: "2px solid #10D59B" }}>
           <Grid
             sx={{ mb: 4 }}
             container

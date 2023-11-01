@@ -43,7 +43,6 @@ const Listing = () => {
 
   let skill = pathParts[2];
 
-
   return (
     <>
     <List>
