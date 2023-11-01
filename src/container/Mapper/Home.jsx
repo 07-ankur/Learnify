@@ -8,7 +8,8 @@ import { styled } from "@mui/material/styles";
 import { Topics } from "../../utils/contents/MainContent";
 import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
-import Gps_anim from "../../assets/animations/Gps_anim.json"
+import Gps_anim from "../../assets/animations/Gps_anim.json";
+import pdf from "../../assets/roadmaps/cpp.pdf";
 
 const { SKILLS } = Topics;
 
@@ -20,6 +21,9 @@ const Item = styled(Paper)(({ theme }) => ({
   color: "skyblue",
   cursor: "pointer",
   ":hover": { backgroundColor: "skyblue", color: "#192734" },
+  a: {
+    textDecoration: "none",
+  },
 }));
 
 const Home = () => {
@@ -86,8 +90,10 @@ const Home = () => {
         </Divider>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           {SKILLS.map((ITEM) => (
-            <Grid onClick={()=>{navigate(`/mapper/${ITEM.title.replace(/ /g, '-')}`)}} key={ITEM.key} item xs={6} sx={{ my: 1 }}>
+            <Grid key={ITEM.key} item xs={6} sx={{ my: 1}}>
+              <a href={pdf} target="_blank" rel="noreferrer">
               <Item>{ITEM.title}</Item>
+              </a>
             </Grid>
           ))}
         </Grid>
