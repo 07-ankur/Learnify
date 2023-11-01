@@ -25,9 +25,6 @@ const Listing = () => {
               sx={{
                 "&:hover": {
                   color: "#10D59B",
-                  "& .MuiSvgIcon-root": {
-                    fill: "#10D59B",
-                  },
                 },
               }}
             >

@@ -40,6 +40,13 @@ const App = () => {
         <Route path="/login" element={<Login_pg />} />
         <Route path="/mapper" element={<Mapper_pg />} />
         <Route path="/blog" element={<Blog_pg />} />
+        {SKILLS.map((skill) => (
+          <Route
+            key={skill.key}
+            path={`/tutorials/${skill.title.replace(/ /g, "-")}`}
+            element={<TutorialPage/>}
+          />
+        ))}
         {ITEMS.map((item) => (
           <Route
             key={item.key}

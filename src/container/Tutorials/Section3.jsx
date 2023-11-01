@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Box, ThemeProvider } from "@mui/system";
 import {Container} from "@mui/system";
 import { CssBaseline, Grid } from "@mui/material";
@@ -21,6 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Section3 = () => {
+  const navigate = useNavigate();
   return (
     <ThemeProvider theme={tutorialTheme}>
       <CssBaseline />
@@ -42,7 +44,7 @@ const Section3 = () => {
             {SKILLS.map((ITEM) => (
               <Grid
                 onClick={() => {
-                  navigate(`/quizMastery/${ITEM.title.replace(/ /g, "-")}`);
+                  navigate(`/tutorials/${ITEM.title.replace(/ /g, "-")}`);
                 }}
                 key={ITEM.key}
                 item
