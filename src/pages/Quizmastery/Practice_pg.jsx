@@ -63,9 +63,21 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function Practice_pg() {
-
   const navigate = useNavigate();
   const location = useLocation();
+
+  const navigationHandler = (skill) => {
+    const isConfirmed = window.confirm(
+      "Are you sure you want to leave practice window?"
+    );
+    if (isConfirmed) {
+      if (skill) {
+        navigate(`/quizMastery/${skill}`);
+      } else {
+        navigate(`/quizMastery`);
+      }
+    }
+  };
 
   const pathParts = location.pathname.split("/");
   const skill = pathParts[2];
@@ -93,7 +105,7 @@ export default function Practice_pg() {
                 noWrap
                 component="div"
                 color="white"
-                onClick={() => navigate(`/quizMastery`)}
+                onClick={()=>navigationHandler()}
               >
                 Quiz Mastery
               </Typography>
@@ -102,7 +114,7 @@ export default function Practice_pg() {
                 variant="h4"
                 noWrap
                 component="div"
-                onClick={() => navigate(`/quizMastery/${skill}`)}
+                onClick={()=>navigationHandler(skill)}
               >
                 {` ---> ${skill}`}
               </Typography>

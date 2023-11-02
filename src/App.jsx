@@ -69,7 +69,7 @@ const App = () => {
         {SKILLS.map((skill) => (
           <Route
             key={skill.key}
-            path={`/mapper/${skill.title.replace(/ /g, "-")}`}
+            path={`/mapper/${skill.title.replace(/ /g, "_")}`}
             element={<Roadmap_pg />}
           />
         ))}

@@ -9,7 +9,6 @@ import { Topics } from "../../utils/contents/MainContent";
 import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import Gps_anim from "../../assets/animations/Gps_anim.json";
-import pdf from "../../assets/roadmaps/cpp.pdf";
 
 const { SKILLS } = Topics;
 
@@ -90,10 +89,8 @@ const Home = () => {
         </Divider>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           {SKILLS.map((ITEM) => (
-            <Grid key={ITEM.key} item xs={6} sx={{ my: 1}}>
-              <a href={pdf} target="_blank" rel="noreferrer">
+            <Grid key={ITEM.key} item xs={6} sx={{ my: 1}} onClick={()=>navigate(`/mapper/${ITEM.title.replace(/ /g,'_')}`)}>
               <Item>{ITEM.title}</Item>
-              </a>
             </Grid>
           ))}
         </Grid>

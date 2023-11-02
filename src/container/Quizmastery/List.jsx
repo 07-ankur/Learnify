@@ -52,7 +52,7 @@ const Listing = () => {
           <ListItem
             onClick={() => {
               if (item.key === 2 || item.key === 3) {
-                navigate(`${item.navigate}/${skill}`);
+                navigate(`${item.navigate}/${skill.replace(/-/g, "_")}`);
               } else {
                 navigate(item.navigate);
               }
