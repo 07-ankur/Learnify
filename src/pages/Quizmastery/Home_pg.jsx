@@ -105,7 +105,7 @@ const Home_pg = () => {
           <Lottie
             animationData={Quiz3_anim}
             loop
-            style={{ width: "70vh", marginRight: 20, marginTop:-5 }}
+            style={{ width: "70vh", marginRight: 20, marginTop: -5 }}
           />
           <Box
             sx={{
@@ -154,7 +154,14 @@ const Home_pg = () => {
             }}
           />
         </Box>
-        <Box sx={{ height: "auto", mt: 4, mx:1, borderBottom: "2px solid #10D59B" }}>
+        <Box
+          sx={{
+            height: "auto",
+            mt: 4,
+            mx: 1,
+            borderBottom: "2px solid #10D59B",
+          }}
+        >
           <Grid
             sx={{ mb: 4 }}
             container
@@ -163,9 +170,6 @@ const Home_pg = () => {
           >
             {SKILLS.map((ITEM) => (
               <Grid
-                onClick={() => {
-                  navigate(`/quizMastery/${ITEM.title.replace(/ /g, "-")}`);
-                }}
                 key={ITEM.key}
                 item
                 xs={3}
@@ -177,7 +181,12 @@ const Home_pg = () => {
                   },
                 }}
               >
-                <Item sx={{ height: "95%", p: 2, mx: 3 }}>
+                <Item
+                  onClick={() => {
+                    navigate(`/quizMastery/${ITEM.title.replace(/ /g, "-")}`);
+                  }}
+                  sx={{ height: "95%", p: 2, mx: 3 }}
+                >
                   <Box
                     sx={{
                       display: "flex",

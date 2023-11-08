@@ -126,25 +126,21 @@ export const Practice_cards = {
     {
       key: 1,
       title: "React Hooks",
-      // subtitle:'15 Questions   ||   45 mins   ||   30marks',
       image: Hook_logo,
     },
     {
       key: 2,
       title: "React Components",
-      subtitle: "15 Questions   ||   45 mins   ||   30marks",
       image: Component_logo,
     },
     {
       key: 3,
       title: "React Router",
-      subtitle: "15 Questions   ||   45 mins   ||   30marks",
       image: Router_logo,
     },
     {
       key: 4,
       title: "React Rendering",
-      subtitle: "15 Questions || 45 mins || 30marks",
       image: React_logo,
     },
   ],

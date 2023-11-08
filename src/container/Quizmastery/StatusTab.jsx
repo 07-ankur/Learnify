@@ -132,7 +132,11 @@ const StatusTab = (props) => {
           ))}
         </Grid>
         <Divider sx={{ my: 2, border: "2px solid #10D59B" }} />
-        <ContainedButton disabled={isEvaluated} sx={{ color: "black" }} onClick={submitHandler}>
+        <ContainedButton
+          disabled={isEvaluated}
+          sx={{ color: "black" }}
+          onClick={submitHandler}
+        >
           End Practice
         </ContainedButton>
       </Box>

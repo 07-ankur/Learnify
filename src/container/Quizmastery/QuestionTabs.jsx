@@ -57,13 +57,13 @@ export default function QuestionTabs() {
   };
 
   const [questionStatus, setQuestionStatus] = useState(
-      Array(ITEMS[0].Questions.length).fill(null)
-    );
+    Array(ITEMS[0].Questions.length).fill(null)
+  );
 
   const [selectedOptions, setSelectedOptions] = useState(
     Array(ITEMS[0].Questions.length).fill(null)
   );
-  
+
   const [answersChecked, setAnswersChecked] = useState(
     Array(ITEMS[0].Questions.length).fill(false)
   );
@@ -103,7 +103,7 @@ export default function QuestionTabs() {
 
       const newQuestionStatus = [...questionStatus];
       newQuestionStatus[questionIndex] = true;
-      setQuestionStatus(newQuestionStatus)
+      setQuestionStatus(newQuestionStatus);
     } else {
       // Answer is wrong
       const newWrongAnswered = [...wrongAnswered];
@@ -112,12 +112,14 @@ export default function QuestionTabs() {
 
       const newQuestionStatus = [...questionStatus];
       newQuestionStatus[questionIndex] = false;
-      setQuestionStatus(newQuestionStatus)
+      setQuestionStatus(newQuestionStatus);
     }
   };
 
   const nextHandler = () => {
-    setValue((prevValue) => Math.min(prevValue + 1, ITEMS[0].Questions.length - 1));
+    setValue((prevValue) =>
+      Math.min(prevValue + 1, ITEMS[0].Questions.length - 1)
+    );
   };
 
   const prevHandler = () => {

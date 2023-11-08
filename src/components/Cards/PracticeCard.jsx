@@ -1,16 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import { Box, Stack } from "@mui/material";
 import ContainedButton from "../Buttons/Contained_btn";
 import Title from "../Title";
 import { useNavigate, useLocation } from "react-router-dom";
 
-const PracticeCard = ({ title, image }) => {
-
+const PracticeCard = ({ key, title, image }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [selectedTopic, setSelectedTopic] = useState(null);
+
   const pathParts = location.pathname.split("/");
   let skill = pathParts[2];
+
+  const clickHandler = () => {
+    setSelectedTopic(key);
+    navigate(`/quizmastery/${skill}/practice/${title.replace(/ /g, "-")}`);
+  };
 
   return (
     <Box
@@ -24,8 +30,8 @@ const PracticeCard = ({ title, image }) => {
           position: "absolute",
           inset: 0,
           borderRadius: "30px",
-          border: "1px solid transparent",
-          background: "linear-gradient(150deg,#5f5f61,transparent) border-box",
+          border: "1.5px solid transparent",
+          background: "linear-gradient(-150deg,#5f5f61,transparent) border-box",
           WebkitMask:
             "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
           WebkitMaskComposite: "xor",
@@ -47,13 +53,18 @@ const PracticeCard = ({ title, image }) => {
             }}
           />
           <ContainedButton
-            sx={{ ml: 8, bottom: "5vh", color:'black', "&:hover":{color:'white'} }}
+            sx={{
+              ml: 8,
+              bottom: "5vh",
+              color: "black",
+              "&:hover": { color: "white" },
+            }}
             arrow
             fit
-            onClick={()=>navigate(`/quizMastery/${skill}/practice/${title.replace(/ /g, "-")}`)}
+            onClick={clickHandler}
           >
             Practice
-          </ContainedButton>  
+          </ContainedButton>
         </Box>
       </Stack>
     </Box>

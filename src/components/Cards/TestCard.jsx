@@ -16,7 +16,7 @@ const TestCard = ({ title, subtitle }) => {
           position: "absolute",
           inset: 0,
           borderRadius: "30px",
-          border: "1px solid transparent",
+          border: "1px solid white",
           background: "linear-gradient(#5f5f61,transparent) border-box",
           WebkitMask:
             "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
@@ -26,7 +26,7 @@ const TestCard = ({ title, subtitle }) => {
       }}
     >
       <Stack sx={{ height: "100%" }} spacing={2.3}>
-        <Title variant={{ xs: "h4", sm: "h3" }}>{title}</Title>
+        <Title sx={{color:'white'}} variant={{ xs: "h4", sm: "h3" }}>{title}</Title>
         <Typography variant="body2" color="text.secondary">
           {subtitle}
         </Typography> 

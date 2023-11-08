@@ -87,8 +87,8 @@ export default function BasicTabs() {
             {items2.map((item) => (
               <Grid item xs={12} md={6} key={item.title}>
                 <PracticeCard
+                  key={item.key}
                   title={item.title}
-                  subtitle={item.subtitle}
                   image={item.image}
                 />
               </Grid>
