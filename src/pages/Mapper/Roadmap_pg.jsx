@@ -8,7 +8,7 @@ import html_roadmap from "../../assets/roadmaps/frontend.pdf";
 import css_roadmap from "../../assets/roadmaps/frontend.pdf";
 import react_roadmap from "../../assets/roadmaps/react.pdf";
 import mongodb_roadmap from "../../assets/roadmaps/mongodb.pdf";
-import nodejs_roadmap from "../../assets/roadmaps/Nodejs.pdf";
+import nodejs_roadmap from "../../assets/roadmaps/nodejs.pdf";
 import expressjs_roadmap from "../../assets/roadmaps/backend.pdf";
 import cpp_roadmap from "../../assets/roadmaps/cpp.pdf";
 import javascript_roadmap from "../../assets/roadmaps/javascript.pdf";
