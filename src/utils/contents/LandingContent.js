@@ -7,7 +7,7 @@ import Analytics from "../../assets/images/section4/news-image.webp";
 import Quiz_icon from "../../assets/images/section4/Quiz_icon.png";
 import Webdev_icon from "../../assets/images/section4/Webdev_icon.png";
 import Datasci_icon from "../../assets/images/section4/Datasci_icon.png";
-import Python_icon from "../../assets/images/section4/Python_icon.png";
+import Python_icon from "../../assets/images/section4/python_icon.png";
 import Photohop_icon from "../../assets/images/section4/Photoshop_icon.png";
 import Excel_icon from "../../assets/images/section4/Excel_icon.png";
 
