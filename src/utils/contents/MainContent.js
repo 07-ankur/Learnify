@@ -16,7 +16,7 @@ import Logo_drk from "../../assets/images/Learnify_drk.png";
 import ReactLogo from "../../assets/images/Topics/React_logo.png";
 import NodeLogo from "../../assets/images/Topics/Node_logo.png";
 import SQLLogo from "../../assets/images/Topics/Sql_logo.png";
-import PythonLogo from "../../assets/images/Topics/Python_logo.png";
+import PythonLogo from "../../assets/images/Topics/python_logo.png";
 import CppLogo from "../../assets/images/Topics/C++_logo.png";
 import MongoLogo from "../../assets/images/Topics/Mongo_logo.png";
 import HtmlLogo from "../../assets/images/Topics/Html_logo.png";
