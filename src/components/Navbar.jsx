@@ -2,8 +2,6 @@ import {
   AppBar,
   Container,
   IconButton,
-  Menu,
-  MenuItem,
   Stack,
   Typography,
   useMediaQuery,
@@ -19,7 +17,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Main_btn from "./Buttons/Main_btn";
 import { useNavigate } from "react-router-dom";
 import LinkButton from "./Buttons/Link_btn";
-import ContentCard from "./Cards/ContentsCard";
 
 const { Logo } = navbarContent;
 
@@ -35,33 +32,6 @@ const Navbar = (props) => {
   const scrollPosition = useScrollPosition();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
-  const [contentAnchorEl, setContentAnchorEl] = useState(null);
-  const [serviceAnchorEl, setServiceAnchorEl] = useState(null);
-  const [aboutAnchorEl, setAboutAnchorEl] = useState(null);
-
-  const handleContentOpen = (event) => {
-    setContentAnchorEl(event.currentTarget);
-  };
-
-  const handleContentClose = () => {
-    setContentAnchorEl(null);
-  };
-
-  const handleServiceOpen = (event) => {
-    setServiceAnchorEl(event.currentTarget);
-  };
-
-  const handleServiceClose = () => {
-    setServiceAnchorEl(null);
-  };
-
-  const handleAboutOpen = (event) => {
-    setAboutAnchorEl(event.currentTarget);
-  };
-
-  const handleAboutClose = () => {
-    setAboutAnchorEl(null);
-  };
 
   return (
     <AppBar
@@ -105,89 +75,25 @@ const Navbar = (props) => {
               sx={{ flex: 1 }}
               flexWrap="wrap"
             >
-              <div
-                onMouseEnter={handleContentOpen}
-                style={{ position: "relative" }}
-              >
                 <LinkButton>
                   <Typography variant="body1">Contents</Typography>
                   <KeyboardArrowDownIcon fontSize="medium" />
                 </LinkButton>
-                </div>
-                <div
-                  onMouseLeave={handleContentClose}
-                  style={{ position: "absolute", top: "100%" }}
-                >
-                  <Menu
-                    anchorEl={contentAnchorEl}
-                    open={Boolean(contentAnchorEl)}
-                    onClose={handleContentClose}
-                  >
-                    <MenuItem sx={{ mx: 2 }}>
-                      <Typography>React Js</Typography>
-                    </MenuItem>
-                    <MenuItem sx={{ mx: 2 }}>
-                      <Typography>Node Js</Typography>
-                    </MenuItem>
-                    {/* Add more MenuItem components for other links */}
-                  </Menu>
-                </div>
 
               {/* Add more LinkButtons and Menus for other navigation items */}
-              <div
-                onMouseEnter={handleServiceOpen}
-                style={{ position: "relative" }}
-              >
+
                 <LinkButton>
                   <Typography variant="body1">Services</Typography>
                   <KeyboardArrowDownIcon fontSize="medium" />
                 </LinkButton>
-              </div>
-                <div
-                  onMouseLeave={handleServiceClose}
-                  style={{ position: "absolute", top: "100%" }}
-                >
-                  <Menu
-                    anchorEl={serviceAnchorEl}
-                    open={Boolean(serviceAnchorEl)}
-                    onClose={handleServiceClose}
-                  >
-                    <MenuItem>
-                      <Typography>Mapper</Typography>
-                    </MenuItem>
-                    <MenuItem>
-                      <Typography>Analytics</Typography>
-                    </MenuItem>
-                    <MenuItem>
-                      <Typography>QuizMastery</Typography>
-                    </MenuItem>
-                    {/* Add more MenuItem components for other links */}
-                  </Menu>
-                </div>
-              <div
-                onMouseEnter={handleAboutOpen}
-                style={{ position: "relative" }}
-              >
+ 
+               
                 <LinkButton>
                   <Typography variant="body1">About</Typography>
                   <KeyboardArrowDownIcon fontSize="medium" />
                 </LinkButton>
-                </div>
-                <div
-                  onMouseLeave={handleAboutClose}
-                  style={{ position: "absolute", top: "100%" }}
-                >
-                  <Menu
-                    anchorEl={aboutAnchorEl}
-                    open={Boolean(aboutAnchorEl)}
-                    onClose={handleAboutClose}
-                  >
-                    <MenuItem>
-                      <Typography>About</Typography>
-                    </MenuItem>
-                    {/* Add more MenuItem components for other links */}
-                  </Menu>
-                </div>
+                
+            
 
               <LinkButton spacing={0.5}>
                 <Typography

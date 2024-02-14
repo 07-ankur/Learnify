@@ -3,23 +3,25 @@ import React, { useState } from "react";
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import Title from "../../components/Title";
 import { section3Content } from "../../utils/contents/LandingContent";
-import Quiz_anim from '../../assets/animations/quiz.json';
-import Analysis_anim from '../../assets/animations/analysis2.json';
-import Roadmap_anim from '../../assets/animations/Roadmap_anim.json';
-import Lottie from 'lottie-react';
+import Quiz_anim from "../../assets/animations/quiz.json";
+import Analysis_anim from "../../assets/animations/analysis2.json";
+import Roadmap_anim from "../../assets/animations/Roadmap_anim.json";
+import Lottie from "lottie-react";
+import { useNavigate } from "react-router-dom";
 
-const { top,middle1,middle2, bottom } = section3Content;
+const { top, middle1, middle2, bottom } = section3Content;
 
 const Section3 = () => {
   const [tabValue, setTabValue] = useState(0);
-// 
+  const navigate = useNavigate();
+
   return (
     <Container sx={{ mt: { xs: 15, md: 20, lg: 25 } }}>
       {/* TOP */}
       <Grid container spacing={10} flexWrap="wrap-reverse" alignItems="center">
         {/* Left */}
-      <Grid item xs={12} md={6}>
-        <Lottie animationData={Analysis_anim} loop autoplay/>
+        <Grid item xs={12} md={6}>
+          <Lottie animationData={Analysis_anim} loop autoplay />
         </Grid>
         {/* Right */}
         <Grid item xs={12} md={6}>
@@ -29,16 +31,27 @@ const Section3 = () => {
               {top.subtitle}
             </Typography>
 
-            <OutlinedButton arrow fit>
+            <OutlinedButton
+              arrow
+              fit
+              onClick={() => {
+                navigate("/analytics");
+              }}
+            >
               Explore Now
             </OutlinedButton>
           </Stack>
         </Grid>
 
         {/* Right */}
-        
       </Grid>
-      <Grid sx={{mt:5}} container spacing={10} flexWrap="wrap-reverse" alignItems="center">
+      <Grid
+        sx={{ mt: 5 }}
+        container
+        spacing={10}
+        flexWrap="wrap-reverse"
+        alignItems="center"
+      >
         {/* Left */}
         <Grid item xs={12} md={6}>
           <Stack spacing={2} sx={{ maxWidth: 580 }}>
@@ -48,7 +61,13 @@ const Section3 = () => {
               {middle1.subtitle}
             </Typography>
 
-            <OutlinedButton arrow fit>
+            <OutlinedButton
+              arrow
+              fit
+              onClick={() => {
+                navigate("/quizMastery");
+              }}
+            >
               Explore Now
             </OutlinedButton>
           </Stack>
@@ -56,15 +75,15 @@ const Section3 = () => {
 
         {/* Right */}
         <Grid item xs={12} md={6}>
-          <Lottie animationData={Quiz_anim} loop autoplay/>
+          <Lottie animationData={Quiz_anim} loop autoplay />
         </Grid>
       </Grid>
 
       {/* TOP */}
       <Grid container spacing={10} flexWrap="wrap-reverse" alignItems="center">
         {/* Left */}
-      <Grid item xs={12} md={6}>
-        <Lottie animationData={Roadmap_anim} loop autoplay/>
+        <Grid item xs={12} md={6}>
+          <Lottie animationData={Roadmap_anim} loop autoplay />
         </Grid>
         {/* Right */}
         <Grid item xs={12} md={6}>
@@ -73,14 +92,19 @@ const Section3 = () => {
             <Typography variant="body1" color="text.secondary" sx={{ pb: 2 }}>
               {middle2.subtitle}
             </Typography>
-            <OutlinedButton arrow fit>
+            <OutlinedButton
+              arrow
+              fit
+              onClick={() => {
+                navigate("/mapper");
+              }}
+            >
               Explore Now
             </OutlinedButton>
           </Stack>
         </Grid>
 
         {/* Right */}
-        
       </Grid>
 
       {/* BOTTOM */}
@@ -122,7 +146,9 @@ const Section3 = () => {
               ))}
             </Tabs>
 
-            <Title variant={{ xs: "h6", md: "h5" }}>{bottom.TABS[tabValue].title}</Title>
+            <Title variant={{ xs: "h6", md: "h5" }}>
+              {bottom.TABS[tabValue].title}
+            </Title>
 
             <Typography
               variant="body2"
@@ -143,4 +169,3 @@ const Section3 = () => {
 };
 
 export default Section3;
-
