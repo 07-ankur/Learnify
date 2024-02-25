@@ -158,7 +158,13 @@ const Section3 = () => {
               {bottom.TABS[tabValue].subtitle}
             </Typography>
 
-            <OutlinedButton arrow fit>
+            <OutlinedButton
+              arrow
+              fit
+              onClick={() => {
+                navigate("/tutorials");
+              }}
+            >
               Learn more
             </OutlinedButton>
           </Stack>
