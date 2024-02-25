@@ -132,7 +132,18 @@ const Navbar = (props) => {
                         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
                       }}
                     >
-                      <Box sx={{ display: "flex", flexDirection: "row" }}>
+                      <Box
+                        onClick={() => {
+                          navigate("/tutorials");
+                        }}
+                        sx={{
+                          display: "flex",
+                          flexDirection: "row",
+                          m: 1,
+                          color: "grey",
+                          "&:hover": { color: "white" },
+                        }}
+                      >
                         <ArticleIcon sx={{ mr: 1, mb: 1 }} />
                         <Typography variant="h5">Tutorials</Typography>
                       </Box>
