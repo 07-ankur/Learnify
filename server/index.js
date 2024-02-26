@@ -25,7 +25,7 @@ app.use(errorHandler);
 
 //connection to mongodb
 
-connect(process.env.MONGO_URL);
+connect(process.env.MONGO_URI);
 
 //server listeing
 app.listen(port,()=>{
