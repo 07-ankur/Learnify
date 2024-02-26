@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 5173;
+const port = process.env.PORT || 3000;
 require("dotenv").config();
 const connect = require("./db/db");
 const cors = require("cors");
 
+//routes import
+const authRoutes=require('./routes/authroutes')
 const errorHandler = require("./middlewares/errorHandler");
 
 app.use(
@@ -14,6 +16,8 @@ app.use(
 );
 
 app.use(express.json());
+
+app.use("/api/auth",authRoutes);
 
 //server test route
 app.get("/", (req, res) => {
