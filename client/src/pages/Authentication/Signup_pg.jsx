@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 import {
   Box,
   Container,
@@ -42,12 +44,63 @@ const OutlinedInputstyled = styled(OutlinedInput)`
 const { Logo_drk } = signupContent;
 
 const Signup_pg = () => {
-
-  const location = useLocation();
-  const { email } = location.state || {};
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const [showPassword, setShowPassword] = React.useState(false);
+  const onSubmit = useCallback(
+    async (event) => {
+      event.preventDefault();
+      if (!firstName || !lastName || !email || !password) {
+        toast.error("All fields are required!");
+        return;
+      }
+      try {
+        setIsLoading(true);
+
+        console.log({
+          firstName,
+          lastName,
+          email,
+          password,
+        });
+
+        const res = await axios.post(
+          "http://localhost:3000/api/auth/register",
+          {
+            firstName,
+            lastName,
+            email,
+            password,
+          }
+        );
+
+        console.log(res.data);
+
+        if (res.status === 200) {
+          setIsLoading(false);
+
+          toast.success("Account created successfully!");
+
+          navigate("/");
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error("Something went wrong!");
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [firstName, lastName, email, password, navigate]
+  );
+
+  const location = useLocation();
+  const { enteredEmail } = location.state || {};
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -79,52 +132,66 @@ const Signup_pg = () => {
               >
                 Level up your Learning with Learnify!!{" "}
               </Typography>
-              <Box>
-                <TextFieldstyled
-                  sx={{ m: 1 }}
-                  id="outlined-basic"
-                  label="First Name"
-                  variant="outlined"
-                />
-                <TextFieldstyled
-                  sx={{ m: 1 }}
-                  id="outlined-basic"
-                  label="Last Name"
-                  variant="outlined"
-                />
-              </Box>
-              <Box>
-                <TextFieldstyled
-                  sx={{ m: 1, width: "30ch" }}
-                  id="outlined-basic"
-                  label="Email Address"
-                  value={email}
-                  variant="outlined"
-                />
-              </Box>
-              <Box>
-                <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
-                  <InputLabel htmlFor="outlined-adornment-password">
-                    Password
-                  </InputLabel>
-                  <OutlinedInputstyled
-                    id="outlined-adornment-password"
-                    type={showPassword ? "text" : "password"}
-                    endAdornment={
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword}
-                          edge="end"
-                        >
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                    label="Password"
+              <form onSubmit={onSubmit}>
+                <Box>
+                  <TextFieldstyled
+                    sx={{ m: 1 }}
+                    id="outlined-basic"
+                    label="First Name"
+                    variant="outlined"
+                    onChange={(e) => setFirstName(e.target.value)}
                   />
-                </FormControl>
-              </Box>
+                  <TextFieldstyled
+                    sx={{ m: 1 }}
+                    id="outlined-basic"
+                    label="Last Name"
+                    variant="outlined"
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </Box>
+                <Box>
+                  <TextFieldstyled
+                    sx={{ m: 1, width: "30ch" }}
+                    id="outlined-basic"
+                    label="Email Address"
+                    value={enteredEmail}
+                    disabled={isLoading}
+                    onChange={(e) => setEmail(e.target.value)}
+                    variant="outlined"
+                  />
+                </Box>
+                <Box>
+                  <FormControl
+                    sx={{ m: 1, width: "25ch" }}
+                    variant="outlined"
+                    disabled={isLoading}
+                  >
+                    <InputLabel
+                      htmlFor="outlined-adornment-password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      disabled={isLoading}
+                    >
+                      Password
+                    </InputLabel>
+                    <OutlinedInputstyled
+                      id="outlined-adornment-password"
+                      type={showPassword ? "text" : "password"}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            edge="end"
+                          >
+                            {showPassword ? <Visibility /> : <VisibilityOff />}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                      label="Password"
+                    />
+                  </FormControl>
+                </Box>
+              </form>
               <Box
                 sx={{
                   display: "flex",

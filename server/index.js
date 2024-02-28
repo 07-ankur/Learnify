@@ -6,18 +6,19 @@ const connect = require("./db/db");
 const cors = require("cors");
 
 //routes import
-const authRoutes=require('./routes/authroutes')
+const authRoutes = require("./routes/authRoutes");
 const errorHandler = require("./middlewares/errorHandler");
 
 app.use(
   cors({
-    origin: ["http://127.0.0.1:5173/", "https://learnify-in.vercel.app"],
+    origin: ["http://127.0.0.1:5173", "https://learnify-in.vercel.app"],
   })
 );
 
 app.use(express.json());
 
-app.use("/api/auth",authRoutes);
+//routes middleware
+app.use("/api/auth", authRoutes);
 
 //server test route
 app.get("/", (req, res) => {
@@ -32,6 +33,6 @@ app.use(errorHandler);
 connect(process.env.MONGO_URI);
 
 //server listeing
-app.listen(port,()=>{
-    console.log(`Server is running on  ${port}`)
-})
+app.listen(port, () => {
+  console.log(`Server is running on  ${port}`);
+});
