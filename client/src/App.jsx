@@ -22,6 +22,8 @@ import Mytests from "./pages/Quizmastery/Mytests";
 import Practice_pg from "./pages/Quizmastery/Practice_pg";
 import Test_pg from "./pages/Quizmastery/Test_pg";
 import TutorialPage from "./container/Tutorials/TutorialPage";
+import VerifyOtp from "./pages/Authentication/Verify_pg";
+import { Toaster } from "react-hot-toast";
 
 const { ITEMS } = Blogs;
 const { TOPICS } = Analysis_Progress;
@@ -30,6 +32,7 @@ const { SKILLS } = Topics;
 const App = () => {
   return (
     <div>
+      <Toaster/>
       <Routes>
         <Route path="*" element={<Landing_pg />} />
         <Route path="/" element={<Landing_pg />} />
@@ -37,6 +40,7 @@ const App = () => {
         <Route path="/tutorials" element={<Tutorials_pg />} />
         <Route path="/tutorialsPage" element={<TutorialPage />} />
         <Route path="/signup" element={<Signup_pg />} />
+        <Route path="/signup/verify" element={<VerifyOtp />} />
         <Route path="/login" element={<Login_pg />} />
         <Route path="/mapper" element={<Mapper_pg />} />
         <Route path="/blog" element={<Blog_pg />} />

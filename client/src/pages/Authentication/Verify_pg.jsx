@@ -1,21 +1,9 @@
 import React, { useCallback, useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import {
-  Box,
-  Grid,
-  Container,
-  Typography,
-  FormControl,
-  TextField,
-  IconButton,
-  InputLabel,
-  OutlinedInput,
-  InputAdornment,
-} from "@mui/material";
+import OTPInput from "otp-input-react";
+import { Box, Grid, Container, Typography, TextField } from "@mui/material";
 import { signupContent } from "../../utils/contents/MainContent";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { ThemeProvider } from "@emotion/react";
 import { authTheme } from "../../utils/theme/index";
 import styled from "styled-components";
@@ -34,52 +22,26 @@ const TextFieldstyled = styled(TextField)`
   }
 `;
 
-const OutlinedInputstyled = styled(OutlinedInput)`
-  & .MuiOutlinedInput-root {
-    &.Mui-focused fieldset {
-      border: 3px solid;
-    }
-  }
-`;
-
 const { Logo_drk } = signupContent;
 
-const SignupForm = () => {
+const VerifyOtp = () => {
   const location = useLocation();
-  const { enteredEmail } = location.state || {};
-
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [email, setEmail] = useState(enteredEmail);
-  const [password, setPassword] = useState("");
+  const { email } = location.state || {};
+  const [otp, setOtp] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const onSubmit = useCallback(
     async (event) => {
-      console.log(enteredEmail);
       event.preventDefault();
-      if (!firstname || !lastname || !email || !password) {
-        toast.error("All fields are required!");
-        return;
-      }
       try {
         setIsLoading(true);
-
-        console.log({
-          firstname,
-          lastname,
-          email,
-          password,
-        });
-
+        console.log(email);
         const res = await axios.post(
-          "http://localhost:3000/api/auth/register",
+          "http://localhost:3000/api/auth/verifyotp",
           {
-            firstname,
-            lastname,
             email,
-            password,
+            otp,
           }
         );
 
@@ -88,9 +50,9 @@ const SignupForm = () => {
         if (res.status === 200) {
           setIsLoading(false);
 
-          toast.success("Account created successfully!");
+          toast.success("Account Verified successfully!");
 
-          navigate('/signup/verify', { state: { email }} )
+          navigate("/login");
         }
       } catch (error) {
         console.log(error);
@@ -99,7 +61,36 @@ const SignupForm = () => {
         setIsLoading(false);
       }
     },
-    [firstname, lastname, email, password, navigate]
+    [email,otp]
+  );
+
+  const onResend = useCallback(
+    async (event) => {
+      try {
+        setIsLoading(true);
+
+        const res = await axios.post(
+          "http://localhost:3000/api/auth/resendotp",
+          {
+            email,
+          }
+        );
+
+        console.log(res.data);
+
+        if (res.status === 200) {
+          setIsLoading(false);
+
+          toast.success("OTP sent successfully!");
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error("Something went wrong!");
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [email]
   );
 
   return (
@@ -122,7 +113,7 @@ const SignupForm = () => {
               variant="h2"
               sx={{ letterSpacing: "0.01em", mt: 1, color: "#3ea886" }}
             >
-              Create Your New Account
+              Verify Your New Account
             </Typography>
             <Typography
               variant="h4"
@@ -132,46 +123,30 @@ const SignupForm = () => {
             </Typography>
             <form onSubmit={onSubmit}>
               <Grid container spacing={2}>
-                <Grid item xs={8} sm={4}>
-                  <TextFieldstyled
-                    variant="outlined"
-                    fullWidth
-                    label="First Name"
-                    name="firstName"
-                    value={firstname}
-                    onChange={(e) => setFirstname(e.target.value)}
-                  />
-                </Grid>
-                <Grid item xs={8} sm={4}>
-                  <TextFieldstyled
-                    variant="outlined"
-                    fullWidth
-                    label="Last Name"
-                    name="lastName"
-                    value={lastname}
-                    onChange={(e) => setLastname(e.target.value)}
-                  />
-                </Grid>
                 <Grid item xs={7}>
                   <TextFieldstyled
+                    disabled
                     variant="outlined"
                     fullWidth
-                    label="Email Address"
+                    label={email}
                     name="email"
                     type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </Grid>
-                <Grid item xs={7}>
-                  <TextFieldstyled
-                    variant="outlined"
-                    fullWidth
-                    label="Password"
-                    name="password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                <Grid sx={{ mt: 1, ml: 1 }} item xs={7}>
+                  <Typography
+                    variant="h4"
+                    sx={{ letterSpacing: "0.01em", mb: 3, color: "#4d5980" }}
+                  >
+                    Enter OTP:{" "}
+                  </Typography>
+                  <OTPInput
+                    value={otp}
+                    onChange={setOtp}
+                    autoFocus
+                    OTPLength={6}
+                    otpType="number"
+                    disabled={false}
                   />
                 </Grid>
               </Grid>
@@ -180,9 +155,10 @@ const SignupForm = () => {
                   display: "flex",
                   flexDirection: "row",
                   alignItems: "center",
+                  mt: 5,
                 }}
               >
-                <Auth_btn label={"Sign Up"} type={"submit"} />
+                <Auth_btn label={"Verify"} type={"submit"} />
                 <Typography
                   variant="h6"
                   sx={{
@@ -193,11 +169,11 @@ const SignupForm = () => {
                     mr: 1,
                   }}
                 >
-                  Or already have an account?{" "}
+                  Didn't receive any OTP?{" "}
                 </Typography>
                 <Typography
                   variant="h5"
-                  onClick={() => navigate("/login")}
+                  onClick={onResend}
                   sx={{
                     letterSpacing: "0.01em",
                     mb: 3,
@@ -209,7 +185,7 @@ const SignupForm = () => {
                   }}
                 >
                   {" "}
-                  Login{" "}
+                  Resend OTP{" "}
                 </Typography>
                 <Lottie
                   style={{ width: "25%", marginTop: -100, marginLeft: 20 }}
@@ -235,4 +211,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default VerifyOtp;

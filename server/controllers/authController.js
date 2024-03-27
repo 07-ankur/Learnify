@@ -28,7 +28,8 @@ const registerUser = asyncHandler(async (req, res) => {
       });
       const savedUser = await newUser.save();
       if (savedUser) {
-        const otp = Math.floor(Math.random() * 1000000);
+        let otp = Math.floor(100000 + Math.random() * 900000);
+        otp = otp.toString().padStart(6, '0');
         const hashedOTP = crypto
           .createHash("sha256")
           .update(otp.toString())
@@ -48,7 +49,7 @@ const registerUser = asyncHandler(async (req, res) => {
                 <h4 style='font-size:24px;'>Here is your otp for email verification. </h4>
                 <h2 style="text-align:center;"> ${otp}</h2>
                 `;
-        const subject = "Link for email verification";
+        const subject = "OTP for email verification";
         const send_to = email;
         const sent_from = process.env.EMAIL;
 
@@ -75,7 +76,8 @@ const resendOTP = asyncHandler(async (req, res) => {
   if (findToken) {
     await tokenDB.deleteOne({ email: email });
   }
-  const otp = Math.floor(Math.random() * 1000000);
+  let otp = Math.floor(100000 + Math.random() * 900000);
+  otp = otp.toString().padStart(6, '0');
   const hashedOTP = crypto
     .createHash("sha256")
     .update(otp.toString())
@@ -148,7 +150,9 @@ const loginUser = asyncHandler(async (req, res) => {
   } else {
     const findUser = await userDB.findOne({ email: email });
     if (findUser) {
+      console.log(findUser)
       const comparePassword = await bcrypt.compare(password, findUser.password);
+      console.log(comparePassword)
       if (comparePassword) {
         const token = generateToken(findUser._id);
         const { password, createdAt, updatedAt, ...other } = findUser._doc;
