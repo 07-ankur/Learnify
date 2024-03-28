@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material/styles"
+import createTheme  from "@mui/material/styles/createTheme"
 import typography from "./typography";
 
 export const theme = createTheme({

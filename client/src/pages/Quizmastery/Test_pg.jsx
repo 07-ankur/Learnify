@@ -12,7 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "../../assets/images/Learnify_logo.png";
 import { quizTheme } from "../../utils/theme";
 import QuestionTabs_test from "../../container/Quizmastery/QuestionTabs_test";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import UserIcon from "./UserIcon";
 
 const drawerWidth = 0;
 
@@ -104,7 +104,7 @@ export default function Test_pg() {
                 {` ---> Mock Test 1`}
               </Typography>
             </Box>
-            <AccountCircleIcon sx={{ml:10, color:'#10D59B', fontSize:'2em'}}/>
+            <UserIcon/>
           </Toolbar>
         </AppBar>
         <Main>

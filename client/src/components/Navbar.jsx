@@ -26,6 +26,9 @@ import CodeIcon from "@mui/icons-material/Code";
 import ArticleIcon from "@mui/icons-material/Article";
 import Box from "@mui/system/Box";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import toast from "react-hot-toast";
 import { Cookies } from "react-cookie";
 import { jwtDecode } from "jwt-decode";
@@ -536,7 +539,7 @@ const Navbar = (props) => {
                             backgroundColor: "black",
                             borderRadius: "4px",
                             padding: "0.5em",
-                            right: "5em",
+                            right: "4.5em",
                             top: "2.5em",
                             boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
                           }}
@@ -545,12 +548,13 @@ const Navbar = (props) => {
                             sx={{
                               m: 1,
                               color: "grey",
-                              "&:hover": { color: "white" },
+                              "&:hover": { color: "skyblue" },
                               display: "flex",
                               flexDirection: "row",
                             }}
                           >
-                            <Typography variant="h6">
+                            <PersonOutlineIcon sx={{ mr: 0.5 }} />
+                            <Typography variant="h6" sx={{ mt: 0.5 }}>
                               {user.firstname + " " + user.lastname}
                             </Typography>
                           </Box>
@@ -562,9 +566,46 @@ const Navbar = (props) => {
                               "&:hover": { color: "white" },
                               display: "flex",
                               flexDirection: "row",
+                              alignItems: "center",
+                              justifyContent: "center",
                             }}
                           >
+                            <AlternateEmailIcon sx={{ mr: 0.5 }} />
                             <Typography variant="h6">{user.email}</Typography>
+                          </Box>
+                          <Box
+                            sx={{
+                              m: 1,
+                              color: "grey",
+                              "&:hover": { color: "#10D59B" },
+                              display: "flex",
+                              flexDirection: "row",
+                            }}
+                            onClick={() => {
+                              navigate("/profile/edit");
+                            }}
+                          >
+                            <EditIcon sx={{ mr: 0.5 }} />
+                            <Typography variant="h6" sx={{ mt: 0.5 }}>
+                              Edit Account
+                            </Typography>
+                          </Box>
+                          <Box
+                            sx={{
+                              m: 1,
+                              color: "grey",
+                              "&:hover": { color: "red" },
+                              display: "flex",
+                              flexDirection: "row",
+                            }}
+                            onClick={() => {
+                              navigate("/profile/delete");
+                            }}
+                          >
+                            <DeleteOutlineIcon sx={{ mr: 0.5 }} />
+                            <Typography variant="h6" sx={{ mt: 0.5 }}>
+                              Delete Account
+                            </Typography>
                           </Box>
                         </Stack>
                       )}

@@ -7,6 +7,7 @@ const cors = require("cors");
 
 //routes import
 const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
 const errorHandler = require("./middlewares/errorHandler");
 
 app.use(
@@ -19,6 +20,7 @@ app.use(express.json());
 
 //routes middleware
 app.use("/api/auth", authRoutes);
+app.use("/api/user", userRoutes);
 
 //server test route
 app.get("/", (req, res) => {

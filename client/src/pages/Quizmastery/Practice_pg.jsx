@@ -13,7 +13,7 @@ import MuiAppBar from "@mui/material/AppBar";
 import Logo from "../../assets/images/Learnify_logo.png";
 import { quizTheme } from "../../utils/theme";
 import QuestionTabs from "../../container/Quizmastery/QuestionTabs";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import UserIcon from "./UserIcon";
 
 const drawerWidth = 0;
 
@@ -127,9 +127,7 @@ export default function Practice_pg() {
                 {` ---> ${topic.replace(/-/g, " ")}`}
               </Typography>
             </Box>
-            <AccountCircleIcon
-              sx={{ ml: 10, color: "#10D59B", fontSize: "2em" }}
-            />
+            <UserIcon/>
           </Toolbar>
         </AppBar>
         <Main>

@@ -1,4 +1,4 @@
-const userDB = require("../models/userModel");
+const userDB = require("../models/userModal");
 const tokenDB = require("../models/token");
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
@@ -29,7 +29,7 @@ const registerUser = asyncHandler(async (req, res) => {
       const savedUser = await newUser.save();
       if (savedUser) {
         let otp = Math.floor(100000 + Math.random() * 900000);
-        otp = otp.toString().padStart(6, '0');
+        otp = otp.toString().padStart(6, "0");
         const hashedOTP = crypto
           .createHash("sha256")
           .update(otp.toString())
@@ -79,7 +79,7 @@ const resendOTP = asyncHandler(async (req, res) => {
     await tokenDB.deleteOne({ email: email });
   }
   let otp = Math.floor(100000 + Math.random() * 900000);
-  otp = otp.toString().padStart(6, '0');
+  otp = otp.toString().padStart(6, "0");
   const hashedOTP = crypto
     .createHash("sha256")
     .update(otp.toString())

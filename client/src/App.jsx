@@ -23,6 +23,8 @@ import Practice_pg from "./pages/Quizmastery/Practice_pg";
 import Test_pg from "./pages/Quizmastery/Test_pg";
 import TutorialPage from "./container/Tutorials/TutorialPage";
 import VerifyOtp from "./pages/Authentication/Verify_pg";
+import Edit from "./pages/Profile/Edit";
+import Delete from "./pages/Profile/Delete";
 import { Toaster } from "react-hot-toast";
 
 const { ITEMS } = Blogs;
@@ -36,7 +38,8 @@ const App = () => {
       <Routes>
         <Route path="*" element={<Landing_pg />} />
         <Route path="/" element={<Landing_pg />} />
-        <Route path="/home" element={<Home_pg />} />
+        <Route path="/profile/edit" element={<Edit/>} />
+        <Route path="/profile/delete" element={<Delete/>} />
         <Route path="/tutorials" element={<Tutorials_pg />} />
         <Route path="/tutorialsPage" element={<TutorialPage />} />
         <Route path="/signup" element={<Signup_pg />} />

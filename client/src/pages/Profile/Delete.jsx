@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Box, Container, Grid, Typography, TextField } from "@mui/material";
 import { signupContent } from "../../utils/contents/MainContent";
 import { ThemeProvider } from "@emotion/react";
@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { Cookies } from "react-cookie";
+import { jwtDecode } from "jwt-decode";
 
 const TextFieldstyled = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -23,12 +24,24 @@ const TextFieldstyled = styled(TextField)`
 
 const { Logo_drk } = signupContent;
 
-const cookies = new Cookies();
-
-const Login_pg = () => {
+const Delete = () => {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
+  const cookies = new Cookies();
+  const [email, setEmail] = useState(null);
+  const [id, setId] = useState(null);
+
+  useEffect(() => {
+    const token = cookies.get("jwt_token");
+    if (token) {
+      const decodedToken = jwtDecode(token.toString());
+      // Ensure token is a string
+      setEmail(decodedToken.email);
+      setId(decodedToken._id);
+      console.log(id);
+    }
+  }, [cookies]);
+
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -38,23 +51,27 @@ const Login_pg = () => {
       try {
         setIsLoading(true);
 
-        const res = await axios.post("http://localhost:3000/api/auth/login", {
-          email,
-          password,
-        });
+        const passwordVerificationRes = await axios.post(
+          "http://localhost:3000/api/auth/login",
+          {
+            email,
+            password,
+          }
+        );
 
-        if (res.status === 200) {
-          setIsLoading(false);
+        if (passwordVerificationRes.status === 200) {
+          const deleteUserRes = await axios.delete(
+            `http://localhost:3000/api/user/deleteuser/${id}`
+          );
 
-          // Extract user information from the response data
-          const { token } = res.data;
-
-          // Set JWT token in cookies
-          cookies.set("jwt_token", token ); // Only set the token
-
-          toast.success("Login successful!");
-
-          navigate("/");
+          if (deleteUserRes.status === 200) {
+            cookies.remove("jwt_token");
+            setIsLoading(false);
+            toast.success("User deleted successfully!");
+            navigate('/');
+          }
+        } else {
+          toast.error("Incorrect password!");
         }
       } catch (error) {
         console.log(error);
@@ -63,7 +80,7 @@ const Login_pg = () => {
         setIsLoading(false);
       }
     },
-    [email, password]
+    [email, password, id, navigate]
   );
 
   return (
@@ -86,24 +103,24 @@ const Login_pg = () => {
               variant="h2"
               sx={{ letterSpacing: "0.01em", mt: 1, color: "#3ea886" }}
             >
-              Login To Your Account
+              Delete Your Account
             </Typography>
             <Typography
               variant="h4"
               sx={{ letterSpacing: "0.01em", mb: 8, color: "#4d5980" }}
             >
-              Level up your Learning with Learnify!!{" "}
+              We will miss you!!{" "}
             </Typography>
             <form onSubmit={onSubmit}>
               <Grid container spacing={2}>
                 <Grid item xs={7}>
                   <TextFieldstyled
                     variant="outlined"
+                    value={email}
                     fullWidth
-                    label="Email Address"
                     name="email"
                     type="email"
-                    value={email}
+                    disabled
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </Grid>
@@ -127,7 +144,7 @@ const Login_pg = () => {
                   mt: 5,
                 }}
               >
-                <Auth_btn label={"Login"} />
+                <Auth_btn label={"Delete"} type={"submit"} />
                 <Typography
                   variant="h6"
                   sx={{
@@ -138,11 +155,11 @@ const Login_pg = () => {
                     mr: 1,
                   }}
                 >
-                  Or don't have an account?{" "}
+                  Or wanna stay with us?{" "}
                 </Typography>
                 <Typography
                   variant="h5"
-                  onClick={() => navigate("/signup")}
+                  onClick={() => navigate("/")}
                   sx={{
                     letterSpacing: "0.01em",
                     mb: 3,
@@ -154,7 +171,7 @@ const Login_pg = () => {
                   }}
                 >
                   {" "}
-                  Signup{" "}
+                  Home{" "}
                 </Typography>
                 <Lottie
                   style={{ width: "25%", marginTop: -100, marginLeft: 20 }}
@@ -180,4 +197,4 @@ const Login_pg = () => {
   );
 };
 
-export default Login_pg;
+export default Delete;

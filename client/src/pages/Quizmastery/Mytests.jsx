@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import {
   Box,
   styled,
@@ -12,11 +12,11 @@ import MuiAppBar from "@mui/material/AppBar";
 import Logo from "../../assets/images/Learnify_logo.png";
 import { quizTheme } from "../../utils/theme";
 // import QuestionTabs from "../../container/Quizmastery/QuestionTabs";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import UserIcon from "./UserIcon";
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
-})(({ theme}) => ({
+})(({ theme }) => ({
   transition: theme.transitions.create(["margin", "width"], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -39,7 +39,7 @@ export default function Mytests() {
                 marginBottom: "15px",
               }}
             />
-            <Box sx={{display:'flex', alignItems:'center'}}>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
               <Typography
                 sx={{ ml: "5vh" }}
                 variant="h4"
@@ -50,10 +50,10 @@ export default function Mytests() {
                 Quiz Mastery
               </Typography>
             </Box>
-            <AccountCircleIcon sx={{ml:10, color:'#10D59B', fontSize:'2em'}}/>
+            <UserIcon />
           </Toolbar>
         </AppBar>
-        </Box>
+      </Box>
     </ThemeProvider>
   );
 }
