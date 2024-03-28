@@ -39,6 +39,8 @@ const registerUser = asyncHandler(async (req, res) => {
           await tokenDB.deleteOne({ email: savedUser.email });
         }
         const newToken = new tokenDB({
+          firstname: savedUser.firstname,
+          lastname: savedUser.lastname,
           email: savedUser.email,
           token: hashedOTP,
           createdAt: Date.now(),
@@ -150,15 +152,14 @@ const loginUser = asyncHandler(async (req, res) => {
   } else {
     const findUser = await userDB.findOne({ email: email });
     if (findUser) {
-      console.log(findUser)
+      console.log(findUser);
       const comparePassword = await bcrypt.compare(password, findUser.password);
-      console.log(comparePassword)
+      console.log(comparePassword);
       if (comparePassword) {
-        const token = generateToken(findUser._id);
-        const { password, createdAt, updatedAt, ...other } = findUser._doc;
+        const token = generateToken(findUser); // Generate token with user details
         res
           .status(200)
-          .json({ message: "Login successful", other, token: token });
+          .json({ message: "Login successful", user: findUser, token: token });
       } else {
         res.status(404);
         throw new Error("Password incorrect");

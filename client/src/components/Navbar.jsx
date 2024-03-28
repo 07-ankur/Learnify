@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { navbarContent } from "../utils/contents/MainContent";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import CallMadeIcon from "@mui/icons-material/CallMade";
 import LanguageIcon from "@mui/icons-material/Language";
 import useScrollPosition from "../hooks/useScrollPosition";
@@ -24,7 +24,11 @@ import TimelineIcon from "@mui/icons-material/Timeline";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import CodeIcon from "@mui/icons-material/Code";
 import ArticleIcon from "@mui/icons-material/Article";
-import { Box } from "@mui/system";
+import Box from "@mui/system/Box";
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import toast from "react-hot-toast";
+import { Cookies } from "react-cookie";
+import { jwtDecode } from "jwt-decode";
 
 const { Logo } = navbarContent;
 
@@ -44,9 +48,28 @@ const Navbar = (props) => {
   const [contentOpen, setContentOpen] = useState(false);
   const [serviceOpen, setServiceOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [userOpen, setUserOpen] = useState(false);
   const contentRef = useRef(null);
   const serviceRef = useRef(null);
   const aboutRef = useRef(null);
+  const userRef = useRef(null);
+
+  const cookies = new Cookies();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const token = cookies.get("jwt_token");
+    if (token) {
+      const decodedToken = jwtDecode(token.toString());
+      console.log(decodedToken);
+      // Ensure token is a string
+      setUser({
+        firstname: decodedToken.firstname,
+        lastname: decodedToken.lastname,
+        email: decodedToken.email,
+      });
+    }
+  }, [cookies]);
 
   const handleContentEnter = () => {
     setContentOpen(true);
@@ -69,6 +92,21 @@ const Navbar = (props) => {
 
   const handleServiceLeave = () => {
     setServiceOpen(false);
+  };
+
+  const handleUserEnter = () => {
+    setUserOpen(true);
+  };
+
+  const handleUserLeave = () => {
+    setUserOpen(false);
+  };
+
+  const handleLogout = () => {
+    cookies.remove("jwt_token");
+    setUser(null);
+    toast.success("Logged out successfully!!");
+    navigate("/");
   };
 
   return (
@@ -482,8 +520,70 @@ const Navbar = (props) => {
                 <LanguageIcon fontSize="small" />
                 <Typography variant="body2">EN</Typography>
               </LinkButton>
-              <Main_btn label={"Log In"} functionHandler={navigateToLogin} />
-              <Main_btn label={"Sign Up"} functionHandler={navigateToSignup} />
+              {user ? (
+                <>
+                  <div
+                    onMouseEnter={handleUserEnter}
+                    onMouseLeave={handleUserLeave}
+                    ref={userRef}
+                  >
+                    <LinkButton>
+                      <PersonOutlineIcon />
+                      {userOpen && (
+                        <Stack
+                          sx={{
+                            position: "absolute",
+                            backgroundColor: "black",
+                            borderRadius: "4px",
+                            padding: "0.5em",
+                            right: "5em",
+                            top: "2.5em",
+                            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
+                          }}
+                        >
+                          <Box
+                            sx={{
+                              m: 1,
+                              color: "grey",
+                              "&:hover": { color: "white" },
+                              display: "flex",
+                              flexDirection: "row",
+                            }}
+                          >
+                            <Typography variant="h6">
+                              {user.firstname + " " + user.lastname}
+                            </Typography>
+                          </Box>
+
+                          <Box
+                            sx={{
+                              m: 1,
+                              color: "grey",
+                              "&:hover": { color: "white" },
+                              display: "flex",
+                              flexDirection: "row",
+                            }}
+                          >
+                            <Typography variant="h6">{user.email}</Typography>
+                          </Box>
+                        </Stack>
+                      )}
+                    </LinkButton>
+                  </div>
+                  <Main_btn label={"Log Out"} functionHandler={handleLogout} />
+                </>
+              ) : (
+                <>
+                  <Main_btn
+                    label={"Log In"}
+                    functionHandler={navigateToLogin}
+                  />
+                  <Main_btn
+                    label={"Sign Up"}
+                    functionHandler={navigateToSignup}
+                  />
+                </>
+              )}
             </Stack>
           )}
         </Stack>

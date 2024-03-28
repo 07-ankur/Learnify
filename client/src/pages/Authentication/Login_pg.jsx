@@ -1,8 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { Box, Container, Grid, Typography, TextField } from "@mui/material";
 import { signupContent } from "../../utils/contents/MainContent";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { ThemeProvider } from "@emotion/react";
 import { authTheme } from "../../utils/theme/index";
 import styled from "styled-components";
@@ -13,6 +11,8 @@ import Lottie from "lottie-react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { Cookies } from "react-cookie";
+import { jwtDecode } from "jwt-decode";
 
 const TextFieldstyled = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -23,6 +23,8 @@ const TextFieldstyled = styled(TextField)`
 `;
 
 const { Logo_drk } = signupContent;
+
+const cookies = new Cookies();
 
 const Login_pg = () => {
   const navigate = useNavigate();
@@ -37,21 +39,19 @@ const Login_pg = () => {
       try {
         setIsLoading(true);
 
-        console.log({
-          email,
-          password,
-        });
-
         const res = await axios.post("http://localhost:3000/api/auth/login", {
           email,
           password,
         });
 
-        console.log(res.data);
-
         if (res.status === 200) {
           setIsLoading(false);
-          localStorage.setItem("loginData", JSON.stringify(res.data));
+
+          // Extract user information from the response data
+          const { token } = res.data;
+
+          // Set JWT token in cookies
+          cookies.set("jwt_token", token ); // Only set the token
 
           toast.success("Login successful!");
 
@@ -64,7 +64,7 @@ const Login_pg = () => {
         setIsLoading(false);
       }
     },
-    [email, password, navigate]
+    [email, password]
   );
 
   return (
