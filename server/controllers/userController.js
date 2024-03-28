@@ -1,4 +1,5 @@
 const userDB = require("../models/userModal");
+const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
 const test = asyncHandler(async (req, res) => {
   res.status(200).json({ message: "User API established" });
@@ -15,13 +16,18 @@ const getUser = asyncHandler(async (req, res) => {
 });
 
 const updateUser = asyncHandler(async (req, res) => {
-  const { firstname, lastname, avatar } = req.body;
+  const { firstname, lastname, newPassword, avatar } = req.body;
   const id = req.params.id;
   const findUser = await userDB.findById({ _id: id });
   if (findUser) {
+    const salt = await bcrypt.genSalt(10);
     const updateData = {
       firstname: firstname === undefined ? findUser.firstname : firstname,
       lastname: lastname === undefined ? findUser.lastname : lastname,
+      password:
+        newPassword === undefined
+          ? findUser.password
+          : await bcrypt.hash(newPassword, salt),
       avatar: avatar === undefined ? findUser.avatar : avatar,
     };
     const updatedUser = await userDB.findByIdAndUpdate(
@@ -30,6 +36,7 @@ const updateUser = asyncHandler(async (req, res) => {
       { new: true }
     );
     if (updatedUser) {
+      console.log(updatedUser);
       res
         .status(200)
         .json({ message: "Successfully updated user", updatedUser });

@@ -68,7 +68,7 @@ const Delete = () => {
             cookies.remove("jwt_token");
             setIsLoading(false);
             toast.success("User deleted successfully!");
-            navigate('/');
+            navigate("/");
           }
         } else {
           toast.error("Incorrect password!");
