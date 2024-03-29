@@ -2,8 +2,10 @@ import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import OutlinedButton from "../Buttons/OutlinedButton";
 import Title from "../Title";
+import { useNavigate } from "react-router-dom";
 
 const TestCard = ({ title, subtitle }) => {
+  const navigate = useNavigate();
   return (
     <Box
       sx={{
@@ -26,11 +28,19 @@ const TestCard = ({ title, subtitle }) => {
       }}
     >
       <Stack sx={{ height: "100%" }} spacing={2.3}>
-        <Title sx={{color:'white'}} variant={{ xs: "h4", sm: "h3" }}>{title}</Title>
+        <Title sx={{ color: "white" }} variant={{ xs: "h4", sm: "h3" }}>
+          {title}
+        </Title>
         <Typography variant="body2" color="text.secondary">
           {subtitle}
-        </Typography> 
-        <OutlinedButton arrow fit>
+        </Typography>
+        <OutlinedButton
+          arrow
+          fit
+          onClick={() => {
+            navigate("/quizMastery/React-JS/test/Mock-Test-1");
+          }}
+        >
           Start Test
         </OutlinedButton>
       </Stack>

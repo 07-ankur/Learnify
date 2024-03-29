@@ -36,7 +36,7 @@ const PracticeModal = ({
   const Accuracy =
     questionsAnswered === 0
       ? 0
-      : Math.round((questionsAnswered / totalQuestions) * 100);
+      : Math.round((correctlyAnsweredCount / totalQuestions) * 100);
 
   return (
     <ThemeProvider theme={feedbackTheme}>

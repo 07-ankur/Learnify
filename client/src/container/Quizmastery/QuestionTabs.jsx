@@ -51,8 +51,7 @@ function a11yProps(index) {
 export default function QuestionTabs() {
   const [value, setValue] = useState(0);
 
-  const handleChange = (newValue) => {
-    console.log(newValue);
+  const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
@@ -143,7 +142,7 @@ export default function QuestionTabs() {
         >
           <Tabs
             variant="scrollable"
-            value={value}
+            value={value} // Should be the index of the question
             onChange={handleChange}
             aria-label="basic tabs example"
           >

@@ -42,7 +42,7 @@ const TextFieldstyled = styled(TextField)`
 
 const AvatarGrid = styled(Grid)`
   &.selected img {
-    border: 2px solid green;
+    border: 2px solid yellow;
     border-width: 4px; /* Increase border width for debugging */
   }
 `;
@@ -142,7 +142,7 @@ const Edit = () => {
           width: "80rem",
           backgroundColor: "white",
           border: "5px solid #3ea886",
-          mt: 2,
+          mt: 1,
           borderRadius: "20px",
         }}
       >
@@ -238,7 +238,7 @@ const Edit = () => {
                   />
                 </Grid>
                 <Grid item xs={10}>
-                  <Typography variant="h6" sx={{ color: "#4d5980" }}>
+                  <Typography variant="h6" sx={{ color: "#4d5980", mb: 1 }}>
                     Choose Avatar:
                   </Typography>
                   <ToggleButtonGroup
@@ -252,6 +252,7 @@ const Edit = () => {
                         key={index}
                         value={avatar}
                         onClick={(e) => handleAvatarSelect(e, index)}
+                        sx={{ py: "5px" }}
                       >
                         <AvatarGrid
                           className={
@@ -262,8 +263,8 @@ const Edit = () => {
                             src={avatar}
                             alt={`Avatar ${index + 1}`}
                             style={{
-                              width: 50,
-                              height: 50,
+                              width: 60,
+                              height: 60,
                               borderRadius: "50%",
                             }}
                           />
@@ -318,7 +319,7 @@ const Edit = () => {
               </Box>
             </form>
           </Box>
-          <Box sx={{ width: "70%" }}>
+          <Box sx={{ width: "100%" }}>
             //{" "}
             <Lottie
               style={{ marginTop: 20 }}

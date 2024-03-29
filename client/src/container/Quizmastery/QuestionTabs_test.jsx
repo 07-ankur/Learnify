@@ -52,7 +52,7 @@ function a11yProps(index) {
 export default function QuestionTabs_test() {
   const [value, setValue] = useState(0);
 
-  const handleChange = (newValue) => {
+  const handleChange = (event, newValue) => {
     console.log(newValue);
     setValue(newValue);
   };
@@ -64,9 +64,9 @@ export default function QuestionTabs_test() {
   const [selectedOptions, setSelectedOptions] = useState(
     Array(ITEMS[0].Questions.length).fill(null)
   );
-  
+
   const [answersChecked, setAnswersChecked] = useState(false);
-  
+
   const [correctAnswered, setCorrectAnswered] = useState(
     Array(ITEMS[0].Questions.length).fill(null)
   );
@@ -77,30 +77,30 @@ export default function QuestionTabs_test() {
 
   const updateAnswersChecked = (newAnswersChecked) => {
     setAnswersChecked(newAnswersChecked);
-  
+
     const newCorrectAnswered = Array(ITEMS[0].Questions.length).fill(null);
     const newWrongAnswered = Array(ITEMS[0].Questions.length).fill(null);
     const newQuestionStatus = Array(ITEMS[0].Questions.length).fill(null);
-  
+
     for (let i = 0; i < ITEMS[0].Questions.length; i++) {
       const selectedOption = selectedOptions[i];
       const correctAnswer = ITEMS[0].Questions[i].correct;
-  
-      if (selectedOption!= null && selectedOption === correctAnswer) {
+
+      if (selectedOption != null && selectedOption === correctAnswer) {
         // Answer is correct
         newCorrectAnswered[i] = selectedOption;
         newQuestionStatus[i] = true;
-      } else if(selectedOption!= null && selectedOption != correctAnswer){
+      } else if (selectedOption != null && selectedOption != correctAnswer) {
         // Answer is wrong
         newWrongAnswered[i] = selectedOption;
         newQuestionStatus[i] = false;
       }
     }
-  
+
     setCorrectAnswered(newCorrectAnswered);
     setWrongAnswered(newWrongAnswered);
     setQuestionStatus(newQuestionStatus);
-  };  
+  };
 
   const handleSelectOption = (questionIndex, option) => {
     if (!answersChecked) {
@@ -112,10 +112,12 @@ export default function QuestionTabs_test() {
       newSelectedOptions[questionIndex] = null;
       setSelectedOptions(newSelectedOptions);
     }
-  };  
-  
+  };
+
   const nextHandler = () => {
-    setValue((prevValue) => Math.min(prevValue + 1, ITEMS[0].Questions.length - 1));
+    setValue((prevValue) =>
+      Math.min(prevValue + 1, ITEMS[0].Questions.length - 1)
+    );
   };
 
   const prevHandler = () => {

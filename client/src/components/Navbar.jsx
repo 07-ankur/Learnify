@@ -35,14 +35,6 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import toast from "react-hot-toast";
 import { Cookies } from "react-cookie";
 import { jwtDecode } from "jwt-decode";
-import avatar1 from "../assets/images/Avatar/Avatar1.jpg";
-import avatar2 from "../assets/images/Avatar/Avatar2.jpg";
-import avatar3 from "../assets/images/Avatar/Avatar3.jpg";
-import avatar4 from "../assets/images/Avatar/Avatar4.jpg";
-import avatar5 from "../assets/images/Avatar/Avatar5.jpg";
-import avatar6 from "../assets/images/Avatar/Avatar6.jpg";
-import avatar7 from "../assets/images/Avatar/Avatar7.jpg";
-import avatar8 from "../assets/images/Avatar/Avatar8.jpg";
 
 const { Logo } = navbarContent;
 
