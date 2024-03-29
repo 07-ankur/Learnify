@@ -26,6 +26,8 @@ import VerifyOtp from "./pages/Authentication/Verify_pg";
 import Edit from "./pages/Profile/Edit";
 import Delete from "./pages/Profile/Delete";
 import { Toaster } from "react-hot-toast";
+import Forgot from "./pages/Profile/Forgot";
+import Verify from "./pages/Profile/Verify";
 
 const { ITEMS } = Blogs;
 const { TOPICS } = Analysis_Progress;
@@ -45,6 +47,8 @@ const App = () => {
         <Route path="/signup" element={<Signup_pg />} />
         <Route path="/signup/verify" element={<VerifyOtp />} />
         <Route path="/login" element={<Login_pg />} />
+        <Route path="/verify" element={<Verify/>} />
+        <Route path="/forgotPassword" element={<Forgot/>} />
         <Route path="/mapper" element={<Mapper_pg />} />
         <Route path="/blog" element={<Blog_pg />} />
         {SKILLS.map((skill) => (

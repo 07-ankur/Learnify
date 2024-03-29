@@ -24,10 +24,10 @@ const TextFieldstyled = styled(TextField)`
 
 const { Logo_drk } = signupContent;
 
-const VerifyOtp = () => {
+const Verify = () => {
   const location = useLocation();
   const { email } = location.state || {};
-  const {password} = location.state || {};
+  const { password } = location.state || {};
   const [otp, setOtp] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -37,8 +37,8 @@ const VerifyOtp = () => {
       event.preventDefault();
       try {
         setIsLoading(true);
-        console.log(email);
-        const res = await axios.post(
+
+        const otpVerificationRes = await axios.post(
           "http://localhost:3000/api/auth/verifyotp",
           {
             email,
@@ -46,23 +46,31 @@ const VerifyOtp = () => {
           }
         );
 
-        console.log(res.data);
+        if (otpVerificationRes.status === 200) {
+          console.log("Otp verified");
+          const changePassRes = await axios.post(
+            `http://localhost:3000/api/auth/forgotpassword`,
+            {
+              email,
+              password,
+            }
+          );
 
-        if (res.status === 200) {
-          setIsLoading(false);
-
-          toast.success("Account Verified successfully!");
-
-          navigate("/login");
+          if (changePassRes.status === 200) {
+            setIsLoading(false);
+            toast.success("Password updated successfully!");
+          }
+        } else {
+          toast.error("Incorrect OTP!");
         }
       } catch (error) {
         console.log(error);
-        toast.error("Something went wrong!");
+        toast.error("Something went wrong!!");
       } finally {
         setIsLoading(false);
       }
     },
-    [email,otp]
+    [email, password, navigate]
   );
 
   const onResend = useCallback(
@@ -114,7 +122,7 @@ const VerifyOtp = () => {
               variant="h2"
               sx={{ letterSpacing: "0.01em", mt: 1, color: "#3ea886" }}
             >
-              Verify Your New Account
+              Verify Your Account
             </Typography>
             <Typography
               variant="h4"
@@ -126,7 +134,6 @@ const VerifyOtp = () => {
               <Grid container spacing={2}>
                 <Grid item xs={7}>
                   <TextFieldstyled
-                    disabled
                     variant="outlined"
                     fullWidth
                     label={email}
@@ -156,7 +163,7 @@ const VerifyOtp = () => {
                   display: "flex",
                   flexDirection: "row",
                   alignItems: "center",
-                  mt: 5,
+                  mt: 2,
                 }}
               >
                 <Auth_btn label={"Verify"} type={"submit"} />
@@ -195,6 +202,41 @@ const VerifyOtp = () => {
                   autoplay
                 />
               </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  mt: 2,
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  sx={{
+                    letterSpacing: "0.01em",
+                    color: "#4d5980",
+                    mr: 1,
+                  }}
+                >
+                  Want to Login?{" "}
+                </Typography>
+                <Typography
+                  variant="h5"
+                  onClick={() => {
+                    navigate("/login");
+                  }}
+                  sx={{
+                    letterSpacing: "0.01em",
+                    color: "purple",
+                    mr: 1,
+                    textDecoration: "underline",
+                    cursor: "pointer",
+                  }}
+                >
+                  {" "}
+                  Login{" "}
+                </Typography>
+              </Box>
             </form>
           </Box>
           <Box sx={{ width: "50%" }}>
@@ -212,4 +254,4 @@ const VerifyOtp = () => {
   );
 };
 
-export default VerifyOtp;
+export default Verify;

@@ -19,7 +19,6 @@ import Lottie from "lottie-react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import { Cookies } from "react-cookie";
 
 const TextFieldstyled = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -31,9 +30,7 @@ const TextFieldstyled = styled(TextField)`
 
 const { Logo_drk } = signupContent;
 
-const cookies = new Cookies();
-
-const Login_pg = () => {
+const Forgot = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -47,23 +44,19 @@ const Login_pg = () => {
       try {
         setIsLoading(true);
 
-        const res = await axios.post("http://localhost:3000/api/auth/login", {
-          email,
-          password,
-        });
+        const res = await axios.post(
+          "http://localhost:3000/api/auth/resendotp",
+          {
+            email,
+          }
+        );
 
         if (res.status === 200) {
           setIsLoading(false);
 
-          // Extract user information from the response data
-          const { token } = res.data;
+          toast.success("OTP sent successfully!!");
 
-          // Set JWT token in cookies
-          cookies.set("jwt_token", token); // Only set the token
-
-          toast.success("Login successful!");
-
-          navigate("/");
+          navigate("/verify", { state: { email, password } });
         }
       } catch (error) {
         console.log(error);
@@ -95,13 +88,13 @@ const Login_pg = () => {
               variant="h2"
               sx={{ letterSpacing: "0.01em", mt: 1, color: "#3ea886" }}
             >
-              Login To Your Account
+              Forgot Password
             </Typography>
             <Typography
               variant="h4"
               sx={{ letterSpacing: "0.01em", mb: 8, color: "#4d5980" }}
             >
-              Level up your Learning with Learnify!!{" "}
+              Enter Your E-mail and New Password to continue!!{" "}
             </Typography>
             <form onSubmit={onSubmit}>
               <Grid container spacing={2}>
@@ -120,8 +113,8 @@ const Login_pg = () => {
                   <TextFieldstyled
                     variant="outlined"
                     fullWidth
-                    label="Password"
-                    name="password"
+                    label="New Password"
+                    name="newPassword"
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -136,29 +129,6 @@ const Login_pg = () => {
                       ),
                     }}
                   />
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      mt: 2,
-                    }}
-                  >
-                    <Typography
-                      variant="h5"
-                      onClick={() => navigate("/forgotpassword")}
-                      sx={{
-                        letterSpacing: "0.01em",
-                        color: "purple",
-                        textDecoration: "underline",
-                        cursor: "pointer",
-                        ml: 2,
-                      }}
-                    >
-                      {" "}
-                      Forgot Password{" "}
-                    </Typography>
-                  </Box>
                 </Grid>
               </Grid>
               <Box
@@ -166,10 +136,10 @@ const Login_pg = () => {
                   display: "flex",
                   flexDirection: "row",
                   alignItems: "center",
-                  mt: 2,
+                  mt: 5,
                 }}
               >
-                <Auth_btn label={"Login"} />
+                <Auth_btn label={"Send OTP"} type={"submit"} />
                 <Typography
                   variant="h6"
                   sx={{
@@ -180,11 +150,11 @@ const Login_pg = () => {
                     mr: 1,
                   }}
                 >
-                  Or don't have an account?{" "}
+                  Or remember your password?{" "}
                 </Typography>
                 <Typography
                   variant="h5"
-                  onClick={() => navigate("/signup")}
+                  onClick={() => navigate("/login")}
                   sx={{
                     letterSpacing: "0.01em",
                     mb: 3,
@@ -196,10 +166,10 @@ const Login_pg = () => {
                   }}
                 >
                   {" "}
-                  Signup{" "}
+                  Login{" "}
                 </Typography>
                 <Lottie
-                  style={{ width: "25%", marginTop: -100, marginLeft: 20 }}
+                  style={{ width: "25%", marginTop: -100, marginLeft: 30 }}
                   animationData={rocket}
                   loop
                   autoplay
@@ -222,4 +192,4 @@ const Login_pg = () => {
   );
 };
 
-export default Login_pg;
+export default Forgot;

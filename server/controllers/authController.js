@@ -25,7 +25,7 @@ const registerUser = asyncHandler(async (req, res) => {
         lastname: lastname,
         email: email,
         password: await bcrypt.hash(password, salt),
-        avatar: avatar
+        avatar: avatar,
       });
       const savedUser = await newUser.save();
       if (savedUser) {
@@ -172,4 +172,46 @@ const loginUser = asyncHandler(async (req, res) => {
     }
   }
 });
-module.exports = { registerUser, loginUser, verifyOtp, resendOTP };
+
+const forgotPassword = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+  console.log(req.body);
+  if (!email || !password) {
+    res.status(400);
+    throw new Error("Please enter all the details properly");
+  } else {
+    const findUser = await userDB.findOne({ email: email });
+    if (findUser) {
+      const salt = await bcrypt.genSalt(10);
+      const updatePassword = {
+        password: await bcrypt.hash(password, salt),
+      };
+      const updatedUser = await userDB.findOneAndUpdate(
+        { email: email },
+        updatePassword,
+        { new: true }
+      );
+
+      if (updatedUser) {
+        console.log(updatedUser);
+        res
+          .status(200)
+          .json({ message: "Successfully updated password", updatedUser });
+      } else {
+        res.status(500);
+        throw new Error("Error in updating password");
+      }
+    } else {
+      res.status(404);
+      throw new Error("User not found");
+    }
+  }
+});
+
+module.exports = {
+  registerUser,
+  loginUser,
+  verifyOtp,
+  resendOTP,
+  forgotPassword,
+};
