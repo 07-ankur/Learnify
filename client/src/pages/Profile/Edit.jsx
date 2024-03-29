@@ -1,5 +1,14 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Box, Container, Grid, Typography, TextField } from "@mui/material";
+import {
+  Box,
+  Container,
+  Grid,
+  Typography,
+  TextField,
+  ToggleButtonGroup,
+  ToggleButton,
+  IconButton,
+} from "@mui/material";
 import { signupContent } from "../../utils/contents/MainContent";
 import { ThemeProvider } from "@emotion/react";
 import { authTheme } from "../../utils/theme/index";
@@ -8,17 +17,33 @@ import Auth_btn from "../../components/Buttons/Auth_btn";
 import anim1 from "../../assets/animations/signup.json";
 import rocket from "../../assets/animations/rocket.json";
 import Lottie from "lottie-react";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { Cookies } from "react-cookie";
 import { jwtDecode } from "jwt-decode";
+import avatar1 from "../../assets/images/Avatar/Avatar1.jpg";
+import avatar2 from "../../assets/images/Avatar/Avatar2.jpg";
+import avatar3 from "../../assets/images/Avatar/Avatar3.jpg";
+import avatar4 from "../../assets/images/Avatar/Avatar4.jpg";
+import avatar5 from "../../assets/images/Avatar/Avatar5.jpg";
+import avatar6 from "../../assets/images/Avatar/Avatar6.jpg";
+import avatar7 from "../../assets/images/Avatar/Avatar7.jpg";
+import avatar8 from "../../assets/images/Avatar/Avatar8.jpg";
 
 const TextFieldstyled = styled(TextField)`
   & .MuiOutlinedInput-root {
     &.Mui-focused fieldset {
       border: 3px solid #2f8af5;
     }
+  }
+`;
+
+const AvatarGrid = styled(Grid)`
+  &.selected img {
+    border: 2px solid green;
+    border-width: 4px; /* Increase border width for debugging */
   }
 `;
 
@@ -32,12 +57,36 @@ const Edit = () => {
   const [email, setEmail] = useState(decodedToken.email);
   const [firstname, setFirstname] = useState(decodedToken.firstname);
   const [lastname, setLastname] = useState(decodedToken.lastname);
+  const [avatar, setAvatar] = useState(decodedToken.avatar);
   const [id, setId] = useState(decodedToken._id);
 
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [newPassword, setNewPassword] = useState("");
+  const [showNewPassword, setShowNewPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  const avatars = [
+    avatar1,
+    avatar2,
+    avatar3,
+    avatar4,
+    avatar5,
+    avatar6,
+    avatar7,
+    avatar8,
+  ];
+
+  const [selectedAvatarIndex, setSelectedAvatarIndex] = useState(0);
+
+  const handleAvatarSelect = (event, newAvatarIndex) => {
+    if (newAvatarIndex !== null) {
+      setSelectedAvatarIndex(newAvatarIndex);
+      setAvatar(avatars[newAvatarIndex]);
+      console.log(newAvatarIndex);
+    }
+  };
 
   const onSubmit = useCallback(
     async (event) => {
@@ -64,6 +113,7 @@ const Edit = () => {
               firstname,
               lastname,
               newPassword,
+              avatar,
             }
           );
 
@@ -81,7 +131,7 @@ const Edit = () => {
         setIsLoading(false);
       }
     },
-    [email, password, id, firstname, lastname, newPassword, navigate]
+    [email, password, id, firstname, lastname, newPassword, avatar, navigate]
   );
 
   return (
@@ -104,13 +154,13 @@ const Edit = () => {
               variant="h2"
               sx={{ letterSpacing: "0.01em", mt: 1, color: "#3ea886" }}
             >
-              Edit Your New Account
+              Edit Your Account
             </Typography>
             <Typography
               variant="h4"
               sx={{ letterSpacing: "0.01em", mb: 3, color: "#4d5980" }}
             >
-              Level up your Learning with Learnify!!{" "}
+              {email}{" "}
             </Typography>
             <form onSubmit={onSubmit}>
               <Grid container spacing={2}>
@@ -134,7 +184,7 @@ const Edit = () => {
                     onChange={(e) => setLastname(e.target.value)}
                   />
                 </Grid>
-                <Grid item xs={7}>
+                {/* <Grid item xs={7}>
                   <TextFieldstyled
                     variant="outlined"
                     disabled
@@ -144,16 +194,26 @@ const Edit = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                </Grid>
+                </Grid> */}
                 <Grid item xs={7}>
                   <TextFieldstyled
                     variant="outlined"
                     fullWidth
                     label="Current Password"
                     name="password"
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    InputProps={{
+                      endAdornment: (
+                        <IconButton
+                          onClick={() => setShowPassword(!showPassword)}
+                          edge="end"
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      ),
+                    }}
                   />
                 </Grid>
                 <Grid item xs={7}>
@@ -162,10 +222,55 @@ const Edit = () => {
                     fullWidth
                     label="New Password"
                     name="New password"
-                    type="password"
+                    type={showNewPassword ? "text" : "password"}
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
+                    InputProps={{
+                      endAdornment: (
+                        <IconButton
+                          onClick={() => setShowNewPassword(!showNewPassword)}
+                          edge="end"
+                        >
+                          {showNewPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      ),
+                    }}
                   />
+                </Grid>
+                <Grid item xs={10}>
+                  <Typography variant="h6" sx={{ color: "#4d5980" }}>
+                    Choose Avatar:
+                  </Typography>
+                  <ToggleButtonGroup
+                    exclusive
+                    value={selectedAvatarIndex}
+                    // onChange={handleAvatarSelect}
+                    aria-label="avatar-selector"
+                  >
+                    {avatars.map((avatar, index) => (
+                      <ToggleButton
+                        key={index}
+                        value={avatar}
+                        onClick={(e) => handleAvatarSelect(e, index)}
+                      >
+                        <AvatarGrid
+                          className={
+                            selectedAvatarIndex === index ? "selected" : ""
+                          }
+                        >
+                          <img
+                            src={avatar}
+                            alt={`Avatar ${index + 1}`}
+                            style={{
+                              width: 50,
+                              height: 50,
+                              borderRadius: "50%",
+                            }}
+                          />
+                        </AvatarGrid>
+                      </ToggleButton>
+                    ))}
+                  </ToggleButtonGroup>
                 </Grid>
               </Grid>
               <Box
@@ -204,16 +309,16 @@ const Edit = () => {
                   {" "}
                   Login{" "}
                 </Typography>
-                <Lottie
+                {/* <Lottie
                   style={{ width: "25%", marginTop: -100, marginLeft: 20 }}
                   animationData={rocket}
                   loop
                   autoplay
-                />
+                /> */}
               </Box>
             </form>
           </Box>
-          <Box sx={{ width: "50%" }}>
+          <Box sx={{ width: "70%" }}>
             //{" "}
             <Lottie
               style={{ marginTop: 20 }}

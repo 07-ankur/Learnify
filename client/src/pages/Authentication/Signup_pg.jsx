@@ -6,16 +6,13 @@ import {
   Grid,
   Container,
   Typography,
-  FormControl,
   TextField,
+  ToggleButtonGroup,
+  ToggleButton,
   IconButton,
-  InputLabel,
-  OutlinedInput,
-  InputAdornment,
 } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { signupContent } from "../../utils/contents/MainContent";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { ThemeProvider } from "@emotion/react";
 import { authTheme } from "../../utils/theme/index";
 import styled from "styled-components";
@@ -25,6 +22,14 @@ import rocket from "../../assets/animations/rocket.json";
 import Lottie from "lottie-react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import avatar1 from "../../assets/images/Avatar/Avatar1.jpg";
+import avatar2 from "../../assets/images/Avatar/Avatar2.jpg";
+import avatar3 from "../../assets/images/Avatar/Avatar3.jpg";
+import avatar4 from "../../assets/images/Avatar/Avatar4.jpg";
+import avatar5 from "../../assets/images/Avatar/Avatar5.jpg";
+import avatar6 from "../../assets/images/Avatar/Avatar6.jpg";
+import avatar7 from "../../assets/images/Avatar/Avatar7.jpg";
+import avatar8 from "../../assets/images/Avatar/Avatar8.jpg";
 
 const TextFieldstyled = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -34,11 +39,10 @@ const TextFieldstyled = styled(TextField)`
   }
 `;
 
-const OutlinedInputstyled = styled(OutlinedInput)`
-  & .MuiOutlinedInput-root {
-    &.Mui-focused fieldset {
-      border: 3px solid;
-    }
+const AvatarGrid = styled(Grid)`
+  &.selected img {
+    border: 2px solid green;
+    border-width: 4px; /* Increase border width for debugging */
   }
 `;
 
@@ -52,14 +56,37 @@ const SignupForm = () => {
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState(enteredEmail);
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [avatar, setAvatar] = useState(avatar1);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  const avatars = [
+    avatar1,
+    avatar2,
+    avatar3,
+    avatar4,
+    avatar5,
+    avatar6,
+    avatar7,
+    avatar8,
+  ];
+
+  const [selectedAvatarIndex, setSelectedAvatarIndex] = useState(0);
+
+  const handleAvatarSelect = (event, newAvatarIndex) => {
+    if (newAvatarIndex !== null) {
+      setSelectedAvatarIndex(newAvatarIndex);
+      setAvatar(avatars[newAvatarIndex]);
+      console.log(newAvatarIndex);
+    }
+  };
 
   const onSubmit = useCallback(
     async (event) => {
       console.log(enteredEmail);
       event.preventDefault();
-      if (!firstname || !lastname || !email || !password) {
+      if (!firstname || !lastname || !email || !password || !avatar) {
         toast.error("All fields are required!");
         return;
       }
@@ -71,6 +98,7 @@ const SignupForm = () => {
           lastname,
           email,
           password,
+          avatar,
         });
 
         const res = await axios.post(
@@ -80,6 +108,7 @@ const SignupForm = () => {
             lastname,
             email,
             password,
+            avatar,
           }
         );
 
@@ -90,7 +119,7 @@ const SignupForm = () => {
 
           toast.success("Account created successfully!");
 
-          navigate('/signup/verify', { state: { email }} )
+          navigate("/signup/verify", { state: { email } });
         }
       } catch (error) {
         console.log(error);
@@ -99,18 +128,18 @@ const SignupForm = () => {
         setIsLoading(false);
       }
     },
-    [firstname, lastname, email, password, navigate]
+    [firstname, lastname, email, password, avatar, navigate]
   );
 
   return (
     <ThemeProvider theme={authTheme}>
       <Container
         sx={{
-          height: "35rem",
+          height: "40rem",
           width: "80rem",
           backgroundColor: "white",
           border: "5px solid #3ea886",
-          mt: 5,
+          mt: 2,
           borderRadius: "20px",
         }}
       >
@@ -126,7 +155,7 @@ const SignupForm = () => {
             </Typography>
             <Typography
               variant="h4"
-              sx={{ letterSpacing: "0.01em", mb: 3, color: "#4d5980" }}
+              sx={{ letterSpacing: "0.01em", mb: 2, color: "#4d5980" }}
             >
               Level up your Learning with Learnify!!{" "}
             </Typography>
@@ -169,10 +198,55 @@ const SignupForm = () => {
                     fullWidth
                     label="Password"
                     name="password"
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    InputProps={{
+                      endAdornment: (
+                        <IconButton
+                          onClick={() => setShowPassword(!showPassword)}
+                          edge="end"
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      ),
+                    }}
                   />
+                </Grid>
+                <Grid item xs={10}>
+                  <Typography variant="h6" sx={{ color: "#4d5980" }}>
+                    Choose Avatar:
+                  </Typography>
+                  <ToggleButtonGroup
+                    exclusive
+                    value={selectedAvatarIndex}
+                    // onChange={handleAvatarSelect}
+                    aria-label="avatar-selector"
+                  >
+                    {avatars.map((avatar, index) => (
+                      <ToggleButton
+                        key={index}
+                        value={avatar}
+                        onClick={(e) => handleAvatarSelect(e, index)}
+                      >
+                        <AvatarGrid
+                          className={
+                            selectedAvatarIndex === index ? "selected" : ""
+                          }
+                        >
+                          <img
+                            src={avatar}
+                            alt={`Avatar ${index + 1}`}
+                            style={{
+                              width: 50,
+                              height: 50,
+                              borderRadius: "50%",
+                            }}
+                          />
+                        </AvatarGrid>
+                      </ToggleButton>
+                    ))}
+                  </ToggleButtonGroup>
                 </Grid>
               </Grid>
               <Box
@@ -211,16 +285,16 @@ const SignupForm = () => {
                   {" "}
                   Login{" "}
                 </Typography>
-                <Lottie
-                  style={{ width: "25%", marginTop: -100, marginLeft: 20 }}
+                {/* <Lottie
+                  style={{ width: "25%", marginTop: -90, marginLeft: 40 }}
                   animationData={rocket}
                   loop
                   autoplay
-                />
+                /> */}
               </Box>
             </form>
           </Box>
-          <Box sx={{ width: "50%" }}>
+          <Box sx={{ width: "70%" }}>
             //{" "}
             <Lottie
               style={{ marginTop: 20 }}

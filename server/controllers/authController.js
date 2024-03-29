@@ -8,8 +8,8 @@ const crypto = require("crypto");
 require("dotenv").config();
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { firstname, lastname, email, password } = req.body;
-  if (!firstname || !lastname || !email || !password) {
+  const { firstname, lastname, email, password, avatar } = req.body;
+  if (!firstname || !lastname || !email || !password || !avatar) {
     res.status(400);
     throw new Error("Please Enter all the details properly");
   } else {
@@ -25,6 +25,7 @@ const registerUser = asyncHandler(async (req, res) => {
         lastname: lastname,
         email: email,
         password: await bcrypt.hash(password, salt),
+        avatar: avatar
       });
       const savedUser = await newUser.save();
       if (savedUser) {
@@ -42,6 +43,7 @@ const registerUser = asyncHandler(async (req, res) => {
           firstname: savedUser.firstname,
           lastname: savedUser.lastname,
           email: savedUser.email,
+          avatar: savedUser.avatar,
           token: hashedOTP,
           createdAt: Date.now(),
           expiresAt: Date.now() + 30 * (60 * 1000),

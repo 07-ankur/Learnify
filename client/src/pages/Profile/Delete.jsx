@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Box, Container, Grid, Typography, TextField } from "@mui/material";
+import { Box, Container, Grid, Typography, TextField, IconButton } from "@mui/material";
 import { signupContent } from "../../utils/contents/MainContent";
 import { ThemeProvider } from "@emotion/react";
 import { authTheme } from "../../utils/theme/index";
@@ -7,6 +7,7 @@ import styled from "styled-components";
 import Auth_btn from "../../components/Buttons/Auth_btn";
 import anim1 from "../../assets/animations/signup.json";
 import rocket from "../../assets/animations/rocket.json";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Lottie from "lottie-react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -43,6 +44,7 @@ const Delete = () => {
   }, [cookies]);
 
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = useCallback(
@@ -130,9 +132,17 @@ const Delete = () => {
                     fullWidth
                     label="Password"
                     name="password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    type={showPassword ? "text" : "password"}
+                    InputProps={{
+                      endAdornment: (
+                        <IconButton
+                          onClick={() => setShowPassword(!showPassword)}
+                          edge="end"
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      ),
+                    }}
                   />
                 </Grid>
               </Grid>

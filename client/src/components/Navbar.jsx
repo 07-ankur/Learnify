@@ -7,7 +7,10 @@ import {
   useMediaQuery,
   useTheme,
   Grid,
+  Avatar,
+  Badge,
 } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { navbarContent } from "../utils/contents/MainContent";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import React, { useState, useRef, useEffect } from "react";
@@ -32,6 +35,14 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import toast from "react-hot-toast";
 import { Cookies } from "react-cookie";
 import { jwtDecode } from "jwt-decode";
+import avatar1 from "../assets/images/Avatar/Avatar1.jpg";
+import avatar2 from "../assets/images/Avatar/Avatar2.jpg";
+import avatar3 from "../assets/images/Avatar/Avatar3.jpg";
+import avatar4 from "../assets/images/Avatar/Avatar4.jpg";
+import avatar5 from "../assets/images/Avatar/Avatar5.jpg";
+import avatar6 from "../assets/images/Avatar/Avatar6.jpg";
+import avatar7 from "../assets/images/Avatar/Avatar7.jpg";
+import avatar8 from "../assets/images/Avatar/Avatar8.jpg";
 
 const { Logo } = navbarContent;
 
@@ -70,6 +81,7 @@ const Navbar = (props) => {
         firstname: decodedToken.firstname,
         lastname: decodedToken.lastname,
         email: decodedToken.email,
+        avatar: decodedToken.avatar
       });
     }
   }, [cookies]);
@@ -111,6 +123,35 @@ const Navbar = (props) => {
     toast.success("Logged out successfully!!");
     navigate("/");
   };
+
+  const StyledBadge = styled(Badge)(({ theme }) => ({
+    "& .MuiBadge-badge": {
+      backgroundColor: "#44b700",
+      color: "#44b700",
+      boxShadow: `0 0 0 1px ${theme.palette.background.paper}`,
+      "&::after": {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        borderRadius: "50%",
+        animation: "ripple 0.3s infinite ease-in-out",
+        border: "1px solid currentColor",
+        content: '""',
+      },
+    },
+    "@keyframes ripple": {
+      "0%": {
+        transform: "scale(.8)",
+        opacity: 1,
+      },
+      "100%": {
+        transform: "scale(5.4)",
+        opacity: 0,
+      },
+    },
+  }));
 
   return (
     <AppBar
@@ -531,7 +572,20 @@ const Navbar = (props) => {
                     ref={userRef}
                   >
                     <LinkButton>
-                      <PersonOutlineIcon />
+                      <StyledBadge
+                        overlap="circular"
+                        anchorOrigin={{
+                          vertical: "bottom",
+                          horizontal: "right",
+                        }}
+                        variant="dot"
+                      >
+                        <Avatar
+                          alt="User Avatar"
+                          src={user.avatar}
+                          sx={{ border: "2px solid yellow" }}
+                        />
+                      </StyledBadge>
                       {userOpen && (
                         <Stack
                           sx={{
@@ -551,6 +605,7 @@ const Navbar = (props) => {
                               "&:hover": { color: "skyblue" },
                               display: "flex",
                               flexDirection: "row",
+                              cursor: "none",
                             }}
                           >
                             <PersonOutlineIcon sx={{ mr: 0.5 }} />
@@ -568,6 +623,7 @@ const Navbar = (props) => {
                               flexDirection: "row",
                               alignItems: "center",
                               justifyContent: "center",
+                              cursor: "none",
                             }}
                           >
                             <AlternateEmailIcon sx={{ mr: 0.5 }} />
