@@ -8,6 +8,7 @@ const cors = require("cors");
 //routes import
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
+const blogRoutes = require("./routes/blogRoutes");
 const errorHandler = require("./middlewares/errorHandler");
 
 app.use(
@@ -21,6 +22,7 @@ app.use(express.json());
 //routes middleware
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/blog", blogRoutes);
 
 //server test route
 app.get("/", (req, res) => {

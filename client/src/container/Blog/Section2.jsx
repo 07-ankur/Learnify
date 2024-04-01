@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import BlogCard from "../../components/Cards/BlogCard";
-import { Blogs } from "../../utils/contents/BlogContent";
 import { Typography } from "@mui/material";
 import {
   Box,
@@ -13,13 +13,45 @@ import {
   Divider,
 } from "@mui/material";
 
-const { ITEMS } = Blogs;
-
 const Section2 = () => {
   const [filterCategory, setFilterCategory] = useState("");
   const [sortBy, setSortBy] = useState("");
-  const [filteredItems, setFilteredItems] = useState(ITEMS);
+  const [filteredItems, setFilteredItems] = useState([]);
   const [visibleItems, setVisibleItems] = useState(6); // Number of initially visible items
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:3000/api/blog/getblogs"
+      );
+      setFilteredItems(response.data);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+    }
+  };
+
+  const filterAndSortItems = async (filterCategory, sortBy) => {
+    try {
+      const response = await axios.get(
+        "http://localhost:3000/api/blog/getfilteredsortedblogs",
+        {
+          params: {
+            filterCategory,
+            sortBy,
+          },
+        }
+      );
+      setFilteredItems(response.data);
+      console.log(response.data);
+      console.log(filteredItems);
+    } catch (error) {
+      console.error("Error fetching filtered and sorted blogs:", error);
+    }
+  };
 
   const handleFilterChange = (event) => {
     const category = event.target.value;
@@ -33,27 +65,6 @@ const Section2 = () => {
     setSortBy(sortValue);
     setVisibleItems(6);
     filterAndSortItems(filterCategory, sortValue);
-  };
-
-  const filterAndSortItems = (category, sortValue) => {
-    // Filter ITEMS based on the selected category
-    const filtered = category
-      ? ITEMS.filter((item) => item.tag === category)
-      : ITEMS;
-
-    // Sort the filtered items by date
-    const sortedItems = filtered.slice().sort((a, b) => {
-      const dateA = new Date(a.date);
-      const dateB = new Date(b.date);
-
-      if (sortValue === "asc") {
-        return dateA - dateB;
-      } else {
-        return dateB - dateA;
-      }
-    });
-
-    setFilteredItems(sortedItems);
   };
 
   const clearFilterCategory = () => {
@@ -77,7 +88,7 @@ const Section2 = () => {
         align="center"
         sx={{ letterSpacing: "0.05em", my: 2 }}
       >
-        "Discover Our Latest Blog Posts"
+        Discover Our Latest Blog Posts
       </Typography>
       <Box sx={{ mt: -2, p: 2, display: "flex", flexDirection: "column" }}>
         <Box

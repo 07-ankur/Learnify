@@ -41,7 +41,7 @@ const TextFieldstyled = styled(TextField)`
 
 const AvatarGrid = styled(Grid)`
   &.selected img {
-    border: 2px solid green;
+    border: 2px solid yellow;
     border-width: 4px; /* Increase border width for debugging */
   }
 `;

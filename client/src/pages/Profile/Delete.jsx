@@ -1,5 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Box, Container, Grid, Typography, TextField, IconButton } from "@mui/material";
+import {
+  Box,
+  Container,
+  Grid,
+  Typography,
+  TextField,
+  IconButton,
+} from "@mui/material";
 import { signupContent } from "../../utils/contents/MainContent";
 import { ThemeProvider } from "@emotion/react";
 import { authTheme } from "../../utils/theme/index";
@@ -133,6 +140,8 @@ const Delete = () => {
                     label="Password"
                     name="password"
                     type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     InputProps={{
                       endAdornment: (
                         <IconButton

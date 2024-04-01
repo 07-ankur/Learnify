@@ -67,16 +67,18 @@ const Navbar = (props) => {
     const token = cookies.get("jwt_token");
     if (token) {
       const decodedToken = jwtDecode(token.toString());
-      console.log(decodedToken);
-      // Ensure token is a string
-      setUser({
+      const newUser = {
         firstname: decodedToken.firstname,
         lastname: decodedToken.lastname,
         email: decodedToken.email,
-        avatar: decodedToken.avatar
-      });
+        avatar: decodedToken.avatar,
+      };
+
+      if (JSON.stringify(user) !== JSON.stringify(newUser)) {
+        setUser(newUser);
+      }
     }
-  }, [cookies]);
+  }, [cookies, user]);
 
   const handleContentEnter = () => {
     setContentOpen(true);

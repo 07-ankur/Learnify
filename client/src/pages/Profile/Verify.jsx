@@ -70,7 +70,7 @@ const Verify = () => {
         setIsLoading(false);
       }
     },
-    [email, password, navigate]
+    [email, otp, password, navigate]
   );
 
   const onResend = useCallback(
