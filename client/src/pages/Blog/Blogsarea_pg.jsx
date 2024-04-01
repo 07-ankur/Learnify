@@ -10,7 +10,6 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { Divider } from "@mui/material";
-import { Blogs } from "../../utils/contents/BlogContent";
 import BlogContent from "../../container/Blog/BlogContent";
 import { useNavigate } from "react-router-dom";
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
@@ -29,9 +28,6 @@ const Blogsarea_pg = () => {
         "http://localhost:3000/api/blog/getblogs"
       );
       setItems(response.data);
-      console.log(response.data);
-      console.log(response.data[2]);
-      console.log(response.data.length);
     } catch (error) {
       console.error("Error fetching blogs:", error);
     }
@@ -39,13 +35,7 @@ const Blogsarea_pg = () => {
 
   useEffect(() => {
     fetchData();
-    console.log(items.length);
   }, []);
-
-  useEffect(() => {
-    console.log(items);
-    console.log(items.length);
-  }, [items]);
 
   let no;
 

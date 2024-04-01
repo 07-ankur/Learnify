@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./index.css";
 import { Route, Routes } from "react-router-dom";
 import Landing_pg from "./pages/Landing/Landing_pg";
@@ -7,7 +8,6 @@ import Tutorials_pg from "./pages/Tutorials/Tutorials_pg";
 import Signup_pg from "./pages/Authentication/Signup_pg";
 import Login_pg from "./pages/Authentication/Login_pg";
 import Blog_pg from "./pages/Blog/Blog_pg";
-import { Blogs } from "./utils/contents/BlogContent";
 import { Analysis_Progress } from "./utils/contents/AnalyticsContent";
 import Blogsarea_pg from "./pages/Blog/Blogsarea_pg";
 import Analytics_pg from "./pages/Analytics/Analytics_pg";
@@ -29,36 +29,52 @@ import { Toaster } from "react-hot-toast";
 import Forgot from "./pages/Profile/Forgot";
 import Verify from "./pages/Profile/Verify";
 
-const { ITEMS } = Blogs;
 const { TOPICS } = Analysis_Progress;
 const { SKILLS } = Topics;
 
 const App = () => {
+  const [items, setItems] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:3000/api/blog/getblogs"
+      );
+      setItems(response.data);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div>
-      <Toaster/>
+      <Toaster />
       <Routes>
         <Route path="*" element={<Landing_pg />} />
         <Route path="/" element={<Landing_pg />} />
-        <Route path="/profile/edit" element={<Edit/>} />
-        <Route path="/profile/delete" element={<Delete/>} />
+        <Route path="/profile/edit" element={<Edit />} />
+        <Route path="/profile/delete" element={<Delete />} />
         <Route path="/tutorials" element={<Tutorials_pg />} />
         <Route path="/tutorialsPage" element={<TutorialPage />} />
         <Route path="/signup" element={<Signup_pg />} />
         <Route path="/signup/verify" element={<VerifyOtp />} />
         <Route path="/login" element={<Login_pg />} />
-        <Route path="/verify" element={<Verify/>} />
-        <Route path="/forgotPassword" element={<Forgot/>} />
+        <Route path="/verify" element={<Verify />} />
+        <Route path="/forgotPassword" element={<Forgot />} />
         <Route path="/mapper" element={<Mapper_pg />} />
         <Route path="/blog" element={<Blog_pg />} />
         {SKILLS.map((skill) => (
           <Route
             key={skill.key}
             path={`/tutorials/${skill.title.replace(/ /g, "-")}`}
-            element={<TutorialPage/>}
+            element={<TutorialPage />}
           />
         ))}
-        {ITEMS.map((item) => (
+        {items.map((item) => (
           <Route
             key={item.key}
             path={`/blog/${item.title.replace(/ /g, "-")}`}
