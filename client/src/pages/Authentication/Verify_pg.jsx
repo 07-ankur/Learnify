@@ -39,7 +39,7 @@ const VerifyOtp = () => {
         setIsLoading(true);
         console.log(email);
         const res = await axios.post(
-          "http://localhost:3000/api/auth/verifyotp",
+          "http://learnify-server-in.vercel.app/api/auth/verifyotp",
           {
             email,
             otp,

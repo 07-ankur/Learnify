@@ -45,7 +45,7 @@ const Forgot = () => {
         setIsLoading(true);
 
         const res = await axios.post(
-          "http://localhost:3000/api/auth/resendotp",
+          "http://learnify-server-in.vercel.app/api/auth/resendotp",
           {
             email,
           }

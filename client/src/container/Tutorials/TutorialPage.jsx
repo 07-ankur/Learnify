@@ -20,9 +20,9 @@ const TutorialPage = () => {
             height: "100vh",
             backgroundColor: "#192734",
             py: 1.5,
-            overflowY:'auto'
+            overflowY: "auto",
           }}
-        > 
+        >
           <OutlinedButton arrowRev sx={{ mt: 1, mb: 2, mx: 2 }} fit>
             Back to Home
           </OutlinedButton>
@@ -31,9 +31,11 @@ const TutorialPage = () => {
             React JS Tutorial
           </Typography>
           <Divider sx={{ border: "1px solid white" }} />
-          <Listing/>
+          <Listing />
         </Box>
-        <Box sx={{ width: "80%", maxHeight:'100vh', overflowY: 'auto', px:2}}>
+        <Box
+          sx={{ width: "80%", maxHeight: "100vh", overflowY: "auto", px: 2 }}
+        >
           <Typography variant="h2" sx={{ mx: 5, my: 3, color: "#FFF4A3" }}>
             React Intro
           </Typography>

@@ -61,7 +61,7 @@ const Delete = () => {
         setIsLoading(true);
 
         const passwordVerificationRes = await axios.post(
-          "http://localhost:3000/api/auth/login",
+          "http://learnify-server-in.vercel.app/api/auth/login",
           {
             email,
             password,

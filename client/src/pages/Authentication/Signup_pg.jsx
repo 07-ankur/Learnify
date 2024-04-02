@@ -102,7 +102,7 @@ const SignupForm = () => {
         });
 
         const res = await axios.post(
-          "http://localhost:3000/api/auth/register",
+          "http://learnify-server-in.vercel.app/api/auth/register",
           {
             firstname,
             lastname,

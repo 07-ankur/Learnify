@@ -25,7 +25,7 @@ const Blogsarea_pg = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/blog/getblogs"
+        "http://learnify-server-in.vercel.app/api/blog/getblogs"
       );
       setItems(response.data);
     } catch (error) {

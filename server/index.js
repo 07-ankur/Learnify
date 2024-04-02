@@ -13,7 +13,7 @@ const errorHandler = require("./middlewares/errorHandler");
 
 app.use(
   cors({
-    origin: ["http://127.0.0.1:5173", "https://learnify-in.vercel.app"],
+    origin: ["https://learnify-server-in.vercel.app"],
   })
 );
 
