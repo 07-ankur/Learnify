@@ -15,7 +15,6 @@ import { useNavigate } from "react-router-dom";
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import { useLocation } from "react-router-dom";
 import BlogCard from "../../components/Cards/BlogCard";
-import { now } from "mongoose";
 
 const Blogsarea_pg = () => {
   const location = useLocation();

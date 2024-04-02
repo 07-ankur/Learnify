@@ -120,6 +120,7 @@ const Edit = () => {
           if (updateUserRes.status === 200) {
             setIsLoading(false);
             toast.success("User updated successfully!");
+            toast.success("Login again to apply changes!");
           }
         } else {
           toast.error("Incorrect password!");
@@ -292,7 +293,7 @@ const Edit = () => {
                     mr: 1,
                   }}
                 >
-                  Login again to make the changes{" "}
+                  Login again to apply the changes{" "}
                 </Typography>
                 <Typography
                   variant="h5"

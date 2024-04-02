@@ -5,38 +5,37 @@ require("dotenv").config();
 const connect = require("./db/db");
 const cors = require("cors");
 
-//routes import
+// Routes import
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const errorHandler = require("./middlewares/errorHandler");
 
-app.use(
-  cors({
-    origin: ["https://learnify-server-in.vercel.app"],
-  })
-);
+// Allow CORS for specified origin
+app.use(cors({
+  origin: "http://learnify-server-in.vercel.app",
+  credentials: true,
+}));
 
 app.use(express.json());
 
-//routes middleware
+// Routes middleware
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/blog", blogRoutes);
 
-//server test route
+// Server test route
 app.get("/", (req, res) => {
-  res.status(200).json({ message: "Learnify server is working perferctly" });
+  res.status(200).json({ message: "Learnify server is working perfectly" });
 });
 
-//error handler
+// Error handler
 app.use(errorHandler);
 
-//connection to mongodb
-
+// Connection to MongoDB
 connect(process.env.MONGO_URI);
 
-//server listeing
+// Server listening
 app.listen(port, () => {
-  console.log(`Server is running on  ${port}`);
+  console.log(`Server is running on ${port}`);
 });

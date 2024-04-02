@@ -8,6 +8,7 @@ const analyticsSchema = mongoose.Schema({
   analytics: [
     {
       ReactJS: [
+        { timeRequired: "11 Hours" },
         {
           points: Number,
           default: 0,
@@ -36,6 +37,7 @@ const analyticsSchema = mongoose.Schema({
     },
     {
       NodeJS: [
+        { timeRequired: "9 Hours" },
         {
           points: Number,
           default: 0,
@@ -64,6 +66,7 @@ const analyticsSchema = mongoose.Schema({
     },
     {
       SQL: [
+        { timeRequired: "4 Hours" },
         {
           points: Number,
           default: 0,
@@ -92,6 +95,7 @@ const analyticsSchema = mongoose.Schema({
     },
     {
       MongoDB: [
+        { timeRequired: "8 Hours" },
         {
           points: Number,
           default: 0,
@@ -120,6 +124,7 @@ const analyticsSchema = mongoose.Schema({
     },
     {
       HTML: [
+        { timeRequired: "3 Hours" },
         {
           points: Number,
           default: 0,
@@ -148,6 +153,7 @@ const analyticsSchema = mongoose.Schema({
     },
     {
       CSS: [
+        { timeRequired: "4 Hours" },
         {
           points: Number,
           default: 0,
@@ -176,6 +182,7 @@ const analyticsSchema = mongoose.Schema({
     },
     {
       Python: [
+        { timeRequired: "9 Hours" },
         {
           points: Number,
           default: 0,
@@ -204,6 +211,7 @@ const analyticsSchema = mongoose.Schema({
     },
     {
       ExpressJS: [
+        { timeRequired: "8 Hours" },
         {
           points: Number,
           default: 0,
@@ -232,6 +240,7 @@ const analyticsSchema = mongoose.Schema({
     },
     {
       CPP: [
+        { timeRequired: "8 Hours" },
         {
           points: Number,
           default: 0,
@@ -260,6 +269,7 @@ const analyticsSchema = mongoose.Schema({
     },
     {
       Javascript: [
+        { timeRequired: "9 Hours" },
         {
           points: Number,
           default: 0,
