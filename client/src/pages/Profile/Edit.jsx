@@ -99,7 +99,7 @@ const Edit = () => {
         }
 
         const passwordVerificationRes = await axios.post(
-          "http://learnify-server-in.vercel.app/api/auth/login",
+          "https://learnify-server-in.vercel.app/api/auth/login",
           {
             email,
             password,
@@ -108,7 +108,7 @@ const Edit = () => {
 
         if (passwordVerificationRes.status === 200) {
           const updateUserRes = await axios.put(
-            `http://learnify-server-in.vercel.app/api/user/updateuser/${id}`,
+            `https://learnify-server-in.vercel.app/api/user/updateuser/${id}`,
             {
               firstname,
               lastname,

@@ -12,10 +12,12 @@ const blogRoutes = require("./routes/blogRoutes");
 const errorHandler = require("./middlewares/errorHandler");
 
 // Allow CORS for specified origin
-app.use(cors({
-  origin: "http://learnify-server-in.vercel.app",
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: ["https://learnify-in.vercel.app/","http://127.0.0.1:5173"],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 

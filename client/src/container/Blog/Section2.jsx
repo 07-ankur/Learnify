@@ -26,7 +26,7 @@ const Section2 = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://learnify-server-in.vercel.app/api/blog/getblogs"
+        "https://learnify-server-in.vercel.app/api/blog/getblogs"
       );
       setFilteredItems(response.data);
     } catch (error) {
@@ -37,7 +37,7 @@ const Section2 = () => {
   const filterAndSortItems = async (filterCategory, sortBy) => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/blog/getfilteredsortedblogs",
+        "https://learnify-server-in.vercel.app/api/blog/getfilteredsortedblogs",
         {
           params: {
             filterCategory,
