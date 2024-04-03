@@ -3,7 +3,6 @@ import axios from "axios";
 import "./index.css";
 import { Route, Routes } from "react-router-dom";
 import Landing_pg from "./pages/Landing/Landing_pg";
-import Home_pg from "./pages/Home/Home_pg";
 import Tutorials_pg from "./pages/Tutorials/Tutorials_pg";
 import Signup_pg from "./pages/Authentication/Signup_pg";
 import Login_pg from "./pages/Authentication/Login_pg";
@@ -38,7 +37,7 @@ const App = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/blog/getblogs"
+        "https://learnify-server-in.vercel.app/api/blog/getblogs"
       );
       setItems(response.data);
     } catch (error) {
