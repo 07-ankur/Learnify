@@ -39,7 +39,7 @@ const Verify = () => {
         setIsLoading(true);
 
         const otpVerificationRes = await axios.post(
-          "https://learnify-server-in.vercel.app/api/auth/verifyotp",
+          "https://learnify-ev51.onrender.com/api/auth/verifyotp",
           {
             email,
             otp,
@@ -49,7 +49,7 @@ const Verify = () => {
         if (otpVerificationRes.status === 200) {
           console.log("Otp verified");
           const changePassRes = await axios.post(
-            `https://learnify-server-in.vercel.app/api/auth/forgotpassword`,
+            `https://learnify-ev51.onrender.com/api/auth/forgotpassword`,
             {
               email,
               password,
@@ -79,7 +79,7 @@ const Verify = () => {
         setIsLoading(true);
 
         const res = await axios.post(
-          "https://learnify-server-in.vercel.app/api/auth/resendotp",
+          "https://learnify-ev51.onrender.com/api/auth/resendotp",
           {
             email,
           }

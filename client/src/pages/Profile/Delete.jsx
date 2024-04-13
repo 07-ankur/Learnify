@@ -61,7 +61,7 @@ const Delete = () => {
         setIsLoading(true);
 
         const passwordVerificationRes = await axios.post(
-          "https://learnify-server-in.vercel.app/api/auth/login",
+          "https://learnify-ev51.onrender.com/api/auth/login",
           {
             email,
             password,
@@ -70,7 +70,7 @@ const Delete = () => {
 
         if (passwordVerificationRes.status === 200) {
           const deleteUserRes = await axios.delete(
-            `https://learnify-server-in.vercel.app/api/user/deleteuser/${id}`
+            `https://learnify-ev51.onrender.com/api/user/deleteuser/${id}`
           );
 
           if (deleteUserRes.status === 200) {
