@@ -47,7 +47,7 @@ const Login_pg = () => {
       try {
         setIsLoading(true);
 
-        const res = await axios.post("https://learnify-server-in.vercel.app/api/auth/login", {
+        const res = await axios.post("https://learnify-ev51.onrender.com/api/auth/login", {
           email,
           password,
         });

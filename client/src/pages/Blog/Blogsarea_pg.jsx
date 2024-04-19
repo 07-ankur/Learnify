@@ -1,8 +1,7 @@
+import React, { useEffect } from "react";
 import { Box, Container } from "@mui/system";
 import { Grid } from "@mui/material";
 import Title from "../../components/Title";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import { Typography } from "@mui/material";
 import Footer from "../../components/Footer";
@@ -15,22 +14,14 @@ import { useNavigate } from "react-router-dom";
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import { useLocation } from "react-router-dom";
 import BlogCard from "../../components/Cards/BlogCard";
+import { useBlogContentStore } from "../../hooks/useBlogContent";
+import Lottie from "lottie-react";
+import Loading from "../../assets/animations/Loading-blog_anim.json";
 
 const Blogsarea_pg = () => {
   const location = useLocation();
 
-  const [items, setItems] = useState([]);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        "https://learnify-ev51.onrender.com/api/blog/getblogs"
-      );
-      setItems(response.data);
-    } catch (error) {
-      console.error("Error fetching blogs:", error);
-    }
-  };
+  const { items, isLoading, fetchData } = useBlogContentStore();
 
   useEffect(() => {
     fetchData();
@@ -72,94 +63,114 @@ const Blogsarea_pg = () => {
 
   return (
     <>
-      <OutlinedButton arrowRev onClick={handleGoBack} sx={{ mt: 3, mx: 3 }} fit>
-        Back
-      </OutlinedButton>
-      <Container maxWidth="md" sx={{ borderBottom: "2px solid #B6976A" }}>
-        <Box sx={{ mt: 8 }} display="flex" flexDirection="row">
-          <Typography variant="h5">{items[no]?.tag} | </Typography>
-          <Typography variant="h5">| {items[no]?.date}</Typography>
-        </Box>
-        <Divider sx={{ width: "95%", mt: 2 }} variant="middle" />
-        <Title
-          sx={{ color: "#B6976A", mb: 2, mt: 4 }}
-          variant={{ xs: "h4", sm: "h2" }}
-        >
-          {items[no]?.title}
-        </Title>
-        <Box sx={{ mb: 7, mx: 3 }} display="flex" flexDirection="row">
-          <PermIdentityIcon style={{ fontSize: "1.5em", color: "#B6976A" }} />
-          <Typography sx={{ ml: 1, mt: 1 }} variant="h6">
-            {items[no]?.author}
-          </Typography>
-        </Box>
-        <Box display="flex" justifyContent="center">
-          <img
-            src={items[no]?.image}
-            alt="No Image"
-            style={{ width: "40em", height: "20em", borderRadius: "25px" }}
+      {isLoading ? (
+        <Box sx={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center", minHeight: "80vh" }}>
+          <Lottie
+            style={{ width: "15%", height: "15%", marginTop: 20, textAlign:"center" }}
+            animationData={Loading}
+            loop
+            autoplay
           />
         </Box>
-        <Divider sx={{ width: "95%", mt: 2 }} variant="middle" />
-        {items[no]?.content.map((item) => (
-          <BlogContent
-            key={item.key}
-            subtitle={item.subtitle}
-            para={item.para}
-          />
-        ))}
-        <Box display="flex" flexDirection="column" alignItems="center">
-          <Typography sx={{ mt: 4, color: "#B6976A" }} variant="body1">
-            Share this post
-          </Typography>
-          <Box
-            sx={{ mt: 2, mb: 5, borderBottom: "2px solid #B6976A" }}
-            display="flex"
-            flexDirection="row"
-            alignItems="center"
+      ) : (
+        <>
+          <OutlinedButton
+            arrowRev
+            onClick={handleGoBack}
+            sx={{ mt: 3, mx: 3 }}
+            fit
           >
-            <a
-              target="blank"
-              style={{ color: "white" }}
-              href="https://www.facebook.com"
+            Back
+          </OutlinedButton>
+          <Container maxWidth="md" sx={{ borderBottom: "2px solid #B6976A" }}>
+            <Box sx={{ mt: 8 }} display="flex" flexDirection="row">
+              <Typography variant="h5">{items[no]?.tag} | </Typography>
+              <Typography variant="h5">| {items[no]?.date}</Typography>
+            </Box>
+            <Divider sx={{ width: "95%", mt: 2 }} variant="middle" />
+            <Title
+              sx={{ color: "#B6976A", mb: 2, mt: 4 }}
+              variant={{ xs: "h4", sm: "h2" }}
             >
-              <FacebookIcon sx={{ mx: 3, my: 1 }} />
-            </a>
-            <a
-              target="blank"
-              style={{ color: "white" }}
-              href="https://www.linkedin.com"
-            >
-              <LinkedInIcon sx={{ mx: 3, my: 1 }} />
-            </a>
-            <a
-              target="blank"
-              style={{ color: "white" }}
-              href="https://twitter.com/"
-            >
-              <TwitterIcon sx={{ mx: 3, my: 1 }} />
-            </a>
-          </Box>
-        </Box>
-        <Typography
-          variant="h3"
-          align="center"
-          sx={{ letterSpacing: "0.05em", color: "#B6976A", my: 3 }}
-        >
-          Recommended Posts You may like
-        </Typography>
-      </Container>
-      <Box sx={{ borderBottom: "2px solid #B6976A" }}>
-        <Grid container alignItems="center">
-          {finalRecommendations.map((item) => (
-            <Grid item xs={12} md={6} key={item.title}>
-              <Box sx={{ ml: 15 }}>
-                <BlogCard {...item} />
+              {items[no]?.title}
+            </Title>
+            <Box sx={{ mb: 7, mx: 3 }} display="flex" flexDirection="row">
+              <PermIdentityIcon
+                style={{ fontSize: "1.5em", color: "#B6976A" }}
+              />
+              <Typography sx={{ ml: 1, mt: 1 }} variant="h6">
+                {items[no]?.author}
+              </Typography>
+            </Box>
+            <Box display="flex" justifyContent="center">
+              <img
+                src={items[no]?.image}
+                alt="No Image"
+                style={{ width: "40em", height: "20em", borderRadius: "25px" }}
+              />
+            </Box>
+            <Divider sx={{ width: "95%", mt: 2 }} variant="middle" />
+            {items[no]?.content.map((item) => (
+              <BlogContent
+                key={item.key}
+                subtitle={item.subtitle}
+                para={item.para}
+              />
+            ))}
+            <Box display="flex" flexDirection="column" alignItems="center">
+              <Typography sx={{ mt: 4, color: "#B6976A" }} variant="body1">
+                Share this post
+              </Typography>
+              <Box
+                sx={{ mt: 2, mb: 5, borderBottom: "2px solid #B6976A" }}
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
+              >
+                <a
+                  target="blank"
+                  style={{ color: "white" }}
+                  href="https://www.facebook.com"
+                >
+                  <FacebookIcon sx={{ mx: 3, my: 1 }} />
+                </a>
+                <a
+                  target="blank"
+                  style={{ color: "white" }}
+                  href="https://www.linkedin.com"
+                >
+                  <LinkedInIcon sx={{ mx: 3, my: 1 }} />
+                </a>
+                <a
+                  target="blank"
+                  style={{ color: "white" }}
+                  href="https://twitter.com/"
+                >
+                  <TwitterIcon sx={{ mx: 3, my: 1 }} />
+                </a>
               </Box>
+            </Box>
+            <Typography
+              variant="h3"
+              align="center"
+              sx={{ letterSpacing: "0.05em", color: "#B6976A", my: 3 }}
+            >
+              Recommended Posts You may like
+            </Typography>
+          </Container>
+          <Box sx={{ borderBottom: "2px solid #B6976A" }}>
+            <Grid container alignItems="center">
+              {finalRecommendations.map((item) => (
+                <Grid item xs={12} md={6} key={item.title}>
+                  <Box sx={{ ml: 15 }}>
+                    <BlogCard {...item} />
+                  </Box>
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
-      </Box>
+          </Box>
+        </>
+      )}
       <Footer />
     </>
   );

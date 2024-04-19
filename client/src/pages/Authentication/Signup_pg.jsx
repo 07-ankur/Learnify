@@ -102,7 +102,7 @@ const SignupForm = () => {
         });
 
         const res = await axios.post(
-          "https://learnify-server-in.vercel.app/api/auth/register",
+          "https://learnify-ev51.onrender.com/api/auth/register",
           {
             firstname,
             lastname,

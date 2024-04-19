@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
 import BlogCard from "../../components/Cards/BlogCard";
 import { Typography } from "@mui/material";
 import {
@@ -12,73 +11,40 @@ import {
   Button,
   Divider,
 } from "@mui/material";
+import { useBlogStore } from "../../hooks/useBlogStore";
+import Lottie from "lottie-react";
+import Loading from "../../assets/animations/Loading-blog_anim.json";
 
 const Section2 = () => {
-  const [filterCategory, setFilterCategory] = useState("");
-  const [sortBy, setSortBy] = useState("");
-  const [filteredItems, setFilteredItems] = useState([]);
-  const [visibleItems, setVisibleItems] = useState(6); // Number of initially visible items
+  const {
+    filterCategory,
+    setFilterCategory,
+    sortBy,
+    setSortBy,
+    filteredItems,
+    isLoading,
+    fetchData,
+    filterAndSortItems,
+    clearFilterCategory,
+    clearFilterSort,
+    handleShowMore,
+    visibleItems,
+  } = useBlogStore();
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        "https://learnify-ev51.onrender.com/api/blog/getblogs"
-      );
-      setFilteredItems(response.data);
-    } catch (error) {
-      console.error("Error fetching blogs:", error);
-    }
-  };
-
-  const filterAndSortItems = async (filterCategory, sortBy) => {
-    try {
-      const response = await axios.get(
-        "https://learnify-ev51.onrender.com/api/blog/getfilteredsortedblogs",
-        {
-          params: {
-            filterCategory,
-            sortBy,
-          },
-        }
-      );
-      setFilteredItems(response.data);
-      console.log(response.data);
-      console.log(filteredItems);
-    } catch (error) {
-      console.error("Error fetching filtered and sorted blogs:", error);
-    }
-  };
-
   const handleFilterChange = (event) => {
     const category = event.target.value;
     setFilterCategory(category);
-    setVisibleItems(6);
     filterAndSortItems(category, sortBy);
   };
 
   const handleSortChange = (event) => {
     const sortValue = event.target.value;
     setSortBy(sortValue);
-    setVisibleItems(6);
     filterAndSortItems(filterCategory, sortValue);
-  };
-
-  const clearFilterCategory = () => {
-    setFilterCategory("");
-    filterAndSortItems("", sortBy); // Clear category filter
-  };
-
-  const clearFilterSort = () => {
-    setSortBy("");
-    filterAndSortItems(filterCategory, ""); // Clear sorting filter
-  };
-
-  const handleShowMore = () => {
-    setVisibleItems((prevVisibleItems) => prevVisibleItems + 8);
   };
 
   return (
@@ -147,28 +113,39 @@ const Section2 = () => {
           </Button>
         </Box>
       </Box>
-      <Box sx={{ mt: -2 }}>
-        <Grid container alignItems="center">
-          {filteredItems.slice(0, visibleItems).map((item) => (
-            <Grid item xs={12} md={4} key={item.title}>
-              <BlogCard {...item} />
-            </Grid>
-          ))}
-        </Grid>
-        {visibleItems < filteredItems.length && (
-          <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <Divider sx={{ width: "75%", my: 2 }} variant="middle">
-              <Button
-                sx={{ color: "white" }}
-                variant="outlined"
-                onClick={handleShowMore}
-              >
-                Show More
-              </Button>
-            </Divider>
-          </Box>
-        )}
+      {isLoading ? (
+        <Box sx={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center", minHeight: "20vh" }}>
+        <Lottie
+          style={{ width: "15%", height: "15%", marginTop: 20, textAlign:"center" }}
+          animationData={Loading}
+          loop
+          autoplay
+        />
       </Box>
+      ) : (
+        <Box sx={{ mt: -2 }}>
+          <Grid container alignItems="center">
+            {filteredItems.slice(0, visibleItems).map((item) => (
+              <Grid item xs={12} md={4} key={item.title}>
+                <BlogCard {...item} />
+              </Grid>
+            ))}
+          </Grid>
+          {visibleItems < filteredItems.length && (
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <Divider sx={{ width: "75%", my: 2 }} variant="middle">
+                <Button
+                  sx={{ color: "white" }}
+                  variant="outlined"
+                  onClick={handleShowMore}
+                >
+                  Show More
+                </Button>
+              </Divider>
+            </Box>
+          )}
+        </Box>
+      )}
     </Box>
   );
 };
