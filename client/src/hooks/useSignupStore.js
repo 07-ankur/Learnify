@@ -1,10 +1,9 @@
-import {create} from "zustand";
+import { create } from "zustand";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 
 export const useSignupStore = create((set) => ({
-  signup: async (firstname, lastname, email, password, avatar) => {
+  signup: async (firstname, lastname, email, password, avatar, navigate) => {
     try {
       const res = await axios.post(
         "https://learnify-ev51.onrender.com/api/auth/register",
@@ -19,8 +18,6 @@ export const useSignupStore = create((set) => ({
 
       if (res.status === 200) {
         toast.success("Account created successfully!");
-
-        const navigate = useNavigate();
         navigate("/signup/verify", { state: { email } });
       }
     } catch (error) {

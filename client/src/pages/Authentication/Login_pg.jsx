@@ -32,7 +32,7 @@ const { Logo_drk } = signupContent;
 
 const Login_pg = () => {
   const navigate = useNavigate();
-  const login = useLoginStore();
+  const {login} = useLoginStore();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,7 +41,7 @@ const Login_pg = () => {
   const onSubmit = useCallback(
     async (event) => {
       event.preventDefault();
-      login(email,password);
+      login(email,password,navigate);
     },
     [email, password]
   );

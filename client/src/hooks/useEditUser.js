@@ -1,4 +1,6 @@
 import {create} from 'zustand';
+import toast from 'react-hot-toast';
+import axios from 'axios';
 import { URLS } from "../api";
 
 export const useEditUser = create((set) => ({
@@ -6,11 +8,10 @@ export const useEditUser = create((set) => ({
   editAccount: async (email, firstname, lastname, password, newPassword, avatar, id, navigate) => {
     set({ isLoading: true });
     try {
-        setIsLoading(true);
 
         if (!password) {
           toast.error("Please enter the password!!");
-          setIsLoading(false);
+          set({ isLoading: false });
           return;
         }
 
@@ -34,7 +35,7 @@ export const useEditUser = create((set) => ({
           );
 
           if (updateUserRes.status === 200) {
-            setIsLoading(false);
+            set({ isLoading: false });
             toast.success("User updated successfully!");
             toast.success("Login again to apply changes!");
             navigate("/login");
@@ -46,7 +47,7 @@ export const useEditUser = create((set) => ({
         console.log(error);
         toast.error("Something went wrong!");
       } finally {
-        setIsLoading(false);
+        set({ isLoading: false });
       }
   },
 }));

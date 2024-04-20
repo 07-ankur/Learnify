@@ -67,7 +67,7 @@ const Edit = () => {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const editAccount = useEditUser();
+  const {editAccount} = useEditUser();
 
   const avatars = [
     avatar1,

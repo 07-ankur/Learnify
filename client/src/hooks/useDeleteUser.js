@@ -1,7 +1,9 @@
 import {create} from 'zustand';
+import toast from 'react-hot-toast';
+import axios from 'axios';
 import { URLS } from "../api";
 
-export const useDeleteStore = create((set) => ({
+export const useDeleteUser = create((set) => ({
   isLoading: false,
   deleteAccount: async (email, password, id, cookies, navigate) => {
     set({ isLoading: true });

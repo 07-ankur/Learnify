@@ -1,9 +1,11 @@
 import {create} from 'zustand';
+import toast from 'react-hot-toast';
+import axios from 'axios';
 import { URLS } from '../api';
 
 export const useVerificationStore = create((set) => ({
   isLoading: false,
-  verify: async (email, otp) => {
+  verify: async (email, otp, navigate) => {
     set({ isLoading: true });
     try {
       // Call API to verify OTP
@@ -14,6 +16,7 @@ export const useVerificationStore = create((set) => ({
       });
       if (res.status === 200) {
         toast.success("Account Verified successfully!");
+        navigate("/login")
         return true;
       }
     } catch (error) {

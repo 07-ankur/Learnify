@@ -33,13 +33,13 @@ const VerifyOtp = () => {
   const [otp, setOtp] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const verify = useVerificationStore();
-  const resend = useResendStore();
+  const {verify} = useVerificationStore();
+  const {resend} = useResendStore();
 
   const onSubmit = useCallback(
     async (event) => {
       event.preventDefault();
-      verify(email,otp);
+      verify(email,otp,navigate);
     },
     [email,otp]
   );

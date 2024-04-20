@@ -22,6 +22,7 @@ export const useBlogStore = create((set) => ({
     try {
       set({ isLoading: true });
       const {GETFILTEREDBLOGS} = URLS;
+      console.log(GETFILTEREDBLOGS)
       const response = await axios.get(GETFILTEREDBLOGS);
       set({ filteredItems: response.data });
       set({ isLoading: false });

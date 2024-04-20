@@ -61,7 +61,7 @@ const SignupForm = () => {
   const [avatar, setAvatar] = useState(avatar1);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const signup = useSignupStore();
+  const {signup} = useSignupStore();
 
   const avatars = [
     avatar1,
@@ -94,12 +94,12 @@ const SignupForm = () => {
       try {
         setIsLoading(true);
 
-        await signup(firstname, lastname, email, password, avatar);
+        await signup(firstname, lastname, email, password, avatar, navigate);
       } finally {
         setIsLoading(false);
       }
     },
-    [firstname, lastname, email, password, avatar, signup]
+    [firstname, lastname, email, password, avatar, signup, navigate]
   );
 
 

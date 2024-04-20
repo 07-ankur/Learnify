@@ -8,7 +8,7 @@ import { URLS } from "../api";
 const cookies = new Cookies();
 
 export const useLoginStore = create((set) => ({
-  login: async (email, password) => {
+  login: async (email, password,navigate) => {
     try {
       const {LOGIN} = URLS;
       const res = await axios.post(LOGIN, {
@@ -24,8 +24,6 @@ export const useLoginStore = create((set) => ({
         cookies.set("jwt_token", token); // Only set the token
 
         toast.success("Login successful!");
-
-        const navigate = useNavigate();
         navigate("/");
       }
     } catch (error) {

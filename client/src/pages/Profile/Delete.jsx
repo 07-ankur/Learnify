@@ -17,11 +17,9 @@ import rocket from "../../assets/animations/rocket.json";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Lottie from "lottie-react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { toast } from "react-hot-toast";
 import { Cookies } from "react-cookie";
 import { jwtDecode } from "jwt-decode";
-import {useDeleteUser} from "../../hooks/useDeleteUser"
+import { useDeleteUser } from "../../hooks/useDeleteUser";
 
 const TextFieldstyled = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -35,33 +33,30 @@ const { Logo_drk } = signupContent;
 
 const Delete = () => {
   const navigate = useNavigate();
-  const deleteAccount = useDeleteUser();
+  const { deleteAccount } = useDeleteUser();
 
   const cookies = new Cookies();
-  const [email, setEmail] = useState(null);
-  const [id, setId] = useState(null);
+  const [email, setEmail] = useState(""); 
+  const [id, setId] = useState("");
 
   useEffect(() => {
     const token = cookies.get("jwt_token");
     if (token) {
       const decodedToken = jwtDecode(token.toString());
-      // Ensure token is a string
-      setEmail(decodedToken.email);
-      setId(decodedToken._id);
-      console.log(id);
+      setEmail(decodedToken.email || ""); 
+      setId(decodedToken._id || ""); 
     }
   }, [cookies]);
 
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = useCallback(
     async (event) => {
       event.preventDefault();
       deleteAccount(email, password, id, cookies, navigate);
     },
-    [email, password, id, navigate]
+    [email, password, id, cookies, navigate]
   );
 
   return (
@@ -77,9 +72,8 @@ const Delete = () => {
         }}
       >
         <Box sx={{ display: "flex", flexDirection: "row" }}>
-          //{" "}
           <Box sx={{ width: "75%" }}>
-            <img src={Logo_drk} style={{ width: "20%" }}></img>
+            <img src={Logo_drk} style={{ width: "20%" }} alt="Logo"></img>
             <Typography
               variant="h2"
               sx={{ letterSpacing: "0.01em", mt: 1, color: "#3ea886" }}
@@ -90,7 +84,7 @@ const Delete = () => {
               variant="h4"
               sx={{ letterSpacing: "0.01em", mb: 8, color: "#4d5980" }}
             >
-              We will miss you!!{" "}
+              We will miss you!!
             </Typography>
             <form onSubmit={onSubmit}>
               <Grid container spacing={2}>
@@ -146,7 +140,7 @@ const Delete = () => {
                     mr: 1,
                   }}
                 >
-                  Or wanna stay with us?{" "}
+                  Or wanna stay with us?
                 </Typography>
                 <Typography
                   variant="h5"
@@ -161,8 +155,7 @@ const Delete = () => {
                     cursor: "pointer",
                   }}
                 >
-                  {" "}
-                  Home{" "}
+                  Home
                 </Typography>
                 <Lottie
                   style={{ width: "25%", marginTop: -100, marginLeft: 20 }}
@@ -174,7 +167,6 @@ const Delete = () => {
             </form>
           </Box>
           <Box sx={{ width: "50%" }}>
-            //{" "}
             <Lottie
               style={{ marginTop: 20 }}
               animationData={anim1}
