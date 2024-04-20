@@ -29,76 +29,20 @@ const Verify = () => {
   const location = useLocation();
   const { email } = location.state || {};
   const { password } = location.state || {};
-  const [otp, setOtp] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const { otp, isLoading, setEmail, setOtp, verifyOTP, resendOTP } = useForgotPass();
   const navigate = useNavigate();
 
   const onSubmit = useCallback(
     async (event) => {
       event.preventDefault();
-      try {
-        setIsLoading(true);
-
-        const otpVerificationRes = await axios.post(
-          "https://learnify-ev51.onrender.com/api/auth/verifyotp",
-          {
-            email,
-            otp,
-          }
-        );
-
-        if (otpVerificationRes.status === 200) {
-          console.log("Otp verified");
-          const changePassRes = await axios.post(
-            `https://learnify-ev51.onrender.com/api/auth/forgotpassword`,
-            {
-              email,
-              password,
-            }
-          );
-
-          if (changePassRes.status === 200) {
-            setIsLoading(false);
-            toast.success("Password updated successfully!");
-          }
-        } else {
-          toast.error("Incorrect OTP!");
-        }
-      } catch (error) {
-        console.log(error);
-        toast.error("Something went wrong!!");
-      } finally {
-        setIsLoading(false);
-      }
+      verifyOTP(email, otp, password)
     },
     [email, otp, password, navigate]
   );
 
   const onResend = useCallback(
     async (event) => {
-      try {
-        setIsLoading(true);
-
-        const res = await axios.post(
-          "https://learnify-ev51.onrender.com/api/auth/resendotp",
-          {
-            email,
-          }
-        );
-
-        console.log(res.data);
-
-        if (res.status === 200) {
-          setIsLoading(false);
-
-          toast.success("OTP sent successfully!");
-        }
-      } catch (error) {
-        console.log(error);
-        toast.error("Something went wrong!");
-      } finally {
-        setIsLoading(false);
-      }
+      resendOTP(email)
     },
     [email]
   );

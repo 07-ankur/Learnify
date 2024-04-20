@@ -17,10 +17,8 @@ import rocket from "../../assets/animations/rocket.json";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Lottie from "lottie-react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { toast } from "react-hot-toast";
 import { Cookies } from "react-cookie";
-import useLoginStore from "../../hooks/useLoginStore"
+import {useLoginStore} from "../../hooks/useLoginStore"
 
 const TextFieldstyled = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -32,8 +30,6 @@ const TextFieldstyled = styled(TextField)`
 
 const { Logo_drk } = signupContent;
 
-const cookies = new Cookies();
-
 const Login_pg = () => {
   const navigate = useNavigate();
   const login = useLoginStore();
@@ -41,7 +37,6 @@ const Login_pg = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = useCallback(
     async (event) => {
