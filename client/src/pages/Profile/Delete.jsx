@@ -21,6 +21,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { Cookies } from "react-cookie";
 import { jwtDecode } from "jwt-decode";
+import {useDeleteUser} from "../../hooks/useDeleteUser"
 
 const TextFieldstyled = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -34,6 +35,7 @@ const { Logo_drk } = signupContent;
 
 const Delete = () => {
   const navigate = useNavigate();
+  const deleteAccount = useDeleteUser();
 
   const cookies = new Cookies();
   const [email, setEmail] = useState(null);
@@ -57,37 +59,7 @@ const Delete = () => {
   const onSubmit = useCallback(
     async (event) => {
       event.preventDefault();
-      try {
-        setIsLoading(true);
-
-        const passwordVerificationRes = await axios.post(
-          "https://learnify-ev51.onrender.com/api/auth/login",
-          {
-            email,
-            password,
-          }
-        );
-
-        if (passwordVerificationRes.status === 200) {
-          const deleteUserRes = await axios.delete(
-            `https://learnify-ev51.onrender.com/api/user/deleteuser/${id}`
-          );
-
-          if (deleteUserRes.status === 200) {
-            cookies.remove("jwt_token");
-            setIsLoading(false);
-            toast.success("User deleted successfully!");
-            navigate("/");
-          }
-        } else {
-          toast.error("Incorrect password!");
-        }
-      } catch (error) {
-        console.log(error);
-        toast.error("Something went wrong!");
-      } finally {
-        setIsLoading(false);
-      }
+      deleteAccount(email, password, id, cookies, navigate);
     },
     [email, password, id, navigate]
   );

@@ -13,6 +13,8 @@ import rocket from "../../assets/animations/rocket.json";
 import Lottie from "lottie-react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { useVerificationStore } from "../../hooks/useVerificationStore";
+import { useResendStore } from "../../hooks/useResendStore";
 
 const TextFieldstyled = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -31,65 +33,20 @@ const VerifyOtp = () => {
   const [otp, setOtp] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const verify = useVerificationStore();
+  const resend = useResendStore();
 
   const onSubmit = useCallback(
     async (event) => {
       event.preventDefault();
-      try {
-        setIsLoading(true);
-        console.log(email);
-        const res = await axios.post(
-          "https://learnify-ev51.onrender.com/api/auth/verifyotp",
-          {
-            email,
-            otp,
-          }
-        );
-
-        console.log(res.data);
-
-        if (res.status === 200) {
-          setIsLoading(false);
-
-          toast.success("Account Verified successfully!");
-
-          navigate("/login");
-        }
-      } catch (error) {
-        console.log(error);
-        toast.error("Something went wrong!");
-      } finally {
-        setIsLoading(false);
-      }
+      verify(email,otp);
     },
     [email,otp]
   );
 
   const onResend = useCallback(
     async (event) => {
-      try {
-        setIsLoading(true);
-
-        const res = await axios.post(
-          "https://learnify-ev51.onrender.com/api/auth/resendotp",
-          {
-            email,
-          }
-        );
-
-        console.log(res.data);
-
-        if (res.status === 200) {
-          setIsLoading(false);
-
-          toast.success("OTP sent successfully!");
-        }
-      } catch (error) {
-        console.log(error);
-        toast.error("Something went wrong!");
-      } finally {
-        setIsLoading(false);
-      }
+      resend(email);
     },
     [email]
   );

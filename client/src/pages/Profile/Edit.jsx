@@ -31,6 +31,7 @@ import avatar5 from "../../assets/images/Avatar/Avatar5.jpg";
 import avatar6 from "../../assets/images/Avatar/Avatar6.jpg";
 import avatar7 from "../../assets/images/Avatar/Avatar7.jpg";
 import avatar8 from "../../assets/images/Avatar/Avatar8.jpg";
+import { useEditUser } from "../../hooks/useEditUser";
 
 const TextFieldstyled = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -66,6 +67,7 @@ const Edit = () => {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const editAccount = useEditUser();
 
   const avatars = [
     avatar1,
@@ -91,46 +93,7 @@ const Edit = () => {
   const onSubmit = useCallback(
     async (event) => {
       event.preventDefault();
-      try {
-        setIsLoading(true);
-
-        if (!password) {
-          toast.error("Please enter the password!!");
-        }
-
-        const passwordVerificationRes = await axios.post(
-          "https://learnify-ev51.onrender.com/api/auth/login",
-          {
-            email,
-            password,
-          }
-        );
-
-        if (passwordVerificationRes.status === 200) {
-          const updateUserRes = await axios.put(
-            `https://learnify-ev51.onrender.com/api/user/updateuser/${id}`,
-            {
-              firstname,
-              lastname,
-              newPassword,
-              avatar,
-            }
-          );
-
-          if (updateUserRes.status === 200) {
-            setIsLoading(false);
-            toast.success("User updated successfully!");
-            toast.success("Login again to apply changes!");
-          }
-        } else {
-          toast.error("Incorrect password!");
-        }
-      } catch (error) {
-        console.log(error);
-        toast.error("Something went wrong!");
-      } finally {
-        setIsLoading(false);
-      }
+      editAccount(email, firstname, lastname, password, newPassword, avatar, id, navigate);
     },
     [email, password, id, firstname, lastname, newPassword, avatar, navigate]
   );

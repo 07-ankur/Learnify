@@ -8,6 +8,6 @@ export const URLS = {
   DELETE_USER: `${BASE_URL}api/user/deleteuser/`,
   EDIT_USER: `${BASE_URL}api/user/updateuser/`,
   FORGOT_PASS: `${BASE_URL}api/auth/forgotpassword`,
-  GETFILTEREDBLOGS:`${BASE_URL}blogs/getBlogsapi/blog/getfilteredsortedblogs`,
+  GETFILTEREDBLOGS:`${BASE_URL}api/blog/getfilteredsortedblogs`,
   GETBLOG: `${BASE_URL}api/blog/getblogs`,
 };

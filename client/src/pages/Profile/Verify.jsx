@@ -13,6 +13,7 @@ import rocket from "../../assets/animations/rocket.json";
 import Lottie from "lottie-react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { useForgotPass } from "../../hooks/useForgotPass";
 
 const TextFieldstyled = styled(TextField)`
   & .MuiOutlinedInput-root {

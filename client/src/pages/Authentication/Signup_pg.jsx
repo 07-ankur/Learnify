@@ -30,6 +30,7 @@ import avatar5 from "../../assets/images/Avatar/Avatar5.jpg";
 import avatar6 from "../../assets/images/Avatar/Avatar6.jpg";
 import avatar7 from "../../assets/images/Avatar/Avatar7.jpg";
 import avatar8 from "../../assets/images/Avatar/Avatar8.jpg";
+import { useSignupStore } from "../../hooks/useSignupStore";
 
 const TextFieldstyled = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -60,6 +61,7 @@ const SignupForm = () => {
   const [avatar, setAvatar] = useState(avatar1);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const signup = useSignupStore();
 
   const avatars = [
     avatar1,
@@ -84,7 +86,6 @@ const SignupForm = () => {
 
   const onSubmit = useCallback(
     async (event) => {
-      console.log(enteredEmail);
       event.preventDefault();
       if (!firstname || !lastname || !email || !password || !avatar) {
         toast.error("All fields are required!");
@@ -93,43 +94,14 @@ const SignupForm = () => {
       try {
         setIsLoading(true);
 
-        console.log({
-          firstname,
-          lastname,
-          email,
-          password,
-          avatar,
-        });
-
-        const res = await axios.post(
-          "https://learnify-ev51.onrender.com/api/auth/register",
-          {
-            firstname,
-            lastname,
-            email,
-            password,
-            avatar,
-          }
-        );
-
-        console.log(res.data);
-
-        if (res.status === 200) {
-          setIsLoading(false);
-
-          toast.success("Account created successfully!");
-
-          navigate("/signup/verify", { state: { email } });
-        }
-      } catch (error) {
-        console.log(error);
-        toast.error("Something went wrong!");
+        await signup(firstname, lastname, email, password, avatar);
       } finally {
         setIsLoading(false);
       }
     },
-    [firstname, lastname, email, password, avatar, navigate]
+    [firstname, lastname, email, password, avatar, signup]
   );
+
 
   return (
     <ThemeProvider theme={authTheme}>

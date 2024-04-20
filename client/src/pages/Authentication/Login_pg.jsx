@@ -20,6 +20,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { Cookies } from "react-cookie";
+import useLoginStore from "../../hooks/useLoginStore"
 
 const TextFieldstyled = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -35,6 +36,7 @@ const cookies = new Cookies();
 
 const Login_pg = () => {
   const navigate = useNavigate();
+  const login = useLoginStore();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,33 +46,7 @@ const Login_pg = () => {
   const onSubmit = useCallback(
     async (event) => {
       event.preventDefault();
-      try {
-        setIsLoading(true);
-
-        const res = await axios.post("https://learnify-ev51.onrender.com/api/auth/login", {
-          email,
-          password,
-        });
-
-        if (res.status === 200) {
-          setIsLoading(false);
-
-          // Extract user information from the response data
-          const { token } = res.data;
-
-          // Set JWT token in cookies
-          cookies.set("jwt_token", token); // Only set the token
-
-          toast.success("Login successful!");
-
-          navigate("/");
-        }
-      } catch (error) {
-        console.log(error);
-        toast.error("Something went wrong!");
-      } finally {
-        setIsLoading(false);
-      }
+      login(email,password);
     },
     [email, password]
   );
