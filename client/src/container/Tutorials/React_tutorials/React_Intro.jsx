@@ -26,7 +26,7 @@ const React_Intro = () => {
         <Divider sx={{ my: 1 }} />
         <TutorialTopic topic={'What is React?'}/>
         <TutorialContent
-          content={`React, sometimes referred to as a frontend JavaScript framework, is aJavaScript library created by Facebook.
+          content={`React, sometimes referred to as a frontend JavaScript framework, is a JavaScript library created by Facebook.
           <br />
           React is a tool for building UI components.`}
         />

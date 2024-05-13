@@ -14,127 +14,71 @@ export const reactTopics = {
     },
     {
       key: 4,
-      title:'Upgrade',
-    },
-    {
-      key: 5,
       title:'ES6',
     },
     {
-      key: 6,
-      title:'ES6 Classes',
-    },
-    {
-      key: 7,
-      title:'ES6 Arrow Functions',
-    },
-    {
-      key: 8,
-      title:'ES6 Variables',
-    },
-    {
-      key: 8,
-      title:'ES6 Variables',
-    },
-    {
-      key: 9,
-      title:'ES6 Array Methods',
-    },
-    {
-      key: 10,
-      title:'ES6 Destructuring',
-    },
-    {
-      key: 11,
-      title:'ES6 Spread Operator',
-    },
-    {
-      key: 12,
-      title:'ES6 Modules',
-    },
-    {
-      key: 13,
-      title:'ES6 Ternary Operator',
-    },
-    {
-      key: 14,
+      key: 5,
       title:'Render HTML',
     },
     {
-      key: 15,
+      key: 6,
       title:'JSX',
     },
     {
-      key: 16,
+      key: 7,
       title:'Components',
     },
     {
-      key: 17,
+      key: 8,
       title:'Class Components',
     },
     {
-      key: 18,
+      key: 9,
       title:'Router',
     },
     {
-      key: 19,
+      key: 10,
       title:'Events',
     },
     {
-      key: 20,
+      key: 11,
       title:'Lists',
     },
     {
-      key: 21,
-      title:'Forms',
-    },
-    {
-      key: 22,
-      title:'Css Styling',
-    },
-    {
-      key: 23,
-      title:'Sass Styling',
-    },
-    {
-      key: 24,
+      key: 12,
       title:'What is a Hook?',
     },
     {
-      key: 26,
+      key: 14,
       title:'useState',
     },
     {
-      key: 27,
+      key: 14,
       title:'useEffect',
     },
     {
-      key: 28,
+      key: 15,
       title:'useContext',
     },
     {
-      key: 29,
+      key: 16,
       title:'useRef',
     },
     {
-      key: 30,
+      key: 17,
       title:'useReducer',
     },
     {
-      key: 31,
+      key: 18,
       title:'useCallback',
     },
     {
-      key: 32,
+      key: 19,
       title:'useMemo',
     },
     {
-      key: 33,
+      key: 20,
       title:'Custom Hooks',
-    },
-    {
-      key: 34,
-      title:'useState',
     },
   ],
 };

@@ -10,7 +10,7 @@ export const useForgotPass = create((set) => ({
   setEmail: (email) => set({ email }),
   setOtp: (otp) => set({ otp }),
   setIsLoading: (isLoading) => set({ isLoading }),
-  verifyOTP: async (email, otp, password) => {
+  verifyOTP: async (email, otp, password, navigate) => {
     try {
       set({ isLoading: true });
       const {VERIFY_OTP, RESEND_OTP, FORGOT_PASS} = URLS;
@@ -26,6 +26,7 @@ export const useForgotPass = create((set) => ({
         if (changePassRes.status === 200) {
           set({ isLoading: false });
           toast.success("Password updated successfully!");
+          navigate('/login');
         }
       } else {
         toast.error("Incorrect OTP!");

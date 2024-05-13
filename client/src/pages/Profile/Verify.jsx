@@ -29,13 +29,13 @@ const Verify = () => {
   const location = useLocation();
   const { email } = location.state || {};
   const { password } = location.state || {};
-  const { otp, isLoading, setEmail, setOtp, verifyOTP, resendOTP } = useForgotPass();
   const navigate = useNavigate();
+  const { otp, isLoading, setEmail, setOtp, verifyOTP, resendOTP } = useForgotPass();
 
   const onSubmit = useCallback(
     async (event) => {
       event.preventDefault();
-      verifyOTP(email, otp, password)
+      verifyOTP(email, otp, password, navigate)
     },
     [email, otp, password, navigate]
   );

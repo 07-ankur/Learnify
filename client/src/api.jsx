@@ -11,3 +11,7 @@ export const URLS = {
   GETFILTEREDBLOGS:`${BASE_URL}api/blog/getfilteredsortedblogs`,
   GETBLOG: `${BASE_URL}api/blog/getblogs`,
 };
+
+export const React_JS_Tutorials_URL = {
+  Use_Context: `${BASE_URL}api/tutorials/gettutorials/React_JS/Use_Context`
+}

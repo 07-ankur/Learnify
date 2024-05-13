@@ -8,6 +8,11 @@ import Listing from "./React_tutorials/React_TopicList";
 import Home from "./React_tutorials/React_Home";
 import Intro from "./React_tutorials/React_Intro";
 import GetStarted from "./React_tutorials/React_GetStarted";
+import ES6 from "./React_tutorials/React_ES6";
+import Usestate from "./React_tutorials/React_Usestate";
+import WhatIsAHook from "./React_tutorials/React_WhatIsAHook";
+import Useeffect from "./React_tutorials/React_Useeffect";
+import Usecontext from "./React_tutorials/React_Usecontext";
 
 const TutorialPage = () => {
   return (
@@ -54,7 +59,13 @@ const TutorialPage = () => {
               Next
             </ContainedButton>
           </Box>
-          <Intro/>
+          {/* <Home/> */}
+          {/* <Intro/> */}
+          {/* <GetStarted/> */}
+          {/* <Usestate/> */}
+          {/* <WhatIsAHook/> */}
+          {/* <Useeffect/> */}
+          <Usecontext/>
         </Box>
       </Box>
     </ThemeProvider>

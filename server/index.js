@@ -9,6 +9,7 @@ const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const blogRoutes = require("./routes/blogRoutes");
+const tutorialRoutes = require("./routes/tutorialRoutes");
 const errorHandler = require("./middlewares/errorHandler");
 
 // Allow CORS for specified origin
@@ -25,6 +26,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/blog", blogRoutes);
+app.use("/api/tutorials", tutorialRoutes);
 
 // Server test route
 app.get("/", (req, res) => {
