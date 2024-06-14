@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const { getTutorials } = require("../controllers/tutorialController");
+const { getTutorials, getTutorialsTopics } = require("../controllers/tutorialController");
 
-// Define route with dynamic parameters ':title' and ':topic'
 router.get("/gettutorials/:title/:topic", getTutorials);
+router.get("/gettutorialsTopics/:title", getTutorialsTopics);
 
 module.exports = router;

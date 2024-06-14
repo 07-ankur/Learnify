@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Divider } from "@mui/material";
-import TutorialTopic from "../TutorialTopic";
-import TutorialContent from "../TutorialContent";
-import TutorialCode from "../TutorialCode";
-import TutorialBox from "../TutorialBox";
-import TutorialFooter from "../TutorialFooter";
-import { React_JS_Tutorials_URL } from "../../../api";
+import { Divider, Box } from "@mui/material";
+import TutorialTopic from "../Structure/TutorialTopic";
+import TutorialContent from "../Structure/TutorialContent";
+import TutorialCode from "../Structure/TutorialCode";
+import TutorialBox from "../Structure/TutorialBox";
+import TutorialFooter from "../Structure/TutorialFooter";
+import { Tutorials_URL } from "../../../api";
 
-const React_Usecontext = () => {
+const Tutorials_Content = (props) => {
+  const { topic, title } = props;
   const [tutorial, setTutorial] = useState(null);
   const [completion, setCompletion] = useState(false);
   const [message, setMessage] = useState("Mark as completed !!");
-  const {Use_Context} = React_JS_Tutorials_URL;
 
   const toggleCompletion = () => {
     if (!completion) {
@@ -27,16 +27,17 @@ const React_Usecontext = () => {
   useEffect(() => {
     const fetchTutorial = async () => {
       try {
-        const response = await axios.get(Use_Context);
+        console.log(title,topic);
+        const response = await axios.get(Tutorials_URL.Tutorial(topic, title));
         setTutorial(response.data);
-        console.log(response.data)
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching tutorial:", error);
       }
     };
 
     fetchTutorial();
-  }, []);
+  }, [topic, title]);
 
   return (
     <div>
@@ -57,6 +58,11 @@ const React_Usecontext = () => {
               {section.type === "box" && (
                 <TutorialBox content={section.content} />
               )}
+              {section.type === "image" && (
+                <Box sx={{ mx: 5, my: 2 }}>
+                  <img src={section.content} alt="img" />
+                </Box>
+              )}
               {section.divider === "bottom" && <Divider sx={{ my: 1 }} />}
             </div>
           ))}
@@ -71,4 +77,4 @@ const React_Usecontext = () => {
   );
 };
 
-export default React_Usecontext;
+export default Tutorials_Content;

@@ -9,7 +9,7 @@ const TutorialBox = (props) => {
         variant="h5"
         sx={{ mx: 4, mt: 2, mb: 2, lineHeight: "150%", color: "black" }}
       >
-        {props.Content}
+        {props.content}
       </Typography>
     </Box>
   );

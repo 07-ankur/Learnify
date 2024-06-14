@@ -1,20 +1,22 @@
 import { CssBaseline, Typography, Divider } from "@mui/material";
 import { Box, ThemeProvider } from "@mui/system";
 import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { tutorialTheme } from "../../utils/theme";
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import ContainedButton from "../../components/Buttons/Contained_btn";
 import Listing from "./React_tutorials/React_TopicList";
-import Home from "./React_tutorials/React_Home";
-import Intro from "./React_tutorials/React_Intro";
-import GetStarted from "./React_tutorials/React_GetStarted";
-import ES6 from "./React_tutorials/React_ES6";
-import Usestate from "./React_tutorials/React_Usestate";
-import WhatIsAHook from "./React_tutorials/React_WhatIsAHook";
-import Useeffect from "./React_tutorials/React_Useeffect";
-import Usecontext from "./React_tutorials/React_Usecontext";
+import Tutorials_Content from "./Content/TutorialsContent";
 
 const TutorialPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const pathParts = location.pathname.split("/");
+  let title = pathParts[2];
+  let topic = pathParts[3]??"Home";
+  let title_alt = title.replace("_"," ")
+
   return (
     <ThemeProvider theme={tutorialTheme}>
       <CssBaseline />
@@ -28,21 +30,28 @@ const TutorialPage = () => {
             overflowY: "auto",
           }}
         >
-          <OutlinedButton arrowRev sx={{ mt: 1, mb: 2, mx: 2 }} fit>
+          <OutlinedButton
+            arrowRev
+            sx={{ mt: 1, mb: 2, mx: 2 }}
+            fit
+            onClick={() => {
+              navigate(`/tutorials`);
+            }}
+          >
             Back to Home
           </OutlinedButton>
           <Divider sx={{ border: "1px solid white", mb: 1 }} />
           <Typography variant="h4" sx={{ m: 2, color: "#FFF4A3" }}>
-            React JS Tutorial
+            {title_alt} Tutorial
           </Typography>
           <Divider sx={{ border: "1px solid white" }} />
-          <Listing />
+          <Listing title={title} topic={topic}/>
         </Box>
         <Box
           sx={{ width: "80%", maxHeight: "100vh", overflowY: "auto", px: 2 }}
         >
           <Typography variant="h2" sx={{ mx: 5, my: 3, color: "#FFF4A3" }}>
-            React Intro
+            {title_alt} {topic}
           </Typography>
           <Box
             sx={{
@@ -59,13 +68,7 @@ const TutorialPage = () => {
               Next
             </ContainedButton>
           </Box>
-          {/* <Home/> */}
-          {/* <Intro/> */}
-          {/* <GetStarted/> */}
-          {/* <Usestate/> */}
-          {/* <WhatIsAHook/> */}
-          {/* <Useeffect/> */}
-          <Usecontext/>
+          <Tutorials_Content title={title} topic={topic}/>
         </Box>
       </Box>
     </ThemeProvider>

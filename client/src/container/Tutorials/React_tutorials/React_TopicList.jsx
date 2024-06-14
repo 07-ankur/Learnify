@@ -1,46 +1,52 @@
-import React from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { reactTopics } from "../../../utils/contents/TutorialContent";
-
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { Tutorials_URL } from "../../../api";
 import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 
-const { Topics } = reactTopics;
-
-const Listing = () => {
+const Listing = (props) => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const { title } = props;
+  const [tutorialTopics, setTutorialTopics] = useState([]);
 
-  const pathParts = location.pathname.split("/");
-  let skill = pathParts[2];
+  useEffect(() => {
+    const fetchTutorialTopic = async () => {
+      try {
+        console.log(title);
+        const response = await axios.get(Tutorials_URL.Tutorial_Topic(title));
+        setTutorialTopics(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching tutorial:", error);
+      }
+    };
+
+    fetchTutorialTopic();
+  }, [title]);
 
   return (
-    <>
-      <List>
-        {Topics.map((item) => {
-          return (
-            <ListItem
-              onClick={() => {
-                {
-                  navigate(`/tutorials/${skill}/${item.title.replace(/ /g, "-")}`);
-                }
-              }}
-              key={item.title}
-              disablePadding
-              sx={{
-                "&:hover": {
-                  color: "#10D59B",
-                },
-              }}
-            >
-              <ListItemButton>
-                <ListItemText primary={item.title} />
-              </ListItemButton>
-            </ListItem>
-          );
-        })}
-      </List>
-    </>
+    <List>
+      {tutorialTopics.map((item, index) => (
+        <ListItem
+          onClick={() => {
+            navigate(`/tutorials/${title}/${item.replace(/ /g, "-")}`);
+          }}
+          key={index}
+          disablePadding
+          sx={{
+            "&:hover": {
+              color: "#10D59B",
+            },
+          }}
+        >
+          <ListItemButton>
+            <ListItemText primary={item} />
+          </ListItemButton>
+        </ListItem>
+      ))}
+    </List>
   );
 };
 
 export default Listing;
+

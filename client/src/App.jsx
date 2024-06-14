@@ -26,7 +26,7 @@ import Edit from "./pages/Profile/Edit";
 import Delete from "./pages/Profile/Delete";
 import { Toaster } from "react-hot-toast";
 import Forgot from "./pages/Profile/Forgot";
-import Verify from "./pages/Profile/Verify";
+import Verify from "./pages/Profile/Verify";  
 
 const { TOPICS } = Analysis_Progress;
 const { SKILLS } = Topics;
@@ -69,7 +69,7 @@ const App = () => {
         {SKILLS.map((skill) => (
           <Route
             key={skill.key}
-            path={`/tutorials/${skill.title.replace(/ /g, "-")}`}
+            path={`/tutorials/${skill.title.replace(/ /g, "_")}`}
             element={<TutorialPage />}
           />
         ))}

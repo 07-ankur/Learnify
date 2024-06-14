@@ -12,6 +12,7 @@ export const URLS = {
   GETBLOG: `${BASE_URL}api/blog/getblogs`,
 };
 
-export const React_JS_Tutorials_URL = {
-  Use_Context: `${BASE_URL}api/tutorials/gettutorials/React_JS/Use_Context`
-}
+export const Tutorials_URL = {
+  Tutorial: (topic, title) => `${BASE_URL}api/tutorials/gettutorials/${title}/${topic}`,
+  Tutorial_Topic: (title) => `${BASE_URL}api/tutorials/gettutorialsTopics/${title}`
+};

@@ -262,7 +262,7 @@ const Navbar = (props) => {
                         <Grid item xs={6} sm={4}>
                           <Box
                             onClick={() => {
-                              navigate("/tutorials/React-JS");
+                              navigate("/tutorials/React_JS");
                             }}
                             sx={{
                               display: "flex",
@@ -279,7 +279,7 @@ const Navbar = (props) => {
                         <Grid item xs={6} sm={4}>
                           <Box
                             onClick={() => {
-                              navigate("/tutorials/Node-JS");
+                              navigate("/tutorials/Node_JS");
                             }}
                             sx={{
                               display: "flex",
@@ -296,7 +296,7 @@ const Navbar = (props) => {
                         <Grid item xs={6} sm={4}>
                           <Box
                             onClick={() => {
-                              navigate("/tutorials/Express-JS");
+                              navigate("/tutorials/Express_JS");
                             }}
                             sx={{
                               display: "flex",
@@ -313,7 +313,7 @@ const Navbar = (props) => {
                         <Grid item xs={6} sm={4}>
                           <Box
                             onClick={() => {
-                              navigate("/tutorials/Mongo-DB");
+                              navigate("/tutorials/Mongo_DB");
                             }}
                             sx={{
                               display: "flex",

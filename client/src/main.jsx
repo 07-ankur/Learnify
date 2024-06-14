@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ThemeProvider theme={theme}>
       <Router>
         <CssBaseline/>
-        <App />
+        <App /> 
       </Router>
     </ThemeProvider>
   </React.StrictMode>,
