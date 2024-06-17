@@ -138,7 +138,7 @@ export default function QuestionTabs(props) {
         setQuestions(response.data);
         console.log(response.data);
       } catch (error) {
-        console.error("Error fetching tutorial:", error);
+        console.error("Error fetching questions:", error);
       }
     };
 

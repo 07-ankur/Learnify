@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Box, Divider, Typography, Grid } from "@mui/material";
 import Ques_btn from "../../components/Buttons/Ques_btn";
-import { React_practice_qn } from "../../utils/contents/QuizContent";
-import ContainedButton from "../../components/Buttons/Contained_btn";
+// import ContainedButton from "../../components/Buttons/Contained_btn";
 import TestModal from "../../components/Modals/TestModal";
 import TimerIcon from "@mui/icons-material/Timer";
-
-const { ITEMS } = React_practice_qn;
 
 const StatusTab_test = (props) => {
   const [notAnsweredCount, setNotAnsweredCount] = useState(0);
@@ -56,7 +53,7 @@ const StatusTab_test = (props) => {
   useEffect(() => {
     const notAnswered = props.select.filter((option) => option === null).length;
     setNotAnsweredCount(notAnswered);
-    setAnsweredCount(ITEMS[0].Questions.length - notAnswered);
+    setAnsweredCount(props.questions.length - notAnswered);
   }, [props.select]);
 
   // Update timer every second
@@ -146,7 +143,7 @@ const StatusTab_test = (props) => {
           </Box>
           <Divider sx={{ my: 2, border: "2px solid #10D59B" }} />
           <Grid container alignItems="center">
-            {ITEMS[0].Questions.map((item) => (
+            {props.questions.map((item) => (
               <Grid sx={{ m: 1 }} item xs={12} md={2} key={item.key}>
                 <Ques_btn
                   clickHandler={() => props.clickHandler(item.key - 1)}
@@ -238,7 +235,7 @@ const StatusTab_test = (props) => {
           </Box>
           <Divider sx={{ my: 2, border: "2px solid #10D59B" }} />
           <Grid container alignItems="center">
-            {ITEMS[0].Questions.map((item) => (
+            {props.questions.map((item) => (
               <Grid sx={{ m: 1 }} item xs={12} md={2} key={item.key}>
                 <Ques_btn
                   clickHandler={() => props.clickHandler(item.key - 1)}
@@ -276,8 +273,8 @@ const StatusTab_test = (props) => {
 
       {isPracticeModalOpen && (
         <TestModal
-          totalQuestions={ITEMS[0].Questions.length}
-          questionsAnswered={ITEMS[0].Questions.length - notAnsweredCount}
+          totalQuestions={props.questions.length}
+          questionsAnswered={props.questions.length - notAnsweredCount}
           correctlyAnsweredCount={correctlyAnsweredCount}
           wrongAnsweredCount={wrongAnsweredCount}
           open={true}

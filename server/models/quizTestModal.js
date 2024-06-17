@@ -19,8 +19,16 @@ const quizTestSchema = mongoose.Schema({
         type: String,
         required: true,
       },
-      subtitle: {
-        type: String,
+      count: {
+        type: Number,
+        required: true,
+      },
+      time: {
+        type: Number,
+        required: true,
+      },
+      marks: {
+        type: Number,
         required: true,
       },
       questions: [

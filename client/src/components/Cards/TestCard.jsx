@@ -4,7 +4,7 @@ import OutlinedButton from "../Buttons/OutlinedButton";
 import Title from "../Title";
 import { useNavigate } from "react-router-dom";
 
-const TestCard = ({ title, subtitle }) => {
+const TestCard = ({ title, count, marks, time }) => {
   const navigate = useNavigate();
   return (
     <Box
@@ -32,7 +32,7 @@ const TestCard = ({ title, subtitle }) => {
           {title}
         </Title>
         <Typography variant="body2" color="text.secondary">
-          {subtitle}
+          {count} Questions || {time} minutes || {marks} marks
         </Typography>
         <OutlinedButton
           arrow

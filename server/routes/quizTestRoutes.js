@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const { getQuizTests, getQuizTestsTopics } = require("../controllers/quizTestController");
+const { getQuizTests, getQuizTestsDetails } = require("../controllers/quizTestController");
 
 router.get("/getquizTests/:title/:topic", getQuizTests);
-router.get("/getquizTestsTopics/:title", getQuizTestsTopics);
+router.get("/getquizTestsDetails/:title", getQuizTestsDetails);
 
 module.exports = router;

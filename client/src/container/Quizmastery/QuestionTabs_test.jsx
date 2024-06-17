@@ -13,6 +13,7 @@ import OutlinedButton from "../../components/Buttons/OutlinedButton";
 // import ContainedButton from "../../components/Buttons/Contained_btn";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { QuizMastery_URL } from "../../api";
 
 const { ITEMS } = React_practice_qn;
 
@@ -49,8 +50,10 @@ function a11yProps(index) {
   };
 }
 
-export default function QuestionTabs_test() {
+export default function QuestionTabs_test(props) {
   const [value, setValue] = useState(0);
+  const { title, topic } = props;
+  const [questions, setQuestions] = useState([]);
 
   const handleChange = (event, newValue) => {
     console.log(newValue);
@@ -58,33 +61,33 @@ export default function QuestionTabs_test() {
   };
 
   const [questionStatus, setQuestionStatus] = useState(
-    Array(ITEMS[0].Questions.length).fill(null)
+    Array(questions.Questions.length).fill(null)
   );
 
   const [selectedOptions, setSelectedOptions] = useState(
-    Array(ITEMS[0].Questions.length).fill(null)
+    Array(questions.Questions.length).fill(null)
   );
 
   const [answersChecked, setAnswersChecked] = useState(false);
 
   const [correctAnswered, setCorrectAnswered] = useState(
-    Array(ITEMS[0].Questions.length).fill(null)
+    Array(questions.Questions.length).fill(null)
   );
 
   const [wrongAnswered, setWrongAnswered] = useState(
-    Array(ITEMS[0].Questions.length).fill(null)
+    Array(questions.Questions.length).fill(null)
   );
 
   const updateAnswersChecked = (newAnswersChecked) => {
     setAnswersChecked(newAnswersChecked);
 
-    const newCorrectAnswered = Array(ITEMS[0].Questions.length).fill(null);
-    const newWrongAnswered = Array(ITEMS[0].Questions.length).fill(null);
-    const newQuestionStatus = Array(ITEMS[0].Questions.length).fill(null);
+    const newCorrectAnswered = Array(questions.Questions.length).fill(null);
+    const newWrongAnswered = Array(questions.Questions.length).fill(null);
+    const newQuestionStatus = Array(questions.Questions.length).fill(null);
 
-    for (let i = 0; i < ITEMS[0].Questions.length; i++) {
+    for (let i = 0; i < questions.Questions.length; i++) {
       const selectedOption = selectedOptions[i];
-      const correctAnswer = ITEMS[0].Questions[i].correct;
+      const correctAnswer = questions.Questions[i].correct;
 
       if (selectedOption != null && selectedOption === correctAnswer) {
         // Answer is correct
@@ -116,7 +119,7 @@ export default function QuestionTabs_test() {
 
   const nextHandler = () => {
     setValue((prevValue) =>
-      Math.min(prevValue + 1, ITEMS[0].Questions.length - 1)
+      Math.min(prevValue + 1, questions.Questions.length - 1)
     );
   };
 
@@ -127,6 +130,23 @@ export default function QuestionTabs_test() {
   const valueHandler = (key) => {
     setValue(key);
   };
+
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      try {
+        console.log(title, topic);
+        const response = await axios.get(
+          QuizMastery_URL.Test(title, topic)
+        );
+        setQuestions(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching questions:", error);
+      }
+    };
+
+    fetchQuestions();
+  }, [topic, title]);
 
   return (
     <Box sx={{ display: "flex", flexDirection: "row" }}>
@@ -145,7 +165,7 @@ export default function QuestionTabs_test() {
             onChange={handleChange}
             aria-label="basic tabs example"
           >
-            {ITEMS[0].Questions.map((item, index) => (
+            {questions.Questions.map((item, index) => (
               <Tab
                 key={index}
                 sx={{
@@ -159,7 +179,7 @@ export default function QuestionTabs_test() {
             ))}
           </Tabs>
         </Box>
-        {ITEMS[0].Questions.map((item, index) => (
+        {questions.Questions.map((item, index) => (
           <CustomTabPanel value={value} index={index} key={index}>
             <Box sx={{ ml: 7, mb: 1, mt: -1, width: "85%" }} fontSize="1.15em">
               {item.title}
@@ -169,7 +189,7 @@ export default function QuestionTabs_test() {
                 title={itm.title}
                 opt={itm.opt}
                 questionIndex={index}
-                isAnswer={ITEMS[0].Questions[index].correct}
+                isAnswer={questions.Questions[index].correct}
                 selectedOption={selectedOptions[index]}
                 correctOption={correctAnswered[index]}
                 wrongOption={wrongAnswered[index]}
@@ -213,7 +233,7 @@ export default function QuestionTabs_test() {
               <OutlinedButton
                 sx={{ width: "20%" }}
                 onClick={nextHandler}
-                disabled={value === ITEMS[0].Questions.length - 1}
+                disabled={value === questions.Questions.length - 1}
               >
                 Next
                 <ChevronRightIcon />
@@ -223,6 +243,7 @@ export default function QuestionTabs_test() {
         ))}
       </Box>
       <StatusTab_test
+        questions={questions}
         answersChecked={answersChecked}
         onUpdateAnswersChecked={updateAnswersChecked}
         select={selectedOptions}
