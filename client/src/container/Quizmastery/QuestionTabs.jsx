@@ -4,16 +4,15 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { React_practice_qn } from "../../utils/contents/QuizContent";
 import OptionCard from "../../components/Cards/OptionCard";
 import StatusTab from "./StatusTab";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import ContainedButton from "../../components/Buttons/Contained_btn";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-
-const { ITEMS } = React_practice_qn;
+import axios from "axios";
+import { QuizMastery_URL } from "../../api";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -48,30 +47,32 @@ function a11yProps(index) {
   };
 }
 
-export default function QuestionTabs() {
+export default function QuestionTabs(props) {
   const [value, setValue] = useState(0);
+  const { title, topic } = props;
+  const [questions, setQuestions] = useState([]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const [questionStatus, setQuestionStatus] = useState(
-    Array(ITEMS[0].Questions.length).fill(null)
+    Array(questions.length).fill(null)
   );
 
   const [selectedOptions, setSelectedOptions] = useState(
-    Array(ITEMS[0].Questions.length).fill(null)
+    Array(questions.length).fill(null)
   );
 
   const [answersChecked, setAnswersChecked] = useState(
-    Array(ITEMS[0].Questions.length).fill(false)
+    Array(questions.length).fill(false)
   );
 
   const [correctAnswered, setCorrectAnswered] = useState(
-    Array(ITEMS[0].Questions.length).fill(null)
+    Array(questions.length).fill(null)
   );
   const [wrongAnswered, setWrongAnswered] = useState(
-    Array(ITEMS[0].Questions.length).fill(null)
+    Array(questions.length).fill(null)
   );
 
   const handleSelectOption = (questionIndex, option) => {
@@ -92,7 +93,7 @@ export default function QuestionTabs() {
     setAnswersChecked(newAnswersChecked);
 
     const selectedOption = selectedOptions[questionIndex];
-    const correctOption = ITEMS[0].Questions[questionIndex].correct;
+    const correctOption = questions[questionIndex].correct;
 
     if (selectedOption === correctOption) {
       // Answer is correct
@@ -116,9 +117,7 @@ export default function QuestionTabs() {
   };
 
   const nextHandler = () => {
-    setValue((prevValue) =>
-      Math.min(prevValue + 1, ITEMS[0].Questions.length - 1)
-    );
+    setValue((prevValue) => Math.min(prevValue + 1, questions.length - 1));
   };
 
   const prevHandler = () => {
@@ -128,6 +127,23 @@ export default function QuestionTabs() {
   const valueHandler = (key) => {
     setValue(key);
   };
+
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      try {
+        console.log(title, topic);
+        const response = await axios.get(
+          QuizMastery_URL.Practice(title, topic)
+        );
+        setQuestions(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching tutorial:", error);
+      }
+    };
+
+    fetchQuestions();
+  }, [topic, title]);
 
   return (
     <Box sx={{ display: "flex", flexDirection: "row" }}>
@@ -146,7 +162,7 @@ export default function QuestionTabs() {
             onChange={handleChange}
             aria-label="basic tabs example"
           >
-            {ITEMS[0].Questions.map((item, index) => (
+            {questions.map((item, index) => (
               <Tab
                 key={index}
                 sx={{
@@ -160,7 +176,7 @@ export default function QuestionTabs() {
             ))}
           </Tabs>
         </Box>
-        {ITEMS[0].Questions.map((item, index) => (
+        {questions.map((item, index) => (
           <CustomTabPanel value={value} index={index} key={index}>
             <Box sx={{ ml: 7, mb: 1, mt: -1, width: "85%" }} fontSize="1.15em">
               {item.title}
@@ -170,7 +186,7 @@ export default function QuestionTabs() {
                 title={itm.title}
                 opt={itm.opt}
                 questionIndex={index}
-                isAnswer={ITEMS[0].Questions[index].correct}
+                isAnswer={questions[index].correct}
                 selectedOption={selectedOptions[index]}
                 correctOption={correctAnswered[index]}
                 wrongOption={wrongAnswered[index]}
@@ -214,7 +230,7 @@ export default function QuestionTabs() {
               <OutlinedButton
                 sx={{ width: "20%" }}
                 onClick={nextHandler}
-                disabled={value === ITEMS[0].Questions.length - 1}
+                disabled={value === questions.length - 1}
               >
                 Next
                 <ChevronRightIcon />
@@ -223,7 +239,11 @@ export default function QuestionTabs() {
           </CustomTabPanel>
         ))}
       </Box>
-      <StatusTab status={questionStatus} clickHandler={valueHandler} />
+      <StatusTab
+        questions={questions}
+        status={questionStatus}
+        clickHandler={valueHandler}
+      />
     </Box>
   );
 }

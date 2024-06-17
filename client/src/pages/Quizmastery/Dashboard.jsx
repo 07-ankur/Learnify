@@ -179,7 +179,7 @@ export default function QuizDashboard() {
         </Drawer>
         <Main open={open}>
           <DrawerHeader />
-          <BasicTabs title/>
+          <BasicTabs title={title}/>
         </Main>
       </Box>
     </ThemeProvider>

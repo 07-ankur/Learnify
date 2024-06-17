@@ -9,12 +9,10 @@ import TestCard from "../../components/Cards/TestCard";
 import { Test_cards } from "../../utils/contents/QuizContent";
 import { Grid } from "@mui/material";
 import PracticeCard from "../../components/Cards/PracticeCard";
-import { Practice_cards } from "../../utils/contents/QuizContent";
 import { QuizMastery_URL } from "../../api";
 import axios from "axios";
 
 const { items } = Test_cards;
-const { items2 } = Practice_cards;
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -50,27 +48,25 @@ function a11yProps(index) {
 }
 
 export default function BasicTabs(props) {
-  const { title, topic } = props;
+  const { title } = props;
   const [value, setValue] = useState(0);
   const [practiceTopics, setPracticeTopics] = useState([]);
-
+  
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   useEffect(() => {
-    const fetchPracticeQuizes = async () => {
+    const fetchPracticeTopics = async () => {
       try {
-        console.log(title);
         const response = await axios.get(QuizMastery_URL.Practice_Topic(title));
-        setPracticeTopics(response.data);
-        console.log(response.data);
+        setPracticeTopics(response.data.topics);
       } catch (error) {
-        console.error("Error fetching quizes:", error);
+        console.error("Error fetching practice topics:", error);
       }
     };
 
-    fetchPracticeQuizes();
+    fetchPracticeTopics();
   }, [title]);
 
   return (
@@ -102,22 +98,16 @@ export default function BasicTabs(props) {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <Grid>
-          <Grid component="span" container spacing={6}>
-            {practiceTopics.map((item) => (
-              <Grid item xs={12} md={6} key={item.title}>
-                <PracticeCard
-                  key={item.key}
-                  title={item.title}
-                  image={item.image}
-                />
-              </Grid>
-            ))}
-          </Grid>
+        <Grid container spacing={3}>
+          {practiceTopics.map((topic) => (
+            <Grid item xs={12} md={6} key={topic.topic}>
+              <PracticeCard title={topic.topic} image={topic.img} />
+            </Grid>
+          ))}
         </Grid>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <Grid container spacing={6}>
+        <Grid container spacing={3}>
           {items.map((item) => (
             <Grid item xs={12} md={6} key={item.title}>
               <TestCard title={item.title} subtitle={item.subtitle} />

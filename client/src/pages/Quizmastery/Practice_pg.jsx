@@ -132,7 +132,7 @@ export default function Practice_pg() {
         </AppBar>
         <Main>
           <DrawerHeader />
-          <QuestionTabs />
+          <QuestionTabs title={skill} topic={topic}/>
         </Main>
       </Box>
     </ThemeProvider>
