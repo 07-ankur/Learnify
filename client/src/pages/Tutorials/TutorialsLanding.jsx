@@ -8,7 +8,7 @@ import Section1 from '../../container/Tutorials/Section1';
 import Section2 from '../../container/Tutorials/Section2';
 import Section3 from '../../container/Tutorials/Section3';
 
-function Tutorials_pg() {
+function Tutorials_Landing() {
   return (
     <ThemeProvider theme={tutorialTheme}>
       <CssBaseline/>
@@ -21,4 +21,4 @@ function Tutorials_pg() {
   )
 }
 
-export default Tutorials_pg
+export default Tutorials_Landing;

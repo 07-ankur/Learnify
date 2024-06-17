@@ -15,7 +15,7 @@ const PracticeCard = ({ key, title, image }) => {
 
   const clickHandler = () => {
     setSelectedTopic(key);
-    navigate(`/quizmastery/${skill}/practice/${title.replace(/ /g, "-")}`);
+    navigate(`/quizmastery/${skill}/practice/${title.replace(/ /g, "_")}`);
   };
 
   return (

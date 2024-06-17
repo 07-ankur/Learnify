@@ -5,8 +5,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { tutorialTheme } from "../../utils/theme";
 import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import ContainedButton from "../../components/Buttons/Contained_btn";
-import Listing from "./React_tutorials/React_TopicList";
-import Tutorials_Content from "./Content/TutorialsContent";
+import Listing from "../../container/Tutorials/TopicList";
+import Tutorials_Content from "../../container/Tutorials/Content/TutorialsContent";
 
 const TutorialPage = () => {
   const navigate = useNavigate();
@@ -14,8 +14,8 @@ const TutorialPage = () => {
 
   const pathParts = location.pathname.split("/");
   let title = pathParts[2];
-  let topic = pathParts[3]??"Home";
-  let title_alt = title.replace("_"," ")
+  let topic = pathParts[3] ?? "Home";
+  let title_alt = title.replace("_", " ");
 
   return (
     <ThemeProvider theme={tutorialTheme}>
@@ -45,7 +45,7 @@ const TutorialPage = () => {
             {title_alt} Tutorial
           </Typography>
           <Divider sx={{ border: "1px solid white" }} />
-          <Listing title={title} topic={topic}/>
+          <Listing title={title} topic={topic} />
         </Box>
         <Box
           sx={{ width: "80%", maxHeight: "100vh", overflowY: "auto", px: 2 }}
@@ -68,7 +68,7 @@ const TutorialPage = () => {
               Next
             </ContainedButton>
           </Box>
-          <Tutorials_Content title={title} topic={topic}/>
+          <Tutorials_Content title={title} topic={topic} />
         </Box>
       </Box>
     </ThemeProvider>

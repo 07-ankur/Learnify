@@ -88,11 +88,14 @@ export default function QuizDashboard() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const pathParts = location.pathname.split("/");
+  const title = pathParts[2];
+
   let id;
 
   for (let i = 0; i < SKILLS.length; i++) {
     if (
-      location.pathname === `/quizMastery/${SKILLS[i].title.replace(/ /g, "-")}`
+      location.pathname === `/quizMastery/${SKILLS[i].title.replace(/ /g, "_")}`
     ) {
       id = SKILLS[i].key - 1;
       break; // Exit the loop once a match is found
@@ -176,7 +179,7 @@ export default function QuizDashboard() {
         </Drawer>
         <Main open={open}>
           <DrawerHeader />
-          <BasicTabs />
+          <BasicTabs title/>
         </Main>
       </Box>
     </ThemeProvider>

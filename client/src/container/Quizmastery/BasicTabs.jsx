@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -9,6 +10,8 @@ import { Test_cards } from "../../utils/contents/QuizContent";
 import { Grid } from "@mui/material";
 import PracticeCard from "../../components/Cards/PracticeCard";
 import { Practice_cards } from "../../utils/contents/QuizContent";
+import { QuizMastery_URL } from "../../api";
+import axios from "axios";
 
 const { items } = Test_cards;
 const { items2 } = Practice_cards;
@@ -46,12 +49,29 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs() {
-  const [value, setValue] = React.useState(0);
+export default function BasicTabs(props) {
+  const { title, topic } = props;
+  const [value, setValue] = useState(0);
+  const [practiceTopics, setPracticeTopics] = useState([]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  useEffect(() => {
+    const fetchPracticeQuizes = async () => {
+      try {
+        console.log(title);
+        const response = await axios.get(QuizMastery_URL.Practice_Topic(title));
+        setPracticeTopics(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching quizes:", error);
+      }
+    };
+
+    fetchPracticeQuizes();
+  }, [title]);
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -84,7 +104,7 @@ export default function BasicTabs() {
       <CustomTabPanel value={value} index={0}>
         <Grid>
           <Grid component="span" container spacing={6}>
-            {items2.map((item) => (
+            {practiceTopics.map((item) => (
               <Grid item xs={12} md={6} key={item.title}>
                 <PracticeCard
                   key={item.key}

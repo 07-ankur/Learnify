@@ -16,3 +16,7 @@ export const Tutorials_URL = {
   Tutorial: (topic, title) => `${BASE_URL}api/tutorials/gettutorials/${title}/${topic}`,
   Tutorial_Topic: (title) => `${BASE_URL}api/tutorials/gettutorialsTopics/${title}`
 };
+
+export const QuizMastery_URL = {
+  Practice_Topic: (title) => `${BASE_URL}api/quiz/getquizesTopics/${title}`
+}

@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
 import "./index.css";
 import { Route, Routes } from "react-router-dom";
 import Landing_pg from "./pages/Landing/Landing_pg";
-import Tutorials_pg from "./pages/Tutorials/Tutorials_pg";
 import Signup_pg from "./pages/Authentication/Signup_pg";
 import Login_pg from "./pages/Authentication/Login_pg";
 import Blog_pg from "./pages/Blog/Blog_pg";
@@ -20,34 +18,25 @@ import QuizHome_pg from "./pages/Quizmastery/Home_pg";
 import Mytests from "./pages/Quizmastery/Mytests";
 import Practice_pg from "./pages/Quizmastery/Practice_pg";
 import Test_pg from "./pages/Quizmastery/Test_pg";
-import TutorialPage from "./container/Tutorials/TutorialPage";
 import VerifyOtp from "./pages/Authentication/Verify_pg";
 import Edit from "./pages/Profile/Edit";
 import Delete from "./pages/Profile/Delete";
 import { Toaster } from "react-hot-toast";
 import Forgot from "./pages/Profile/Forgot";
 import Verify from "./pages/Profile/Verify";  
+import TutorialPage from "./pages/Tutorials/TutorialPage";
+import Tutorials_Landing from "./pages/Tutorials/TutorialsLanding";
+import { useBlogStore } from "./hooks/useBlogStore";
 
 const { TOPICS } = Analysis_Progress;
 const { SKILLS } = Topics;
 
 const App = () => {
-  const [items, setItems] = useState([]);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        "https://learnify-ev51.onrender.com/api/blog/getblogs"
-      );
-      setItems(response.data);
-    } catch (error) {
-      console.error("Error fetching blogs:", error);
-    }
-  };
+  const { filteredItems, fetchData } = useBlogStore();
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   return (
     <div>
@@ -57,8 +46,7 @@ const App = () => {
         <Route path="/" element={<Landing_pg />} />
         <Route path="/profile/edit" element={<Edit />} />
         <Route path="/profile/delete" element={<Delete />} />
-        <Route path="/tutorials" element={<Tutorials_pg />} />
-        <Route path="/tutorialsPage" element={<TutorialPage />} />
+        <Route path="/tutorials" element={<Tutorials_Landing />} />
         <Route path="/signup" element={<Signup_pg />} />
         <Route path="/signup/verify" element={<VerifyOtp />} />
         <Route path="/login" element={<Login_pg />} />
@@ -69,11 +57,18 @@ const App = () => {
         {SKILLS.map((skill) => (
           <Route
             key={skill.key}
+            path={`/tutorials/${skill.title.replace(/ /g, "_")}/:topic`}
+            element={<TutorialPage />}
+          />
+        ))}
+        {SKILLS.map((skill) => (
+          <Route
+            key={skill.key}
             path={`/tutorials/${skill.title.replace(/ /g, "_")}`}
             element={<TutorialPage />}
           />
         ))}
-        {items.map((item) => (
+        {filteredItems.map((item) => (
           <Route
             key={item.key}
             path={`/blog/${item.title.replace(/ /g, "-")}`}
@@ -102,7 +97,7 @@ const App = () => {
         <Route path="/quizMastery" element={<QuizHome_pg />} />
         <Route path="/quizMastery/user/My-tests" element={<Mytests />} />
         <Route
-          path="/quizMastery/React-JS/practice/React-Hooks"
+          path="/quizMastery/React_JS/practice/React_Hooks"
           element={<Practice_pg />}
         />
         <Route
@@ -112,7 +107,7 @@ const App = () => {
         {SKILLS.map((skill) => (
           <Route
             key={skill.key}
-            path={`/quizMastery/${skill.title.replace(/ /g, "-")}`}
+            path={`/quizMastery/${skill.title.replace(/ /g, "_")}`}
             element={<QuizDashboard_pg />}
           />
         ))}

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ThemeProvider } from "@mui/system";
 import {
   Box,
@@ -8,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import MuiAppBar from "@mui/material/AppBar";
-import MenuIcon from "@mui/icons-material/Menu";
+// import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "../../assets/images/Learnify_logo.png";
 import { quizTheme } from "../../utils/theme";
 import QuestionTabs_test from "../../container/Quizmastery/QuestionTabs_test";
@@ -62,6 +63,26 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function Test_pg() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const navigationHandler = (skill) => {
+    const isConfirmed = window.confirm(
+      "Are you sure you want to leave test window?"
+    );
+    if (isConfirmed) {
+      if (skill) {
+        navigate(`/quizMastery/${skill}`);
+      } else {
+        navigate(`/quizMastery`);
+      }
+    }
+  };
+
+  const pathParts = location.pathname.split("/");
+  const skill = pathParts[2];
+  const topic = pathParts[4];
+
   return (
     <ThemeProvider theme={quizTheme}>
       <Box sx={{ display: "flex" }}>
@@ -78,22 +99,24 @@ export default function Test_pg() {
               }}
             />
             <Box sx={{display:'flex', alignItems:'center'}}>
-              <Typography
-                sx={{ ml: "5vh" }}
+            <Typography
+                sx={{ ml: "5vh", cursor: "pointer" }}
                 variant="h4"
                 noWrap
                 component="div"
                 color="white"
+                onClick={()=>navigationHandler()}
               >
                 Quiz Mastery
               </Typography>
               <Typography
-                sx={{ ml: "2vh", color: "white" }}
+                sx={{ ml: "2vh", color: "white", cursor: "pointer" }}
                 variant="h4"
                 noWrap
                 component="div"
+                onClick={()=>navigationHandler(skill)}
               >
-                {` ---> React Js`}
+                {` ---> ${skill}`}
               </Typography>
               <Typography
                 sx={{ ml: "2vh", color: "#10D59B" }}
@@ -101,7 +124,7 @@ export default function Test_pg() {
                 noWrap
                 component="div"
               >
-                {` ---> Mock Test 1`}
+                {` ---> ${topic.replace(/-/g, " ")}`}
               </Typography>
             </Box>
             <UserIcon/>

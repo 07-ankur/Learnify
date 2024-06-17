@@ -44,7 +44,7 @@ const Section3 = () => {
             {SKILLS.map((ITEM) => (
               <Grid
                 onClick={() => {
-                  navigate(`/tutorials/${ITEM.title.replace(/ /g, "-")}`);
+                  navigate(`/tutorials/${ITEM.title.replace(/ /g, "_")}`);
                 }}
                 key={ITEM.key}
                 item

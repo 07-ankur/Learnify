@@ -183,7 +183,7 @@ const Home_pg = () => {
               >
                 <Item
                   onClick={() => {
-                    navigate(`/quizMastery/${ITEM.title.replace(/ /g, "-")}`);
+                    navigate(`/quizMastery/${ITEM.title.replace(/ /g, "_")}`);
                   }}
                   sx={{ height: "95%", p: 2, mx: 3 }}
                 >

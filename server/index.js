@@ -10,6 +10,8 @@ const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const tutorialRoutes = require("./routes/tutorialRoutes");
+const quizRoutes = require("./routes/quizRoutes");
+const quizTestsRoutes = require("./routes/quizTestRoutes");
 const errorHandler = require("./middlewares/errorHandler");
 
 // Allow CORS for specified origin
@@ -27,6 +29,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/blog", blogRoutes);
 app.use("/api/tutorials", tutorialRoutes);
+app.use("/api/quiz", quizRoutes);
+app.use("/api/quizTests", quizTestsRoutes);
 
 // Server test route
 app.get("/", (req, res) => {

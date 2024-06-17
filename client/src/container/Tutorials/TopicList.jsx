@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Tutorials_URL } from "../../../api";
+import { Tutorials_URL } from "../../api";
 import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 
 const Listing = (props) => {
   const navigate = useNavigate();
-  const { title } = props;
+  const { title, topic } = props;
   const [tutorialTopics, setTutorialTopics] = useState([]);
 
   useEffect(() => {
@@ -34,13 +34,14 @@ const Listing = (props) => {
           key={index}
           disablePadding
           sx={{
+            color: item == topic ? "#10D59B" : "white",
             "&:hover": {
               color: "#10D59B",
             },
           }}
         >
           <ListItemButton>
-            <ListItemText primary={item} />
+            <ListItemText primary={item.replace("_", " ")} />
           </ListItemButton>
         </ListItem>
       ))}
@@ -49,4 +50,3 @@ const Listing = (props) => {
 };
 
 export default Listing;
-
