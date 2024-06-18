@@ -1,11 +1,10 @@
 import * as React from "react";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { React_practice_qn } from "../../utils/contents/QuizContent";
 import OptionCard_test from "../../components/Cards/OptionCard_test";
 import StatusTab_test from "./StatusTab_test";
 import { useState } from "react";
@@ -14,8 +13,7 @@ import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { QuizMastery_URL } from "../../api";
-
-const { ITEMS } = React_practice_qn;
+import axios from "axios";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -54,40 +52,27 @@ export default function QuestionTabs_test(props) {
   const [value, setValue] = useState(0);
   const { title, topic } = props;
   const [questions, setQuestions] = useState([]);
+  const [questionStatus, setQuestionStatus] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [answersChecked, setAnswersChecked] = useState(false);
+  const [correctAnswered, setCorrectAnswered] = useState([]);
+  const [wrongAnswered, setWrongAnswered] = useState([]);
 
   const handleChange = (event, newValue) => {
     console.log(newValue);
     setValue(newValue);
   };
 
-  const [questionStatus, setQuestionStatus] = useState(
-    Array(questions.Questions.length).fill(null)
-  );
-
-  const [selectedOptions, setSelectedOptions] = useState(
-    Array(questions.Questions.length).fill(null)
-  );
-
-  const [answersChecked, setAnswersChecked] = useState(false);
-
-  const [correctAnswered, setCorrectAnswered] = useState(
-    Array(questions.Questions.length).fill(null)
-  );
-
-  const [wrongAnswered, setWrongAnswered] = useState(
-    Array(questions.Questions.length).fill(null)
-  );
-
   const updateAnswersChecked = (newAnswersChecked) => {
     setAnswersChecked(newAnswersChecked);
 
-    const newCorrectAnswered = Array(questions.Questions.length).fill(null);
-    const newWrongAnswered = Array(questions.Questions.length).fill(null);
-    const newQuestionStatus = Array(questions.Questions.length).fill(null);
+    const newCorrectAnswered = Array(questions.length).fill(null);
+    const newWrongAnswered = Array(questions.length).fill(null);
+    const newQuestionStatus = Array(questions.length).fill(null);
 
-    for (let i = 0; i < questions.Questions.length; i++) {
+    for (let i = 0; i < questions.length; i++) {
       const selectedOption = selectedOptions[i];
-      const correctAnswer = questions.Questions[i].correct;
+      const correctAnswer = questions[i].correct;
 
       if (selectedOption != null && selectedOption === correctAnswer) {
         // Answer is correct
@@ -119,7 +104,7 @@ export default function QuestionTabs_test(props) {
 
   const nextHandler = () => {
     setValue((prevValue) =>
-      Math.min(prevValue + 1, questions.Questions.length - 1)
+      Math.min(prevValue + 1, questions.length - 1)
     );
   };
 
@@ -139,6 +124,10 @@ export default function QuestionTabs_test(props) {
           QuizMastery_URL.Test(title, topic)
         );
         setQuestions(response.data);
+        setQuestionStatus(Array(response.data.length).fill(null));
+        setSelectedOptions(Array(response.data.length).fill(null));
+        setCorrectAnswered(Array(response.data.length).fill(null));
+        setWrongAnswered(Array(response.data.length).fill(null));
         console.log(response.data);
       } catch (error) {
         console.error("Error fetching questions:", error);
@@ -165,7 +154,7 @@ export default function QuestionTabs_test(props) {
             onChange={handleChange}
             aria-label="basic tabs example"
           >
-            {questions.Questions.map((item, index) => (
+            {questions.map((item, index) => (
               <Tab
                 key={index}
                 sx={{
@@ -179,7 +168,7 @@ export default function QuestionTabs_test(props) {
             ))}
           </Tabs>
         </Box>
-        {questions.Questions.map((item, index) => (
+        {questions.map((item, index) => (
           <CustomTabPanel value={value} index={index} key={index}>
             <Box sx={{ ml: 7, mb: 1, mt: -1, width: "85%" }} fontSize="1.15em">
               {item.title}
@@ -189,7 +178,7 @@ export default function QuestionTabs_test(props) {
                 title={itm.title}
                 opt={itm.opt}
                 questionIndex={index}
-                isAnswer={questions.Questions[index].correct}
+                isAnswer={questions[index].correct}
                 selectedOption={selectedOptions[index]}
                 correctOption={correctAnswered[index]}
                 wrongOption={wrongAnswered[index]}
@@ -233,7 +222,7 @@ export default function QuestionTabs_test(props) {
               <OutlinedButton
                 sx={{ width: "20%" }}
                 onClick={nextHandler}
-                disabled={value === questions.Questions.length - 1}
+                disabled={value === questions.length - 1}
               >
                 Next
                 <ChevronRightIcon />

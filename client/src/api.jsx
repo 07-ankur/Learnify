@@ -20,6 +20,6 @@ export const Tutorials_URL = {
 export const QuizMastery_URL = {
   Practice_Topic: (title) => `${BASE_URL}api/quiz/getquizesTopics/${title}`,
   Practice: (title, topic) => `${BASE_URL}api/quiz/getquizes/${title}/${topic}`,
-  Test_Topic: (title) => `${BASE_URL}api/quiz/getquizTestsDetails/${title}`,
-  Test: (title, topic) => `${BASE_URL}api/quizTests/getquizes/${title}/${topic}`,
+  Test_Topic: (title) => `${BASE_URL}api/quizTests/getquizTestsDetails/${title}`,
+  Test: (title, topic) => `${BASE_URL}api/quizTests/getquizTests/${title}/${topic}`,
 }

@@ -37,6 +37,7 @@ const StatusTab = (props) => {
     setNotAnsweredCount(notAnswered);
     setCorrectlyAnsweredCount(correctlyAnswered);
     setWrongAnsweredCount(wrongAnswered);
+    console.log(props.status)
   }, [props.status]);
 
   return (

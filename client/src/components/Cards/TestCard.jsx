@@ -1,11 +1,22 @@
 import { Box, Stack, Typography } from "@mui/material";
-import React from "react";
+import React,{useState} from "react";
 import OutlinedButton from "../Buttons/OutlinedButton";
 import Title from "../Title";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-const TestCard = ({ title, count, marks, time }) => {
+const TestCard = ({ key, title, count, marks, time }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [selectedTopic, setSelectedTopic] = useState(null);
+
+  const pathParts = location.pathname.split("/");
+  let skill = pathParts[2];
+
+  const clickHandler = () => {
+    setSelectedTopic(key);
+    navigate(`/quizmastery/${skill}/test/${title.replace(/ /g, "_")}`);
+  };
+  
   return (
     <Box
       sx={{
@@ -37,9 +48,7 @@ const TestCard = ({ title, count, marks, time }) => {
         <OutlinedButton
           arrow
           fit
-          onClick={() => {
-            navigate("/quizMastery/React-JS/test/Mock-Test-1");
-          }}
+          onClick={clickHandler}
         >
           Start Test
         </OutlinedButton>

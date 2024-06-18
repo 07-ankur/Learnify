@@ -132,7 +132,7 @@ export default function Test_pg() {
         </AppBar>
         <Main>
           <DrawerHeader />
-          <QuestionTabs_test />
+          <QuestionTabs_test title={skill} topic={topic}/>
         </Main>
       </Box>
     </ThemeProvider>

@@ -64,19 +64,15 @@ export default function BasicTabs(props) {
       }
     };
 
-    fetchPracticeTopics();
-  }, [title]);
-
-  useEffect(() => {
     const fetchTestTopics = async () => {
       try {
         const response = await axios.get(QuizMastery_URL.Test_Topic(title));
-        setTestTopics(response.data.topics);
+        setTestTopics(response.data);
       } catch (error) {
         console.error("Error fetching test topics:", error);
       }
     };
-
+    fetchPracticeTopics();
     fetchTestTopics();
   }, [title]);
 
@@ -120,9 +116,9 @@ export default function BasicTabs(props) {
       <CustomTabPanel value={value} index={1}>
         <Grid container spacing={3}>
           {testTopics.map((item) => (
-            <Grid item xs={12} md={6} key={item.title}>
+            <Grid item xs={12} md={6} key={item.topic}>
               <TestCard
-                title={item.title}
+                title={item.topic}
                 count={item.count}
                 time={item.time}
                 marks={item.marks}

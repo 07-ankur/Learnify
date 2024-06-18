@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Box, Dialog, Divider, IconButton } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
@@ -8,7 +8,6 @@ import { ThemeProvider } from "@mui/system";
 import { feedbackTheme } from "../../utils/theme";
 import { CssBaseline } from "@mui/material";
 import OutlinedButton from "../Buttons/OutlinedButton";
-import { Navigate } from "react-router-dom";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -28,6 +27,10 @@ const PracticeModal = ({
   wrongAnsweredCount,
 }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const pathParts = location.pathname.split("/");
+  const skill = pathParts[2];
   
   const Attempted =
     questionsAnswered === 0
@@ -169,7 +172,7 @@ const PracticeModal = ({
           </Box>
           <OutlinedButton
             onClick={() => {
-              navigate("/quizMastery/React-JS");
+              navigate(`/quizMastery/${skill}`);
             }}
           >
             Go back to Dashboard

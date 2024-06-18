@@ -103,10 +103,13 @@ const App = () => {
             element={<Practice_pg />}
           />
         ))}
-        <Route
-          path="/quizMastery/React-JS/test/Mock-Test-1"
-          element={<Test_pg />}
-        />
+        {SKILLS.map((skill) => (
+          <Route
+            key={skill.key}
+            path={`/quizMastery/${skill.title.replace(/ /g, "_")}/test/:topic`}
+            element={<Test_pg />}
+          />
+        ))}
         {SKILLS.map((skill) => (
           <Route
             key={skill.key}

@@ -51,29 +51,15 @@ export default function QuestionTabs(props) {
   const [value, setValue] = useState(0);
   const { title, topic } = props;
   const [questions, setQuestions] = useState([]);
+  const [questionStatus, setQuestionStatus] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [answersChecked, setAnswersChecked] = useState([]);
+  const [correctAnswered, setCorrectAnswered] = useState([]);
+  const [wrongAnswered, setWrongAnswered] = useState([]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  const [questionStatus, setQuestionStatus] = useState(
-    Array(questions.length).fill(null)
-  );
-
-  const [selectedOptions, setSelectedOptions] = useState(
-    Array(questions.length).fill(null)
-  );
-
-  const [answersChecked, setAnswersChecked] = useState(
-    Array(questions.length).fill(false)
-  );
-
-  const [correctAnswered, setCorrectAnswered] = useState(
-    Array(questions.length).fill(null)
-  );
-  const [wrongAnswered, setWrongAnswered] = useState(
-    Array(questions.length).fill(null)
-  );
 
   const handleSelectOption = (questionIndex, option) => {
     if (!answersChecked[questionIndex]) {
@@ -131,12 +117,15 @@ export default function QuestionTabs(props) {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        console.log(title, topic);
         const response = await axios.get(
           QuizMastery_URL.Practice(title, topic)
         );
         setQuestions(response.data);
-        console.log(response.data);
+        setQuestionStatus(Array(response.data.length).fill(null));
+        setSelectedOptions(Array(response.data.length).fill(null));
+        setAnswersChecked(Array(response.data.length).fill(false));
+        setCorrectAnswered(Array(response.data.length).fill(null));
+        setWrongAnswered(Array(response.data.length).fill(null));
       } catch (error) {
         console.error("Error fetching questions:", error);
       }
