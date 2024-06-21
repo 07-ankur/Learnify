@@ -22,7 +22,7 @@ const Section1 = () => {
   const navigate = useNavigate();
 
   const navigateTo = () => {
-    navigate("/analytics-dashboard");
+    navigate("/analytics_dashboard");
   };
 
   return (

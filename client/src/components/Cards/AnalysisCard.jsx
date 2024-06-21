@@ -36,7 +36,7 @@ const AnalysisCard = ({title,points,completion,stars,img,width}) => {
 
   return (
     <Box
-      onClick={()=>{navigate(`/analytics-dashboard/${title.replace(/ /g, '-')}`)}}
+      onClick={()=>{navigate(`/analytics_dashboard/${title.replace(/ /g, '_')}`)}}
       sx={{
         width: "16em",
         borderRadius: "25px",

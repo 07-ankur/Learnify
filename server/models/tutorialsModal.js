@@ -1,5 +1,23 @@
 const mongoose = require("mongoose");
 
+const sectionSchema = mongoose.Schema(
+  {
+    key: {
+      type: Number,
+      required: true,
+    },
+    type: {
+      type: String,
+    },
+    content: {
+      type: String,
+    },
+    divider: {
+      type: String,
+    }
+  }
+);
+
 const tutorialSchema = mongoose.Schema(
   {
     key: {
@@ -10,7 +28,7 @@ const tutorialSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    tutorials:[
+    tutorials: [
       {
         key: {
           type: Number,
@@ -20,22 +38,12 @@ const tutorialSchema = mongoose.Schema(
           type: String,
           required: true,
         },
-        sections: [
+        sections: [sectionSchema], 
+        users: [
           {
-            key: {
-              type: Number,
-              required: true,
-            },
-            type: {
-              type: String,
-            },
-            content: {
-              type: String,
-            },
-            divider: {
-              type: String,
-            }
-          },
+            type: String, 
+            required: true
+          }
         ],
       }
     ]

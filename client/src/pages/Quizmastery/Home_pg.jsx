@@ -16,9 +16,9 @@ import {
 import Lottie from "lottie-react";
 import Quiz3_anim from "../../assets/animations/Quiz3_anim.json";
 import Down_anim from "../../assets/animations/Down_anim.json";
-import { Topics } from "../../utils/contents/MainContent";
+import { TutorialsTopics } from "../../utils/contents/MainContent";
 
-const { SKILLS } = Topics;
+const { SKILLS } = TutorialsTopics;
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#192734",
@@ -172,7 +172,7 @@ const Home_pg = () => {
               <Grid
                 key={ITEM.key}
                 item
-                xs={3}
+                xs={4}
                 sx={{
                   my: 2,
                   transition: "transform 0.3s ease-in-out",

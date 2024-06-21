@@ -14,7 +14,7 @@ const StatusTab_test = (props) => {
   const [isPracticeModalOpen, setIsPracticeModalOpen] = useState(false);
 
   // Timer state
-  const totalTime = 600;  // minutes in seconds
+  const totalTime = 60*10;  // minutes in seconds
   const [timer, setTimer] = useState(totalTime); 
   const [timeTaken, setTimeTaken] = useState(0); 
 
@@ -44,8 +44,6 @@ const StatusTab_test = (props) => {
       (answer) => answer === false
     ).length;
 
-    // setNotAnsweredCount(notAnswered);
-    // setAnsweredCount(ITEMS[0].Questions.length - notAnswered)
     setCorrectlyAnsweredCount(correctlyAnswered);
     setWrongAnsweredCount(wrongAnswered);
   }, [props.status]);
@@ -57,6 +55,7 @@ const StatusTab_test = (props) => {
   }, [props.select]);
 
   // Update timer every second
+  if(props.loading){
   useEffect(() => {
     const interval = setInterval(() => {
       if (timer > 0) {
@@ -68,12 +67,12 @@ const StatusTab_test = (props) => {
         setIsPracticeModalOpen(true);
         props.onUpdateAnswersChecked(true);
       }
-    }, 1000);
+    }, 1000)
 
     return () => {
       clearInterval(interval); // Clean up the interval on unmount
     };
-  }, [timer]);
+  }, [timer]);}
 
   return (
     <>

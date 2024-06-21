@@ -1,10 +1,7 @@
 // Analysis_Card
 import React_anim from "../../assets/animations/react_anim.json";
 import Node_anim from "../../assets/animations/node_anim.json";
-import Python_anim from "../../assets/animations/python_anim.json";
 import Express_anim from "../../assets/animations/Link_anim.json";
-import html_anim from "../../assets/animations/html_anim.json";
-import css_anim from "../../assets/animations/css_anim.json";
 import Mongo_anim from "../../assets/animations/mongodb_anim.json";
 import js_anim from "../../assets/animations/js_anim.json";
 
@@ -242,16 +239,6 @@ export const Analysis_Progress = {
       },
       {
         key: 3,
-        title: "SQL",
-        points: 20,
-        timeRequired: "11 Hours",
-        completion: 40,
-        stars: 0,
-        img: React_anim,
-        width: "80%",
-      },
-      {
-        key: 4,
         title: "Mongo DB",
         points: 60,
         tutorials_pts: 25,
@@ -264,46 +251,7 @@ export const Analysis_Progress = {
         width: "60%",
       },
       {
-        key: 5,
-        title: "HTML",
-        points: 90,
-        tutorials_pts: 50,
-        quiz_pts: 15,
-        practice_pts: 25,
-        timeRequired: "11 Hours",
-        completion: 100,
-        stars: 1,
-        img: html_anim,
-        width: "70%",
-      },
-      {
-        key: 6,
-        title: "CSS",
-        points: 80,
-        tutorials_pts: 45,
-        quiz_pts: 20,
-        practice_pts: 15,
-        timeRequired: "11 Hours",
-        completion: 90,
-        stars: 0,
-        img: css_anim,
-        width: "60%",
-      },
-      {
-        key: 7,
-        title: "Python",
-        points: 60,
-        tutorials_pts: 35,
-        quiz_pts: 10,
-        practice_pts: 15,
-        timeRequired: "11 Hours",
-        completion: 70,
-        stars: 0,
-        img: Python_anim,
-        width: "60%",
-      },
-      {
-        key: 8,
+        key: 4,
         title: "Express JS",
         points: 60,
         tutorials_pts: 35,
@@ -316,7 +264,7 @@ export const Analysis_Progress = {
         width: "80%",
       },
       {
-        key: 9,
+        key: 5,
         title: "C++",
         points: 40,
         tutorials_pts: 30,
@@ -329,7 +277,7 @@ export const Analysis_Progress = {
         width: "80%",
       },
       {
-        key: 10,
+        key: 6,
         title: "Javascript",
         points: 60,
         tutorials_pts: 35,

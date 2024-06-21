@@ -224,42 +224,8 @@ const Navbar = (props) => {
                         <Typography variant="h5">Tutorials</Typography>
                       </Box>
 
-                      <Grid sx={{ width: "20em" }} container spacing={0}>
-                        <Grid item xs={6} sm={4}>
-                          <Box
-                            onClick={() => {
-                              navigate("/tutorials/HTML");
-                            }}
-                            sx={{
-                              display: "flex",
-                              flexDirection: "row",
-                              m: 1,
-                              color: "grey",
-                              "&:hover": { color: "white" },
-                            }}
-                          >
-                            <Typography variant="h5">HTML</Typography>
-                            <CallMadeIcon sx={{ fontSize: 15, ml: 0.5 }} />
-                          </Box>
-                        </Grid>
-                        <Grid item xs={6} sm={4}>
-                          <Box
-                            onClick={() => {
-                              navigate("/tutorials/CSS");
-                            }}
-                            sx={{
-                              display: "flex",
-                              flexDirection: "row",
-                              m: 1,
-                              color: "grey",
-                              "&:hover": { color: "white" },
-                            }}
-                          >
-                            <Typography variant="h5">CSS</Typography>
-                            <CallMadeIcon sx={{ fontSize: 15, ml: 0.5 }} />
-                          </Box>
-                        </Grid>
-                        <Grid item xs={6} sm={4}>
+                      <Grid sx={{ width: "15em" }} container spacing={0}>
+                        <Grid item xs={6} sm={6}>
                           <Box
                             onClick={() => {
                               navigate("/tutorials/React_JS");
@@ -276,7 +242,7 @@ const Navbar = (props) => {
                             <CallMadeIcon sx={{ fontSize: 15, ml: 0.5 }} />
                           </Box>
                         </Grid>
-                        <Grid item xs={6} sm={4}>
+                        <Grid item xs={6} sm={6}>
                           <Box
                             onClick={() => {
                               navigate("/tutorials/Node_JS");
@@ -293,7 +259,7 @@ const Navbar = (props) => {
                             <CallMadeIcon sx={{ fontSize: 15, ml: 0.5 }} />
                           </Box>
                         </Grid>
-                        <Grid item xs={6} sm={4}>
+                        <Grid item xs={6} sm={6}>
                           <Box
                             onClick={() => {
                               navigate("/tutorials/Express_JS");
@@ -310,7 +276,7 @@ const Navbar = (props) => {
                             <CallMadeIcon sx={{ fontSize: 15, ml: 0.5 }} />
                           </Box>
                         </Grid>
-                        <Grid item xs={6} sm={4}>
+                        <Grid item xs={6} sm={6}>
                           <Box
                             onClick={() => {
                               navigate("/tutorials/Mongo_DB");
@@ -327,41 +293,7 @@ const Navbar = (props) => {
                             <CallMadeIcon sx={{ fontSize: 15, ml: 0.5 }} />
                           </Box>
                         </Grid>
-                        <Grid item xs={6} sm={4}>
-                          <Box
-                            onClick={() => {
-                              navigate("/tutorials/SQL");
-                            }}
-                            sx={{
-                              display: "flex",
-                              flexDirection: "row",
-                              m: 1,
-                              color: "grey",
-                              "&:hover": { color: "white" },
-                            }}
-                          >
-                            <Typography variant="h5">SQL</Typography>
-                            <CallMadeIcon sx={{ fontSize: 15, ml: 0.5 }} />
-                          </Box>
-                        </Grid>
-                        <Grid item xs={6} sm={4}>
-                          <Box
-                            onClick={() => {
-                              navigate("/tutorials/Python");
-                            }}
-                            sx={{
-                              display: "flex",
-                              flexDirection: "row",
-                              m: 1,
-                              color: "grey",
-                              "&:hover": { color: "white" },
-                            }}
-                          >
-                            <Typography variant="h5">Python</Typography>
-                            <CallMadeIcon sx={{ fontSize: 15, ml: 0.5 }} />
-                          </Box>
-                        </Grid>
-                        <Grid item xs={6} sm={4}>
+                        <Grid item xs={6} sm={6}>
                           <Box
                             onClick={() => {
                               navigate("/tutorials/C++");
@@ -378,7 +310,7 @@ const Navbar = (props) => {
                             <CallMadeIcon sx={{ fontSize: 15, ml: 0.5 }} />
                           </Box>
                         </Grid>
-                        <Grid item xs={6} sm={4}>
+                        <Grid item xs={6} sm={6}>
                           <Box
                             onClick={() => {
                               navigate("/tutorials/JavaScript");

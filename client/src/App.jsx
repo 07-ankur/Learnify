@@ -77,13 +77,13 @@ const App = () => {
         ))}
         <Route path="/analytics" element={<Analytics_pg />} />
         <Route
-          path="/analytics-dashboard"
+          path="/analytics_dashboard"
           element={<Analytics_dashboard_pg />}
         />
         {TOPICS.map((topic) => (
           <Route
             key={topic.key}
-            path={`/analytics-dashboard/${topic.title.replace(/ /g, "-")}`}
+            path={`/analytics_dashboard/${topic.title.replace(/ /g, "_")}`}
             element={<Topic_dashboard />}
           />
         ))}

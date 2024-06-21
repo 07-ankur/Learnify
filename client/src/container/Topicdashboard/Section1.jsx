@@ -39,7 +39,7 @@ const Section1 = () => {
   for (let i = 0; i < TOPICS.length; i++) {
     if (
       location.pathname ===
-      `/analytics-dashboard/${TOPICS[i].title.replace(/ /g, "-")}`
+      `/analytics_dashboard/${TOPICS[i].title.replace(/ /g, "_")}`
     ) {
       id = TOPICS[i].key - 1;
       break; // Exit the loop once a match is found

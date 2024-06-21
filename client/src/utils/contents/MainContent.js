@@ -78,6 +78,41 @@ export const signupContent = {
   Logo_drk,
 };
 
+export const TutorialsTopics = {
+  SKILLS: [
+    {
+      key: 1,
+      title: "React JS",
+      logo: ReactLogo,
+    },
+    {
+      key: 2,
+      title: "Node JS",
+      logo: NodeLogo,
+    },
+    {
+      key: 3,
+      title: "Mongo DB",
+      logo: MongoLogo,
+    },
+    {
+      key: 4,
+      title: "Express JS",
+      logo: ExpressLogo,
+    },
+    {
+      key: 5,
+      title: "C++",
+      logo: CppLogo,
+    },
+    {
+      key: 6,
+      title: "JavaScript",
+      logo: JsLogo,
+    },
+  ],
+};
+
 export const Topics = {
   SKILLS: [
     {

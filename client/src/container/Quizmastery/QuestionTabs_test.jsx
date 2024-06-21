@@ -103,9 +103,7 @@ export default function QuestionTabs_test(props) {
   };
 
   const nextHandler = () => {
-    setValue((prevValue) =>
-      Math.min(prevValue + 1, questions.length - 1)
-    );
+    setValue((prevValue) => Math.min(prevValue + 1, questions.length - 1));
   };
 
   const prevHandler = () => {
@@ -119,21 +117,16 @@ export default function QuestionTabs_test(props) {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        console.log(title, topic);
-        const response = await axios.get(
-          QuizMastery_URL.Test(title, topic)
-        );
+        const response = await axios.get(QuizMastery_URL.Test(title, topic));
         setQuestions(response.data);
         setQuestionStatus(Array(response.data.length).fill(null));
         setSelectedOptions(Array(response.data.length).fill(null));
         setCorrectAnswered(Array(response.data.length).fill(null));
         setWrongAnswered(Array(response.data.length).fill(null));
-        console.log(response.data);
       } catch (error) {
         console.error("Error fetching questions:", error);
       }
     };
-
     fetchQuestions();
   }, [topic, title]);
 

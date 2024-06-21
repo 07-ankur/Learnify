@@ -7,9 +7,9 @@ import { tutorialTheme } from "../../utils/theme";
 import { Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-import { Topics } from "../../utils/contents/MainContent";
+import { TutorialsTopics } from "../../utils/contents/MainContent";
 
-const { SKILLS } = Topics;
+const { SKILLS } = TutorialsTopics;
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#192734",
@@ -48,7 +48,7 @@ const Section3 = () => {
                 }}
                 key={ITEM.key}
                 item
-                xs={3}
+                xs={4}
                 sx={{
                   my: 2,
                   transition: "transform 0.3s ease-in-out",

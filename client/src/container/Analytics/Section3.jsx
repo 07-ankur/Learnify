@@ -14,7 +14,7 @@ const Section3 = () => {
   };
 
   const handleQuizClick = () => {
-    navigate("/quiz-mastery");
+    navigate("/quizMastery");
   };
 
   return (
