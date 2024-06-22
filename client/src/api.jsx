@@ -17,7 +17,7 @@ export const Tutorials_URL = {
     `${BASE_URL}api/tutorials/gettutorials/${title}/${topic}`,
   Tutorial_Topic: (title) =>
     `${BASE_URL}api/tutorials/gettutorialsTopics/${title}`,
-  GetCompletion_Tutorial: (topic, title) =>
+  GetCompletion_Tutorial: (title, topic) =>
     `${BASE_URL}api/tutorials/getcompletionTutorial/${title}/${topic}`,
   PostCompletion_Tutorial: `${BASE_URL}api/tutorials/postcompletionTutorial`,
 };

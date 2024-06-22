@@ -7,6 +7,7 @@ import OutlinedButton from "../../components/Buttons/OutlinedButton";
 import ContainedButton from "../../components/Buttons/Contained_btn";
 import Listing from "../../container/Tutorials/TopicList";
 import Tutorials_Content from "../../container/Tutorials/Content/TutorialsContent";
+import useTutorialContent from "../../hooks/useTutorialContent";
 
 const TutorialPage = () => {
   const navigate = useNavigate();
@@ -16,6 +17,23 @@ const TutorialPage = () => {
   let title = pathParts[2];
   let topic = pathParts[3] ?? "Home";
   let title_alt = title.replace("_", " ");
+  let topic_alt = topic.replace("_", " ");
+
+  const { tutorialTopics } = useTutorialContent(title, topic);
+
+  const currentTopicIndex = tutorialTopics.indexOf(topic);
+
+  const handlePrevClick = () => {
+    if (currentTopicIndex > 0) {
+      navigate(`/tutorials/${title}/${tutorialTopics[currentTopicIndex - 1]}`);
+    }
+  };
+
+  const handleNextClick = () => {
+    if (currentTopicIndex < tutorialTopics.length - 1) {
+      navigate(`/tutorials/${title}/${tutorialTopics[currentTopicIndex + 1]}`);
+    }
+  };
 
   return (
     <ThemeProvider theme={tutorialTheme}>
@@ -51,7 +69,7 @@ const TutorialPage = () => {
           sx={{ width: "80%", maxHeight: "100vh", overflowY: "auto", px: 2 }}
         >
           <Typography variant="h2" sx={{ mx: 5, my: 3, color: "#FFF4A3" }}>
-            {title_alt} {topic}
+            {title_alt}{' --> '}{topic_alt}
           </Typography>
           <Box
             sx={{
@@ -61,10 +79,22 @@ const TutorialPage = () => {
               justifyContent: "space-between",
             }}
           >
-            <ContainedButton arrowRev sx={{ mb: 2, mx: 2, color: "black" }} fit>
+            <ContainedButton
+              arrowRev
+              sx={{ mb: 2, mx: 2, color: "black" }}
+              fit
+              onClick={handlePrevClick}
+              disabled={currentTopicIndex === 0}
+            >
               Prev
             </ContainedButton>
-            <ContainedButton arrow sx={{ mb: 2, mx: 2, color: "black" }} fit>
+            <ContainedButton
+              arrow
+              sx={{ mb: 2, mx: 2, color: "black" }}
+              fit
+              onClick={handleNextClick}
+              disabled={currentTopicIndex === tutorialTopics.length - 1}
+            >
               Next
             </ContainedButton>
           </Box>

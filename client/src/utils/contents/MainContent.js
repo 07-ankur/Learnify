@@ -167,3 +167,40 @@ export const Topics = {
     },
   ],
 };
+
+export const Avatars = {
+  avatars: [
+    {
+      title: "avatar1",
+      src: "https://raw.githubusercontent.com/07-ankur/Learnify/main/client/src/assets/images/Avatar/Avatar1.jpg",
+    },
+    {
+      title: "avatar2",
+      src: "https://raw.githubusercontent.com/07-ankur/Learnify/main/client/src/assets/images/Avatar/Avatar2.jpg",
+    },
+    {
+      title: "avatar3",
+      src: "https://raw.githubusercontent.com/07-ankur/Learnify/main/client/src/assets/images/Avatar/Avatar3.jpg",
+    },
+    {
+      title: "avatar4",
+      src: "https://raw.githubusercontent.com/07-ankur/Learnify/main/client/src/assets/images/Avatar/Avatar4.jpg",
+    },
+    {
+      title: "avatar5",
+      src: "https://raw.githubusercontent.com/07-ankur/Learnify/main/client/src/assets/images/Avatar/Avatar5.jpg",
+    },
+    {
+      title: "avatar6",
+      src: "https://raw.githubusercontent.com/07-ankur/Learnify/main/client/src/assets/images/Avatar/Avatar6.jpg",
+    },
+    {
+      title: "avatar7",
+      src: "https://raw.githubusercontent.com/07-ankur/Learnify/main/client/src/assets/images/Avatar/Avatar7.jpg",
+    },
+    {
+      title: "avatar8",
+      src: "https://raw.githubusercontent.com/07-ankur/Learnify/main/client/src/assets/images/Avatar/Avatar8.jpg",
+    },
+  ],
+};

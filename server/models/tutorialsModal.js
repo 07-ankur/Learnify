@@ -47,7 +47,10 @@ const tutorialSchema = mongoose.Schema(
         ],
       }
     ]
-  }
+  },
+  {
+    versionKey: false // Disable the __v field
+  } 
 );
 
 const tutorialModel = mongoose.model("tutorials", tutorialSchema);

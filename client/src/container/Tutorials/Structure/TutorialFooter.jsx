@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import { Divider, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import OutlinedButton from "../../../components/Buttons/OutlinedButton";
@@ -7,8 +8,30 @@ import ChecklistIcon from "@mui/icons-material/Checklist";
 import ChecklistRtlIcon from "@mui/icons-material/ChecklistRtl";
 import AlignHorizontalLeftIcon from "@mui/icons-material/AlignHorizontalLeft";
 import AlignHorizontalRightIcon from "@mui/icons-material/AlignHorizontalRight";
+import useTutorialContent from "../../../hooks/useTutorialContent";
 
 const TutorialFooter = (props) => {
+  const location = useLocation();
+
+  const pathParts = location.pathname.split("/");
+  let title = pathParts[2];
+  let topic = pathParts[3] ?? "Home";
+  const { tutorialTopics } = useTutorialContent(title, topic);
+
+  const currentTopicIndex = tutorialTopics.indexOf(topic);
+
+  const handlePrevClick = () => {
+    if (currentTopicIndex > 0) {
+      navigate(`/tutorials/${title}/${tutorialTopics[currentTopicIndex - 1]}`);
+    }
+  };
+
+  const handleNextClick = () => {
+    if (currentTopicIndex < tutorialTopics.length - 1) {
+      navigate(`/tutorials/${title}/${tutorialTopics[currentTopicIndex + 1]}`);
+    }
+  };
+
   return (
     <>
       <Divider sx={{ my: 2 }} />
@@ -47,7 +70,13 @@ const TutorialFooter = (props) => {
           mb: 4,
         }}
       >
-        <ContainedButton arrowRev sx={{ mb: 2, mx: 2, color: "black" }} fit>
+        <ContainedButton
+          arrowRev
+          sx={{ mb: 2, mx: 2, color: "black" }}
+          fit
+          onClick={handlePrevClick}
+          disabled={currentTopicIndex === 0}
+        >
           Prev
         </ContainedButton>
         <OutlinedButton
@@ -56,7 +85,13 @@ const TutorialFooter = (props) => {
         >
           {props.message}
         </OutlinedButton>
-        <ContainedButton arrow sx={{ mb: 2, mx: 2, color: "black" }} fit>
+        <ContainedButton
+          arrow
+          sx={{ mb: 2, mx: 2, color: "black" }}
+          fit
+          onClick={handleNextClick}
+          disabled={currentTopicIndex === tutorialTopics.length - 1}
+        >
           Next
         </ContainedButton>
       </Box>
