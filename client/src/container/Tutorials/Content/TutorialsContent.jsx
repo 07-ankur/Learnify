@@ -16,13 +16,14 @@ const Tutorials_Content = (props) => {
     completion,
     message,
     loading,
+    tutorialLoading,
     completionLoading,
     toggleCompletion,
   } = useTutorialContent(title, topic);
 
   return (
     <div>
-      {!loading ? (
+      {!tutorialLoading ? (
         tutorial && (
           <div>
             {tutorial.sections?.map((section) => (
@@ -57,7 +58,7 @@ const Tutorials_Content = (props) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            minHeight:"50vh"
+            minHeight:"80vh"
           }}
         >
           <Lottie

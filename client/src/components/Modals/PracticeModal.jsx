@@ -39,7 +39,7 @@ const PracticeModal = ({
   const Accuracy =
     questionsAnswered === 0
       ? 0
-      : Math.round((correctlyAnsweredCount / totalQuestions) * 100);
+      : Math.round((correctlyAnsweredCount / questionsAnswered) * 100);
 
   return (
     <ThemeProvider theme={feedbackTheme}>
@@ -166,7 +166,7 @@ const PracticeModal = ({
                 Practice Score
               </Typography>
               <Typography variant="h4" sx={{ color: "#10D59B" }}>
-                {(Accuracy + Attempted) / 2}%
+                {(correctlyAnsweredCount/totalQuestions)*100}%
               </Typography>
             </Box>
           </Box>

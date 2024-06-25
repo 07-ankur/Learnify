@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Cookies } from "react-cookie";
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { Tutorials_URL } from "../api";
 
 const useTutorialContent = (title, topic) => {
@@ -9,8 +9,8 @@ const useTutorialContent = (title, topic) => {
   const [tutorialTopics, setTutorialTopics] = useState([]);
   const [completion, setCompletion] = useState(false);
   const [message, setMessage] = useState("Mark as completed!!");
-  const [loading, setLoading] = useState(false);
-  const [completionLoading, setCompletionLoading] = useState(false);
+  const [tutorialLoading, setTutorialLoading] = useState(true);
+  const [completionLoading, setCompletionLoading] = useState(true); 
   const [user, setUser] = useState(null);
   const cookies = new Cookies();
 
@@ -29,15 +29,34 @@ const useTutorialContent = (title, topic) => {
   }, [cookies, user]);
 
   useEffect(() => {
-    const fetchTutorialCompletion = async () => {
+    const fetchData = async () => {
       try {
-        setCompletionLoading(true);
+        setTutorialLoading(true);
+        const [topicsResponse, tutorialResponse] = await Promise.all([
+          axios.get(Tutorials_URL.Tutorial_Topic(title)),
+          axios.get(Tutorials_URL.Tutorial(topic, title)),
+        ]);
+        setTutorialTopics(topicsResponse.data);
+        setTutorial(tutorialResponse.data);
+      } catch (error) {
+        console.error("Error fetching tutorial data:", error);
+      } finally {
+        setTutorialLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [title, topic]);
+
+  useEffect(() => {
+    const fetchTutorialCompletion = async () => {
+      if (!user) return;
+      try {
         const response = await axios.get(
           Tutorials_URL.GetCompletion_Tutorial(title, topic)
         );
         const users = response.data.users;
-
-        if (user && users.includes(user.email)) {
+        if (users.includes(user.email)) {
           setCompletion(true);
           setMessage("Still not completed!!");
         } else {
@@ -51,14 +70,11 @@ const useTutorialContent = (title, topic) => {
       }
     };
 
-    if (user) {
-      fetchTutorialCompletion();
-    }
+    fetchTutorialCompletion();
   }, [title, topic, user]);
 
   const toggleCompletion = async () => {
     if (!user) return;
-
     try {
       setCompletionLoading(true);
       const response = await axios.post(Tutorials_URL.PostCompletion_Tutorial, {
@@ -81,43 +97,12 @@ const useTutorialContent = (title, topic) => {
     }
   };
 
-  useEffect(() => {
-    const fetchTutorialTopic = async () => {
-      try {
-        console.log(title);
-        const response = await axios.get(Tutorials_URL.Tutorial_Topic(title));
-        setTutorialTopics(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.error("Error fetching tutorial:", error);
-      }
-    };
-
-    fetchTutorialTopic();
-  }, [title]);
-
-  useEffect(() => {
-    const fetchTutorial = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get(Tutorials_URL.Tutorial(topic, title));
-        setTutorial(response.data);
-      } catch (error) {
-        console.error("Error fetching tutorial:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchTutorial();
-  }, [topic, title]);
-
   return {
     tutorial,
-    tutorialTopics, 
+    tutorialTopics,
     completion,
     message,
-    loading,
+    tutorialLoading,
     completionLoading,
     toggleCompletion,
   };

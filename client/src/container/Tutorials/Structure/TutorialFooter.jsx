@@ -16,21 +16,21 @@ const TutorialFooter = (props) => {
   const pathParts = location.pathname.split("/");
   let title = pathParts[2];
   let topic = pathParts[3] ?? "Home";
-  const { tutorialTopics } = useTutorialContent(title, topic);
+  // const { tutorialTopics } = useTutorialContent(title, topic);
 
-  const currentTopicIndex = tutorialTopics.indexOf(topic);
+  // const currentTopicIndex = tutorialTopics.indexOf(topic);
 
-  const handlePrevClick = () => {
-    if (currentTopicIndex > 0) {
-      navigate(`/tutorials/${title}/${tutorialTopics[currentTopicIndex - 1]}`);
-    }
-  };
+  // const handlePrevClick = () => {
+  //   if (currentTopicIndex > 0) {
+  //     navigate(`/tutorials/${title}/${tutorialTopics[currentTopicIndex - 1]}`);
+  //   }
+  // };
 
-  const handleNextClick = () => {
-    if (currentTopicIndex < tutorialTopics.length - 1) {
-      navigate(`/tutorials/${title}/${tutorialTopics[currentTopicIndex + 1]}`);
-    }
-  };
+  // const handleNextClick = () => {
+  //   if (currentTopicIndex < tutorialTopics.length - 1) {
+  //     navigate(`/tutorials/${title}/${tutorialTopics[currentTopicIndex + 1]}`);
+  //   }
+  // };
 
   return (
     <>
@@ -66,11 +66,11 @@ const TutorialFooter = (props) => {
           display: "flex",
           width: "85%",
           alignItems: "center",
-          justifyContent: "space-between",
+          justifyContent: "center",
           mb: 4,
         }}
       >
-        <ContainedButton
+        {/* <ContainedButton
           arrowRev
           sx={{ mb: 2, mx: 2, color: "black" }}
           fit
@@ -78,14 +78,14 @@ const TutorialFooter = (props) => {
           disabled={currentTopicIndex === 0}
         >
           Prev
-        </ContainedButton>
+        </ContainedButton> */}
         <OutlinedButton
           sx={{ width: "30%", color: props.completion ? "yellow" : "#37fb68" }}
           onClick={props.toggleCompletion}
         >
           {props.message}
         </OutlinedButton>
-        <ContainedButton
+        {/* <ContainedButton
           arrow
           sx={{ mb: 2, mx: 2, color: "black" }}
           fit
@@ -93,7 +93,7 @@ const TutorialFooter = (props) => {
           disabled={currentTopicIndex === tutorialTopics.length - 1}
         >
           Next
-        </ContainedButton>
+        </ContainedButton> */}
       </Box>
       <Divider sx={{ my: 2 }} />
     </>

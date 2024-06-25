@@ -19,7 +19,13 @@ const TutorialPage = () => {
   let title_alt = title.replace("_", " ");
   let topic_alt = topic.replace("_", " ");
 
-  const { tutorialTopics } = useTutorialContent(title, topic);
+  const {
+    tutorialTopics,
+    completion,
+    message,
+    completionLoading,
+    toggleCompletion,
+  } = useTutorialContent(title, topic);
 
   const currentTopicIndex = tutorialTopics.indexOf(topic);
 
@@ -69,7 +75,7 @@ const TutorialPage = () => {
           sx={{ width: "80%", maxHeight: "100vh", overflowY: "auto", px: 2 }}
         >
           <Typography variant="h2" sx={{ mx: 5, my: 3, color: "#FFF4A3" }}>
-            {title_alt}{' --> '}{topic_alt}
+            {title_alt} {' --> '} {topic_alt}
           </Typography>
           <Box
             sx={{
@@ -98,7 +104,41 @@ const TutorialPage = () => {
               Next
             </ContainedButton>
           </Box>
-          <Tutorials_Content title={title} topic={topic} />
+          <Tutorials_Content
+            title={title}
+            topic={topic}
+            completion={completion}
+            message={message}
+            completionLoading={completionLoading}
+            toggleCompletion={toggleCompletion}
+          />
+          <Box
+            sx={{
+              display: "flex",
+              width: "85%",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <ContainedButton
+              arrowRev
+              sx={{ mb: 2, mx: 2, color: "black" }}
+              fit
+              onClick={handlePrevClick}
+              disabled={currentTopicIndex === 0}
+            >
+              Prev
+            </ContainedButton>
+            <ContainedButton
+              arrow
+              sx={{ mb: 2, mx: 2, color: "black" }}
+              fit
+              onClick={handleNextClick}
+              disabled={currentTopicIndex === tutorialTopics.length - 1}
+            >
+              Next
+            </ContainedButton>
+          </Box>
         </Box>
       </Box>
     </ThemeProvider>
