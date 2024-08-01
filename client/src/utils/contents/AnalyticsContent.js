@@ -10,7 +10,7 @@ export const Analysis_Progress = {
       {
         key: 1,
         title: "React JS",
-        points: 70,
+        points: 85,
         tutorials_pts: 40,
         quiz_pts: 10,
         practice_pts: 20,

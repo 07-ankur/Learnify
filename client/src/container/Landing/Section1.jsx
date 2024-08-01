@@ -37,11 +37,11 @@ const Section1 = () => {
             top: "30px",
             right: "5%",
             width: "750px",
-          }}
+          }}  
         />
       </Box>
       {/* <Content/> */}
-      <Box sx={{ height: "120vh", width: "100vh", mx: "10%", py: "19%" }}>
+      <Box sx={{ height: "120vh", width: "120vh", mx: "10%", py: "15%" }}>
         <Stack alignItems="flex-start">
           <Typography variant="h1" sx={{ letterSpacing: "0.05em", mb: 3 }}>
             {title}

@@ -1,5 +1,7 @@
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Cookies } from "react-cookie";
+import { jwtDecode } from "jwt-decode";
 import { Typography } from "@mui/material";
 import Auth_btn from "../../components/Buttons/Auth_btn";
 import CallMadeIcon from "@mui/icons-material/CallMade";
@@ -24,6 +26,17 @@ const Section1 = () => {
   const navigateTo = () => {
     navigate("/analytics_dashboard");
   };
+
+  const cookies = new Cookies();
+  const [user, setUser] = useState(" ");
+
+  useEffect(() => {
+    const token = cookies.get("jwt_token");
+    if (token) {
+      const decodedToken = jwtDecode(token.toString());
+      setUser(decodedToken.firstname);
+    }
+  }, [cookies, user]);
 
   return (
     <>
@@ -64,7 +77,7 @@ const Section1 = () => {
                 textShadow: "1px 2px black",
               }}
             >
-              Ankur !!
+              {user} !!
             </Typography>
           </Box>
           <Box sx={{ maxWidth: "65%" }}>

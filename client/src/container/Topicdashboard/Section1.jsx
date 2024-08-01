@@ -17,7 +17,7 @@ const Section1 = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate(-1);
+    navigate('/analytics_dashboard');
   };
 
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -33,6 +33,9 @@ const Section1 = () => {
   }));
 
   const location = useLocation();
+
+  const pathParts = location.pathname.split('/');
+  const topic = pathParts[2];
 
   let id;
 
@@ -171,7 +174,7 @@ const Section1 = () => {
                   <Box sx={{ display: "flex", flexDirection: "row" }}>
                     <OutlinedButton
                       arrow
-                      onClick={handleGoBack}
+                      onClick={()=>navigate(`/tutorials/${topic}`)}
                       sx={{ mt: 3, mx: 3, color: "skyblue" }}
                       fit
                     >
@@ -179,7 +182,7 @@ const Section1 = () => {
                     </OutlinedButton>
                     <OutlinedButton
                       arrow
-                      onClick={handleGoBack}
+                      onClick={()=>navigate(`/quizMastery/${topic}`)}
                       sx={{ mt: 3, mx: 3, color: "skyblue" }}
                       fit
                     >
@@ -187,7 +190,7 @@ const Section1 = () => {
                     </OutlinedButton>
                     <OutlinedButton
                       arrow
-                      onClick={handleGoBack}
+                      onClick={()=>navigate(`/quizMastery/${topic}`)}
                       sx={{ mt: 3, mx: 3, color: "skyblue" }}
                       fit
                     >
@@ -199,7 +202,7 @@ const Section1 = () => {
             </Box>
             <Box>
               <Typography variant="h4" sx={{ color: "white", mb: 1 }}>
-                80 % completed
+                80 % completed 
               </Typography>
               <BorderLinearProgress variant="determinate" value={80} />
             </Box>
