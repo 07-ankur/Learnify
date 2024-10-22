@@ -1,4 +1,5 @@
 const userDB = require("../models/userModal");
+const analyticsDB = require("../models/analyticsModal");
 const tokenDB = require("../models/token");
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
@@ -28,13 +29,30 @@ const registerUser = asyncHandler(async (req, res) => {
         avatar: avatar,
       });
       const savedUser = await newUser.save();
+
       if (savedUser) {
+        // Create a default analytics entry for the user
+        const newAnalytics = new analyticsDB({
+          userId: savedUser._id, // Associate analytics with the user's ID
+          analytics: [
+            { ReactJS: [{ timeRequired: "11 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] },
+            { NodeJS: [{ timeRequired: "9 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] },
+            { SQL: [{ timeRequired: "4 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] },
+            { MongoDB: [{ timeRequired: "8 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] },
+            { HTML: [{ timeRequired: "3 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] },
+            { CSS: [{ timeRequired: "4 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] },
+            { Python: [{ timeRequired: "9 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] },
+            { ExpressJS: [{ timeRequired: "8 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] },
+            { CPP: [{ timeRequired: "8 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] },
+            { Javascript: [{ timeRequired: "9 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] }
+          ]
+        });
+
+        await newAnalytics.save();
+
         let otp = Math.floor(100000 + Math.random() * 900000);
         otp = otp.toString().padStart(6, "0");
-        const hashedOTP = crypto
-          .createHash("sha256")
-          .update(otp.toString())
-          .digest("hex");
+        const hashedOTP = crypto.createHash("sha256").update(otp.toString()).digest("hex");
         const findToken = await tokenDB.findOne({ email: savedUser.email });
         if (findToken) {
           await tokenDB.deleteOne({ email: savedUser.email });
@@ -51,8 +69,7 @@ const registerUser = asyncHandler(async (req, res) => {
         const savedToken = await newToken.save();
         const message = `<h1>Thank you for signing up on Learnify</h1>
                 <h4 style='font-size:24px;'>Here is your otp for email verification. </h4>
-                <h2 style="text-align:center;"> ${otp}</h2>
-                `;
+                <h2 style="text-align:center;"> ${otp}</h2>`;
         const subject = "OTP for email verification";
         const send_to = email;
         const sent_from = process.env.EMAIL;

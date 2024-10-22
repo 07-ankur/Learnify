@@ -299,5 +299,5 @@ const analyticsSchema = mongoose.Schema({
   ],
 });
 
-const analyticsModel = mongoose.model("blogs", analyticsSchema);
+const analyticsModel = mongoose.model("analytics", analyticsSchema);
 module.exports = analyticsModel;

@@ -17,7 +17,7 @@ const errorHandler = require("./middlewares/errorHandler");
 // Allow CORS for specified origin
 app.use(
   cors({
-    origin: ["https://learnify-in.netlify.app", "http://127.0.0.1:5173"],
+    origin: ["https://learnify-in.netlify.app", "http://localhost:5173"],
     credentials: true,
   })
 );
