@@ -3,7 +3,6 @@ import { ThemeProvider } from "styled-components";
 import { CssBaseline } from "@mui/material";
 import { mapperTheme } from "../../utils/theme";
 import { useLocation } from "react-router-dom";
-import { Typography } from "@mui/material";
 import html_roadmap from "../../assets/roadmaps/frontend.pdf";
 import css_roadmap from "../../assets/roadmaps/frontend.pdf";
 import react_roadmap from "../../assets/roadmaps/react.pdf";

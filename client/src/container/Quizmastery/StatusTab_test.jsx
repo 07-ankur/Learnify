@@ -55,10 +55,9 @@ const StatusTab_test = (props) => {
   }, [props.select]);
 
   // Update timer every second
-  if(props.loading){
   useEffect(() => {
     const interval = setInterval(() => {
-      if (timer > 0) {
+      if (timer > 0 && !props.loading) {
         setTimer(timer - 1);
       } else {
         // Timer has completed, automatically submit the test
@@ -72,7 +71,7 @@ const StatusTab_test = (props) => {
     return () => {
       clearInterval(interval); // Clean up the interval on unmount
     };
-  }, [timer]);}
+  }, [timer, props.loading]);
 
   return (
     <>

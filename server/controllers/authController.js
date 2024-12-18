@@ -32,21 +32,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
       if (savedUser) {
         // Create a default analytics entry for the user
-        const newAnalytics = new analyticsDB({
-          userId: savedUser._id, // Associate analytics with the user's ID
-          analytics: [
-            { ReactJS: [{ timeRequired: "11 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] },
-            { NodeJS: [{ timeRequired: "9 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] },
-            { SQL: [{ timeRequired: "4 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] },
-            { MongoDB: [{ timeRequired: "8 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] },
-            { HTML: [{ timeRequired: "3 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] },
-            { CSS: [{ timeRequired: "4 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] },
-            { Python: [{ timeRequired: "9 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] },
-            { ExpressJS: [{ timeRequired: "8 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] },
-            { CPP: [{ timeRequired: "8 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] },
-            { Javascript: [{ timeRequired: "9 Hours" }, { points: 0 }, { tutorial_pts: 0 }, { quiz_pts: 0 }, { practice_pts: 0 }, { completion: 0 }, { stars: 0 }] }
-          ]
-        });
+        const newAnalytics = new analyticsDB({ userId: savedUser._id });
 
         await newAnalytics.save();
 
