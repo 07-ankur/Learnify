@@ -18,7 +18,8 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
   color: "#FFF4A3",
   cursor: "pointer",
-  ":hover": { backgroundColor: "skyblue", color: "#192734" },
+  border:'2px solid transparent',
+  ":hover": { border:'2px solid skyblue' },
 }));
 
 const Section3 = () => {

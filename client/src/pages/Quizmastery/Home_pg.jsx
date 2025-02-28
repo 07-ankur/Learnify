@@ -26,8 +26,9 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(2),
   textAlign: "center",
   color: "skyblue",
+  border:"2px solid transparent",
   cursor: "pointer",
-  ":hover": { backgroundColor: "skyblue", color: "#192734" },
+  ":hover": { border:"2px solid skyblue" },
 }));
 
 const Home_pg = () => {
@@ -159,6 +160,7 @@ const Home_pg = () => {
             height: "auto",
             mt: 4,
             mx: 1,
+            mr: 2,
             borderBottom: "2px solid #10D59B",
           }}
         >

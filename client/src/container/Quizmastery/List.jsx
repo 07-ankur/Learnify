@@ -85,9 +85,9 @@ const Listing = () => {
           disablePadding
           sx={{
             "&:hover": {
-              color: "#10D59B", // Change text color on hover
+              color: "#10D59B", 
               "& .MuiSvgIcon-root": {
-                fill: "#10D59B", // Change icon color on hover
+                fill: "#10D59B", 
               },
             },
           }}
@@ -104,9 +104,9 @@ const Listing = () => {
           disablePadding
           sx={{
             "&:hover": {
-              color: "#10D59B", // Change text color on hover
+              color: "#10D59B", 
               "& .MuiSvgIcon-root": {
-                fill: "#10D59B", // Change icon color on hover
+                fill: "#10D59B", 
               },
             },
           }}
